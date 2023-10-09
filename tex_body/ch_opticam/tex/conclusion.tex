@@ -1,0 +1,15 @@
+\section{Discussion and conclusions}
+\label{sec:conclusion}
+
+% In this work we introduce Opti-CAM, a simple method to visualize saliency maps obtained from different layers of convolutional neural networks, in an effort to make progress in interpreting their predictions.
+Opti-CAM combines ideas of different saliency map generation methods, which are masking-based and CAM-based. Our method optimizes the saliency map at inference given a single input image. It does not require any additional data or training any other network, which would need interpretation too.
+
+While Opti-CAM crafts a saliency map in the image space, it does not need any regularization. This is because the saliency map is expressed as a convex combination of feature maps and we only optimize one vector over the feature dimensions. The underlying assumption is that of all CAM-based methods: feature maps contain activations at all regions that are of interest for the classes that are present. Opti-CAM is more expensive than non-iterative gradient-based methods but as fast or faster than gradient-free methods that require as many forward passes as channels.
+
+We find that Opti-CAM brings impressive performance improvement over the state of the art according to the most important classification metrics on several datasets. The saliency maps are more spread out compared with those of the competition, attending to larger parts of the object, multiple instances and background context, which may be helpful in classification.
+
+%By contrast, the same property may harm localization metrics in case the saliency map extends beyond the ground-truth bounding box of the object of interest. Indeed, our results are mixed in terms of localization metrics.
+
+\iavr{Our new classification metric $\AG$ aims to be paired $\AD$ as a replacement of $\AI$ and resolves a long-standing problem in evaluating attribution methods, without further increasing the number of metrics. We provide strong evidence supporting that the use of ground-truth object bounding boxes for localization is not necessarily optimal in evaluating the quality of a saliency map, because the primary objective is to explain how a classifier works.
+% and not to localize objects in a weakly-supervised setting.
+}

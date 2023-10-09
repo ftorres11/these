@@ -1,0 +1,113 @@
+\section{More on experimental setup}
+
+\paragraph{Implementation details}
+
+Following the training recipes from the pytorch models\footnote{https://github.com/pytorch/vision/tree/main/references/classification}, we choose the ResNet protocol given its simplicity. Thus, we train over 90 epochs with SGD optimizer with momentum 0.9 and weight decay $10^{-4}$. We start our training with a learning rate of 0.1 and decrease it every 30 epochs by a factor of 10. Our models are trained on 8 V100 GPUs with a batch size 32 per GPU,  thus global batch size 256.
+
+We follow the same protocol for both ResNet and ConvNeXt, though a different protocol might lead to improvements on ConvNeXt.
+
+% %------------------------------------------------------------------------------
+% \begin{table}[h]
+% \centering
+% \scriptsize
+% \setlength{\tabcolsep}{3.5pt}
+% \begin{tabular}{llcccccc}\toprule
+% 	\mc{8}{\Th{Accuracy and Parameters}}\\\midrule
+% 	\Th{Network}&&\Th{Pool}&\mc{2}{\Th{$\#$Param}}&\mc{2}{\Th{Param$\%$}}&\Th{Acc$\uparrow$}\\\midrule
+
+% 	\mr{2}{\Th{ResNet-50}}&&\gap&\mc{2}{25.56M}&\mc{2}{\mr{2}{27.27}}&74.55\\
+% 		&&\ours&\mc{2}{32.53M}&&&74.70\\\midrule
+
+% 	\mc{8}{\Th{Interpretability Metrics}}\\\midrule
+% 	\Th{Network}&\Th{Method}&\Th{Pool}&\Th{AD$\downarrow$}&\Th{AG$\uparrow$}&\Th{AI$\uparrow$}&\Th{I$\uparrow$}&\Th{D$\downarrow$}\\\midrule
+
+% 	\mr{10}{\Th{ResNet-50}}&\mr{3}{Grad-CAM}&\gap&12.31&16.51&44.39&73.06&13.27\\ %
+%  		& &\ours&12.37&21.26&47.16&75.82&13.27\\
+% 		& &\ours-scratch&23.09&15.21&34.56&73.47&11.65\\\cmidrule{2-8} %
+% 	    &\mr{3}{Grad-CAM++}&\gap&13.25&14.42&41.32&72.91&13.28\\ %
+%  		& &\ours&14.47&17.04&42.11&75.60&13.48\\
+% 		& &\ours-scratch&20.80&13.39&34.26&72.98&12.09\\\cmidrule{2-8} %
+% 	    &\mr{3}{Score-CAM}&\gap&TBA&TBA&TBA&TBA&TBA\\ %
+%  		& &\ours&TBA&TBA&TBA&TBA&TBA\\
+% 		& &\ours-scratch&TBA&TBA&TBA&TBA&TBA\\ % \cmidrule{2-8} %
+% 	\bottomrule
+% \end{tabular}
+% \label{tab:scratch}
+% \end{table}
+% %------------------------------------------------------------------------------
+
+%\section{More results}
+
+
+%\paragraph{Saliency differences}
+%\alert{
+%We observe in \autoref{fig:compmethods} that the saliency maps of \Ours are often not very different from those of GAP. As a further quantitative investigation, we compute cosine similarities of saliency maps and obtain 0.998 
+% (or 6.49\% euclidean distance) 
+%on average over the dataset. 
+
+%However, the similarity of gradients of class scores with respect to feature tensors (based on which GradCAM weights are computed) is 0.612 on average. This indicates that saliency maps become more similar by spatial pooling (of gradients into weights) and then by weighted average over channels (in the definition of all CAM-based methods). In addition, because of the different pooling process, the similarity of the pooled features is 0.752 and the difference of the ground truth class probabilities is 27.8\% on average. These results explain the differences in accuracy and saliency map evaluation metrics brought by \Ours, despite the small changes in saliency maps.
+%}
+
+%------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+
+\section{More ablations}
+
+%\paragraph{Class-specific CLS}
+
+%Table \autoref{tab:TokenvMatrix} presents the results obtained for the class specific CLS described in section 4.5. The performance are similar for both \Ours. Thus, the class agnostic stream is favored as it requires less parameters.
+
+%----------------------------------------------------------------
+
+
+\paragraph{Class-specific CLS}
+
+%\textcolor{green}{
+As discussed in section 3.2, the formulation of single-query cross attention as a CAM-based saliency map (6) is class agnostic (single channel weights $\alpha_k$), whereas the original CAM formulation (1) is class specific (channel weights $\alpha_k^c$ for given class of interest $c$). 
+Here we consider a class specific extension of \Ours using one query vector per class. 
+In particular, the stream is initialized by one learnable parameter $\vq_0^c$ per class $c$, but only one query (\cls token) embedding is forwarded along the stream. At training, $c$ is chosen according to the target class label, while at inference, the class predicted by the baseline classifier is used instead.
+%}
+
+%\textcolor{green}{
+%Additional results are reported in supplementary. We observe that the class specific representation for \Ours provides no improvement over the class agnostic representation, despite the additional complexity and parameters. We thus choose the class agnostic representation by default.
+%}
+
+Results are resported in \autoref{tab:TokenvMatrix}. We observe that the class specific representation for \Ours provides no improvement over the class agnostic representation, despite the additional complexity and parameters. We thus choose the class agnostic representation by default. The class specific approach is similar to [50] in being able to generate class specific attention maps, although no fine-tuning is required in our case. 
+
+
+
+
+
+%------------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+%\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llccccc}\toprule                    
+	\mc{7}{\Th{Accuracy and Parameters}}\\\midrule
+	&\Th{Representation}&\mc{2}{}&\mc{2}{\Th{\#Param}}&\Th{Acc$\uparrow$}\\\midrule
+		&Class agnostic&\mc{2}{}&\mc{2}{32.53M}&74.70\\
+		&Class specific&\mc{2}{}&\mc{2}{32.59M}&74.68\\\midrule
+	
+	\mc{7}{\Th{Interpretability Metrics}}\\\midrule
+	\Th{Method}&\Th{Representation}&AD$\downarrow$&AG$\uparrow$&AI$\uparrow$&I$\uparrow$&D$\downarrow$\\\midrule
+	% \multirow{3}{*}{GAP}&\multirow{3}{*}{74.55}&Grad-CAM&13.04&17.56&44.47&72.57&13.24\\
+	%  & &Grad-CAM++&13.79&15.87&42.08&72.32&13.33\\
+	%  & &Score-CAM&13.64&12.98&44.53&62.56&11.37\\\hline %
+	\mr{2}{Grad-CAM}&Class agnostic&12.54&22.67&48.56&75.53&13.50\\
+		&Class specific&12.53&22.66&48.58&75.54&13.50\\\midrule
+	\mr{2}{Grad-CAM++}&Class agnostic&13.99&19.29&44.60&75.21&13.78\\
+		&Class specific&13.99&19.28&44.62&75.20&13.78\\\midrule
+	\mr{2}{Score-CAM}&Class agnostic&7.09&23.65&54.20&74.91&14.68\\
+		&Class specific&7.08&23.64&54.15&74.99&14.53\\\bottomrule
+\end{tabular}
+%}
+\vspace{3pt}
+\caption{\emph{Effect of class agnostic \vs class specific representation} on accuracy, parameters and interpretability metrics of \Ours for ResNet-50 and different interpretability methods on ImageNet. \Th{$\#$Param}: parameters of \Ours only.}
+\label{tab:TokenvMatrix}
+\end{table}
+%------------------------------------------------------------------------------
+
+

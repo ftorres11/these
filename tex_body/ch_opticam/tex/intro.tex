@@ -1,0 +1,115 @@
+\section{Introduction}
+\label{sec:intro}
+
+The success of \emph{deep neural networks} (DNN) and their increasing penetration into most sectors of human activity has led to growing interest in understanding how these models make their predictions. Unlike shallow methods, DNN have a high complexity and it is not possible to directly explain their inference process in a human understandable manner. This challenge has opened up an entire research field~\citep{guidotti2018survey, montavon2018methods, samek2021explaining, bodria2021benchmarking, li2021interpretable}.
+
+In this work, we are interested in the interpretability of deep neural networks through the generation of \emph{saliency maps}, highlighting regions of an image that are responsible for the prediction. This originates in \emph{gradient-based} methods \citep{simonyan2013deep, yosinski2015understanding}, including variants of backpropagation \citep{zeiler2014visualizing, springenberg2014striving, bach2015pixel}. CAM~\citep{zhou2016learning} introduced class-specific linear combinations of feature maps, and led to several alternative weighting schemes \citep{ramaswamy2020ablation, wang2020score, muhammad2020eigen}, including the use of gradients \citep{selvaraju2017grad, chattopadhay2018grad}. On the other hand, \emph{occlusion-} or \emph{masking-based} methods \citep{dabkowski2017real, fong2017interpretable, fong2019understanding, schulz2020restricting} remove regions in the image space while improving classification performance.
+
+Score-CAM~\cite{wang2020score} uses each feature map as a mask and defines a corresponding weight based on the resulting increase of class score; hence, it is both CAM-based and masking-based but does not use gradients. It resembles the numerical gradient approximation, in that it needs \emph{one forward pass per weight}. Instead, the analytical approach would be to use a linear combination of feature maps as a mask, express the class score as a function of the weights and measure the gradient analytically, in a \emph{single backward pass}. Then, \emph{why not use gradient descent to maximize the class score?} The optimal mask should highlight regions for which the network is most confident.
+
+\emph{Masking-based} methods, such as extremal perturbations~\citep{fong2019understanding} or IBA~\citep{schulz2020restricting}, do use gradient descent to maximize the class score. The mask is now a variable in the input or feature space and the class score is expressed as a function of the mask directly. Because the variable being optimized is a high-dimensional image or tensor, additional constraints or regularizers are needed to control \eg the smoothness and the salient area. This translates to more hyperparameters or more expensive optimization.
+
+Motivated by the above, we introduce Opti-CAM, illustrated in \autoref{fig:idea}. We form a linear combination of feature maps, where the weights are a variable. Treating it as a saliency map, we form a masked version of the input image that is fed again to the network. Then, the logit of a given class for the masked version of the input is maximized to obtain the optimal weights. Thus, Opti-CAM can be seen as an analytical counterpart of Score-CAM that is optimized iteratively, or as a masking-based method where the mask to be optimized lies in the linear span of the feature maps, like CAM-based methods.
+
+%------------------------------------------------------------------------------
+\begin{figure*}[t]
+\centering
+% \fig[.8]{method/OptiCAM-1.png}
+%------------------------------------------------------------------------------
+\begin{tikzpicture}[
+	scale=.12,
+	font={\small},
+	node distance=.2,
+	label distance=2pt,
+	net/.style={draw,trapezium,trapezium angle=75,inner sep=3pt},
+	enc/.style={net,shape border rotate=270},
+	txt/.style={inner sep=3pt},
+	frame/.style={draw,minimum size=1cm},
+	feat/.style={frame},
+	sq/.style={minimum size=.15cm},
+	elem/.style={draw,sq},
+	vec/.style={draw,minimum width=.8cm,minimum height=.15cm},
+	var/.style={blue!60},
+	B/.style={fill=blue!20},
+	R/.style={fill=red!20},
+	G/.style={fill=green!20},
+	Y/.style={fill=yellow!40},
+	P/.style={fill=black!20},
+]
+\matrix[
+	tight,row sep=0,column sep=14,
+	cells={scale=.3,},
+] {
+	\&\&\&\&\&\&\&
+% 	\node[var,op] (error) {$-$}; \&
+	\node[txt] (loss) {objective \\ $F^c_\ell(\vx; \vu)$}; \\
+	\node[label=90:{input image $\vx$}] (in) {\figah[1.5cm]{idea/input}}; \&
+	\node[enc] (net) {network \\ $f$}; \&
+	\foreach \s/\c in {-2/B,-1/R,0/G,1/Y,2/P}
+		{\node[feat,\c] (feat\s) at ($.4*(\s,-\s)$) {};}
+	\node        at (feat2) {\figah[1cm]{idea/27_fea0}};
+	\node[frame] at (feat2) {};
+	\coordinate[label=90:{feature \\ maps $A^k_\ell$}]
+	            (feat-north) at (feat-2.north -| feat0.north);
+	\coordinate (feat-west)  at (feat-2.west  |- feat0.west);
+	\coordinate (feat-east)  at (feat2.east   |- feat0.east);
+	\&
+	\node[var,op] (cam) {$\times$};
+	\foreach \s/\c in {-2/B,-1/R,0/G,1/Y,2/P}
+		{\node[elem,\c] (elem\s) at ($.6*(\s,-6)$) {};}
+	\node[sq,label=-90:{weights $\vu$}] (weight) at (elem0) {};
+	\&
+	\node[var,label=90:{saliency map \\ $S_\ell(\vx; \vu)$}] (sal) {\figah[1.5cm]{idea/saliency}}; \&
+	\node[var,op] (mask) {$\odot$}; \&
+	\node[label=90:{masked image}] (masked) {\figah[1.5cm]{idea/masked}}; \&
+	\node[enc] (net2) {network \\ $f$}; \\[8]
+	\&\&\&
+	\coordinate (mid); \\
+};
+
+\draw[->]
+	(in) edge (net)
+	(net) edge (feat-west)
+	(feat-east) edge (cam)
+	(net2) edge node[pos=.5,right] {class \\ logits} (loss)
+% 	(net) |- node[pos=.3,left] {class \\ logits} (error)
+	;
+
+\draw[var,->]
+	(weight) edge (cam)
+	(cam) edge (sal)
+	(sal) edge (mask)
+	(mask) edge (masked)
+	(masked) edge (net2)
+% 	(net2) edge (error)
+% 	(error) edge (loss)
+    (net2) edge (loss)
+	;
+
+\draw[->]
+	(in) |- (mid)
+	(mid) -| (mask)
+	;
+
+\end{tikzpicture}
+%------------------------------------------------------------------------------
+
+% \vspace{6pt}
+\caption{Overview of Opti-CAM. We are given an input image $\vx$, a fixed network $f$, a target layer $\ell$ and a class of interest $c$. We extract the feature maps from layer $\ell$ and obtain a saliency map $S_\ell(\vx; \vu)$ by forming a convex combination of the feature maps ($\times$) with weights determined by a variable vector $\vu$~\eq{v-sal}. After upsampling and normalizing, we element-wise multiply ($\odot$) the saliency map with the input image to form a ``masked'' version of the input, which is fed to $f$. The objective function $F^c_\ell(\vx; \vu)$ measures the logit of class $c$ for the masked image~\eq{obj}. We find the value of $\vu^*$ that maximizes this logit by optimizing along the path highlighted in blue~\eq{opt}, as well as the corresponding optimal saliency map $S_\ell(\vx; \vu^*)$~\eq{o-sal}.}
+\label{fig:idea}
+\vspace{-0.4cm}
+\end{figure*}
+%------------------------------------------------------------------------------
+
+The evaluation metrics most relevant to using a saliency map as a mask are \emph{average drop} ($\AD$) and \emph{average increase} ($\AI$)~\cite{chattopadhay2018grad}. The problem is that the two metrics are not defined in a symmetric way. As a result, there exists a trivial attribution method called Fake-CAM~\cite{poppi2021revisiting} that outperforms the state of the art in both metrics. To address this, we introduce the symmetric counterpart of $\AD$, which we call \emph{\agf} ($\AG$), to be paired with $\AD$ as a replacement of $\AI$. As expected, Fake-CAM fails $\AG$.
+
+
+In summary, we make the following contributions:
+\begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
+	\item We introduce Opti-CAM, a simple model for saliency map generation that combines ideas from CAM-based and masking-based approaches. \redred{Opti-CAM does not need any extra data, network or training.}
+% 	\item Our method is iterative, hence slower at inference than learning-based masking models \citep{dabkowski2017real, phang2020investigating}, but requires neither an additional network nor training data.
+	\item Compared with gradient-free methods~\citep{wang2020score,petsiuk2018rise,ramaswamy2020ablation}, it finds the optimal feature map weights and is on par or faster, assuming that the number of iterations is less than the number of channels.
+	\item We introduce a new evaluation metric, \emph{\agf} ($\AG$), to be paired with \emph{average drop} ($\AD$) as a replacement of \emph{average increase} ($\AI$)~\cite{chattopadhay2018grad}.
+	\item On several datasets,	we improve the state of the art by a large margin, \redred{reaching near-perfect performance} according to the most relevant classification metrics.
+	\item We shed more light into how a classifier may exploit background context.
+\end{enumerate}

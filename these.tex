@@ -3,16 +3,11 @@
 \begin{document}
 
 										
-	\input{tex_open/titre.tex}				%% page de titre
-										
+	\input{tex_open/titre}				%% page de titre								
 	\input{tex_open/affidavit}				%% affidavit et licence
-
 	\input{tex_open/publications}			%% liste de publications et participation aux conférences
-
 	\input{tex_open/resume}					%% résumé
-
 	\input{tex_open/abstract}				%% abstract
-
 	\input{tex_open/remercie}				%% remerciements
 
     \microtypesetup{protrusion=false}	%% désactive la protrusion (TOC LOFT GLS)
@@ -37,14 +32,11 @@
 
 	\ohead{\leftmark\Ifstr{\rightmark}{\leftmark}{}{ -- \rightmark}}	%% place le chapître et la partie en en-tête
 
-	\input{tex_body/intro}
-
-	\input{tex_body/chap1}
-
-	\input{tex_body/chap2}
-
+    %\input{tex_body/intro}
+    \input{tex_body/rel}
+	\input{tex_body/ch_opticam/ch_opticam.tex}
+	\input{tex_body/ch_castream/ch_castream.tex}
 	\input{tex_body/chap3}
-
 	\input{tex_body/conc}
 
 	\appendix

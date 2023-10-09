@@ -1,0 +1,42 @@
+\section{Experiments}
+\label{sec:exp}
+
+We evaluate Opti-CAM and compare it quantitatively and qualitatively against other state-of-the-art methods on a number of datasets and networks. \iavr{We report classification metrics with execution times and we provide visualizations, an ablation study and a study on the suitability of localization ground truth. A sanity check, additional classification results, localization metrics, more ablations, more visualizations \redred{and code} are given in supplementary material}.
+
+\subsection{Datasets}
+\label{sec:data}
+
+\paragraph{ImageNet}
+
+We use the validation set of ImageNet ILSVRC 2012~\citep{krizhevsky2012imagenet,ILSVRC15}, which contains $50,000$ images evenly distributed over the $1,000$ categories. For the ablation study and for timing, we sample $1,000$ images from this set. Concerning the localization experiments, bounding boxes from the localization task of ILSVRC\footnote{\url{https://www.image-net.org/challenges/LSVRC/2012/index.php}} are used on the same validation set.
+
+\paragraph{Medical data}
+
+\iavr{We use two medical image datasets, namely \emph{Chest X-ray} \citep{kermany2018labeled} and \emph{Kvasir} \citep{pogorelov2017kvasir}. Complete qualitative and quantitative results are given in the supplementary. Here we only provide visualizations.}
+
+%------------------------------------------------------------------------------
+
+\paragraph{Networks}
+\label{sec:setup}
+
+For all datasets, we use the pretrained ResNet50~\citep{he2016deep} and VGG16~\cite{simonyan2014very} networks with batch normalization~\citep{ioffe2015batch} from the Pytorch model zoo\footnote{\url{https://pytorch.org/vision/0.8/models.html}}. \iavr{For ImageNet, we further use the pretrained ViT-B (16-224)~\citep{dosovitskiy2020image} and DeiT-B (16-224)~\citep{pmlr-v139-touvron21a} from Pytorch image models (timm)\footnote{\url{https://github.com/rwightman/pytorch-image-models}}.
+% pre-trained on ImageNet-21k and fine-turned on ImageNet-1k~\citep{ILSVRC15}.
+Regarding medical datasets, we fine-tune the networks as discussed in the supplementary material, where we also provide the setting details.
+}
+
+%------------------------------------------------------------------------------
+
+\subsection{Evaluation}
+\label{sec:eval}
+
+\paragraph{Metrics}
+
+\ronan{We use \emph{average drop} ($\AD$) and \emph{average increase} ($\AI$)~\cite{chattopadhay2018grad} metrics, as well as the proposed \emph{\agf} ($\AG$), to measure the effect on classification performance of masking the input image by a saliency map. In the supplementary, we also report \emph{insertion} (I) and \emph{deletion} (D)~\citep{petsiuk2018rise} and highlight their limitations. Using classification metrics, we show the limitations of using the localization ground truth for the evaluation of attribution methods. In the supplementary, we provide a number of localization metrics from the \emph{weakly-supervised object localization} (WSOL) task of ILSVRC2014\footnote{\url{https://www.image-net.org/challenges/LSVRC/2014/index\#}}.}
+
+\paragraph{Methods}
+
+\iavr{We compare against the following state-of-the-art methods: Grad-CAM~\citep{selvaraju2017grad}, Grad-CAM++~\cite{chattopadhay2018grad}, Score-CAM~\citep{wang2020score}, Ablation-CAM~\citep{ramaswamy2020ablation}, XGrad-CAM~\citep{fu2020axiom}, Layer-CAM~\citep{jiang2021layercam}, ExtremalPerturbation~\citep{fong2019understanding} \modify{and HiRes-CAM~\citep{draelos2020use}}. Implementations are obtained from the PyTorch CAM library\footnote{\url{https://github.com/jacobgil/pytorch-grad-cam}} or TorchRay\footnote{\url{https://github.com/facebookresearch/TorchRay}}. For transformer models, we also compare against raw attention~\citep{dosovitskiy2020image}, rollout~\citep{abnar2020quantifying} and TIBAV~\cite{chefer2021transformer}\footnote{\url{https://github.com/hila-chefer/Transformer-Explainability}}.}
+
+\paragraph{Image normalization}
+
+It is standard that images are normalized before feeding them to a network. By doing so however, we cannot reproduce the results published for the baseline methods; rather, all results are improved dramatically. We can obtain results similar to published ones by \emph{not} normalizing. We believe normalization is important and we include it in all our experiments. In the supplementary, we provide more details and results without normalization\redred{, as well as code that allows for reproduction and verification of our results}.

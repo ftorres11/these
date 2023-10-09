@@ -1,0 +1,212 @@
+\subsection{Interpretabity metrics}
+\label{subsec:interecon}
+
+%------------------------------------------------------------------------------
+\begin{table}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+% \resizebox{\columnwidth}{!}{%
+\begin{tabular}{llcccccc}\toprule
+	\mc{8}{\Th{Accuracy and Parameters}}\\\midrule
+	\Th{Network}&\mc{1}{\Th{Pool}}&\Th{GFLOPs}&\mc{2}{\Th{$\#$Param}}&\mc{2}{\Th{Param$\%$}}&\Th{Acc$\uparrow$}\\\midrule
+	\mr{2}{\Th{ResNet-18}}&\mc{1}{\gap}&3.648&\mc{2}{11.69M}&\mc{2}{\mr{2}{3.71}}&67.28\\
+		&\mc{1}{\ours}&3.652&\mc{2}{12.13M}&&&67.54\\\midrule
+	\mr{2}{\Th{ResNet-50}}&\mc{1}{\gap}&8.268&\mc{2}{25.56M}&\mc{2}{\mr{2}{27.27}}&74.55\\
+		&\mc{1}{\ours}&8.288&\mc{2}{32.53M}&&&74.70\\\midrule
+	\mr{2}{\Th{ConvNeXt-S}}&\mc{1}{\gap}&17.395&\mc{2}{50.22M}&\mc{2}{\mr{2}{1.95}}&83.26\\
+		&\mc{1}{\ours}&17.400&\mc{2}{51.20M}&&&83.14\\\midrule
+	\mr{2}{\Th{ConvNeXt-B}}&\mc{1}{\gap}&30.747&\mc{2}{88.59M}&\mc{2}{\mr{2}{1.96}}&83.72\\
+		&\mc{1}{\ours}&30.753&\mc{2}{90.33M}&&&83.51\\\midrule
+%	\mr{2}{\Th{ViT-Base}}&&\cls\footnotemark{}&\mc{2}{86.58M}&\mc{2}{\mr{2}{8.18}}&80.01\\
+%		&&\ours&\mc{2}{93.66M}&&&74.73\\\midrule
+		
+	\mc{8}{\Th{Interpretability Metrics}}\\\midrule
+	\Th{Network}&\Th{Method}&\Th{Pool}&\Th{AD$\downarrow$}&\Th{AG$\uparrow$}&\Th{AI$\uparrow$}&\Th{I$\uparrow$}&\Th{D$\downarrow$}\\\midrule
+
+	\mr{7}{\Th{ResNet-18}}&\mr{2}{Grad-CAM}&\gap&17.64&12.73&41.21&63.13&\textbf{10.66}\\ %
+		& &\ours&\textbf{16.99}&\textbf{17.22}&\textbf{44.95}&\textbf{65.94}&10.68\\\cmidrule{2-8} %
+		& \mr{2}{Grad-CAM++}&\gap&19.05&11.16&37.99&62.80&\textbf{10.75}\\ %
+		& &\ours&\textbf{19.02}&\textbf{14.76}&\textbf{40.82}&\textbf{65.53}&10.82\\\cmidrule{2-8} %
+		& \mr{2}{Score-CAM}&\gap&13.64&12.98&44.53&62.56&\textbf{11.37}\\ %
+		& &\ours&\textbf{11.53}&\textbf{18.12}&\textbf{50.32}&\textbf{65.33}&11.51\\\midrule %
+
+	\mr{7}{\Th{ResNet-50}}&\mr{2}{Grad-CAM}&\gap&13.04&17.56&44.47&72.57&\textbf{13.24}\\ %
+		& &\ours&\textbf{12.54}&\textbf{22.67}&\textbf{48.56}&\textbf{75.53}&13.50\\\cmidrule{2-8} %
+		& \mr{2}{Grad-CAM++}&\gap&\textbf{13.79}&15.87&42.08&72.32&\textbf{13.33}\\ %
+		& &\ours&13.99&\textbf{19.29}&\textbf{44.60}&\textbf{75.21}&13.78\\\cmidrule{2-8} %
+		& \mr{2}{Score-CAM}&\gap&8.83&17.97&48.46&71.99&\textbf{14.31}\\ %
+		& &\ours&\textbf{7.09}&\textbf{23.65}&\textbf{54.20}&\textbf{74.91}&14.68\\\midrule%
+
+	% \multirow{6}{*}{MobileNet-V2}&\mc{2}{Grad-CAM}&\gap&16.11&12.89&40.27&64.47&\textbf{11.92}\\
+	%   & &\ours&\textbf{15.53}&\textbf{16.13}&\textbf{42.95}&\textbf{67.80}&12.24\\\cmidrule{2-8}
+	%   & \mc{2}{Grad-CAM++}&\gap&17.65&11.12&37.30&64.08&\textbf{11.96}\\
+	%   & &\ours&\textbf{17.55}&\textbf{13.52}&\textbf{38.61}&\textbf{67.36}&12.28\\\cmidrule{2-8}
+	%   & \mc{2}{Score-CAM}&\gap&12.32&13.52&43.94&64.13&\textbf{12.23}\\
+	%   & &\ours&\textbf{10.71}&\textbf{17.35}&\textbf{47.81}&\textbf{67.41}&12.65\\\midrule
+
+	% \multirow{6}{*}{ConvNext Tiny}&\mc{2}{Grad-CAM}&\gap&43.15&2.82&16.58&49.15&\textbf{23.68}\\ % Numbers match, check saliency
+	%   & &\ours&\textbf{22.49}&\textbf{14.03}&\textbf{30.65}&\textbf{82.55}&35.22\\\cmidrule{2-8} % Revision running
+	%   & \mc{2}{Grad-CAM++}&\gap&43.96&2.45&15.67&48.95&\textbf{23.90}\\ % Pending
+	%   & &\ours&\textbf{25.90}&\textbf{12.16}&\textbf{27.70}&\textbf{82.01}&40.42\\\cline{2-8} % Revision running
+	%   & \mc{2}{Score-CAM}&\gap&48.25&1.86&13.47&47.12&\textbf{35.38}\\ % Pending
+	%   & &\ours&\textbf{19.69}&\textbf{12.42}&\textbf{28.92}&\textbf{80.21}&49.25\\\midrule % Revision running
+
+	\mr{7}{\Th{ConvNeXt-S}}&\mr{2}{Grad-CAM}&\gap&42.99&1.69&12.60&48.42&\textbf{30.12}\\ % Numbers match, check saliency
+		& &\ours&\textbf{22.09}&\textbf{14.91}&\textbf{32.65}&\textbf{84.82}&43.02\\\cmidrule{2-8} % Revision running
+		& \mr{2}{Grad-CAM++}&\gap&56.42&1.32&10.35&48.28&\textbf{33.41}\\ % Pending
+		& &\ours&\textbf{51.87}&\textbf{9.40}&\textbf{20.55}&\textbf{84.28}&52.58\\\cmidrule{2-8} % Revision running
+		& \mr{2}{Score-CAM}&\gap&74.79&1.29&10.10&47.40&\textbf{38.21}\\ % Pending
+		& &\ours&\textbf{64.21}&\textbf{8.81}&\textbf{18.96}&\textbf{82.92}&57.46\\\midrule % Revision running
+
+	\mr{7}{\Th{ConvNeXt-B}}&\mr{2}{Grad-CAM}&\gap&33.72&2.43&15.25&52.85&\textbf{29.57}\\ % Pending
+		& &\ours&\textbf{19.45}&\textbf{13.96}&\textbf{32.89}&\textbf{86.38}&45.29\\\cmidrule{2-8} % Revision running
+		& \mr{2}{Grad-CAM++}&\gap&\textbf{34.01}&2.37&15.60&52.83&\textbf{29.17}\\ % Pending
+		& &\ours&36.69&\textbf{8.00}&\textbf{21.95}&\textbf{85.39}&53.42\\\cmidrule{2-8} % Revision running
+		& \mr{2}{Score-CAM}&\gap&43.55&2.23&15.67&50.96&\textbf{39.49}\\ % Pending
+		& &\ours&\textbf{23.51}&\textbf{11.04}&\textbf{27.35}&\textbf{83.41}&60.53\\\midrule% Revision running
+
+%	\mr{7}{\Th{ViT-B}}&\mr{2}{Grad-CAM}&\cls\footnotemark[\value{footnote}]&83.66&1.49&7.37&66.43&34.98\\ % Pending
+%		& &\ours&49.88&4.07&16.10&67.12&10.25\\\cmidrule{2-8} % Revision running
+%		& \mr{2}{Grad-CAM++}&\cls\footnotemark[\value{footnote}]&97.03&0.01&1.36&\textbf{66.80}&33.35\\ % Pending
+%		& &\ours&74.81&1.64&7.43&61.95&28.29\\\cmidrule{2-8} % Revision running
+%		& \mr{2}{Score-CAM}&\cls\footnotemark[\value{footnote}]&TBA&TBA&TBA&TBA&TBA\\ % Pending
+%		& &\ours&TBA&TBA&TBA&TBA&TBA\\\bottomrule % Revision running
+\end{tabular}
+% }
+%\vspace{3pt}
+\caption{\emph{Accuracy, parameters and interpretability metrics} of \Ours \vs baseline \gap for different networks and interpretability methods on ImageNet. \Th{$\#$Param}: total parameters; \Th{Param$\%$}: percentage of \Ours parameters relative to backbone.}
+\label{tab:intrecon-all}
+\end{table}
+%------------------------------------------------------------------------------
+% \footnotetext{Built-in \cls token from Vision Transformers.}    
+%------------------------------------------------------------------------------
+
+Here we measure the effect of employing our \Ours approach to pool features \vs the baseline \gap on the faithfulness of explanations, using classification metrics for interpretability. Results are reported in \autoref{tab:intrecon-all} for ImageNet and  \autoref{tab:pascal} for CUB and Pascal VOC.
+
+\autoref{tab:intrecon-all} shows that for different networks, CAM-based interpretability methods and dataset, \Ours provides consistent improvements over \gap in terms of AD, AG, AI and I metrics, while performing lower on D. 
+%
+%\textcolor{red}{
+Deletion has raised concerns in previous works \cite{chefer2021transformer, zhang2023opti}. Indeed, it gradually replaces pixels by black, unlike insertion which starts from a blurred image. This poses the problem of \emph{out-of-distribution} (OOD) data~\cite{gomez2022metrics, hase2021outofdistribution, qiu2021resisting}, possibly introducing bias related to the shape of black regions~\cite{rong2022consistent}. Moreover, non-spread saliency maps tend to perform better \cite{zhang2023opti}, which is likely the reason for lower performance. %We suppose that erasing one main object area is more efficient.  
+%}
+
+%\textcolor{orange}{Considering that saliency maps of the two pooling methods do not present large differences, the observed improvement in interpretability metrics can be attributed to the predictive power of the learned attention mechanism. 
+%}
+
+%That is, class probabilities can change due to attention, even if saliency maps, obtained features and predictions are the same.}
+%\textcolor{red}{
+Results on CUB in \autoref{tab:pascal} show that our \Ours consistently provides improvements when the model is finetuned on a smaller fine-grained dataset.
+%}
+
+%Table \autoref{tab:pascal} present interpretability results for the PASCAL dataset \cite{Everingham15}.
+% \textcolor{red}{
+Regarding Pascal VOC, the results for Score-CAM are similar to the ones on ImageNet and CUB, with consistent improvements on all metrics but Deletion. 
+However, Grad-CAM and Grad-CAM++ only provide improvements on Average Gain and Average Increase. Average Drop, Insertion and Deletion are very similar.
+In fact, Pascal VOC is a multi-class dataset and  our \Ours is class agnostic. Thus, the attention-based pooling is the same for different class for a given image, which reduces the benefit of our \Ours.
+%We believe the fact that 
+% }
+
+It is also interesting to observe the performance of Score-CAM, as it computes channel weights $\alpha_k^c$ in~\eq{sal} without using gradients. 
+In gradient-based methods, channel weights are modified by \Ours due to modified backward gradient flow to features through cross attention blocks rather than \gap.
+In Score-CAM however, channel weights are only modified in the forward class probabilities computation, due to attention.
+
+% Regarding the results on ViT-Base, we observe the previously reported failure of CAM based methods on vision transformers\cite{zhang2023opti,chefer2021transformer}; in contrast we note that with the addition of our stream, the interpretability properties \textbf{changes.}
+
+%------------------------------------------------------------------------------
+
+% \subsection{Localization Evaluation}
+% \label{subsec:loceval}
+% 
+% In this section, we assess the localization properties of the saliency maps provided by the inclusion of the CLS stream-based representation. We report these results in table \ref{tab:localization}. It shows that all the localization metrics provide similar scores on different methods and networks. CLS helps saliency maps keep localization information while gaining more classification information. 
+% \begin{table}[H]
+% 	\centering
+% 	%\resizebox{\columnwidth}{!}{%
+% 	\scriptsize
+% 	\setlength{\tabcolsep}{2pt}
+% 	\begin{tabular}{lllccc|cccc}\toprule
+% 		\Th{Backbone}&\Th{Method}&\Th{Repr}&\Th{OM$\downarrow$}&\Th{LE$\downarrow$}&\Th{F1$\uparrow$}&\Th{BA$\uparrow$}&\Th{SP$\uparrow$}&\Th{EP$\uparrow$}&\Th{SM$\downarrow$}\\\midrule
+% 		\mr{6}{\Th{ResNet-18}}&\mr{2}{\Th{Grad-CAM}}&GAP&\tb{80.6}&61.4&49.1&\tb{58.3}&13.7&13.1&\tb{2.93}\\
+% 			& &CLS&81.1&\tb{61.3}&49.1&58.2&13.7&13.1&3.10\\ \cmidrule{3-10}
+% 			&\mr{2}{\Th{Grad-CAM++}}&GAP&\tb{80.5}&60.9&50.0&\tb{58.3}&13.7&13.1&\tb{2.89}\\
+% 			& &CLS&81.0&60.9&\tb{50.1}&58.0&13.7&13.1&3.07\\\cmidrule{3-10}
+% 			&\mr{2}{\Th{Score-CAM}}&GAP&\tb{80.5}&60.9&\tb{49.7}&57.7&13.7&13.1&\tb{2.89}\\
+% 			& &CLS&81.0&60.9&49.5&57.3&13.7&13.1&3.07\\ \midrule
+% 			\mr{6}{\Th{ResNet-50}}&\mr{2}{\Th{Grad-CAM}}&GAP&80.0&66.4&49.5&58.8&13.8&13.2&\tb{2.56}\\
+% 			& &CLS&80.0&66.4&\tb{49.6}&58.8&13.8&13.2&2.62\\\cmidrule{3-10}
+% 			&\mr{2}{\Th{Grad-CAM++}}&GAP&\tb{80.2}&\tb{66.7}&50.4&\tb{58.7}&13.9&13.3&\tb{2.55}\\
+% 			& &CLS&80.3&66.9&\tb{50.6}&58.0&13.9&13.3&2.64\\\cmidrule{3-10}
+% 			&\mr{2}{\Th{Score-CAM}}&GAP&\tb{80.0}&66.3&\tb{50.3}&\tb{57.9}&13.8&13.2&\tb{2.55}\\
+% 			& &CLS&80.1&66.3&50.0&57.5&13.8&13.2&2.62\\\bottomrule
+% 	\end{tabular}
+% 	%}
+% 	\caption{Comparison of interpretable localization for ResNet on ImageNet.}
+% 	\label{tab:localization}
+% \end{table}
+
+%------------------------------------------------------------------------------
+
+\subsection{Classification accuracy}
+\label{subsec:classification}
+
+%Here we measure the effect of employing our \Ours approach to pool features \vs the baseline \gap on 
+
+Classification accuracy, number of parameters and GFLOPs for both our \Ours and the baselines are reported in \autoref{tab:intrecon-all} (top part).
+
+By adding our \Ours to the network, classification remains on par with the baseline. Importantly, the network including the classifier remains frozen and the features used for the global image representation remain fixed, meaning that any change in accuracy is due to the attention-based pooling mechanism. 
+%
+% \textcolor{red}{
+We further report the number of GFLOPs for one forward pass and the parameters count of both methods.
+Our \Ours has little computation cost and the parameter overhead depends on the embedding dimension because of projection $W_\ell$ in~\eq{qk-layer} and is small in general, except for ResNet-50. Thus, with small overhead in resources, \Ours achieves superior explanations of the classifier predictions, while maintaining accuracy.
+% }
+
+%------------------------------------------------------------------------------
+\begin{table}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+%\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llccccc}\toprule                    
+	\mc{7}{\textbf{\Th{CUB-200-2011 - ResNet-50}}}\\\midrule
+	&\Th{Pooling}&\mc{2}{}&\mc{2}{}&\Th{Acc$\uparrow$}\\\midrule
+		&\gap&\mc{2}{}&\mc{2}{}&76.96\\
+		&\ours&\mc{2}{}&\mc{2}{}&75.90\\\midrule
+	
+	\mc{7}{\Th{Interpretability Metrics}}\\\midrule
+	\Th{Method}&\Th{Pooling}&AD$\downarrow$&AG$\uparrow$&AI$\uparrow$&I$\uparrow$&D$\downarrow$\\\midrule
+	% \multirow{3}{*}{GAP}&\multirow{3}{*}{74.55}&Grad-CAM&13.04&17.56&44.47&72.57&13.24\\
+	%  & &Grad-CAM++&13.79&15.87&42.08&72.32&13.33\\
+	%  & &Score-CAM&13.64&12.98&44.53&62.56&11.37\\\hline %
+	\mr{2}{Grad-CAM}&\gap&10.87&10.29&45.81&65.71&\textbf{6.17}\\
+		&\ours&\textbf{10.44}&\textbf{17.61}&\textbf{53.54}&\textbf{74.60}&6.56\\\midrule
+	\mr{2}{Grad-CAM++}&\gap&11.35&9.68&44.32&65.64&\textbf{5.92}\\
+		&\ours&\textbf{11.01}&\textbf{16.50}&\textbf{51.63}&\textbf{74.64}&6.21\\\midrule
+	\mr{2}{Score-CAM}&\gap&9.05&10.62&48.90&65.58&5.94\\
+		&\ours&\textbf{6.37}&\textbf{19.50}&\textbf{60.41}&\textbf{74.22}&\textbf{2.14}\\
+
+\midrule
+  \midrule
+
+	\mc{7}{\textbf{\Th{Pascal VOC 2012 - ResNet-50}}}\\\midrule
+	&\Th{Pooling}&\mc{2}{}&\mc{2}{}&\Th{mAP$\uparrow$}\\\midrule
+		&\gap&\mc{2}{}&\mc{2}{}&78.32\\
+		&\ours&\mc{2}{}&\mc{2}{}&78.35\\\midrule
+	
+	\mc{7}{\Th{Interpretability Metrics}}\\\midrule
+	\Th{Method}&\Th{Pooling}&AD$\downarrow$&AG$\uparrow$&AI$\uparrow$&I$\uparrow$&D$\downarrow$\\\midrule
+	% \multirow{3}{*}{GAP}&\multirow{3}{*}{74.55}&Grad-CAM&13.04&17.56&44.47&72.57&13.24\\
+	%  & &Grad-CAM++&13.79&15.87&42.08&72.32&13.33\\
+	%  & &Score-CAM&13.64&12.98&44.53&62.56&11.37\\\hline %
+	\mr{2}{Grad-CAM}&\gap&\textbf{12.61}&9.68&27.88&\textbf{89.10}&59.39\\
+		&\ours&12.77&\textbf{15.46}&\textbf{34.53}&88.53&\textbf{59.16}\\\midrule
+	\mr{2}{Grad-CAM++}&\gap&\textbf{12.25}&9.68&27.62&\textbf{89.34}&54.23\\
+		&\ours&12.28&\textbf{16.76}&\textbf{34.87}&89.02&\textbf{53.34}\\\midrule
+	\mr{2}{Score-CAM}&\gap&14.8&6.76&36.41&71.10&\textbf{39.95}\\
+		&\ours&\textbf{10.96}&\textbf{21.35}&\textbf{43.82}&\textbf{89.21}&51.44\\\bottomrule
+  
+\end{tabular}
+%}
+%\vspace{3pt}
+\caption{Accuracy, respectively mean Average Precision, and interpretability metrics of \Ours \vs baseline \gap for ResNet-50 on CUB and Pascal dataset.}
+\label{tab:pascal}
+\end{table}
+%------------------------------------------------------------------------------

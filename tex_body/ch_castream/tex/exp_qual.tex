@@ -1,0 +1,75 @@
+%------------------------------------------------------------------------------
+\begin{figure*}[t]
+\scriptsize
+\centering
+\setlength{\tabcolsep}{1.5pt}
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccccccc}
+	{}&\multirow{2}{*}{Input image}&\multirow{2}{*}{Raw Attention}&\multicolumn{2}{c}{Grad-CAM}&\multicolumn{2}{c}{Grad-CAM++}&\multicolumn{1}{c}{Score-CAM}\\
+	{}&{}&{}&GAP&\Ours&GAP&\Ours&GAP&\Ours\\
+    % {\rotatebox{90}{\tiny Loudspeaker}}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/original/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/raw_att/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcam/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcam/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcampp/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcampp/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/scorecam/37729.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_scorecam/37729.jpeg}\\
+
+    {\rotatebox{90}{\tiny Envelope}}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/original/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/raw_att/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcam/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcam/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcampp/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcampp/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/scorecam/23541.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_scorecam/23541.jpeg}\\
+
+    {\rotatebox{90}{\tiny Groom}}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/original/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/raw_att/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcam/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcam/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcampp/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcampp/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/scorecam/9602.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_scorecam/9602.jpeg}\\
+
+    {\rotatebox{90}{\tiny Nematode}}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/original/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/raw_att/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcam/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcam/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcampp/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcampp/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/scorecam/12414.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_scorecam/12414.jpeg}\\
+
+	% {\rotatebox{90}{\tiny Waffle Iron}}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/original/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/raw_att/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcam/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcam/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcampp/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcampp/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/15749.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/15749.jpeg}\\
+
+	% {\rotatebox{90}{\tiny Wallaby}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/original/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/raw_att/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcam/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcam/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcampp/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcampp/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/24263.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/24263.jpeg}}\\
+
+	% {\rotatebox{90}{\tiny Hoopskirt}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/original/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/raw_att/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcam/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcam/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcampp/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcampp/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/33003.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/33003.jpeg}}\\
+
+	% {\rotatebox{90}{\tiny Matchstick}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/original/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/raw_att/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcam/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcam/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/shelf_gradcampp/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/gradcampp/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/48096.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_revisit/scorecam/48096.jpeg}}\\
+
+	% {\rotatebox{90}{\tiny Sweatshirt}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/original/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/raw_att/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/shelf_gradcam/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/gradcam/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/shelf_gradcampp/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/gradcampp/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/shelf_scorecam/18939.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/scorecam/18939.jpeg}}\\
+
+	{\rotatebox{90}{\tiny CRT screen}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/original/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/raw_att/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/shelf_gradcam/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/gradcam/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/shelf_gradcampp/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/gradcampp/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/shelf_scorecam/43057.jpeg}}&\multicolumn{1}{c}{\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1/scorecam/43057.jpeg}}\\ % Checked 
+
+   {\rotatebox{90}{\tiny Snowboard}}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/original/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/raw_att/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcam/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcam/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_gradcampp/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/gradcampp/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/scorecam/11376.jpeg}&\includegraphics[width=0.115\textwidth]{Images/Comparable/figure1_similarities/shelf_scorecam/11376.jpeg}\\
+
+ 
+\end{tabular}
+% }
+\vspace{3pt}
+\caption{Comparison of saliency maps generated by different CAM-based methods, using GAP and our \Ours, on ImageNet images. The raw attention is the one used for pooling by \Ours.}
+\label{fig:compmethods}
+\end{figure*}
+%------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+
+\subsection{Qualitative evaluation}
+\label{subsec:vinspection}
+
+We show saliency maps obtained by different interpretability methods using either \gap or \Ours, as well as the class-agnostic raw attention coming from our \Ours, see \autoref{fig:compmethods}.
+%, including the class-agnostic raw attention obtained by \Ours.
+
+We observe that the raw attention focuses on objects of interest in the images. 
+%\textcolor{orange}{
+In general, saliency maps obtained with \Ours are similar but tend to cover larger regions of the object or more instances compared with \gap.%, see \autoref{fig:compmethods}.
+%, for example in the ``CRT screen'' image in \autoref{fig:compmethods}. 
+%}
+%
+Indeed, the differences in saliency maps should not be large, as both methods share the same features maps $F^k_\ell$ and only the weight coefficients $\alpha^c_k$ differ.
+Despite the small differences, the following quantitative results show that \Ours has a significant impact on the interpretability metrics.
+
+%
+%\textcolor{red}{
+%As a further investigation, we compute cosine similarities of saliency maps and obtain 0.998 (or 6.49\% euclidean distance), averaged over the dataset. We then observed a similarity of 0.752 for the pooled features and 0.612 for the gradient.
+%Finally, the percentage difference in probability for the ground truth class is of 27.8\% on average.
+%These results show that the small changes in the saliency maps are meaningful.
+%}
+
+
+%In some examples, the saliency maps obtained are quite similar.%using \gap and \Ours are not very different. 
+%The differences are expected to be low, as both methods share the same features maps $F^k_\ell$ and only the weight coefficients $\alpha^c_k$ differ.
+%%, while the CAM-based methods have their own mechanism to focus on what is relevant for the prediction of the class of interest. 
+%Despite the small visual differences, the following quantitative results show that \Ours has a significant impact on the interpretability metrics.
+
+%------------------------------------------------------------------------------
+\input{tex/figure_outdataset}
+%------------------------------------------------------------------------------
+
+In addition, \autoref{fig:enter-label} shows examples of images from the MIT 67 Scenes dataset~\cite{quattoni2009recognizing} along with raw attention maps obtained by \Ours. These images come from four classes that do not exist in ImageNet and the network sees them at inference for the first time. Nevertheless, the attention maps focus on objects of interest in general.

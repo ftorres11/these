@@ -1,0 +1,139 @@
+
+\section{Implementation details}
+Following the training recipes from the pytorch models \footnote{https://github.com/pytorch/vision/tree/main/references/classification}, we choose the ResNet protocol given its simplicity. Thus, we train over 90 epochs with SGD optimizer having 0.9 momentum and a weight decay of $10^{-4}$. We start our training with a learning rate of 0.1 and decrease it every 30 epochs by a factor of 10. Our models are trained on 8 V100 gpus with a batch-size per gpu of 32 (thus making a global batch-size of 256).
+
+We follow the same protocol for both ResNet and ConvNeXt, though a different protocol might lead to improvements on ConvNeXt.
+
+%We acknowledge that our best results regarding accuracy are those obtained on the ResNet architecture; however we hypothesize that should we use an architecture-specific approach for ConvNext, our results could be improved.
+
+
+
+
+\section{Additional experiments}
+\label{sec:more-exp}
+
+%\subsection{More ablations}
+%\label{sec:more-ablation}
+
+%------------------------------------------------------------------------------
+
+%\subsection{Stream attention interpretability}
+
+%Based on equation \ref{eq:connection} and inspired by \cite{abnar2020quantifying}, we note that we can visualize the flow of information across the CLS-Stream for every CA block. Nevertheless, from the aforementioned work, we find that Attention Rollout is not so desired given complications in its calculation. On \autoref{fig:compmethods} we observe some differences between Attention and different CAM proposals. % Define Attention
+%% With this in mind we first demonstrate the similarities between Grad-CAM and Raw Attention in Figure \ref{fig:rawatt_gradcam}.
+%% Conversely, following the similarity between CAM methods and attention, we observe that attention can be used to compute saliency maps. We present the similarities for these kinds of visualizations in figure \ref{fig:rawatt_gradcam}
+
+% \begin{figure}[H]
+%     \centering
+%     % \resizebox{\columnwidth}{!}{%
+%     \begin{tabular}{cccc}
+%         {}&Input Image & Grad-CAM & Raw Attention\\
+%         % {\rotatebox{90}{classname}}&{\includegraphics[width=0.15\textwidth]{}}&{\includegraphics[width=0.15\textwidth]{}}&{\includegraphics[width=0.15\textwidth]{}}\\
+%         % {\rotatebox{90}{classname}}&{\includegraphics[width=0.15\textwidth]{}}&{\includegraphics[width=0.15\textwidth]{}}&{\includegraphics[width=0.15\textwidth]{}}\\
+%         % {\rotatebox{90}{classname}}&{\includegraphics[width=0.15\textwidth]{}}&{\includegraphics[width=0.15\textwidth]{}}&{\includegraphics[width=0.15\textwidth]{}}\\
+%     \end{tabular}
+%     % }
+%     \caption{Visual comparison between Grad-CAM and Raw Attention}
+%     \label{fig:rawatt_gradcam}
+% \end{figure}
+
+%Moving on, we evaluate these attention maps following the approach for interpretable recognition. As noted on \autoref{tab:rawatt_gradcam}, raw attention presents a similar if not a bit worse performance in comparison to Grad-CAM. It could be argued that according to the similarities between CAM based approaches and attention ones described in ~\eq{connection}, a direct comparison is plausible; although not proper, knowing that raw attention uses softmax as activation function.
+
+%------------------------------------------------------------------------------
+%\begin{table}[H]
+%\centering
+%\scriptsize
+%%\resizebox{\columnwidth}{!}{%}
+%\begin{tabular}{lccccc}\toprule
+%		\Th{Method}&\Th{AD}$\downarrow$&\Th{AG$\uparrow$}&\Th{AI$\uparrow$}&\Th{I$\uparrow$}&\Th{D$\downarrow$}\\\midrule
+%		Raw-Attention&13.42&15.76&41.48&73.86&16.29\\
+%		Grad-CAM&12.54&22.67&48.56&75.53&13.50\\\bottomrule
+%\end{tabular}
+%%}
+%\vspace{3pt}
+%\caption{Comparison of interpretable performance between Raw Attention and Grad-CAM, using ResNet 50.}
+%\label{tab:rawatt_gradcam}
+%\end{table}
+%------------------------------------------------------------------------------
+
+\subsection{Full training of the backbone and stream}
+% Rephrasing to make emph on post-hoc and argue that while it is possible, acc is not dropped too much. It's more interesting to do post-hoc (...) sic.
+% Other comparisons, SCOUTER. Maybe play with Conformer
+
+One may raise the question about learning our \ours together with the backbone.
+Thus, we evaluate such case following the same protocol.
+\autoref{tab:scratch} shows the results obtained for the baseline, \Ours with fixed backbone, and \Ours trained jointly with the backbone. Note that the metrics are evaluated on only 2,000 images of the ImageNet validation set.
+
+
+
+%One of the latest observations from our approach answers to the question \textit{what would happen if we trained each model from scratch ?} Following existing training procedure for ResNet50, we begin by training a baseline model. 
+%\ronan{Then we train a model with the CLS stream in a similar fashion. We present the evolution of the training error for both the backbone alone, stream alone, and  both combined in \autoref{fig:scratch_freeze}.}
+%we make use of this model as a control further down the experimentation
+
+
+\begin{table}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+% \resizebox{\columnwidth}{!}{%
+\begin{tabular}{llcccccc}\toprule
+	\mc{8}{\Th{Accuracy and Parameters}}\\\midrule
+	\Th{Network}&&\Th{Pool}&\mc{2}{\Th{$\#$Param}}&\mc{2}{\Th{Param$\%$}}&\Th{Acc$\uparrow$}\\\midrule
+	
+	\mr{2}{\Th{ResNet-50}}&&\gap&\mc{2}{25.56M}&\mc{2}{\mr{2}{27.27}}&74.55\\
+		&&\ours&\mc{2}{32.53M}&&&74.70\\\midrule
+		
+	\mc{8}{\Th{Interpretability Metrics}}\\\midrule
+	\Th{Network}&\Th{Method}&\Th{Pool}&\Th{AD$\downarrow$}&\Th{AG$\uparrow$}&\Th{AI$\uparrow$}&\Th{I$\uparrow$}&\Th{D$\downarrow$}\\\midrule
+
+	\mr{7}{\Th{ResNet-50}}&\mr{3}{Grad-CAM}&\gap&12.31&16.51&44.39&73.06&13.27\\ %
+ 		& &\ours&12.37&21.26&47.16&75.82&13.27\\
+		& &\ours-Scratch&23.09&15.21&34.56&73.47&11.65\\\cmidrule{2-8} %
+	    &\mr{3}{Grad-CAM++}&\gap&13.25&14.42&41.32&72.91&13.28\\ %
+ 		& &\ours&14.47&17.04&42.11&75.60&13.48\\
+		& &\ours-Scratch&20.80&13.39&34.26&72.98&12.09\\\cmidrule{2-8} %
+	    &\mr{3}{Score-CAM}&\gap&TBA&TBA&TBA&TBA&TBA\\ %
+ 		& &\ours&TBA&TBA&TBA&TBA&TBA\\
+		& &\ours-Scratch&TBA&TBA&TBA&TBA&TBA\\\cmidrule{2-8} %
+\label{tab:scratch}
+\end{tabular}
+\end{table}
+
+%------------------------------------------------------------------------------
+%\begin{figure}[H]
+%\centering
+%\begin{tikzpicture}
+%% \begin{axis}[width=\columnwidth,height=2in, no markers, xlabel=epoch, ylabel=error,
+%% 				grid=both, grid style={line width=.1pt, draw=gray!10}, major grid style={line width=.2pt,draw=gray!50},]
+%% 	[xlabel = epochs,
+%% 	ylabel = top1 err]
+%% 	\addplot table [x=epoch, y=top1err, col sep=comma, mark=none] {Data/r50base_scratch.csv};
+%% 	\addplot table [x=epoch, y=top1err, col sep=comma, mark=none] {Data/r50stream_scratch.csv};
+%% 	\addplot table [x=epoch, y=top1err, col sep=comma, mark=none] {Data/r50stream_shelf.csv};
+%% 	\legend{Backbone,
+%% 				Backbone+Stream,
+%% 				Stream}
+%% \end{axis}
+%\begin{axis}[width=\columnwidth,height=2in, no markers, xlabel=epoch, ylabel=error,
+%				grid=both, grid style={line width=.1pt, draw=gray!10}, major grid style={line width=.2pt,draw=gray!50},]
+%	[xlabel = epochs,
+%	ylabel = top1 err]
+%	\addplot table [x=epoch, y=loss, col sep=comma, mark=none] {Data/r50base_scratch.csv};
+%	\addplot table [x=epoch, y=loss, col sep=comma, mark=none] {Data/r50stream_scratch.csv};
+%	\addplot table [x=epoch, y=loss, col sep=comma, mark=none] {Data/r50stream_shelf.csv};
+%	\legend{Backbone,
+%				Backbone+Stream,
+%				Stream}
+%\end{axis}
+%\end{tikzpicture}
+%\label{fig:scratch_freeze}
+%\caption{Curves of training procedure on ImageNet-1k for ResNet50 for the baseline model (blue) vs baseline and CLS-stream (red) and just training the stream. We show the top-1 training error for the different approaches.}
+%\end{figure}
+%------------------------------------------------------------------------------
+
+\ronanc{Do we ADD more stuff ???}
+
+Moreover, these differences are better quantified with the \textbf{(WIP)}
+
+
+

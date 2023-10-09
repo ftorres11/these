@@ -1,0 +1,66 @@
+%------------------------------------------------------------------------------
+\begin{figure}[thpb]
+\newcommand{\sizeP}{.12}
+\newcommand{\sizeS}{.12}
+\newcommand{\hh}{.175\textwidth}
+\newcommand{\ww}{.200\textwidth}
+\tiny
+\centering
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{cccccc}
+\centering
+Original & Opti-CAM & Score-CAM & Original & Opti-CAM & Score-CAM\\
+\includegraphics[trim={28mm 8mm 28mm 8mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00045353.JPEG}
+&
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00045353JPEG_smap_opticam.png} 
+&  
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00045353JPEG_smap_scorecam.png} &
+\includegraphics[trim={32mm 14mm 36mm 1mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00041066.JPEG}
+&
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00041066JPEG_smap_opticam.png} 
+&          
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00041066JPEG_smap_scorecam.png} \\
+gas pump&I$\uparrow$:66.3, D$\downarrow$:19.4&I$\uparrow$:94.2, D$\downarrow$:9.4&
+worm fence&I$\uparrow$:69.7, D$\downarrow$:16.8&I$\uparrow$:91.9, D$\downarrow$:4.4\\
+&AG$\uparrow$:100.0, AD$\downarrow$:0.0&AG$\uparrow$:0.0, AD$\downarrow$:0.0&
+&AG$\uparrow$:73.2, AD$\downarrow$:0.0&AG$\uparrow$:0.0, AD$\downarrow$:28.8\\
+\includegraphics[trim={10mm 14mm 10mm 4mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00040673.JPEG}
+&        
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00040673JPEG_smap_opticam.png} 
+&
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00040673JPEG_smap_scorecam.png} &
+\includegraphics[trim={18mm 6mm 10mm 12mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00030507.JPEG}
+&
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00030507JPEG_smap_opticam.png} 
+&                
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00030507JPEG_smap_scorecam.png} \\
+staffordshire terrier&I$\uparrow$:62.1, D$\downarrow$:32.2&I$\uparrow$:93.4, D$\downarrow$:8.2&
+jacamar&I$\uparrow$:66.3, D$\downarrow$:17.3&I$\uparrow$:94.6, D$\downarrow$:9.9\\
+&AG$\uparrow$:41.3, AD$\downarrow$:0.0&AG$\uparrow$:0.0, AD$\downarrow$:0.3&
+&AG$\uparrow$:91.4, AD$\downarrow$:0.0&AG$\uparrow$:56.5, AD$\downarrow$:0.0\\
+\includegraphics[trim={6mm 1mm 6mm 1mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00029237.JPEG}
+&
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00029237JPEG_smap_opticam.png} 
+&     
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00029237JPEG_smap_scorecam.png} &
+\includegraphics[trim={28mm 5mm 22mm 5mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00005077.JPEG}
+&
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00005077JPEG_smap_opticam.png} 
+&          
+\fig[\sizeS]{eval/hihd/ILSVRC2012_val_00005077JPEG_smap_scorecam.png} \\
+Irish water spaniel&I$\uparrow$:52.6, D$\downarrow$:18.8&I$\uparrow$:90.5, D$\downarrow$:8.6&
+manhole cover&I$\uparrow$:65.8, D$\downarrow$:29.6&I$\uparrow$92.7, D$\downarrow$:9.1\\
+&AG$\uparrow$:86.4, AD$\downarrow$:0.0&AG$\uparrow$:65.1, AD$\downarrow$:0.0&
+&AG$\uparrow$:24.0, AD$\downarrow$:0.0&AG$\uparrow$:0.0, AD$\downarrow$:59.9\\
+% \includegraphics[trim={12mm 5mm 12mm 5mm},clip, width=\sizeP\textwidth]{fig/eval/hihd/ILSVRC2012_val_00003602.JPEG}
+% &              
+% \fig[\sizeS]{eval/hihd/ILSVRC2012_val_00003602JPEG_smap_opticam.png} 
+% & 
+% \fig[\sizeS]{eval/hihd/ILSVRC2012_val_00003602JPEG_smap_scorecam.png} \\
+% hare&I$\uparrow$:61.3, D$\downarrow$:21.2&I$\uparrow$91.3, D$\downarrow$:8.9\\
+% &AG$\uparrow$:93.7, AD$\downarrow$:0.0&AG$\uparrow$:0.0, AD$\downarrow$:0.6\\
+\end{tabular}
+\caption{Failure examples of Opti-CAM regarding insertion/deletion.}
+\label{fig:hihd}
+\end{figure}
+%------------------------------------------------------------------------------

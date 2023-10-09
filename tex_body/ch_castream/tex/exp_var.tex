@@ -1,0 +1,26 @@
+\subsection{Variations}
+\label{subsec:variations}
+
+As in \cite{dosovitskiy2020image}, we observe that it is possible to modify the cross attention mechanism to further update features after the linear projection following attention computation. Moreover, it is also possible to project the input features to the space in which the [class] token lies within. We define the following variations:
+
+\paragraph{Cross Attention with MLP}
+The work of \cite{NIPS2017_3f5ee243} and \cite{dosovitskiy2020image} introduce a MLP or feedforward network to capture and process local patterns more globally. Thus we propose to add a MLP on top of Cross Attention, as Vision transformers:
+% Regarding the architecture of transformers, we observe that following attention operation and the following projection, a feedforward network or MLP is used to further update the representation produced. To this end, we consider:
+\begin{equation}
+    \mbox{MLP}_\ell(\vq_{\ell}) = \mbox{GELU}(\vq_\ell W_{in}+b_{in})W_{out}+b_{out}.
+    % \vq_{\ell+1} = W_\ell \cdot \ca_\ell(\vq_\ell, F_\ell),
+    \label{eq:mlp_ca}
+\end{equation}
+Where the input and output dimensions remain the same and the inner layer has reduced dimension of $d_{in} = d_l\times 2$.\\
+
+\paragraph{Projected Cross Attention}
+On the operational level, our Cross Attention Block leverages the interactions between the [CLS] token and the features of a given model for a given layer \textit{l}, projecting to the dimension at the following stage \textit{l+1}. It is however possible to preserve the space in which this token lies, by the projection of the features at a given layer to the dimension of [CLS]
+\begin{equation}
+    % \mbox{CA}_\ell(Q, F_{\ell}) = \mbox{softmax}(\frac{Q_{\ell}(F_{\ell}W^K)^\top}{\sqrt{d_Q}})F_{\ell}W^V
+    \ca_\ell(\vq_\ell, F_\ell) \defn (F_\ell W^V_\ell)\tran h_\ell(F_\ell W^K_\ell \vq_\ell)\in \real^{d_\ell}.
+    % \ca_\ell(\vq_\ell, F_\ell) \defn F_\ell\tran \va = F_\ell\tran h_\ell(F_\ell \vq_\ell) \in \real^{d_\ell}.
+    \label{eq:proj_ca}
+\end{equation}
+Where the projections are parameter matrices $W^K, W^V \in \real^{d_\ell\times d_Q}$.
+
+On \autoref{sec:gen_ablation} we experiment with the different proposals for the cross attention mechanism and its integration into the CLS-Stream.

@@ -1,0 +1,163 @@
+\section{Opti-CAM}
+\label{sec:opticam}
+
+\subsection{Preliminaries}
+\label{sec:prelim}
+
+\paragraph{Notation}
+\label{sec:notation}
+
+Consider a classifier network $f: \cX \to \real^C$ that maps an input image $\vx \in \cX$ to a logit vector $\vy = f(\vx) \in \real^C$, where $\cX$ is the image space and $C$ is the number of classes. We denote by $y_c = f(\vx)_c$ the predicted logit and by $p_c = \softmax(\vy)_c \defn e^{y_c} / \sum_j e^{y_j}$ the predicted probability for class $c$. For layer $\ell$ with $K_\ell$ channels, we denote by $A^k_\ell = f^k_\ell(\vx) \in \real^{h_\ell \times w_\ell}$ the feature map for channel $k \in \{1,\dots,K_\ell\}$, with spatial resolution $h_\ell \times w_\ell$. Because of $\relu$ non-linearities, we assume that feature maps are non-negative. Similarly, we denote by $S_\ell \in \real^{h_\ell \times w_\ell}$ a 2D saliency map.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Background: CAM-based saliency maps}
+\label{sec:back}
+
+Given a layer $\ell$ and a class of interest $c$, we consider saliency maps given by the general formula
+\begin{equation}
+	S^c_\ell(\vx) \defn h \left( \sum_k w^c_k A^k_\ell \right),
+\label{eq:sal}
+\end{equation}
+where $w^c_k$ are weights defining a linear combination over channels and $h$ is an activation function. CAM~\citep{zhou2016learning} is defined for the last layer $L$ only with $h$ being the identity mapping and $w^c_k$ being the classifier weight connecting the $k$-th channel with class $c$. Grad-CAM~\citep{selvaraju2017grad} is defined for any layer $\ell$ with $h = \relu$ and weights
+\begin{equation}
+	w^c_k \defn \gap \left( \pder{y_c}{A^k_\ell} \right),
+\label{eq:gcam}
+\end{equation}
+where $\gap$ is global average pooling.
+% and $\softmax(\vy)_c = e^{y_c} / \sum_j e^{y_j}$ is the predicted probability of class $c$.
+The motivation for $\relu$ is that we are only interested in features that have a positive effect on the class of interest, \ie pixels whose intensity should be increased in order to increase $y_c$.
+
+Score-CAM~\cite{wang2020score} is also defined for any layer $\ell$ with $h = \relu$ and weights $w^c_k \defn \softmax(\vu^c)_k$.  Softmax normalization considers positive channel contributions only and attends to few feature maps.
+%that \alert{produce less highlighted areas in the saliency map}. \iavr{Last part unclear.}
+Here, vector $\vu^c \in \real^{K_\ell}$ measures the increase in confidence for class $c$ that compares a known baseline image $\vx_b$ with the input image $\vx$ masked according to feature map $A^k_\ell$, for all channels $k$:
+\begin{equation}
+	u^c_k \defn f(\vx \odot n(\up(A^k_\ell)))_c - f(\vx_b)_c,
+\label{eq:s-cam}
+\end{equation}
+where $\odot$ is the Hadamard product. For this to work, the feature map $A^k_\ell$ is adapted to $\vx$ first: $\up$ denotes upsampling to the spatial resolution of $\vx$ and
+\begin{equation}
+	n(A) \defn \frac{A - \min A}{\max A - \min A}
+\label{eq:norm}
+\end{equation}
+\redred{is a normalization of matrix $A$ into $[0,1]$.} While Score-CAM does not need gradients, it requires as many forward passes through the network as the number of channels in the chosen layer, which is computationally expensive.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Motivation}
+\label{sec:motiv}
+
+\iavr{Score-CAM considers each feature map as a mask in isolation. How about linear combinations?} Given a vector $\vw \in \real^{K_\ell}$ with $w_k$ its $k$-th element, let
+\begin{equation}
+	F(\vw) \defn f \left( \vx \odot n \left( \up \left(
+		\displaystyle\sum_k w_k A^k_\ell
+	\right) \right) \right)_c.
+\label{eq:s-obj}
+\end{equation}
+\ronan{If we assume that $\vx_b = \vzero$ in~\eq{s-cam} and define $n(\vzero) \defn \vzero$ in~\eq{norm}, then we can rewrite the right-hand side of~\eq{s-cam} as
+\begin{equation}
+	\frac{F(\vw_0 + \delta \ve_k) - F(\vw_0)}{\delta},
+\label{eq:s-cam2}
+\end{equation}
+where $\vw_0 = \vzero$, $\delta = 1$ and $\ve_k$ is the $k$-th standard basis vector of $\real^{K_\ell}$. This resembles the numerical approximation of the derivative $\pder{F}{w_k}(\vw_0)$, except that $\delta$ is not small as usual. One could compute derivatives efficiently by standard backpropagation instead. It is then possible to iteratively optimize $F$ with respect to $\vw$, starting at any $\vw_0$.}
+
+\iavr{As an alternative, consider masking-based methods relying on optimization in the input space, like \emph{meaningful perturbations} (MP)~\cite{fong2017interpretable} or \emph{extremal perturbations}~\citep{fong2019understanding}. In general, optimization takes the form
+\begin{equation}
+	S^c(\vx) \defn \arg\max_{\vm \in \cM} f(\vx \odot n(\up(\vm)))_c + \lambda R(\vm).
+\label{eq:mask}
+\end{equation}
+Here, a mask $\vm$ is directly optimized and does not rely on feature maps, hence the saliency map $S^x(\vx)$ is not connected to any layer $\ell$. The mask is at the same or lower resolution than the input image. In the latter case, upsampling is still necessary.
+
+In this approach, one indeed computes derivatives by backpropagation and indeed iteratively optimizes $\vm$. However, because $\vm$ is high-dimensional, there are constraints expressed by $\vm \in \cM$, \eg $\vm$ has a certain norm, and regularizers like $R(\vm)$, \eg $\vm$ is smooth in a certain way. This makes optimization harder or more expensive and introduces more hyperparameters like $\lambda$. One could simply constrain $\vm$ to lie in the linear span of $\{A_\ell^k\}_{k=1}^{K_\ell}$ instead, like all CAM-based methods.}
+
+%------------------------------------------------------------------------------
+
+\subsection{Method}
+\label{sec:method}
+
+\paragraph{Saliency maps}
+
+As motivated by \autoref{sec:motiv}, we obtain a saliency map as a convex combination of feature maps by optimizing a given objective function with respect to the weights.
+In particular, following~\citep{wang2020score}, we use channel weights $w_k \defn \softmax(\vu)_k$, where $\vu \in \real^{K_\ell}$ is a variable.
+We then consider saliency map $S_\ell$ in layer $\ell$ as a function of both the input image $\vx$ and variable $\vu$:
+\begin{equation}
+    S_\ell(\vx; \vu) \defn \sum_k \softmax(\vu)_k A^k_\ell.
+\label{eq:v-sal}
+\end{equation}
+Comparing with~\eq{sal}, $h$ is the identity mapping, because feature maps are non-negative and weights are positive.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Optimization}
+
+Now, given a layer $\ell$ and a class of interest $c$, we find the vector $\vu^*$ that maximizes the classifier confidence for class $c$, when the input image $\vx$ is masked according to saliency map $S_\ell(\vx; \vu^*)$:
+\begin{equation}
+	\vu^* \defn \arg\max_{\vu} F^c_\ell(\vx; \vu),
+\label{eq:opt}
+\end{equation}
+where we define the objective function
+\begin{equation}
+	%F^c_\ell(\vx; \vu) \defn \abs{g_c(f(\vx \odot n(\up(S_\ell(\vx; \vu))))) - g_c(f(\vx))}.
+	F^c_\ell(\vx; \vu) \defn g_c(f(\vx \odot n(\up(S_\ell(\vx; \vu))))).
+\label{eq:obj}
+\end{equation}
+Here, the saliency map $S_\ell(\vx; \vu)$ is adapted to $\vx$ exactly as in~\eq{s-cam} in terms of resolution and normalization. For \emph{normalization function} $n$, the default is~\eq{norm}. The \emph{selector function} $g_c$ operates on the logit vector $\vy$; the default is to select the logit of class $c$, \ie $g_c(\vy) \defn y_c$. Other choices, including the definition of $F^c_\ell$ itself, are investigated in \autoref{sec:ablation} \redred{and in the supplementary material.}
+
+%------------------------------------------------------------------------------
+
+\paragraph{Opti-CAM}
+
+Putting everything together, we define
+\begin{equation}
+	S^c_\ell(\vx) \defn S_\ell(\vx; \vu^*) = S_\ell(\vx; \arg\max_{\vu} F^c_\ell(\vx; \vu)),
+\label{eq:o-sal}
+\end{equation}
+where $S_\ell$ and $F^c_\ell$ are defined by~\eq{v-sal} and~\eq{obj} respectively. The objective function $F^c_\ell$~\eq{obj} depends on variable $\vu$ through $S_\ell$~\eq{v-sal}, where the feature maps $A^k_\ell = f^k_\ell(\vx)$ are fixed. Then,~\eq{obj} involves masking and a forward pass through the network $f$, which is also fixed.
+
+\autoref{fig:idea} is an abstract illustration of our method, \iavr{called Opti-CAM}, without details like upsampling and normalization~\eq{obj}. Optimization takes place along the highlighted path from variable $\vu$ to objective function $F^c_\ell$. The saliency map is real-valued and the entire objective function is differentiable in $\vu$. We use Adam optimizer~\citep{kingma2014adam} to solve the optimization problem~\eq{opt}.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Discussion}
+
+By maximizing~\eq{obj}, the saliency map focuses on the regions contributing to class $c$, while masked regions contribute less. This way, the influence of background in the average pooling process is reduced.
+
+The saliency map is expressed as a linear combination of feature maps~\eq{v-sal}, with normalized weights. Hence, the saliency map is discouraged from taking up the entire image, both by the $\softmax$ competition~\eq{v-sal} and by the fact that feature maps only respond to particular locations.
+
+\iavr{In case $g_c(\vy) \defn y_c$,~\eq{o-sal} takes the form of direct masking~\eq{mask} with $R(\vm) = \vzero$ and
+\begin{equation}
+	\cM \defn \{ S_\ell(\vx; \vu) : \vu \in \real^{K_\ell} \}.
+\label{eq:mask-m}
+\end{equation}
+This constraint makes ours a CAM-based method. It dispenses the need for regularizers, because we only optimize one vector over the feature dimensions\modify{ (up to 2,048 for ResNet50), which is small compared with the dimensions of input images (50k for ImageNet)}. In addition, it does not complicate the optimization process in any way. It is only a different parametrization.}
+
+%------------------------------------------------------------------------------
+
+\iavr{
+\section{\AGf ($\AG$)}
+
+\redred{Average drop ($\AD$) and average increase ($\AI$)~\cite{chattopadhay2018grad} are well-established classification metrics. They measure the effect on the predicted class probabilities by masking the input image with the saliency map.} Let $p^c_i$ and $o^c_i$ be the predicted probability for class $c$ given as input the $i$-th test image $\vx_i$ and its masked version respectively. Masking refers to element-wise multiplication with the saliency map, which is at the same resolution as the original image with values in $[0,1]$. Let $N$ be the number of test images. Class $c$ is taken as the ground truth.
+
+\emph{Average drop} ($\AD$) quantifies how much predictive power, measured as class probability, is lost when we only mask the image; lower is better:
+\begin{equation}
+	\AD(\%) \defn \frac{1}{N} \sum_{i=1}^N \frac{[p^c_i - o^c_i]_+}{p^c_i} \cdot 100.
+\label{eq:ad}
+\end{equation}
+
+\emph{Average increase} ($\AI$), also known as \emph{increase in confidence}, measures the percentage of images where the masked image yields a higher class probability than the original; higher is better:
+\begin{equation}
+	\AI(\%) \defn \frac{1}{N} \sum_i^N \ind_{p^c_i < o^c_i} \cdot 100.
+\label{eq:ai}
+\end{equation}
+
+$\AD$ and $\AI$ are not defined in a symmetric way. $\AD$ measures changes in class probability whereas $\AI$ measures a percentage of images. It is possible that the percentage is high while the actual increase is small. Hence, it is possible that an attribution method improves both. Indeed, \citep{poppi2021revisiting} observes that a trivial method called Fake-CAM outperforms state-of-the-art methods, including Score-CAM, by a large margin. Fake-CAM simply defines a saliency map where the top-left pixel is set to zero and is uniform elsewhere. This questions the purpose of $\AD$ and $\AI$.
+
+Although the authors of~\citep{poppi2021revisiting} make this impressive observation, they use it to motivate the definition of a number of metrics that are orthogonal to the task at hand, \ie measuring the effect of masking to the classifier. By contrast, we address the problem by introducing a new metric to be paired with $\AD$ as a replacement of $\AI$. We define the new metric as follows.
+
+\emph{\Agf} ($\AG$) quantifies how much predictive power, measured as class probability, is gained when we mask the image; higher is better:
+\begin{equation}
+	\AG(\%) \defn \frac{1}{N} \sum_{i=1}^N \frac{[o^c_i - p^c_i]_+}{1-p^c_i} \cdot 100.
+\label{eq:ag}
+\end{equation}
+This definition is symmetric to the definition of average drop, in the sense that \redred{in absolute value, the numerator in the sum of $\AD, \AG$ is the positive and negative part of $p^c_i - o^c_i$ respectively and the denominator is the maximum value that the numerator can get as a function of $o^c_i$, given that $0 < o^c_i < p^c_i$ and $p^c_i < o^c_i < 1$ respectively.} The two metrics thus compete each other, in the sense that changing $o^c_i$ to improve one leaves the other unchanged or harms it. As we shall see, an extreme example is Fake-CAM, which yields near-perfect $\AD$ but fails completely on $\AG$.
+}
