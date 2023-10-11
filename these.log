@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2023.6.3)  9 OCT 2023 16:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2023.6.3)  11 OCT 2023 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3753,8 +3753,7 @@ Package biblatex Info: ... file 'english.lbx' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
-)
-No file these.aux.
+) (./these.aux)
 \openout1 = `these.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -3771,7 +3770,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 3.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 3.
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 3.
@@ -3918,8 +3917,7 @@ lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `french'. on input line 3.
-
-No file these.toc.
+\Etoc@tf=\read4
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -3968,6 +3966,8 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
 LaTeX Info: Redefining \nameref on input line 3.
+
+(./these.out) (./these.out)
 \@outlinefile=\write11
 \openout11 = `these.out'.
 
@@ -4064,14 +4064,14 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./logo/logo_amu_excellence-eps-converted-to.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<logo/logo_amu_excellence-eps-converted-to.pdf, id=6, 603.25375pt x 206.7725pt>
-
+<logo/logo_amu_excellence-eps-converted-to.pdf, id=120, 603.25375pt x 206.7725p
+t>
 File: logo/logo_amu_excellence-eps-converted-to.pdf Graphic file (type pdf)
 <use logo/logo_amu_excellence-eps-converted-to.pdf>
 Package pdftex.def Info: logo/logo_amu_excellence-eps-converted-to.pdf  used on
  input line 9.
 (pdftex.def)             Requested size: 215.66158pt x 73.91998pt.
-<logo/ecm_logo.png, id=7, 481.8pt x 269.50688pt>
+<logo/ecm_logo.png, id=121, 481.8pt x 269.50688pt>
 File: logo/ecm_logo.png Graphic file (type png)
 <use logo/ecm_logo.png>
 Package pdftex.def Info: logo/ecm_logo.png  used on input line 12.
@@ -4110,17 +4110,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `tit' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<example-image-a.pdf, id=9, 321.2pt x 240.9pt>
+<example-image-a.pdf, id=123, 321.2pt x 240.9pt>
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
 Package pdftex.def Info: example-image-a.pdf  used on input line 113.
 (pdftex.def)             Requested size: 70.39955pt x 52.79999pt.
-<example-image-b.pdf, id=10, 321.2pt x 240.9pt>
+<example-image-b.pdf, id=124, 321.2pt x 240.9pt>
 File: example-image-b.pdf Graphic file (type pdf)
 <use example-image-b.pdf>
 Package pdftex.def Info: example-image-b.pdf  used on input line 116.
 (pdftex.def)             Requested size: 70.39955pt x 52.79999pt.
-<example-image-c.pdf, id=11, 321.2pt x 240.9pt>
+<example-image-c.pdf, id=125, 321.2pt x 240.9pt>
 File: example-image-c.pdf Graphic file (type pdf)
 <use example-image-c.pdf>
 Package pdftex.def Info: example-image-c.pdf  used on input line 119.
@@ -4156,20 +4156,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
-File: example-image-b.pdf Graphic file (type pdf)
-<use example-image-b.pdf>
-Package pdftex.def Info: example-image-b.pdf  used on input line 27.
-(pdftex.def)             Requested size: 120.4497pt x 40.14745pt.
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   !
-l.27 ...ics[width=40,height=15px]{example-image-a}
-                                                  \end{flushright} % signature
+
+! LaTeX Error: File `support/corrected' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 ...idth=120px,height=40px]{support/corrected}
+                                                   % signature
 ? 
-File: example-image-a.pdf Graphic file (type pdf)
-<use example-image-a.pdf>
-Package pdftex.def Info: example-image-a.pdf  used on input line 27.
-(pdftex.def)             Requested size: 39.99796pt x 15.0562pt.
 Package epstopdf Info: Source file: <logo/by-nc-nd-eu.eps>
 (epstopdf)                    date: 2023-01-12 15:09:19
 (epstopdf)                    size: 69200 bytes
@@ -4184,7 +4180,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./logo/by-nc-nd-eu-eps-converted-to.pdf): PDF in
 clusion: found PDF version <1.7>, but at most version <1.5> allowed
-<logo/by-nc-nd-eu-eps-converted-to.pdf, id=47, 121.45375pt x 43.16125pt>
+<logo/by-nc-nd-eu-eps-converted-to.pdf, id=160, 121.45375pt x 43.16125pt>
 File: logo/by-nc-nd-eu-eps-converted-to.pdf Graphic file (type pdf)
 <use logo/by-nc-nd-eu-eps-converted-to.pdf>
 Package pdftex.def Info: logo/by-nc-nd-eu-eps-converted-to.pdf  used on input l
@@ -4218,17 +4214,19 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 15
 .
  [7
 
-]
+] [8]
 Package tocbasic Info: character protrusion at lof deactivated on input line 15
 .
+ (./these.lof)
 \tf@lof=\write13
 \openout13 = `these.lof'.
 
- [8
+ [9
 
 ]
 Package tocbasic Info: character protrusion at lot deactivated on input line 16
 .
+ (./these.lot)
 \tf@lot=\write14
 \openout14 = `these.lot'.
 
@@ -4236,73 +4234,25 @@ Package tocbasic Info: character protrusion at lot deactivated on input line 16
 No file these.acr.
 No file these.gls.
 No file these.not.
-(./tex_body/rel.tex [9
-
-]) (./tex_body/ch_opticam/ch_opticam.tex [10
+(./tex_body/intro.tex [10
 
 ]
 chapter 1.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 2.
-) (./tex_body/ch_castream/ch_castream.tex [11
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 3.
+) (./tex_body/rel.tex [11
 
 ]
 chapter 2.
-) (./tex_body/chap3.tex [12
+) (./tex_body/ch_opticam/ch_opticam.tex [12
 
 ]
 chapter 3.
-
-LaTeX Warning: Citation 'mohamed_clinical_2014' on page 13 undefined on input l
-ine 44.
-
-<BMC-1471-2334-14-S2-O1.pdf, id=128, 597.50829pt x 796.67737pt>
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf  used on input line 47.
-(pdftex.def)             Requested size: 597.50682pt x 796.67543pt.
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf  used on input line 47.
-(pdftex.def)             Requested size: 597.50682pt x 796.67543pt.
-<BMC-1471-2334-14-S2-O1.pdf, id=131, page=1, 597.50829pt x 796.67737pt>
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf, page 1>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf , page1 used on input line 
-47.
-(pdftex.def)             Requested size: 597.50682pt x 796.67543pt.
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf, page 1>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf , page1 used on input line 
-47.
-(pdftex.def)             Requested size: 537.75249pt x 717.00302pt.
-[13
+) (./tex_body/ch_castream/ch_castream.tex [13
 
 ]
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf, page 1>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf , page1 used on input line 
-47.
-(pdftex.def)             Requested size: 537.75249pt x 717.00302pt.
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf, page 1>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf , page1 used on input line 
-47.
-(pdftex.def)             Requested size: 537.75249pt x 717.00302pt.
-
-! Undefined control sequence.
-\sls@ps@scrheadings@odd@right@head ...mark \Ifstr 
-                                                  {\rightmark }{\leftmark }{...
-l.47 ...e=0.9,pages=-]{BMC-1471-2334-14-S2-O1.pdf}
-                                                   % 'scale' ajuste la taill...
-
-? 
-File: BMC-1471-2334-14-S2-O1.pdf Graphic file (type pdf)
-<use BMC-1471-2334-14-S2-O1.pdf, page 1>
-Package pdftex.def Info: BMC-1471-2334-14-S2-O1.pdf , page1 used on input line 
-47.
-(pdftex.def)             Requested size: 537.75249pt x 717.00302pt.
-[14 <./BMC-1471-2334-14-S2-O1.pdf>]) (./tex_body/conc.tex) [15
+chapter 4.
+) [14
 
 ]
 
@@ -4310,10 +4260,10 @@ LaTeX Warning: Empty bibliography on input line 45.
 
 runsystem(makeindex -s alpha.ist these.idx)...executed safely (allowed).
 
-(./these.ind) [16
+(./these.ind) [15
 
 
-] (./tex_append/annexes.tex [17
+] (./tex_append/annexes.tex [16
 
 ] (./tex_append/annexe1.tex
 ! Undefined control sequence.
@@ -4322,91 +4272,85 @@ runsystem(makeindex -s alpha.ist these.idx)...executed safely (allowed).
 l.64 			\item A
                nthropologie biologique
 ? 
-[18]
+[17]
 ! Undefined control sequence.
 \sls@ps@scrheadings@odd@right@head ...mark \Ifstr 
                                                   {\rightmark }{\leftmark }{...
 l.116 			\item C
                 oréen
 ? 
-[19]
+[18]
 ! Undefined control sequence.
 \sls@ps@scrheadings@odd@right@head ...mark \Ifstr 
                                                   {\rightmark }{\leftmark }{...
 l.172 		\item S
                ciences Economiques
 ? 
-[20])
+[19])
 ! Undefined control sequence.
 \sls@ps@scrheadings@odd@right@head ...mark \Ifstr 
                                                   {\rightmark }{\leftmark }{...
 l.10 \newpage
              
 ? 
-[21] (./tex_append/annexe2.tex))
+[20] (./tex_append/annexe2.tex))
 ! Undefined control sequence.
 \sls@ps@scrheadings@odd@right@head ...mark \Ifstr 
                                                   {\rightmark }{\leftmark }{...
 l.55 \end{document}
                    
 ? 
-[22]
+[21]
+
+! LaTeX Error: \begin{flushright} on input line 27 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.55 \end{document}
+                   
+? 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
- (./these.aux)
+(./these.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
+Package rerunfilecheck Info: File `these.out' has not changed.
+(rerunfilecheck)             Checksum: 2BE0CE5F20040764A2D990410E92BC16;1800.
 
-
-Package rerunfilecheck Warning: File `these.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `these.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  31CF509C510C67F2BB45520285D387DB;1296.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                these
-(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'these.run.xml'.
 \openout1 = `these.run.xml'.
 
- ) 
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 27 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 55531 strings out of 492982
- 1107238 string characters out of 6134897
+ 55527 strings out of 492982
+ 1107091 string characters out of 6134897
  1796004 words of memory out of 5000000
- 57985 multiletter control sequences out of 15000+600000
- 592507 words of font info for 169 fonts, out of 8000000 for 9000
+ 58003 multiletter control sequences out of 15000+600000
+ 589075 words of font info for 143 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,19n,110p,10437b,2217s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
-fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/
-enc/ttf2pk/base/T1-WGL4.enc}<fonts/Titillium-ExtraLight.ttf><fonts/Titillium-Re
-gular.ttf><fonts/Titillium-SemiBold.ttf><fonts/Titillium-Bold.ttf><fonts/Titill
-ium-Light.ttf></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fourier
--mlit.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fourier/fourier-ms.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/adobe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe
-/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putr
-i8a.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on these.pdf (22 pages, 1378214 bytes).
+ 74i,19n,110p,10437b,4577s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/us
+r/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/tex
+mf-dist/fonts/enc/ttf2pk/base/T1-WGL4.enc}<fonts/Titillium-ExtraLight.ttf><font
+s/Titillium-Regular.ttf><fonts/Titillium-SemiBold.ttf><fonts/Titillium-Bold.ttf
+><fonts/Titillium-Light.ttf></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf/fonts/type1/public
+/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/
+uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on these.pdf (21 pages, 1184648 bytes).
 PDF statistics:
- 320 PDF objects out of 1000 (max. 8388607)
+ 371 PDF objects out of 1000 (max. 8388607)
  75 named destinations out of 1000 (max. 500000)
- 28735 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 28947 words of extra memory for PDF output out of 29859 (max. 10000000)
 

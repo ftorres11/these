@@ -9,21 +9,27 @@
 \babel@toc {french}{}
 \contentsline {chapter}{Remerciements}{6}{chapter*.7}
 \contentsline {chapter}{\nonumberline Table des mati\`eres}{7}{chapter*.8}
-\contentsline {chapter}{\nonumberline Table des figures}{8}{chapter*.9}
-\contentsline {chapter}{\nonumberline Liste des tableaux}{9}{chapter*.10}
-\contentsline {chapter}{Introduction}{10}{chapter*.11}
-\contentsline {chapter}{\numberline {1}Opti-CAM: Optimizing saliency maps for interpretability}{11}{chapter.1}
+\contentsline {chapter}{\nonumberline Table des figures}{9}{chapter*.9}
+\contentsline {chapter}{\nonumberline Liste des tableaux}{10}{chapter*.10}
+\contentsline {chapter}{\numberline {1}Introduction}{11}{chapter.1}
+\contentsline {chapter}{Introduction}{11}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivations}{11}{section.1.1}
+\contentsline {section}{\numberline {1.2}Dissertation Outline}{11}{section.1.2}
+\contentsline {chapter}{\numberline {2}Related Work}{12}{chapter.2}
+\contentsline {chapter}{Related Work}{12}{chapter.2}
+\contentsline {section}{\numberline {2.1}Image Recognition Models}{12}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Convolutional Neural Networks}{12}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Attention-Based Architectures}{12}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Interpretability}{12}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Transparency}{12}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Post-Hoc Interpretability}{12}{subsection.2.2.2}
+\contentsline {chapter}{\numberline {3}Opti-CAM: Optimizing saliency maps for interpretability}{13}{chapter.3}
 \etoc@startlocaltoc {2}
-\contentsline {section}{\numberline {1.1}Articles}{11}{section.1.1}
-\contentsline {chapter}{\numberline {2}CA-Stream: Attention-based pooling for interpretable image recognition}{12}{chapter.2}
+\contentsline {section}{\numberline {3.1}Articles}{13}{section.3.1}
+\contentsline {chapter}{\numberline {4}CA-Stream: Attention-based pooling for interpretable image recognition}{14}{chapter.4}
 \etoc@startlocaltoc {3}
-\contentsline {section}{\numberline {2.1}Articles}{12}{section.2.1}
-\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{13}{chapter.3}
-\etoc@startlocaltoc {4}
-\contentsline {section}{\numberline {3.1}Mod\IeC {\`e}les}{13}{section.3.1}
-\contentsline {section}{\numberline {3.2}Articles}{13}{section.3.2}
-\contentsline {chapter}{Conclusion}{15}{chapter*.17}
-\contentsline {chapter}{Index}{16}{section*.18}
-\contentsline {chapter}{ANNEXES}{18}{chapter*.20}
-\contentsline {section}{\numberline {A}Intitul\IeC {\'e}s des doctorats AMU}{18}{section.Alph0.1}
-\contentsline {section}{\numberline {B}Donn\IeC {\'e}es brutes}{22}{section.Alph0.2}
+\contentsline {section}{\numberline {4.1}Articles}{14}{section.4.1}
+\contentsline {chapter}{Index}{15}{section*.13}
+\contentsline {chapter}{ANNEXES}{17}{chapter*.15}
+\contentsline {section}{\numberline {A}Intitul\IeC {\'e}s des doctorats AMU}{17}{section.Alph0.1}
+\contentsline {section}{\numberline {B}Donn\IeC {\'e}es brutes}{21}{section.Alph0.2}
