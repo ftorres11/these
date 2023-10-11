@@ -1,0 +1,135 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{wacv}
+
+%------------------------------------------------------------------------------
+% needed for externalization of plots (no margins on individual pdfs)
+\newcommand{\finalcopy}{\iccvfinalcopy}
+%------------------------------------------------------------------------------
+% FIGURES: CHOOSE ONE OPTION
+%
+% plots:       build standalone pdfs for figures, then use them
+% plots-ext:   use existing pdfs for figures
+% plots-none:  skip figures
+%
+\input{tex/plots}
+% \input{tex/plots-ext}
+% \input{tex/plots-none}
+%------------------------------------------------------------------------------
+% space before \paragraph (default 4.05ex)
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}{1ex}{-1em}{\normalfont\normalsize\bfseries}}
+\makeatother
+%------------------------------------------------------------------------------
+
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Include other packages here, before hyperref.
+
+\usepackage{float}
+\usepackage{multirow}
+\usepackage[numbers]{natbib}
+\usepackage{enumitem}
+\usepackage{array,booktabs}
+\usepackage{bbm}
+\usepackage{colortbl}
+
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+
+% \iccvfinalcopy % *** Uncomment this line for the final submission
+
+\def\wacvPaperID{140} % *** Enter the ICCV Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ifwacvfinal\pagestyle{empty}\fi
+
+\begin{document}
+
+\input{tex/abbrev}
+\input{tex/defn}
+
+%%%%%%%%% TITLE
+\title{\Ours: Attention-based pooling for interpretable image recognition}
+
+\author{First Author\\
+Institution1\\
+Institution1 address\\
+{\tt\small firstauthor@i1.org}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+\and
+Second Author\\
+Institution2\\
+First line of institution2 address\\
+{\tt\small secondauthor@i2.org}
+}
+
+% \maketitle
+% Remove page # from the first page of camera-ready.
+\ifwacvfinal\thispagestyle{empty}\fi
+
+
+% %%%%%%%%% ABSTRACT
+% \begin{abstract}
+% Deep neural network predictions are often explained by means of class specific saliency maps, highlighting parts of the input responsible for the prediction. Different methods and evaluation metrics are based on masking inputs by such saliency maps. Transformer architectures have a built-in attention mechanism and their pooling is based on a class agnostic raw attention map. But, how exactly are these two concepts connected and can this connection be exploited to improve the interpretability properties of a network?
+
+% In this work, we observe that the raw attention map has the same form as a class agnostic saliency map and that attention-based pooling is a form of masking in the feature space. Motivated by this observation, we design an attention-based pooling mechanism as a replacement of global average pooling in convolutional networks and we study its effect in interpreting the network predictions. This mechanism, called \emph{\OURS (\Ours)}, takes the form of a stream composed of cross attention blocks that interact with features at different network stages. The stream can be trained while the network remains frozen. We show that our approach improves the interpretability properties of different networks, while maintaining classification accuracy.
+% \end{abstract}
+
+% %%%%%%%%% BODY TEXT
+\input{tex/intro}
+\input{tex/related}
+\input{tex/method}
+\input{tex/exp_setup}
+\input{tex/exp_qual}
+\input{tex/exp_interp}
+\input{tex/exp_ablation}
+\input{tex/conclusion}
+
+% \section{Acknowledgements}
+% This publication has recieved funding from the \textbf{Thesis funding}.\\
+% Part of this work was performed using HPC resources from GENCI-IDRIS (Grant 2022-AD011012724R1).
+
+%------------------------------------------------------------------------------
+%%%%%%%% REFERENCES
+
+\clearpage
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+
+%------------------------------------------------------------------------------
+%%%%%%%%% APPENDIX
+
+\clearpage
+\title{\Ours: Attention-based pooling for interpretable image recognition \\ \emph{Supplementary material}}
+
+%------------------------------------------------------------------------------
+\maketitle
+%------------------------------------------------------------------------------
+
+\appendix
+\setcounter{page}{1}
+\wacvrulercount=1
+
+% NUMBERING
+\renewcommand{\thesection}{A\arabic{section}}
+\renewcommand{\theequation}{A\arabic{equation}}
+\renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\thefigure}{A\arabic{figure}}
+\input{tex/appendix}
+
+\end{document}

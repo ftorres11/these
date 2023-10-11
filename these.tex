@@ -2,7 +2,8 @@
 
 \begin{document}
 
-										
+    \input{tex_supp/defn} %% Definitions
+    \input{tex_supp/abbrev} %% Abbreviations
 	\input{tex_open/titre}				%% page de titre								
 	\input{tex_open/affidavit}				%% affidavit et licence
 	\input{tex_open/publications}			%% liste de publications et participation aux conférences
@@ -34,15 +35,15 @@
 
     \input{tex_body/intro}
     \input{tex_body/rel}
-	\input{tex_body/ch_opticam/ch_opticam.tex}
-	\input{tex_body/ch_castream/ch_castream.tex}
+	\input{tex_body/ch_opticam/main}
+	\input{tex_body/ch_castream/main}
 	%\input{tex_body/chap3}
 	%\input{tex_body/conc}
 
     %\appendix
 
 	\newpage
-	\printbibliography[heading=bibintec]%% bibliographie
+	\printbibliography[heading=bibintoc]%% bibliographie
 	
 	\newpage
 	%\printindex							%% index

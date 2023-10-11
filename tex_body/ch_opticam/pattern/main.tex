@@ -1,0 +1,156 @@
+\documentclass[preprint,3p,10pt]{elsarticle}
+
+
+
+
+%------------------------------------------------------------------------------
+% FIGURES: CHOOSE ONE OPTION
+%
+% plots:       build standalone pdfs for figures, then use them
+% plots-ext:   use existing pdfs for figures
+% plots-none:  skip figures
+%
+\input{tex/plots}
+%------------------------------------------------------------------------------
+% space before \paragraph (default 4.05ex)
+% \makeatletter
+% \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}{1ex}{-1em}{\normalfont\normalsize\bfseries}}
+% \makeatother
+%------------------------------------------------------------------------------
+% \usepackage[numbers,sort&compress]{natbib}
+\usepackage{natbib}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{color}
+% \usepackage{setspace} 
+
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{array,booktabs}
+\usepackage{bbm}
+\usepackage{colortbl}
+
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
+
+% Support for easy cross-referencing
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Tab.}{Tabs.}
+
+\journal{Pattern Recognition}
+% \doublespacing
+\linespread{2}
+\begin{document}
+
+
+\input{tex/abbrev}
+\input{tex/defn}
+
+
+\newcommand{\ronan}[1]{#1}
+\newcommand{\iavr}[1]{#1}
+\newcommand{\stephane}[1]{#1}
+\newcommand{\redred}[1]{#1}
+\newcommand{\hw}[1]{{\color{olive}{#1}}}
+% \newcommand{\modify}[1]{{\color{blue}{#1}}}
+\newcommand{\modify}[1]{{{#1}}}
+
+
+\begin{frontmatter}
+\title{Opti-CAM: Optimizing saliency maps for interpretability}
+
+
+\author[1]{Hanwei Zhang}
+\ead{hanwei.zhang@lis-lab.fr}
+% \cormark[1]
+\author[1]{Felipe Torres}
+\ead{felipe.torres@lis-lab.fr}
+\author[1]{Ronan Sicre}
+\ead{ronan.sicre@lis-lab.fr}
+\author[2]{Yannis Avrithis}
+\ead{yannis@avrithis.net}
+\author[1]{Stephane Ayache}
+\ead{stephane.ayache@univ-amu.fr}
+
+
+% Address/affiliation
+\affiliation[1]{organization={Centrale Marseille, Aix Marseille Univ, CNRS, LIS},
+            % addressline={52 Av. Escadrille Normandie Niemen}, 
+            city={Marseille},
+%          citysep={}, % Uncomment if no comma needed between city and postcode
+            postcode={13397}, 
+            % state={},
+            country={France}}
+
+\affiliation[2]{organization={Institute of Advanced Research on Artificial Intelligence (IARAI)},
+            % addressline={Landstraßer Hauptstraße 5 Eingang, u. Viaduktgasse 16, 2. Stock}, 
+            city={Vienna},
+%          citysep={}, % Uncomment if no comma needed between city and postcode
+            postcode={1030}, 
+            % state={},
+            country={Austria}}
+
+
+
+\begin{abstract}
+Methods based on \emph{class activation maps} (CAM) provide a simple mechanism to interpret predictions of convolutional neural networks by using linear combinations of feature maps as saliency maps. By contrast, masking-based methods optimize a saliency map directly in the image space or learn it by training another network on additional data.
+
+In this work we introduce Opti-CAM, combining ideas from CAM-based and masking-based approaches. Our saliency map is a linear combination of feature maps, where weights are optimized per image such that the logit of the masked image for a given class is maximized. We also fix a fundamental flaw in two of the most common evaluation metrics of attribution methods. On several datasets, Opti-CAM largely outperforms other CAM-based approaches according to the most relevant classification metrics. We provide empirical evidence supporting that localization and classifier interpretability are not necessarily aligned.
+\end{abstract}
+
+% \begin{graphicalabstract}
+% \end{graphicalabstract}
+
+\begin{highlights}
+\item We introduce Opti-CAM, a simple model for saliency map generation that combines ideas from CAM-based and masking-based approaches. Opti-CAM does not need any extra data, network or training.
+
+\item Compared with gradient-free methods, it finds the optimal feature map weights and is on par or faster, assuming that the number of iterations is less than the number of channels.
+\item We introduce a new evaluation metric, \emph{\agf} ($\AG$), to be paired with \emph{average drop} ($\AD$) as a replacement of \emph{average increase} ($\AI$).
+\item On several datasets,	we improve the state of the art by a large margin, \redred{reaching near-perfect performance} according to the most relevant classification metrics.
+\item We shed more light into how a classifier may exploit background context.
+\end{highlights}
+
+\begin{keyword}
+Interpretability; Explainable AI; Saliency map; Class activation maps; Computer vision; 
+\end{keyword}
+\end{frontmatter}
+
+
+\input{tex/intro}
+\input{tex/related}
+\input{tex/method}
+\input{tex/exp-setup}
+\input{tex/exp-class}
+\input{tex/exp-loc}
+\input{tex/exp-ablation}
+\input{tex/conclusion}
+
+\section*{Acknowledgements}
+This publication has received funding from the Excellence Initiative of Aix-Marseille Universite - A*Midex, a French “Investissements d’Avenir programme” (AMX-21-IET-017), and the UnLIR ANR project (ANR-19-CE23-0009). Part of this work was performed using HPC resources from GENCI-IDRIS (Grant 2020-AD011013110).
+
+\input{tex/supp}
+
+%\newpage
+
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+% \clearpage
+% \normalem
+\bibliographystyle{elsarticle-num}
+% \bibliography{cas-refs}
+% \bibliographystyle{ieee}
+\bibliography{refbib}
+
+% 
+
+
+\end{document}

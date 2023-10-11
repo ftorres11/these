@@ -1,28 +1,47 @@
-\section{Introduction}
-\label{sec:intro}
+Convolutional neural networks have had tremendous success in computer vision ~\cite{he2016deep,liu2022convnet} but, due
+to their complexity, it is still an open problem how to explain or interpret their predictions. The most concrete
+achievement in this direction is to localize in an image what regions a prediction can be attributed to, by means of
+\emph{saliency maps}. \emph{Post-hoc} interpretability methods do so without changing the network architecture or
+training process and \emph{class activation mapping} (CAM)~\cite{zhou2016learning} has been a milestone in their
+development. CAM-based saliency maps are expressed as a linear combination of feature maps followed by an activation
+function and it is the definition of weights that determines different methods
+\cite{DBLP:journals/corr/SelvarajuDVCPB16,DBLP:journals/corr/abs-1710-11063,DBLP:journals/corr/abs-1910-01279}.
+%Grad-CAM~\cite{DBLP:journals/corr/SelvarajuDVCPB16}, Grad-CAM++~\cite{DBLP:journals/corr/abs-1710-11063} and
+%ScoreCAM~\cite{DBLP:journals/corr/abs-1910-01279}
 
-Convolutional neural networks have had tremendous success in computer vision~\cite{he2016deep,liu2022convnet} but, due to their complexity, it is still an open problem how to explain or interpret their predictions. The most concrete achievement in this direction is to localize in an image what regions a prediction can be attributed to, by means of \emph{saliency maps}. \emph{Post-hoc} interpretability methods do so without changing the network architecture or training process and \emph{class activation mapping} (CAM)~\cite{zhou2016learning} has been a milestone in their development. CAM-based saliency maps are expressed as a linear combination of feature maps followed by an activation function and it is the definition of weights that determines different methods \cite{DBLP:journals/corr/SelvarajuDVCPB16,DBLP:journals/corr/abs-1710-11063,DBLP:journals/corr/abs-1910-01279}.
-%Grad-CAM~\cite{DBLP:journals/corr/SelvarajuDVCPB16}, Grad-CAM++~\cite{DBLP:journals/corr/abs-1710-11063} and ScoreCAM~\cite{DBLP:journals/corr/abs-1910-01279}
 
+Vision transformers~\cite{dosovitskiy2020image} are now strong competitors of convolutional networks, characterized by
+global interactions between patch embeddings in the form of \emph{self attention}.
+Based on a classification (\cls) token, their pooling mechanism allows localization by means of \emph{raw attention}
+maps. However, these maps are class agnostic, they can be of low quality~\cite{dino} and dedicated interpretability
+methods are required~\cite{chefer2021transformer}.
 
-Vision transformers~\cite{dosovitskiy2020image} are now strong competitors of convolutional networks, characterized by global interactions between patch embeddings in the form of \emph{self attention}. 
-Based on a classification (\cls) token, their pooling mechanism allows localization by means of \emph{raw attention} maps. However, these maps are class agnostic, they can be of low quality~\cite{dino} and dedicated interpretability methods are required~\cite{chefer2021transformer}.
+In this work, we make an important connection between CAM and the raw attention map of the \cls token.
+In particular, self attention is defined on all patch tokens, including \cls. Focusing on the cross attention between
+\cls and patch token embeddings, this is expressed as a collection of dot product similarities between embeddings,
+followed by softmax.
+We show that this collection of similarities is in fact a linear combination of feature maps, where the weights are the
+elements of the \cls token embedding. Hence, \textbf{the raw attention map of the \cls token has the same form as a
+class agnostic CAM-based saliency map}.
 
-In this work, we make an important connection between CAM and the raw attention map of the \cls token. 
-In particular, self attention is defined on all patch tokens, including \cls. Focusing on the cross attention between \cls and patch token embeddings, this is expressed as a collection of dot product similarities between embeddings, followed by softmax. 
-We show that this collection of similarities is in fact a linear combination of feature maps, where the weights are the elements of the \cls token embedding. Hence, \textbf{the raw attention map of the \cls token has the same form as a class agnostic CAM-based saliency map}.
+In addition, pooling in vision transformers is defined as a weighted average of patch token embeddings, where the
+weights are given by the raw attention map of the \cls token. This can be seen as reweighting, or soft masking, of the
+embeddings before \emph{global average pooling} (GAP). By contrast, pooling in convolutional networks is based on GAP
+only. We thus observe that \textbf{attention-based pooling is a form of masking in the feature space}. Masking, mostly
+in the input space, is common in interpretability methods~\cite{DBLP:journals/corr/abs-1910-01279} and their
+evaluation~\cite{DBLP:journals/corr/abs-1710-11063, petsiuk2018rise} to establish that a prediction is indeed due to a
+certain object of interest.
 
-In addition, pooling in vision transformers is defined as a weighted average of patch token embeddings, where the weights are given by the raw attention map of the \cls token. This can be seen as reweighting, or soft masking, of the embeddings before \emph{global average pooling} (GAP). By contrast, pooling in convolutional networks is based on GAP only. We thus observe that \textbf{attention-based pooling is a form of masking in the feature space}. Masking, mostly in the input space, is common in interpretability methods~\cite{DBLP:journals/corr/abs-1910-01279} and their evaluation~\cite{DBLP:journals/corr/abs-1710-11063, petsiuk2018rise} to establish that a prediction is indeed due to a certain object of interest.
+Motivated by the above observations, we design an attention-based pooling mechanism as a replacement for GAP in
+convolutional networks. Since this mechanism has the form of a CAM-based saliency map followed by masking, we aim to
+study the effect of this network modification in interpreting the network predictions.
 
-Motivated by the above observations, we design an attention-based pooling mechanism as a replacement for GAP in convolutional networks. Since this mechanism has the form of a CAM-based saliency map followed by masking, we aim to study the effect of this network modification in interpreting the network predictions.
+Our pooling mechanism, called \emph{\OURS} (\emph{\Ours}), is implemented as a stream running in parallel with the
+backbone network. At different stages of the network, it allows interaction between a \cls token and patch embeddings by
+means of cross attention. The \cls token embedding is initialized as a learnable parameter and, at the output of the
+stream, provides a global image representation for classification.
 
-Our pooling mechanism, called \emph{\OURS} (\emph{\Ours}), is implemented as a stream running in parallel with the backbone network. At different stages of the network, it allows interaction between a \cls token and patch embeddings by means of cross attention. The \cls token embedding is initialized as a learnable parameter and, at the output of the stream, provides a global image representation for classification.
+We aim at post-hoc interpretability, therefore we keep the network and classifier frozen while learning the parameters
+of \Ours. We then obtain CAM-based saliency maps by existing post-hoc methods for both GAP and \Ours and compare their
+performance in terms of interpretability metrics as well as classification accuracy.
 
-We aim at post-hoc interpretability, therefore we keep the network and classifier frozen while learning the parameters of \Ours. We then obtain CAM-based saliency maps by existing post-hoc methods for both GAP and \Ours and compare their performance in terms of interpretability metrics as well as classification accuracy.
-
-More specifically, we make the following contributions:
-\begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
-    \item We show that attention-based pooling in vision transformers is the same as soft masking by a class agnostic CAM-based saliency map (\autoref{subsec:motiv}).
-    \item We design and inject an attention-based pooling mechanism into convolutional networks to replace GAP and study its effect on post-hoc interpretability (\autoref{subsec:CA-base}). This is a modification of the network but not of its training process.
-    \item We show that this mechanism helps explain a trained network by improving the performance of existing post-hoc interpretability methods as well as providing a class agnostic raw attention map (\autoref{sec:exp}).
-\end{enumerate}
