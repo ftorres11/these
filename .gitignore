@@ -1,14 +1,19 @@
+*.swp
 
 these\.pdf
-
 fig/by-nc-nd-eu-eps-converted-to\.pdf
-
 fig/logo_amu_excellence-eps-converted-to\.pdf
-
 fig/logo_cotutelle-std-eps-converted-to\.pdf
-
 fig/logo_partenaire-std-eps-converted-to\.pdf
-
 logo/logo_amu_excellence-eps-converted-to.pdf
-
 logo/by-nc-nd-eu-eps-converted-to.pdf
+these.bcf
+these.glo
+these.idx
+these.lof
+these.lot
+these.ntn
+these.out
+these.run.xml
+these.toc
+these.xdy
