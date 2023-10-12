@@ -1,8 +1,36 @@
-\chapter{Introduction}
-\chaptertoc{}
+    \chapter*{Introduction}
+    %\chaptertoc{}
 
-%\addcontentsline{toc}{chapter}{Introduction}
-\section{Motivations}
+    \addcontentsline{toc}{chapter}{Introduction}
+    \section*{Motivation}
+    %\addcontentsline{toc}{section}{Motivation}
 
-\section{Dissertation Outline}
-%\lipsum[1-2]
+    \section*{Dissertation Outline}
+    %\addcontentsline{toc}{section}{Dissertation Outline}
+    This dissertation is organized in the following manner: First
+    we introduce a background on existing approaches towards interpretability of image
+    recognition models; for that, we make mention on current architectures dedicated 
+    to this approach, while also presenting concepts on interpretability and enunciating 
+    current approaches for this study. 
+    In Chapter \ref{ch:opticam}, we propose Opti-CAM as a methodology that generates 
+    optimized saliency maps highlighting the relevant regions on an image towards image
+    classification. Section \ref{sec:av_gain} extends evaluation metrics with the 
+    introduction of a novel measurement yielding improvements on model confidence 
+    when using a given attribution approach. 
+    On Sections \ref{sec:oc_qual} and \ref{sec:oc_quant} we highlight the differences 
+    between Opti-CAM and existing procedures. Chapter \ref{ch:castream} introduces 
+    the Cross Attention Stream, an approach to boost existing architectures
+    interpretable properties. Section \ref{sec:ca_defn} sets up the cross-attention 
+    mechanism that is used as a building block for this stream and its similarities with
+    self-attention.  Section \ref{sec:ca_design} expands the attention mechanism 
+    towards its incorporation on current architectures and its usage stand-alone or alongside
+    multiple stages of these architectures. On Sections \ref{sec:ca_qual} and \ref{sec:ca_quant}
+    we demonstrate the benefits of using this proposal.
+    Chapter \ref{ch:zip} raises the Zero-Information algorithm and its usage as a substitute
+    for mask-dependent evaluation proposals. Section \ref{sec:zip_algo} develops this 
+    algorithm. Section \ref{sec:zip_insdel} demonstrates the incorporation of this 
+    algorithm on interpretability evaluation protocols. Section \ref{sec:zip_qual} displays
+    the effect of this approach when applied to mask patches on images. Section \ref{sec:zip_benchmark} 
+    displays the results of benchmarking these protocols with this approach. Finally, 
+    we draw conclusions on our work and detail future research perspectives.
+
