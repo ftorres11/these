@@ -1,11 +1,8 @@
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
-    \begin{tikzpicture}[
-        font={\footnotesize},
-        trap/.style={trapezium, rotate=-90,trapezium angle=75},
-    ]
+    \begin{tikzpicture}[font={\footnotesize},trap/.style={trapezium, rotate=-90,trapezium angle=75},]
         %% CNN branch
-        \node(input) at (-5.5, 0) {\includegraphics[width=.1\textwidth]{Images/Method/input.jpg}};
+        \node(input) at (-5.5, 0) {\includegraphics[width=.1\textwidth]{fig/castream/images/input.jpg}};
         \node[above] at (input.north) {Input image $\vx$};
         \node[draw, trap] (res0) at (-3.5,0) {\rotatebox{90}{\parbox{1.0cm}{\centering{Res-0}}}};
         \node[draw, trap] (res1) at (-1.5,0) {\rotatebox{90}{\parbox{1.0cm}{\centering{Res-1}}}};
@@ -48,7 +45,7 @@
         \draw[->] (empt1.center) -- node {} (class);
     \end{tikzpicture}
     \vspace{3pt}
-    \caption{\emph{\OURS (\Ours) applied to ResNet-based architectures.} Given a network $f$, we replace global average pooling (\gap) by a learned, attention-based pooling mechanism implemented as a stream in parallel to $f$. The feature tensor $F_\ell \in \real^{p_\ell \times d_\ell}$ (\emph{key}) obtained by stage Res-$\ell$ of $f$ interacts with a \cls token (\emph{query}) embedding $\vq_\ell \in \real^{d_\ell}$ in block CA-$\ell$, which contains cross attention~\eq{CA} followed by a linear projection~\eq{qk-layer} to adapt to the dimension of $F_{\ell+1}$. Here, $p_\ell$ is the number of patches (spatial resolution) and $d_\ell$ the embedding dimension. The query is initialized by a learnable parameter $\vq_0 \in \real^{d_0}$, while the output $\vq_5$ of the last cross attention block is used as a global image representation into the classifier. The network and classifier are pretrained and kept frozen while the parameters of \Ours are learned. At inference, we use existing post-hoc interpretability methods like Grad-CAM~\citep{DBLP:journals/corr/SelvarajuDVCPB16} to obtain saliency maps for both the baseline \gap and our \Ours. We compare interpretability metrics as well as accuracy.}
+    \caption{}%\emph{\OURS (\Ours) applied to ResNet-based architectures.} Given a network $f$, we replace global average pooling (\gap) by a learned, attention-based pooling mechanism implemented as a stream in parallel to $f$. The feature tensor $F_\ell \in \real^{p_\ell \times d_\ell}$ (\emph{key}) obtained by stage Res-$\ell$ of $f$ interacts with a \cls token (\emph{query}) embedding $\vq_\ell \in \real^{d_\ell}$ in block CA-$\ell$, which contains cross attention~\eq{CA} followed by a linear projection~\eq{qk-layer} to adapt to the dimension of $F_{\ell+1}$. Here, $p_\ell$ is the number of patches (spatial resolution) and $d_\ell$ the embedding dimension. The query is initialized by a learnable parameter $\vq_0 \in \real^{d_0}$, while the output $\vq_5$ of the last cross attention block is used as a global image representation into the classifier. The network and classifier are pretrained and kept frozen while the parameters of \Ours are learned. At inference, we use existing post-hoc interpretability methods like Grad-CAM~\citep{DBLP:journals/corr/SelvarajuDVCPB16} to obtain saliency maps for both the baseline \gap and our \Ours. We compare interpretability metrics as well as accuracy.}
     \label{fig:fig_method}
-    \end{figure*}
+    \end{figure}
     

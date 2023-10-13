@@ -1,3 +1,28 @@
 \section{Cross Attention Stream}
 \label{sec:ca_design}
-\input{fig/castream/ca_mainfig.tex}
+Motivated by the observations above, we design a \emph{\OURS} (\emph{\Ours}) in parallel to any network. It takes input features at key locations of the network and uses cross attention to build a global image representation and replace $\gap$ before the classifier. An example is shown in \autoref{fig:fig_method}, applied to a ResNet-based architecture.
+
+\paragraph{Architecture}
+
+More formally, given a network $f$, we consider points between blocks of $f$ where critical operations take place, such as change of spatial resolution or embedding dimension, \eg between stages for ResNet. We decompose $f$ at these points as
+\begin{equation}
+	f = g \circ \gap \circ f_L \circ \dots \circ f_0
+\label{eq:f-decomp}
+\end{equation}
+such that features $F_\ell \in \real^{p_\ell \times d_\ell}$ of layer (stage) $\ell$ are initialized as $F_{-1} = \vx$ and updated according to
+\begin{equation}
+	F_\ell = f_\ell(F_{\ell-1})
+\label{eq:f-layer}
+\end{equation}
+for $0 \le \ell \le L$. The last layer features $F_L$ are followed by \gap and $g: \real^{d_L} \to \real^C$ is the classifier, mapping to the logit vector $\vy$. As in \autoref{subsec:motiv}, $p_\ell$ is the number of patch tokens and $d_\ell$ the embedding dimension of stage $\ell$.
+
+In parallel, we initialize a classification token embedding as a learnable parameter $\vq_0 \in \real^{d_0}$ and we build a sequence of updated embeddings $\vq_\ell \in \real^{d_\ell}$ along a stream that interacts with $F_\ell$ at each stage $\ell$. Referring to the global representation $\vq_\ell$ as \emph{query} or \cls and to the local image features $F_\ell$ as \emph{key} or patch embeddings, the interaction consists of cross attention followed by a linear projection $W_\ell \in \real^{d_{\ell+1} \times d_\ell}$ to account for changes of embedding dimension between the corresponding stages of $f$:
+\begin{equation}
+	\vq_{\ell+1} = W_\ell \cdot \ca_\ell(\vq_\ell, F_\ell),
+\label{eq:qk-layer}
+\end{equation}
+for $0 \le \ell \le L$, where $\ca_\ell$ is defined as in~\eq{CA}. 
+% Because of linearity, projection $W_\ell$ is the same as a value projection.
+
+Image features $F_0, \dots, F_L$ do not change by injecting our \Ours into network $f$. However, the final global image representation and hence the prediction do change. In particular, at the last stage $L$, $\vq_{L+1}$ is used as a global image representation for classification, replacing \gap over $F_L$. The final prediction is $g(\vq_{L+1}) \in \real^C$. Unlike \gap, the weights of different image patches in the linear combination are non-uniform, enhancing the contribution of relevant patches in the prediction.
+\input{fig/castream/tex/ca_mainfig}

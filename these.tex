@@ -1,9 +1,8 @@
-\documentclass[french]{amu_these}
-
+\documentclass[english]{amu_these}
+\input{tex_supp/plots}
+\input{tex_supp/abbrev}
+\input{tex_supp/defn}
 \begin{document}
-
-    \input{tex_supp/defn} %% Definitions
-    \input{tex_supp/abbrev} %% Abbreviations
 	\input{tex_open/titre}				%% page de titre								
 	\input{tex_open/affidavit}				%% affidavit et licence
 	\input{tex_open/publications}			%% liste de publications et participation aux conférences
@@ -34,7 +33,7 @@
 	\ohead{\leftmark\Ifstr{\rightmark}{\leftmark}{}{ -- \rightmark}}	%% place le chapître et la partie en en-tête
 
     \input{tex_body/intro}
-    \input{tex_body/rel}
+    \input{tex_body/rel/main}
 	\input{tex_body/ch_opticam/main}
 	\input{tex_body/ch_castream/main}
 	\input{tex_body/ch_zip/main}
