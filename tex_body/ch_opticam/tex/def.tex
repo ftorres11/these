@@ -1,8 +1,8 @@
 \section{Opti-CAM}
-As motivated by \textbf{motif}, we obtain a saliency map as a convex combination of feature maps by
- optimizing a given objective function with respect to the weights.
-In particular, following \citep{wang2020score}, we use channel weights $w_k \defn \softmax(\mathbf{u})_k$,
- where $\mathbf{u} \in \real^{K_\ell}$ is a variable.
+As motivated by \textbf{motif}, we obtain a saliency map as a convex combination of feature maps
+ by optimizing a given objective function with respect to the weights.
+In particular, following \citep{wang2020score}, we use channel weights $w_k \defn \softmax(
+	\mathbf{u})_k$, where $\mathbf{u} \in \real^{K_\ell}$ is a variable.
 We then consider saliency map $S_\ell$ in layer $\ell$ as a function of both the input image $\vx$ 
 and variable $\mathbf{u}$:
 
@@ -10,52 +10,52 @@ and variable $\mathbf{u}$:
     S_\ell(\vx; \mathbf{u}) \defn \sum_k \softmax(\mathbf{u})_k A^k_\ell.
 \label{eq:v-sal}
 \end{equation}
-Comparing with \eq{sal}, $h$ is the identity mapping, because feature maps are non-negative and weights are positive.
+Comparing with \eq{sal}, $h$ is the identity mapping, because feature maps are non-negative and
+ weights are positive.
 
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 
 \subsection{Optimization}
-
-Now, given a layer $\ell$ and a class of interest $c$, we find the vector $\mathbf{u}^*$ that maximizes 
-the classifier confidence for class $c$, when the input image $\vx$ is masked according to saliency map 
-$S_\ell(\vx; \mathbf{u}^*)$:
+Now, given a layer $\ell$ and a class of interest $c$, we find the vector $\mathbf{u}^*$ that
+ maximizes the classifier confidence for class $c$, when the input image $\vx$ is masked according 
+ to saliency map $S_\ell(\vx; \mathbf{u}^*)$:
 \begin{equation}
 	\mathbf{u}^* \defn \arg\max_{\mathbf{u}} F^c_\ell(\vx; \mathbf{u}),
 \label{eq:opt}
 \end{equation}
 where we define the objective function
 \begin{equation}
-	%F^c_\ell(\vx; \mathbf{u}) \defn \abs{g_c(f(\vx \odot n(\up(S_\ell(\vx; \mathbf{u}))))) - g_c(f(\vx))}.
 	F^c_\ell(\vx; \mathbf{u}) \defn g_c(f(\vx \odot n(\up(S_\ell(\vx; \mathbf{u}))))).
 \label{eq:obj}
 \end{equation}
 Here, the saliency map $S_\ell(\vx; \mathbf{u})$ is adapted to $\vx$ exactly as in~\eq{s-cam} in 
-terms of resolution and normalization. For \emph{normalization function} $n$, the default is~\eq{norm}. 
-The \emph{selector function} $g_c$ operates on the logit vector $\vy$; the default is to select the logit 
-of class $c$, \ie $g_c(\vy) \defn y_c$. Other choices, including the definition of $F^c_\ell$ itself, are 
-investigated in \autoref{sec:ablation} \redred{and in the supplementary material.}
+terms of resolution and normalization. For \emph{normalization function} $n$, the default is
+ \eq{norm}. 
+The \emph{selector function} $g_c$ operates on the logit vector $\vy$; the default is to select the
+ logit of class $c$, \ie $g_c(\vy) \defn y_c$. %Other choices, including the definition of
+ %$F^c_\ell$ itself, are investigated in \autoref{sec:ablation} \redred{and in the supplementary material.}
 
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 \input{fig/opticam/tex/oc_mainfig}
-
 Putting everything together, we define
 \begin{equation}
-	S^c_\ell(\vx) \defn S_\ell(\vx; \mathbf{u}^*) = S_\ell(\vx; \arg\max_{\mathbf{u}} F^c_\ell(\vx; \mathbf{u})),
+	S^c_\ell(\vx) \defn S_\ell(\vx; \mathbf{u}^*) = S_\ell(\vx; \arg\max_{\mathbf{u}} F^c_\ell(\vx;
+	\mathbf{u})),
 \label{eq:o-sal}
 \end{equation}
 where $S_\ell$ and $F^c_\ell$ are defined by~\eq{v-sal} and~\eq{obj} respectively. The objective 
-function $F^c_\ell$ ~\eq{obj} depends on variable $\mathbf{u}$ through $S_\ell$~\eq{v-sal}, where the 
-feature maps $A^k_\ell = f^k_\ell(\vx)$ are fixed. Then,~\eq{obj} involves masking and a forward pass 
-through the network $f$, which is also fixed.
+function $F^c_\ell$ ~\eq{obj} depends on variable $\mathbf{u}$ through $S_\ell$~\eq{v-sal}, where
+ the feature maps $A^k_\ell = f^k_\ell(\vx)$ are fixed. Then,~\eq{obj} involves masking and a
+  forward pass  through the network $f$, which is also fixed.
 
-Figure \ref{fig:idea} is an abstract illustration of our method, \iavr{called Opti-CAM}, without details 
-like upsampling and normalization~\eq{obj}. Optimization takes place along the highlighted path from 
-variable $\mathbf{u}$ to objective function $F^c_\ell$. The saliency map is real-valued and the entire 
-objective function is differentiable in $\mathbf{u}$. We use Adam optimizer \cite{kingma2014adam} to solve the 
-optimization problem ~\eq{opt}.
+Figure \ref{fig:idea} is an abstract illustration of our method, \iavr{called Opti-CAM}, without 
+details like upsampling and normalization~\eq{obj}. Optimization takes place along the highlighted 
+path from variable $\mathbf{u}$ to objective function $F^c_\ell$. The saliency map is real-valued 
+and the entire objective function is differentiable in $\mathbf{u}$. We use Adam optimizer 
+\cite{kingma2014adam} to solve the optimization problem ~\eq{opt}.
 
 
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 
 %\paragraph{Discussion}
 
