@@ -1,11 +1,23 @@
+%--------------------------------------------------------------------------------------------------
 \section{Average Gain}
 \label{sec:av_gain}
-Although the authors of \cite{poppi2021revisiting} make this impressive observation, they use it to motivate the definition of a number of metrics that are orthogonal to the task at hand, \ie measuring the effect of masking to the classifier. By contrast, we address the problem by introducing a new metric to be paired with $\AD$ as a replacement of $\AI$. We define the new metric as follows.
+Although the authors of \cite{poppi2021revisiting} make this impressive observation, they use it to
+ motivate the definition of a number of metrics that are orthogonal to the task at hand, \ie 
+ measuring the effect of masking to the classifier. By contrast, we address the problem by 
+ introducing a new metric to be paired with $\AD$ as a replacement of $\AI$. 
+ We define the new metric as follows.
 
-\emph{\Agf} ($\AG$) quantifies how much predictive power, measured as class probability, is gained when we mask the image; higher is better:
+\emph{\Agf} ($\AG$) quantifies how much predictive power, measured as class probability, is gained
+ when we mask the image; higher is better:
 \begin{equation}
 	\AG(\%) \defn \frac{1}{N} \sum_{i=1}^N \frac{[o^c_i - p^c_i]_+}{1-p^c_i} \cdot 100.
 \label{eq:ag}
 \end{equation}
-This definition is symmetric to the definition of average drop, in the sense that in absolute value, the numerator in the sum of $\AD, \AG$ is the positive and negative part of $p^c_i - o^c_i$ respectively and the denominator is the maximum value that the numerator can get as a function of $o^c_i$, given that $0 < o^c_i < p^c_i$ and $p^c_i < o^c_i < 1$ respectively. The two metrics thus compete each other, in the sense that changing $o^c_i$ to improve one leaves the other unchanged or harms it. As we shall see, an extreme example is Fake-CAM, which yields near-perfect $\AD$ but fails completely on $\AG$.
+This definition is symmetric to the definition of average drop, in the sense that in absolute value,
+ the numerator in the sum of $\AD, \AG$ is the positive and negative part of $p^c_i - o^c_i$ 
+ respectively and the denominator is the maximum value that the numerator can get as a function of 
+ $o^c_i$, given that $0 < o^c_i < p^c_i$ and $p^c_i < o^c_i < 1$ respectively. The two metrics thus 
+ compete each other, in the sense that changing $o^c_i$ to improve one leaves the other unchanged or 
+ harms it. As we shall see, an extreme example is Fake-CAM, which yields near-perfect $\AD$ but 
+ fails completely on $\AG$.
 

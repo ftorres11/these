@@ -1,2 +1,50 @@
 \section{Quantitaive Evaluation}
 \label{sec:oc_quant}
+\subsection{Image classification}
+%--------------------------------------------------------------------------------------------------
+\input{tab/opticam/tex/table_cls_cnn_imagenet_new.tex}
+%--------------------------------------------------------------------------------------------------
+\paragraph{CNN}
+\autoref{tab:imagenet-cnn} shows ImageNet classification metrics using \Th{VGG16} and \Th{ResNet50}.
+ Our Opti-CAM brings impressive performance in terms of average drop ($\AD$) and Average Increase 
+ ($\AI$) metrics. That is, not only impressive improvement over baselines, but near-perfect: 
+ near-zero $\AD$ and above 90\% $\AI$. Our new metric $\AG$ is lower, around 70\% 
+ for Opti-CAM, but this is still several times higher than for all the other methods.
+
+Interestingly, Fake-CAM \autocite{poppi2021revisiting} is the winner in terms of $\AD$ and second 
+or third best in $\AI$ after Opti-CAM and Score-CAM, but fails completely $\AG$. This is expected 
+and makes Fake-CAM uninteresting as it should be: By only masking one pixel, the classification 
+score can hardly drop (0.8\% on ResNet50) and while it increases very often (on 46\% of images), 
+the gain is as little as the drop (0.7\%). This makes the pair ($\AD$, $\AG$) sufficient as primary
+ metrics and $\AI$ can be thought of as secondary, if important at all.
+
+%In the supplementary material we report \emph{insertion} (I) and \emph{deletion} (D) metrics along with failure cases of Opti-CAM. The latter indicate that our saliency maps are not incorrect as a whole, but capturing more parts of the object, more instances or more background context results in larger or several disconnected salient regions. This does not let the classifier focus on a single discriminative region when pixels are processed sequentially by increasing saliency. Rather, I/D favor smaller and more compact saliency maps.
+
+
+\autoref{tab:imagenet-cnn} also includes average execution time per image over the 1000-image 
+ImageNet subset for all methods. Opti-CAM is slower than gradient-based methods that require 
+only one pass through the network, but on par or faster than gradient-free methods. 
+Indeed, we use a maximum of 100 iterations with one forward/backward pass per iteration, 
+while Score-CAM and Ablation-CAM perform as many forward passes as channels. Hence they are much 
+slower on ResNet50 than VGG16. ExtremalPerturbation does not depend on the number of channels but 
+is very slow by performing a complex optimization in the image space.
+
+%--------------------------------------------------------------------------------------------------
+\input{tab/opticam/tex/table_cls_transformer_new.tex}
+%--------------------------------------------------------------------------------------------------
+
+\paragraph{Transformers}
+
+\autoref{tab:imagenet-trans} shows ImageNet classification metrics using ViT \iavr{and DeiT}. 
+Unlike CAM-based methods that rely on a class-specific linear combination of feature maps, 
+raw attention \autocite{dosovitskiy2020image} and rollout \autocite{abnar2020quantifying} use the 
+attention map of the [CLS] token from the last attention block and from all blocks respectively. 
+\iavr{This attention map depends only on the particular image and not on the target class, hence it
+ is not really comparable. TIBAV \cite{chefer2021transformer} uses both instance-specific and 
+ class-specific information.
+
+Opti-CAM outperforms all other methods dramatically, reaching near-zero $\AD$ and $\AI$ above 80 or 
+90\%. According to our new $\AG$ metric, Opti-CAM still works while all other methods fail, 
+but $\AG$ is much more conservative than $\AI$. On ViT-B for example, the classification score 
+increases for 90.1\% of the images by masking with Opti-CAM, but the gain is only 18.0\% on average.}
+

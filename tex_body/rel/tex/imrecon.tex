@@ -1,3 +1,4 @@
+%--------------------------------------------------------------------------------------------------
 \section*{Image Recognition Models}
 \addcontentsline{toc}{section}{Image Recognition Models}
 \label{rel:sec_imrecon}
@@ -9,6 +10,22 @@
 \subsection*{Attention-Based Architectures}
 \label{rel:sub_att}
 %\addcontentsline{toc}{subsection}{Attention-Based Architectures}
+Attention is a powerful mechanism that has been introduced into convolutional networks in several 
+ocasions \autocite{bello2019attention, ramachandran2019stand, shen2020global}. With the success of 
+vision transformers (ViT) \autocite{dosovitskiy2020image}, fully attention-based architectures are now 
+competitive with convolutional networks. To benefit from both self-attention and convolutional 
+layers, some hybrid architectures employ convolutional layers before the vision transformer 
+\autocite{graham2021levit,xiao2021early}. Others, such as Swin \autocite{liu2021swin} and PiT 
+\autocite{heo2021rethinking}, introduces a pyramid structure to share local spatial information 
+while reducing the spatial resolution, as in convolutional networks. 
+
+SCOUTER \autocite{li2021scouter} uses slot attention \autocite{locatello2020object} to build a class 
+specific pooling mechanism, which does not scale well to more than 20 classes. 
 
 \subsection*{Hybrid Architectures}
+Conformer \autocite{peng2021conformer} proposes a dual network structure to retrain and fuse local 
+convolutional features with global representations. Our method merely provides a simple 
+attention-based pooling mechanism inspired by transformers that can work with any architecture, 
+even pretrained and frozen. PatchConvNet \autocite{touvron2021augmenting} replaces global average pooling by an 
+attention-based pooling layer.
 \label{rel:sub_hybrid}

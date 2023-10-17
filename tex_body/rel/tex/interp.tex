@@ -11,8 +11,8 @@
 
 \subsection*{Evaluating Interpretability}
 \subsubsection*{Classification Metrics}
-Average drop ($\AD$) and average increase ($\AI$) \cite{chattopadhay2018grad} are well-established 
-classification metrics. 
+Average drop ($\AD$) and average increase ($\AI$) \autocite{chattopadhay2018grad} are 
+well-established classification metrics. 
 They measure the effect on the predicted class probabilities by masking the input image with the
  saliency map. Let $p^c_i$ and $o^c_i$ be the predicted probability for class $c$ given as input 
  the $i$-th test image $\vx_i$ and its masked version respectively. 
@@ -38,13 +38,13 @@ higher is better:
 $\AD$ and $\AI$ are not defined in a symmetric way. $\AD$ measures changes in class probability 
 whereas $\AI$ measures a percentage of images. It is possible that the percentage is high while 
 the actual increase is small. Hence, it is possible that an attribution method improves both. 
-Indeed, \cite{poppi2021revisiting} observes that a trivial method called Fake-CAM outperforms 
+Indeed, \autocite{poppi2021revisiting} observes that a trivial method called Fake-CAM outperforms 
 state-of-the-art methods, including Score-CAM, by a large margin. Fake-CAM simply defines a 
 saliency map where the top-left pixel is set to zero and is uniform elsewhere. 
 This questions the purpose of $\AD$ and $\AI$.
 
 %--------------------------------------------------------------------------------------------------
-\subsubsection{Localization metrics}
+\subsubsection*{Localization metrics}
 \label{sec:loc-metrics}
 Several works measure the localization ability of saliency maps, using metrics from the 
 \emph{weakly-supervised object localization} (WSOL) task.
@@ -62,7 +62,7 @@ $[0,1]$ and are expressed as percentages, except SM~\eq{sm}, which is unbounded.
 measures the maximum overlap of the predicted bounding box with any ground truth bounding box, 
 requiring that the predicted class label is correct:
 \begin{equation}
-	\OM \defn 1 - \paren{\max_{B \in \cB} \iou(B, B_p)} \ind_{c_p = c},
+	\OM \defn 1 - \paren{\max_{B \in \cB} \iou(B, B_p)} \mathbbm{1}_{c_p = c},
 \label{eq:om}
 \end{equation}
 where $\iou$ is intersection over union.
@@ -85,35 +85,32 @@ union
 and \emph{recall} $R$ is the fraction of the ground truth union that is covered by the saliency map
 \begin{equation}
 	R \defn \frac{\sum_{\vp \in U} S^c_{\vp}}{\card{U}}.
-\label{eq:rec}
+	\label{eq:rec}
 \end{equation}
 
-\emph{Box Accuracy (BA)~\citep{choe2020evaluating}}
-Given threshold values $\eta$ and $\delta$, we find the bounding box $B^\eta_p$ of the largest 
-connected component of the binary mask $\set{\vp: S_{\vp} > \eta}$ and require that it overlaps by 
+\emph{Box Accuracy (BA)\autocite{choe2020evaluating}} Given threshold values $\eta$ and $\delta$, 
+we find the bounding box $B^\eta_p$ of the largest connected component of the binary mask 
+$\set{\vp: S_{\vp} > \eta}$ and require that it overlaps by 
 $\delta$ with at least one ground truth box:
 \begin{equation}
-	\BA(\eta, \delta) \defn \max_{B \in \cB} \ind_{\iou(B^\eta_p, B) \ge \delta}.
+	\BA(\eta, \delta) \defn \max_{B \in \cB} \mathbbm{1}_{\iou(B^\eta_p, B) \ge \delta}.
 \label{eq:ba}
 \end{equation}
 After averaging over the test images, we take the maximum of this measure over a set of values 
-$\eta$ and then the average over a set of values $\delta$.
+$\eta$ and then the average over a set of values $\delta$.\\
 %--------------------------------------------------------------------------------------------------
-\paragraph{Standard Pointing game (SP)~\cite{zhang2018top}}
-We find the pixel $\vp^* \defn \arg\max_{\vp} S^c_{\vp}$ having the maximum saliency value and 
+\emph{Standard Pointing game (SP)\autocite{zhang2018top}} We find the pixel 
+$\vp^* \defn \arg\max_{\vp} S^c_{\vp}$ having the maximum saliency value and 
 require that it lands in any of the ground truth bounding boxes:
 \begin{equation}
-	\spg \defn \ind_{\vp^* \in U}.
+	\spg \defn \mathbbm{1}_{\vp^* \in U}.
 \label{eq:spg}
-\end{equation}
+\end{equation}\\
 
-\emph{Energy Pointing game (EP)~\citep{wang2020score}}
+\emph{Energy Pointing game (EP)\autocite{wang2020score}} is equivalent to precision~\eq{prec}.\\
 
-is equivalent to precision~\eq{prec}.
-
-\emph{Saliency Metric (SM)~\citep{dabkowski2017real}}
-
-penalizes the size of the predicted bounding box $B_p$ relative to the image and the cross-entropy
+\emph{Saliency Metric (SM)\autocite{dabkowski2017real}} penalizes the size of the predicted bounding
+ box $B_p$ relative to the image and the cross-entropy
  loss:
 \begin{equation}
 	\SM \defn \log \max\paren{ 0.05, \frac{\card{B_p}}{hw} } - \log p^c,

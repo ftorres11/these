@@ -1,0 +1,21 @@
+[0] Config.pm:302> INFO - This is Biber 2.9
+[0] Config.pm:305> INFO - Logfile is 'these.blg'
+[31] biber:313> INFO - === Tue Oct 17, 2023, 16:59:42
+[56] Biber.pm:371> INFO - Reading 'these.bcf'
+[109] Biber.pm:857> INFO - Found 29 citekeys in bib section 0
+[120] Biber.pm:3981> INFO - Processing section 0
+[129] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
+[130] bibtex.pm:1468> INFO - LaTeX decoding ...
+[153] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
+[156] Utils.pm:169> WARN - Duplicate entry key: 'poppi2021revisiting' in file 'biblio.bib', skipping ...
+[156] Utils.pm:169> WARN - Duplicate entry key: 'zhou2016learning' in file 'biblio.bib', skipping ...
+[377] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bYez1QBFAr/biblio.bib_13959.utf8, line 193, warning: 15 characters of junk seen at toplevel
+[377] Utils.pm:169> WARN - I didn't find a database entry for 'abnar2020quantifying' (section 0)
+[377] Utils.pm:169> WARN - I didn't find a database entry for 'chefer2021transformer' (section 0)
+[431] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[431] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[431] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'fr-FR'
+[431] Biber.pm:3815> INFO - No sort tailoring available for locale 'fr-FR'
+[458] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
+[494] bbl.pm:720> INFO - Output to these.bbl
+[494] Biber.pm:110> INFO - WARNINGS: 5

@@ -1,7 +1,7 @@
 \section{Opti-CAM}
 As motivated by \textbf{motif}, we obtain a saliency map as a convex combination of feature maps
  by optimizing a given objective function with respect to the weights.
-In particular, following \citep{wang2020score}, we use channel weights $w_k \defn \softmax(
+In particular, following \autocite{wang2020score}, we use channel weights $w_k \defn \softmax(
 	\mathbf{u})_k$, where $\mathbf{u} \in \real^{K_\ell}$ is a variable.
 We then consider saliency map $S_\ell$ in layer $\ell$ as a function of both the input image $\vx$ 
 and variable $\mathbf{u}$:
@@ -52,7 +52,7 @@ Figure \ref{fig:idea} is an abstract illustration of our method, \iavr{called Op
 details like upsampling and normalization~\eq{obj}. Optimization takes place along the highlighted 
 path from variable $\mathbf{u}$ to objective function $F^c_\ell$. The saliency map is real-valued 
 and the entire objective function is differentiable in $\mathbf{u}$. We use Adam optimizer 
-\cite{kingma2014adam} to solve the optimization problem ~\eq{opt}.
+\autocite{kingma2014adam} to solve the optimization problem ~\eq{opt}.
 
 
 %--------------------------------------------------------------------------------------------------

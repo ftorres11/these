@@ -24,6 +24,7 @@
 %\RequirePackage{lmodern}					%% polices latines (désactivés)
 \RequirePackage{fourier}					%% polices Adobe Utopia (activés)
 \RequirePackage[english,main=french]{babel}	%% typographie (français par défaut)
+%\RequirePackage[english,main=english]{babel}	%% typographie (français par défaut)
 \RequirePackage[babel]{csquotes}			%% guillemets typographiques
 \MakeAutoQuote{«}{»}						%% espacement automatique des guillemets
 
