@@ -19,6 +19,38 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{abnar2020quantifying}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=f975fd62621fc055339fdf5f3f64d41d}{%
+           family={Abnar},
+           familyi={A\bibinitperiod},
+           given={Samira},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=44ad51ff065eed44fec5244bbae59fd4}{%
+           family={Zuidema},
+           familyi={Z\bibinitperiod},
+           given={Willem},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0c514d65ea282376df5c6895d9467080}
+      \strng{fullhash}{0c514d65ea282376df5c6895d9467080}
+      \strng{bibnamehash}{0c514d65ea282376df5c6895d9467080}
+      \strng{authorbibnamehash}{0c514d65ea282376df5c6895d9467080}
+      \strng{authornamehash}{0c514d65ea282376df5c6895d9467080}
+      \strng{authorfullhash}{0c514d65ea282376df5c6895d9467080}
+      \field{labelalpha}{AZ20}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2005.00928}
+      \field{title}{Quantifying attention flow in transformers}
+      \field{year}{2020}
+    \endentry
     \entry{bello2019attention}{inproceedings}{}
       \name{author}{5}{}{%
         {{uniquename=0,uniquepart=base,hash=6b8f07f4771197fda9eba469f897bee3}{%
@@ -115,6 +147,46 @@
       \field{title}{Grad-{CAM}++: Generalized Gradient-Based Visual Explanations for Deep Convolutional Networks}
       \field{year}{2018}
       \keyw{visualization;heating systems;neurons;machine learning;predictive models;mathematical model}
+    \endentry
+    \entry{chefer2021transformer}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=79d090459ace2ece15f3bd8fff9966dd}{%
+           family={Chefer},
+           familyi={C\bibinitperiod},
+           given={Hila},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=52762ac141db539c217899d2ac031faa}{%
+           family={Gur},
+           familyi={G\bibinitperiod},
+           given={Shir},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f70d0dee88ad32fb0faf165ab5d0e9ab}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Lior},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{124a692405e99a9d0ab61ff67a61eb4a}
+      \strng{fullhash}{124a692405e99a9d0ab61ff67a61eb4a}
+      \strng{bibnamehash}{124a692405e99a9d0ab61ff67a61eb4a}
+      \strng{authorbibnamehash}{124a692405e99a9d0ab61ff67a61eb4a}
+      \strng{authornamehash}{124a692405e99a9d0ab61ff67a61eb4a}
+      \strng{authorfullhash}{124a692405e99a9d0ab61ff67a61eb4a}
+      \field{labelalpha}{CGW21}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}
+      \field{title}{Transformer interpretability beyond attention visualization}
+      \field{year}{2021}
+      \field{pages}{782\bibrangedash 791}
+      \range{pages}{10}
     \endentry
     \entry{choe2020evaluating}{inproceedings}{}
       \name{author}{6}{}{%
@@ -1015,6 +1087,63 @@
       \field{year}{2016}
       \keyw{interpretability,black box classifier,explaining machine learning,interpretable machine learning}
     \endentry
+    \entry{samek2016evaluating}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=7f49b6382ab4ca917a2aa2249f875f79}{%
+           family={Samek},
+           familyi={S\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d122a2a87d21da4007f460564975e967}{%
+           family={Binder},
+           familyi={B\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c899c23de6021ca457230c6ace1a2ff7}{%
+           family={Montavon},
+           familyi={M\bibinitperiod},
+           given={Gr{é}goire},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ae7623274e86daf16f369161c4ae78f7}{%
+           family={Lapuschkin},
+           familyi={L\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9780dafc51f9232cce897369eb1b6692}{%
+           family={M{ü}ller},
+           familyi={M\bibinitperiod},
+           given={Klaus-Robert},
+           giveni={K\bibinithyphendelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{785676c7b05ae8cd6324bfd48f164fd4}
+      \strng{fullhash}{7e951ffea49c94e3b3d6fb9d1c3d9ba5}
+      \strng{bibnamehash}{785676c7b05ae8cd6324bfd48f164fd4}
+      \strng{authorbibnamehash}{785676c7b05ae8cd6324bfd48f164fd4}
+      \strng{authornamehash}{785676c7b05ae8cd6324bfd48f164fd4}
+      \strng{authorfullhash}{7e951ffea49c94e3b3d6fb9d1c3d9ba5}
+      \field{labelalpha}{Sam+16}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE transactions on neural networks and learning systems}
+      \field{number}{11}
+      \field{title}{Evaluating the visualization of what a deep neural network has learned}
+      \field{volume}{28}
+      \field{year}{2016}
+      \field{pages}{2660\bibrangedash 2673}
+      \range{pages}{14}
+    \endentry
     \entry{schulz2020restricting}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=64393cfbef25007a2c5bce80f5792747}{%
@@ -1354,6 +1483,57 @@
       \field{pages}{30392\bibrangedash 30400}
       \range{pages}{9}
     \endentry
+    \entry{yeh2019fidelity}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=d6b56204d005c40ba2d43fae6c74c9ea}{%
+           family={Yeh},
+           familyi={Y\bibinitperiod},
+           given={Chih-Kuan},
+           giveni={C\bibinithyphendelim K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bc19505530014d09efff741385b409a0}{%
+           family={Hsieh},
+           familyi={H\bibinitperiod},
+           given={Cheng-Yu},
+           giveni={C\bibinithyphendelim Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=db0ba468c49dd8ee328d3fa0144c9324}{%
+           family={Suggala},
+           familyi={S\bibinitperiod},
+           given={Arun},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f579a2cc82e3eb39d810bfe8105a1ff9}{%
+           family={Inouye},
+           familyi={I\bibinitperiod},
+           given={David\bibnamedelima I},
+           giveni={D\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=919ca1ac7081223112bd179d34ad0707}{%
+           family={Ravikumar},
+           familyi={R\bibinitperiod},
+           given={Pradeep\bibnamedelima K},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{13920eeebe479e55e82fb1565f48baf3}
+      \strng{fullhash}{00977ad9060da026fc53d8abe3b6723b}
+      \strng{bibnamehash}{13920eeebe479e55e82fb1565f48baf3}
+      \strng{authorbibnamehash}{13920eeebe479e55e82fb1565f48baf3}
+      \strng{authornamehash}{13920eeebe479e55e82fb1565f48baf3}
+      \strng{authorfullhash}{00977ad9060da026fc53d8abe3b6723b}
+      \field{labelalpha}{Yeh+19}
+      \field{sortinit}{Y}
+      \field{sortinithash}{b8d711a035f7be9840c721c82920477e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Neural Information Processing Systems}
+      \field{title}{On the (in) fidelity and sensitivity of explanations}
+      \field{volume}{32}
+      \field{year}{2019}
+    \endentry
     \entry{zhang2023opti}{article}{}
       \name{author}{5}{}{%
         {{uniquename=1,uniquepart=given,hash=d753d89dae07290ba0d94d65d1bbab18}{%
@@ -1514,8 +1694,6 @@
       \field{year}{2016}
     \endentry
   \enddatalist
-  \missing{abnar2020quantifying}
-  \missing{chefer2021transformer}
 \endrefsection
 \endinput
 

@@ -40,7 +40,7 @@ Unlike CAM-based methods that rely on a class-specific linear combination of fea
 raw attention \autocite{dosovitskiy2020image} and rollout \autocite{abnar2020quantifying} use the 
 attention map of the [CLS] token from the last attention block and from all blocks respectively. 
 \iavr{This attention map depends only on the particular image and not on the target class, hence it
- is not really comparable. TIBAV \cite{chefer2021transformer} uses both instance-specific and 
+ is not really comparable. TIBAV \autocite{chefer2021transformer} uses both instance-specific and 
  class-specific information.
 
 Opti-CAM outperforms all other methods dramatically, reaching near-zero $\AD$ and $\AI$ above 80 or 
@@ -48,3 +48,40 @@ Opti-CAM outperforms all other methods dramatically, reaching near-zero $\AD$ an
 but $\AG$ is much more conservative than $\AI$. On ViT-B for example, the classification score 
 increases for 90.1\% of the images by masking with Opti-CAM, but the gain is only 18.0\% on average.}
 
+\paragraph{More metrics}
+In this section, we show additional metrics including AOPC \autocite{samek2016evaluating}, Max-Sensitivity
+ \autocite{yeh2019fidelity} and ADCC \autocite{poppi2021revisiting}.
+
+We use the code and suggested parameters of package 
+Quantus\footnote{\url{https://github.com/understandable-machine-intelligence-lab/Quantus}} to measure AOPC 
+and MS. In particular, patch size $14$ and number of evaluation regions $10$ for AOPC; lower bound $0.2$ 
+and number of samples $10$ for MS.
+For ADCC, we use the official 
+code\footnote{\url{https://github.com/aimagelab/ADCC?fbclid=IwAR0YK_93lxp4pZQnt34SlA9aeNCLRX8m0u8yTZPxbTXi80qiyhTiqxWaQ7o}}.
+We evaluate these metrics on ImageNet validation set using ResNet50 and VGG16. The results are 
+reported in \autoref{tab:more-metrics-asked}. Since AOPC shares the same philosophy as I/D, it is 
+not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the best performance on MS.
+
+
+\begin{table}[]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr rrr} \toprule
+\mr{2}{\Th{Method}} & \mc{3}{\Th{ResNet50}} & \mc{3}{\Th{VGG16}}  \\ \cmidrule{2-7}
+                    & {{$AOPC\uparrow$}} & {{$MS\downarrow$}}& {{$ADCC\downarrow$}} & {{$AOPC\uparrow$}} 
+                    & {{$MS\downarrow$}}& {{$ADCC\downarrow$}}  \\ \midrule
+Grad-CAM            &11.7&1.05&74.3&13.1&1.10&73.7        \\
+Grad-CAM++          &11.6&1.04&73.6&11.6&1.09&74.6          \\
+Score-CAM           &10.2&1.04&61.0&11.0&1.09&73.9             \\
+XGrad-CAM           &11.9&1.05&74.3&13.1&1.10&73.9           \\
+Ablation-CAM        &11.1&1.04&71.5&12.5&1.10&75.5          \\
+Layer-CAM           &\tb{13.0}&1.22&61.1&\tb{13.3}&1.25&51.7 \\
+ExPerturbation      &12.0&1.07&\tb{26.0}&11.2&1.09&\tb{42.8}  \\
+\hline
+Opti-CAM (ours)     &6.3&\tb{1.03}&65.5&8.9&\tb{1.06}&70.0        \\ \bottomrule
+
+    \end{tabular}
+    \caption{\modify{\emph{AOPC/MS/ADCC} scores on ImageNet validation set; $\downarrow$ / $\uparrow$: lower / higher is better.}}
+    \label{tab:more-metrics-asked}
+\end{table}
