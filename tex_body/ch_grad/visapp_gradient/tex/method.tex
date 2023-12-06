@@ -1,0 +1,144 @@
+\uppercase{\section{Proposed method}}
+\label{sec:method}
+
+\paragraph{Preliminaries}
+
+We consider an image classification network $f$ with parameters $\theta$, which maps an input image $x$ to a vector of class logits $y = f(x; \theta)$. At inference, we predict the class label of maximum confidence $\arg\max_j y_j$, where $y_j$ is the logit of class $i$. At training, given training images $X = \{x_i\}_{i=1}^n$ and target labels $T = \{t_i\}_{i=1}^n$, we compute the \emph{classification loss}
+\begin{equation}
+	L_C(X, \theta, T) = \frac{1}{n} \sum_{i=1}^n \ce(f(x_i; \theta), t_i),
+\label{eq:class}
+\end{equation}
+where $\ce$ is softmax followed by cross-entropy:
+\begin{equation}
+	\ce(y, t) = -\log \frac{e^{y_t}}{\sum_i e^{y_i}} = -y_t + \sum_i e^{y_i}.
+\label{eq:ce}
+\end{equation}
+Updates of parameters $\theta$ are then performed by an optimizer, based on the standard partial derivative (gradient) $\ipder{L_C}{\theta}$ of the classification loss $L_C$ with respect to $\theta$,  obtained by standard back-propagation.
+
+However, due to non-linearities like ReLU activations and downsampling like max-pooling or convolution stride $> 1$, the standard gradient is noisy \cite{smoothgrad}. This is show by visualizing the gradient $\ipder{L_C}{x}$ with respect to an input image $x$. By contrast, the guided gradient $\ipder{_G L_C}{x}$ \cite{guidedbackprop} does not suffer much from noise and preserves sharp details. The difference of the two gradients is illustrated in \ref{fig:method}.
+
+\paragraph{Regularization}
+
+The main idea of this work is to introduce a regularization term during training, which will make the standard gradient $\ipder{L_C}{x}$ behave similarly to the corresponding guided gradient $\ipder{_G L_C}{x}$, while maintaining the predictive power of the classifier $f$. We hypothesize that, if possible, this will improve the quality of all gradients with respect to intermediate activations and therefore the quality of saliency maps obtained by CAM-based methods \cite{cam,gradcam,gradcampp,scorecam} and the interpretability of network $f$. The effect may be similar to that of SmoothGrad \cite{smoothgrad}, but without the need for several forward passes at inference.
+
+In particular, given an input image $x$, we perform a forward pass through $f$ and compute the logit vectors $y_i = f(x_i, \theta)$ and the classification loss $L_C(X, \theta, T)$~\eq{class}. We then obtain the standard gradients $\delta x_i = \ipder{L_C}{x_i}$ and the guided gradients $\delta_G x_i = \ipder{_G L_C}{x_i}$ with respect to the input images $x_i$ by two separate backward passes. Since the whole process is differentiable (\wrt $\theta$) at training, we stop the gradient computation of the latter, so that it only serves as a ``teacher''. We define the \emph{regularization loss} 
+\begin{equation}
+	L_R(X, \theta, T) = \frac{1}{n} \sum_{i=1}^n E(\delta x_i, \delta_G x_i),
+\label{eq:reg}
+\end{equation}
+where $E$ is an error function between the two gradient images, considered below.
+
+Finally, the total loss is defined as
+\begin{equation}
+	L(x, \theta, t) = L_C(x, \theta, t) + \lambda L_R(x, \theta, t),
+\label{eq:total}
+\end{equation}
+where $\lambda$ is a hyperparameter determining the regularization coefficient. 
+$\lambda$ should be large enough to smooth the gradient without decreasing the classification accuracy or hurting the training process. 
+Updates of the network parameters $\theta$ are now based on the gradient $\ipder{L}{\theta}$ \wrt the total loss, using any optimizer. At inference, one may use any interpretability method to obtain a saliency map at any layer.
+
+\paragraph{Algorithm}
+Our method is summarized in Algorithm \ref{alg:grad} %, where \textsc{detach} stops gradient computation, 
+and illustrated in \ref{fig:method}.It is interesting to note that the entire computational graph depicted in \ref{fig:method} involves one forward and two backward passes. This graph is then differentiated again to compute $\ipder{L}{\theta}$, which involves one more forward and backward pass, since the guided backpropagation branch is excluded. Thus, each training iteration requires five passes through $f$ instead of two in a standard training.
+%------------------------------------------------------------------------------
+\begin{algorithm}[t]
+	\SetFuncSty{textsc}
+	\SetDataSty{emph}
+	\newcommand{\commentsty}[1]{{\color{DarkGreen}#1}}
+	\SetCommentSty{commentsty}
+	\SetKwComment{Comment}{$\triangleright$ }{}
+
+	\SetKwFunction{Detatch}{detatch}
+
+	\KwIn{network $f$, parameters $\theta$}
+	\KwIn{input images $X = \{x_i\}_{i=1}^n$}
+	\KwIn{target labels $T = \{t_i\}_{i=1}^n$}
+	\KwOut{loss $L$}
+	$L_C \gets \frac{1}{n} \sum_i \ce(f(x_i; \theta), t_i)$ \Comment*[f]{class. loss \eq{class}} \\
+    \ForEach{$i \in \{1,\dots,n\}$}{
+	 	$\delta_G x_i \gets \ipder{_G L_C}{x_i}$ \Comment*[f]{guided grad} \\
+        $\mbox{\Th{Detach}}(\delta_G x_i)$ \Comment*[f]{detach from graph}
+	 	$\delta x_i \gets \ipder{L_C}{x_i}$ \Comment*[f]{standard grad} \\
+	  } 
+   $L_R \gets \frac{1}{n} \sum_{i=1}^n E(\delta x_i, \delta_G x_i) $ \Comment*[f]{reg. loss \eq{reg}}
+ $L \gets L_C + \lambda L_R$ 
+ \Comment*[f]{total loss ~\eq{total}} \\
+
+\caption{Interpretable gradient loss}
+\label{alg:grad}
+\end{algorithm}
+%------------------------------------------------------------------------------
+
+
+ %This amounts to $2.5\times$ computation overhead.
+
+%\green{is it 2.5 times in space too ???}
+
+\paragraph{Error function}
+
+Given two gradient images $\delta, \delta'$ consisting of $p$ pixels each, we consider the following error functions $E$ to compute the regularization loss~\eq{reg}.
+
+
+%\begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
+%    \item Sigmoid Masking
+%    \begin{equation}
+%        E_{\sigma}(\delta,\delta') = - \sum_{i=0}^p \delta'\odot\frac{e^{\delta}}{e^{\delta}+1}.
+%    \end{equation}
+%    \item Centered Sigmoid Masking
+%    \begin{equation}
+%        E_{\sigma}(\delta,\delta') = - \sum_{i=0}^p \delta'\odot\frac{e^{\delta-\mu_\delta}}{e^{\delta-\mu_\delta}+1}.
+%    \end{equation}
+%\end{enumerate}
+
+
+\begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
+
+ 	\item Mean absolute error:
+ 	\begin{equation}
+ 		E_{\mae}(\delta, \delta') = \frac{1}{p} \norm{\delta - \delta'}_1.
+ 	\label{eq:mae}
+\end{equation}
+ 	\item Mean squared error:
+ 	\begin{equation}
+ 		E_{\mse}(\delta, \delta') = \frac{1}{p} \norm{\delta - \delta'}_2^2.
+ 	\label{eq:mse}
+ 	\end{equation}
+
+\end{enumerate}
+
+We also consider the following two similarity functions, with a negative sign.
+\begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
+	\setcounter{enumi}{2}
+	\item Cosine similarity:
+	\begin{equation}
+		E_{\cos}(\delta, \delta') = -\frac{\inner{\delta, \delta'}}{\norm{\delta}_2 \norm{\delta'}_2},
+	\label{eq:cos}
+	\end{equation}
+ 
+	\item Histogram intersection:
+	\begin{equation}
+		E_{\hi}(\delta, \delta') = -\sum_{i=0}^p 
+			\frac{\min(\abs{\delta_i}, \abs{\delta'_i})}{\norm{\delta}_1 \norm{\delta'}_1}.
+	\label{eq:hi}
+	\end{equation}
+
+	where $\inner{,}$ denotes inner product.
+
+\end{enumerate}
+
+% \begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
+% 	\item Mean absolute error:
+% 	\begin{equation}
+% 		E_{\mae}(\delta, \delta') = \frac{1}{p} \norm{\delta - \delta'}_1.
+% 	\label{eq:mae}
+% 	\end{equation}
+% 	\item Mean squared error:
+% 	\begin{equation}
+% 		E_{\mse}(\delta, \delta') = \frac{1}{p} \norm{\delta - \delta'}_2^2.
+% 	\label{eq:mse}
+% 	\end{equation}
+% \end{enumerate}
+
+% We also consider the following two similarity functions, with a negative sign.
+
+%\green{Do we mention the changes in the architecture so the }

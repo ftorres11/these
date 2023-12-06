@@ -1,0 +1,66 @@
+\documentclass[a4paper,twoside]{article}
+\usepackage{epsfig}
+\usepackage{subcaption}
+\usepackage{calc}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{pslatex}
+\usepackage{apalike}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[bottom]{footmisc}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{algorithmicx}
+\input{tex/plots}
+\floatstyle{plaintop}
+\restylefloat{table}
+
+
+\usepackage{SCITEPRESS}     % Please add other packages that you may need BEFORE the SCITEPRESS.sty package.
+
+
+\begin{document}
+\input{tex/abbrev}
+\input{tex/defn}
+\title{A Learning Paradigm for Interpretable Gradients}
+
+%\author{\authorname{Felipe Torres Figueroa\sup{1}\orcidAuthor{0000-0000-0000-0000}, Hanwei Zhang\sup{1}\orcidAuthor{0000-0000-0000-0000} and Third Author Name\sup{2}\orcidAuthor{0000-0000-0000-0000}}
+
+%\author{\authorname{Felipe Torres Figueroa\sup{1}, Hanwei Zhang\sup{1}, Ronan Sicre\sup{1}, Yannis Avrithis\sup{2}\sup{3} and Stephane Ayache\sup{1}}
+%\affiliation{\sup{1}Centrale Marseille, Aix Marseille Univ, CNRS, LIS, Marseille, France}
+%\affiliation{\sup{2}Athena RC}
+%\affiliation{\sup{3}Institute of Advanced Research on Artificial Intelligence (IARAI)}
+%\email{\{felipe.torres, hanwei.zhang, ronan.sicre, stephane.ayache\}@lis-lab.fr, yannis@avrithis.net}
+%}
+%\author{\authorname{Authors}\affiliation{Affiliations}\email{email}}
+
+\keywords{Gradient, Class Activation Maps, Interpretability}
+
+\abstract{This paper studies deep neural networks interpretability and more specifically the production of saliency maps to explain a Convolutional Neural Network (CNN) decision. Most of the existing approaches derive from Class Activation Maps (CAM) and GradCAM. These methods combine information from fully connected layers and gradient through variations of backpropagation. 
+We present a novel training approach to improve the gradient of a CNN in terms of interpretability.
+In particular, we modify the optimization loss so the gradient obtained from back-propagation at the input image level is similar to the gradient coming from guided backpropagation. The resulting gradient is smoother and offer more interpretable power to the CNN, when applying interpretability methods.}
+
+\onecolumn \maketitle \normalsize \setcounter{footnote}{0} \vfill
+\input{tex/intro}
+\input{tex/rel}
+\input{tex/back}
+\input{tex/method}
+\input{tex/exp}
+\input{tex/conclusion}
+\bibliographystyle{apalike}
+%\tiny
+%\scriptsize
+\footnotesize
+
+\bibliography{egbib}
+
+
+\end{document}
+

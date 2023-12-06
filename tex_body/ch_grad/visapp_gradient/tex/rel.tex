@@ -1,0 +1,132 @@
+\section{\uppercase{Related Work}}
+
+% Begining of interpretability, basics
+Interpretability and explainability of DNN decisions is a topic that receives increasing interest.
+As interpretability is not a simple notion to define, Lipton \cite{mythos_interp} proposes some common ground, definitions and categorization for interpretability methods.
+For instance, transparency aims at making models simple so it is humanly possible to provide an explanation of its inner mechanism.
+However, post-hoc method consider models as black boxes and study the activations leading to a specific output.
+LIME \cite{LIME} and SHAP \cite{NIPS2017_7062} are probably the most popular post-hoc methods that are model agnostic and provide local information.
+Concerning CNN addressing image recognition tasks, numerous work generate saliency maps highlighting the areas of an image that are responsible for a specific decision.
+Many of these methods are either based on back-propagation and its variant or on Class Activation Maps (CAM) that weight the importance of activation maps.
+
+
+
+% Link to the families/approaches towards interpretability
+%As a first approach towards model interpretability, we take notice at what it is and why is it important. %No sentence like that
+% Restructuring, stuff like mythos of interpretability, definitions, concept
+%%%%%%Restructuring in order with Topics:
+%\textbf{Study on Activations maps}
+%This approach towards interpreting models, considers interpretations as activations of a given network, on the input space for a model. Some of the earlier works \cite{deconvnet,understanding_visz} laid the basis upon understanding what deeper layers on a model have learn, while building class-specific saliency maps by gradient ascent on the input space.
+%% LIME?
+
+\subsection{Gradient-based approaches}
+%\cite{guidedbackprop}\cite{smoothgrad}\cite{cam}
+Gradient-based approaches assess the impact of distinct image regions on the prediction based on the partial derivative of the model's prediction function with respect to the input. A simple saliency map can be the partial derivatives obtained in one gradient backward pass through the model~\cite{simonyan2013deep}. 
+Meanwhile, \emph{Guided backpropagation}~\cite{guidedbackprop} enhances explanations by nullifying negative gradients through the use of ReLU units.
+For better visualization, \emph{SmoothGrad}~\cite{smoothgrad} introduce noise-multiplication techniques applied to the input, deriving saliency maps based on the mean of resultant gradients.
+%\emph{Integrated gradients (IG)}~\cite{sundararajan2017axiomatic} estimates the importance of image regions by approximating the integral from the baseline images to the inputs via a Riemann sum.
+\emph{Layer-wise Relevance Propagation (LRP)}~\cite{bach2015pixel} reallocates the prediction score through a custom backward pass across the network.% with a local conservation principle. 
+%LRP is further substantiated via Deep Taylor Decomposition~\cite{montavon2017explaining,montavon2018methods} to provide additional justification for its methodology.
+
+
+
+%\textbf{Latent Space based approaches}
+
+
+\subsection{CAM-based approaches} Class Activation Maps \cite{cam} is a method that produces a saliency map that highlights the areas of an image that are the most responsible for a CNN decision. 
+The map is computed as a linear combinations of feature maps from a given layer and predicted category.
+Different variants of CAM are proposed by modifying the weighting coefficients for a given activation map. Grad-CAM \cite{gradcam}, for instance, computes the averaged gradient back-propagated from a given class. 
+It is also possible to extend this principle to multiple layers \cite{layercam} and 
+to improve sensitivity \cite{sundararajan2017axiomatic} and conservation \cite{montavon2018methods} by the addition of axioms towards the computation \cite{axiombased}. Moreover, Grad-CAM++ \cite{gradcampp}  improves the object localization capabilities by leveraging positive partial derivatives and measuring interpretability with recognition and localization metrics. 
+As mentioned earlier, the gradient can be further improved by adding noise \cite{smoothgrad}. %\cite{omeiza2019smooth}. 
+Later, Score-CAM \cite{scorecam} proposes a gradient-free method that compute weighting coefficients maximizing the Average Increase metric \cite{gradcampp}. 
+%Further improvements are proposed by adding integration to compute scores \cite{iscam}, applying the denoising idea \cite{sscam}.
+%, or using instance level optimization \cite{zhang2023opti}. 
+Finally, some works provide explanations that not only are good at localizing salient parts on images, but also provide theoretical bases on the effect of modifying such regions for a given input \cite{axiombased}.
+An exhaustive alternative  performs ablation experiments to highlight such parts \cite{ramaswamy2020ablation}.
+
+
+
+%\cite{layercam,axiombased},\cite{gradcampp,smoothgcpp} \cite{scorecam,iscam}
+
+
+
+
+
+
+
+%In his work, Lipton\cite{mythos_interp} suggests that the term interpretability is ill-defined, however it has a purpose being that of conveying useful information about the processes of decision making for any given model; thus its relevance comes from the need about knowing what leads these processes, and the demand of explanation when there is a mismatch between the formal objectives of supervised learning and the costs of deployment in the real world. Complementary to these ideas, Selvaraju \etal \cite{gradcam} implies that interpretability is important, as it is required to build trust upon intelligent systems as they are moving towards meaningful integration to our daily lives; thus, we find essential to be able to explain what they predict.\\
+%
+%Complementary to his proposals, Lipton proposes that an interpretable model should be \textit{transparent} \ie \textit{for a given model a complete explanation of how it works is expected} and be able to provide \textit{post-hoc} explanations \ie \textit{insight of the activations that lead a model towards a given output}. It is also noted by Lipton that the concept of interpretability is both important but plastic; and in that regard several considerations are given towards the claims of qualification interpretability, the possibility of mislead from post-hoc interpretations amongst others.\\
+%How do we observe interpretability
+%From the previously enunciated properties of interpretability, special attention has been taken into post-hoc explanations; in due part because \textit{interpretations} provided by it do not compromise predictive performance, but also because this concept aligns with what humans deem interpretable. In computer vision, this sort of interpretability is most often applied by generating visualizations on the input space to qualitatively observe what a model has learned. For this goal, two attributes of a CNN model can be studied: the activations for a given signal, and the gradient that said signal produces on them; moreover it is also possible to induct perturbations on to the inputs to observe changes in predictive power, while on another hand it is also possible to work with features on the latent space, understanding how a change in them affects the predictive power or it can be seen on the input space\cite{networkdecoupling,disentangling_latent}.\\% Regarding activations, we observe some of the earlier works\cite{deconvnet,LIME},\\
+%One of the first proposals to better understand the predictions of CNN, Zieler\& Fergus proposed the deconvolution\cite{deconvnet}; highlighting parts of an image that strongly activate a neuron. Complementary to this, Springenberg \etal \cite{guidedbackprop} proposed the \textit{guided backpropagation}, which helps understanding the impact of each neuron \wrt an image. \cite{LIME}\\
+% Should it be split on gradient-based methods, saliency methods?
+% Why do we want to measure it
+%To be able to measure interpretability, it is necessary to quantify it; on this regard, Bau \etal\cite{dissection} propose to consider the task as that of detection, thus they compute the intersection over union \textit{IoU} for all of the activations of a convolutional unit in a CNN, and the annotation mask for a given concept, on their Boden dataset. Amongside this approach, we also find that human evaluation is often used to estimate this \cite{cam, detectors_emergence}. Most recently, more quantifiable methods towards measuring interpretability have been   %% Add more
+%\noindent\textbf{CAM-based approaches}
+%Throw papers inside. Check notes from reading list.
+
+% Define what interpretability is, why is important, talk about mythos of model interpretability, BRODEN maybe
+% Base interpretability approaches, focus on saliency, deconvnet, 
+%Transparency/Posthoc interpretability
+%Distillation
+%Particular interest in CNN interpretability
+% CAM-based approaches-> Saliency
+% then cam
+%Deconvolution
+%Guided Backpropagation \cite{guidedbackprop}
+%CAM, identifying discriminative regions
+%
+
+% Other interpretability approaches, Thislooks like that, network decoupling
+% Interpretability approaches
+
+%\noindent Our proposed approach presents an opportunity to improve upon the previously mentioned methods, where by denoising the gradient flowing through the network, we can obtain cleaner activations at a given layer.\\
+%\textbf{What is Interpretability? Benchmarks, Mythos of Model interpretability; first approaches} \cite{mythos_interp}\cite{dissection}first approaches \cite{visualizing&saliency,deconvnet} make interpretability reasoning like humans process information \cite{lookslikethat} 
+% \textbf{Interpretability approaches, gradient based, saliency based, decoupling based}  \cite{guidedbackprop} \cite{smoothgrad}; \textbf{Deep Interpretable models} \cite{recognition_grouping} \textbf{Latent Space}latest, investigating through latent space\cite{senseofcnns}
+
+% \textbf{CAM based approaches} \cite{cam} \cite{gradcam} Then comes Grad-CAM\cite{gradcam}, a derivation with layercam and axiom-based cam\cite{layercam,axiombased} then gradcam++\cite{gradcampp}, derivations with \cite{smoothgradcampp} then we talk about score-cam \cite{scorecam}\cite{smoothgcpp}
+
+% \textbf{How do we measure interpretability?}
+%Our approach is complementary to both Grad-CAM and Grad-CAM++, as these proposals rely on the gradient flowing through the network to obtain activations, thus learning to obtain cleaner gradients can porduce better activations. In contrast with Smooth-Grad and Smooth Grad-CAM++, our approach aims to learn how to denoise these gradients, \textbf{JUSTIFY WHY IS THIS BETTER THAN JUST ADDING NOISE TO DENOISE}; finally, compared to Score-CAM, our approach distills knowledge from the gradient cleaning process, into producing better activation maps, additionally, the insight gathered during the training phase of our approach can be used to complement Score-CAM. \textbf{DIFFERENCES TO SCORE-CAM}
+
+
+
+
+
+\subsection{Double backpropagation}
+Double backpropagation is a general regularization method first introduced by Drucker and Le Cun \cite{drucker1991double} to improve generalization.
+The idea is later used to avoid overfitting \cite{philipp2018nonlinearity}, help transfer \cite{srinivas2018knowledge}, cope with noisy labels \cite{luo2019simple}, and recently to increase adversarial robustness \cite{lyu2015unified,simon2018adversarial,ross2018improving,seck20191,finlay2018improved}.
+This regularization aims at penalizing the \emph{L1} \cite{seck20191}, \emph{L2}, or \emph{L$\infty$} norm of the gradient with respect to the input image.
+%and can also be refered as Jacobian penalty. 
+
+Our method is related and regularizes the gradient by aligning standard and guided gradient.
+
+
+%Double back prooften used for adversarial training.
+%In most cases one uses some norm of the gradient \wrt the input image as a loss. 
+%Our contribution is that we use some norm of the difference between standard and guided gradient instead.
+
+
+%Adv:
+%l2 norm in Finlay
+%
+%luo: something different: regularizaiton is variance of prediction according to some perturbation to cope with noisy labels Jacobian
+%
+%Lyu:
+%l2 and l infinity like finlay
+%fast gradient sign method
+%
+%Philipp: nonlinearity coefficient to predict overfitting.
+%
+%Ros gradient wrt to input
+%
+%Seck l1 norm
+%
+%Drucket improve generalization l2
+%
+%Simon first double for adversarial ?
+%
+%Srinivas
+%Jacobian-based penalties improve distillation, robustness to noisy inputs, and transfer learnin

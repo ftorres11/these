@@ -1,0 +1,97 @@
+\uppercase{\section{Introduction}}
+%\section{Introduction}
+
+
+
+The improvements of deep learning methods in the last decade has led to very large developments and a large diffusion to most sectors. Since these models are computationally complex and opaque, the requirements for explanations or interpretable models receives a lot of attention nowadays \cite{mythos_interp}. Explanations and transparency becomes a legal requirements for diverse types of systems that are used to assist high-stakes decisions.
+
+
+In this work, we study deep learning models visual interpretability.
+Model interpretability is often categorized into transparency or post-hoc methods. Transparency aims at producing interpretable models where the inner process or part of it can be understood. Post-hoc methods consider models as black-boxes and interpret decisions mainly based on inputs and outputs. 
+Regarding visual recognition models post-hoc methods producing saliency maps are mostly used as they directly highlight the most important areas of an image related to the decision.
+Initial works focused on gradient information such as guided back-propagation \cite{guidedbackprop}.
+CAM \cite{cam} later presented a class-specific linear combination of feature maps that opened the way to numerous weighting strategies.
+Several methods use gradient information \cite{gradcam}, masking \cite{scorecam}, etc.
+GradCAM \cite{gradcam} and other variants \cite{omeiza2019smooth} are particularly successful gradient methods.
+Interestingly SmoothGrad \cite{smoothgrad} and SmoothGrad-CAM++ \cite{omeiza2019smooth} improve the precision of saliency maps by denoising gradient.
+%These CAM-based methods are the most popular and best performing methods at the moment.
+
+In this work, we follow a similar idea and propose a learning paradigm for model training that constraint gradient in order to improve the performance of interpretability methods.
+In fact, we add a regularization term to the loss function pulling the gradient in the input space to align with the values obtained by guided back-propagation. 
+Such regularization has a smoothing effect on gradient and is expected to improve the precision of model interpretations.
+
+
+More specifically the Figure \ref{fig:method} summarizes our method.
+When training each input image is forwarded to the network to compute the cross-entropy loss. Then a standard and guided back-propagations are computed back to the input image space, where our regularization term is computed. This term is added to the loss and back-propagated only through the standard back-propagation branch.
+
+
+
+The key contributions of this learning interpretable gradients approach follows:
+\begin{itemize}
+    \item We introduce a new learning framework with regularized gradient.
+    \item The proposed method is further evaluated on several architectures both in term of accuracy and interpretability metrics.
+\end{itemize}
+
+
+
+%------------------------------------------------------------------------------
+\begin{figure*}[t]
+\centering
+% \fig[0.45]{method}
+
+%------------------------------------------------------------------------------
+\begin{tikzpicture}[
+	scale=.3,
+	font={\footnotesize},
+	node distance=.5,
+	label distance=3pt,
+	wide/.style={yscale=.75},
+	net/.style={draw,trapezium,trapezium angle=75,inner sep=3pt},
+	enc/.style={net,shape border rotate=270},
+	dec/.style={net,shape border rotate=90},
+	txt/.style={inner sep=3pt},
+	loose/.style={looseness=.6},
+	sg/.style={blue!60},
+]
+\matrix[
+	tight,row sep=6,column sep=16,
+	cells={scale=.3,},
+] {
+	\&\&\&\&\&
+	\node[dec] (guided-back) {guided \\ backprop}; \&
+	\node[wide,label=90:$\ipder{_G L_C}{x}$] (guided) {\fig[.1]{method/guided_gradient}}; \\
+	\node[label=90:input image $x$] (in) {\fig[.1]{method/input}}; \&
+	\node[enc] (net) {network \\ $f$}; \&\&\&
+	\node[box] (class) {classification \\ loss $L_C$}; \&
+	\node[dec] (back) {standard \\ backprop}; \&
+	\node[wide,label=90:$\ipder{L_C}{x}$] (grad) {\fig[.1]{method/gradient}}; \&
+	\node[box] (reg) {regularization \\ loss $L_R$}; \\
+	\&\&\&\&\&\&\&
+	\node[op] (plus) {$+$}; \&
+	\node[txt] (loss) {total loss \\ $L = L_C + $\\ $\lambda L_R$}; \\
+};
+
+\draw[->]
+	(in) edge (net)
+	(net) edge node[above] {logits $y$} (class)
+	(class) edge (back)
+	(back) edge (grad)
+	(guided-back) edge[sg] (guided)
+	(grad) edge (reg)
+	(reg) edge (plus)
+	(plus) edge (loss)
+	(class) edge[sg,out=90,in=180] (guided-back)
+	(class) edge[loose,out=-50,in=180] (plus)
+	(guided) edge[sg,out=0,in=90] node[pos=.2,font=\large,label=0:stop gradient] {//} (reg)
+	(net) edge[dashed,out=60,in=150] (guided-back)
+	(net) edge[dashed,out=30,in=150] (back)
+	;
+
+\end{tikzpicture}
+%------------------------------------------------------------------------------
+
+\caption{Pipeline of the proposed interpretable gradient learning. Given an imput image $x$, we obtain the logit vector $y = f(x; \theta)$ by a forward pass through the network $f$ with parameters $\theta$ and we compute the classification loss $L_C$ by softmax and cross-entropy~\eq{class},\eq{ce}. We then obtain the standard gradient $\ipder{L_C}{x}$ and the guided gradient $\ipder{_G L_C}{x}$ by two backward passes and, after stopping the gradient of the latter, we compute the regularization loss $L_R$ as the error between the two~\eq{reg},\eq{mae}-\eq{cos}. We thus learn to denoise the standard gradient according to the guided one. Finally, the total loss is $L = L_C + \lambda L_R$~\eq{total}. Backpropagation through $f$ is depicted ``unrolled'' as a decoder; there are implicit connections between the forward and backward passes (dashed lines). Learning is based on $\ipder{L}{\theta}$, which involves differentiation of the entire computational graph except the guided backpropagation branch (in blue).}
+\label{fig:method}
+\end{figure*}
+%------------------------------------------------------------------------------
+

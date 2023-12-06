@@ -1,0 +1,79 @@
+\uppercase{\section{Background}}
+\label{sec:back}
+
+%This section presents some background information regarding guided back propagation and CAM methods
+
+% (Need to elaborate, talk about stuff in verbatum like Mythos of Model interpretability)\cite{mythos_interp} GuidedBackprop\cite{guidedbackprop} Deconvnet\cite{deconvnet} Perturbation Model\cite{perturb_inter}
+
+\subsection{Guided backpropagation \cite{guidedbackprop}}
+The derivative of the $\relu$ unit $v = \relu(u) = [u]_+ = \max(u,0)$ with respect to its input $u$ is $\ider{v}{u} = \ind_{u>0}$. By the chain rule, a signal $\delta v = \ipder{L}{v}$ is then propagated backwards through $\relu$ to $\delta u = \ipder{L}{u}$ as $\delta u = \ind_{u>0} \delta v$, where the partial derivative of any scalar quantity of interest is meant, \eg a loss $L$.
+
+Guided backpropagation \cite{guidedbackprop} changes this to $\delta_G u = \ind_{u>0} \ind_{dv>0} \delta v = \ind_{u>0} [\delta v]_+$, essentially masking out values corresponding to negative entries of both the forward ($u$) and the backward ($\delta v$) signals and thus preventing backward flow of negative gradients.
+
+Considering the partial derivative $\ipder{L}{u}$ of some loss $L$ with respect to a variable $u$, \eg through an entire network or part of it, standard backpropagation with this particular change for $\relu$ units is called \emph{guided backpropagation}. We denote the corresponding guided ``partial derivative'' or \emph{guided gradient} by $\ipder{_G L}{u}$. This backpropagation method allows sharp visualization of high level activations conditioned on input images.
+
+%------------------------------------------------------------------------------
+
+\subsection{CAM-based methods}
+
+CAM-based methods build a saliency map as a linear combination of  activation map. 
+Specifically, given a target class $c$ and a set of 2D activation maps $\{A^k\}_{k=1}^K$, % outputed from a convolutional layer of a network, 
+CAM \cite{cam} is defined as follows:
+%ed by $\relu$
+\begin{equation}
+	S^c = \relu \left( \sum_{k=1}^K \alpha^c_k A^k \right),
+\label{eq:cam}
+\end{equation}
+where the weight $\alpha^c_k$ determines the contribution of channel $k$ to class $c$. This map $S^c$ and the feature maps $A^k$ are non-negative because both are computed with $\relu$ activation functions. Different CAM-based methods differ primarily in the definition of the weights $\alpha^c_k$.
+
+\paragraph{CAM \cite{cam}}
+originally defines $\alpha^c_k$ as the weight connecting channel $k$ to class $c$ in the final classification classifier, assuming $\{A^k\}$ are the feature maps of the last convolutional layer, which is followed by \emph{global average pooling} (GAP) and a single dense layer.
+
+\paragraph{Grad-CAM \cite{gradcam}}
+
+is a generalization of CAM for any networks. If $y^c$ is the logit of class $c$, the weights are obtained by GAP of the partial derivatives of $y^c$ with respect to the feature map $A^k$ of a given layer:
+\begin{equation}
+    \alpha^c_k = \frac{1}{Z} \sum_{i,j} \pder{y^c}{A^k_{ij}},
+\label{eq:gcam}
+\end{equation}
+where $A^k_{ij}$ denotes the value at spatial location $(i,j)$ of feature map $A^k$ and $Z$ is the total number of spatial locations.
+
+Guided Grad-CAM elementwise-multiplies the saliency maps obtained by Grad-CAM and guided backpropagation, after adjusting spatial resolutions. The resulting visualizations are both class-discriminative (by Grad-CAM) and contain fine-grained detail (by guided backpropagation).
+
+\paragraph{Grad-CAM++ \cite{gradcampp}}
+
+is a generalization of Grad-CAM, where partial derivatives of $y^c$ with respect to $A^k$ are followed by $\relu$ as in guided backpropagation \cite{guidedbackprop} and GAP is replaced by a weighted average:
+\begin{equation}
+    a^c_k = \sum_{i,j} w^{kc}_{ij} \relu \left( \pder{y^c}{A^k_{ij}} \right).
+\label{eq:gcamp}
+\end{equation}
+The weights $w_{ij}^{kc}$ of the linear combination are
+\begin{equation}
+    w_{ij}^{kc} = \frac{\pder[2]{y^c}{(A^k_{ij})}}
+		{2\pder[2]{y^c}{(A^k_{ij})} + \sum_{a,b} A^k_{ab}\pder[3]{y^c}{(A^k_{ij})}}.
+\label{eq:gcampw}
+\end{equation}
+
+%\paragraph{Smooth Grad-CAM++ \cite{smoothgradcampp}}
+
+%\green{
+%\paragraph{SmoothGrad \cite{smoothgrad}} argues that non-linearities like ReLU activations render derivatives noisy. Thus, to improve smoothness of any derivative $D(x)$ with respect to input image $x$, it takes $m$ Gaussian noise images $\epsilon_i \sim \normal(0,\sigma^2)$ and averages the derivatives with respect to $x + \epsilon_i$:
+%\begin{equation}
+%    \hat{D}(x) = \frac{1}{m} \sum_{i=1}^m D(x + \epsilon_i).
+%\label{eq:smooth}
+%\end{equation}
+%Smooth Grad-CAM++ \cite{smoothgradcampp} applies this idea to Grad-CAM++ \cite{gradcampp}, essentially replacing all partial derivatives in~\eq{gcamp},\eq{gcampw} by smoothed versions according to~\eq{smooth}.
+%}
+
+
+\paragraph{Score-CAM \cite{scorecam}}
+
+%Following the \emph{increase in confidence} metric proposed in Grad-CAM++, 
+computes the weights $a^c_k$ based on the increase in confidence \cite{gradcampp} for class $c$ obtained by masking (element-wise multiplying) the input image $x$ with feature map $A^k$:
+\begin{equation}
+	a^c_k = f(x \circ s(\up(A^k)))_c - f(x_b)_c,
+\label{eq:scam}
+\end{equation}
+where $\up$ is upsampling to the spatial resolution of $x$, $s$ is linear normalization to range $[0,1]$, $\circ$ is the Hadamard product, $f$ is the classifier mapping of input image to class logits and $x_b$ is a baseline image.
+
+While Score-CAM does not require gradients to compute saliency maps, \eq{scam} requires one forward pass through the network $f$ for each channel $k$ and our method modify filters weights during learning.
