@@ -129,7 +129,7 @@ The saliency map is expressed as a linear combination of feature maps~\eq{v-sal}
 	\cM \defn \{ S_\ell(\vx; \vu) : \vu \in \real^{K_\ell} \}.
 \label{eq:mask-m}
 \end{equation}
-This constraint makes ours a CAM-based method. It dispenses the need for regularizers, because we only optimize one vector over the feature dimensions\modify{ (up to 2,048 for ResNet50), which is small compared with the dimensions of input images (50k for ImageNet)}. In addition, it does not complicate the optimization process in any way. It is only a different parametrization.}
+This constraint makes ours a CAM-based method. It dispenses the need for regularizers, because we only optimize one vector over the feature dimensions (up to 2,048 for ResNet50), which is small compared with the dimensions of input images (50k for ImageNet)}. In addition, it does not complicate the optimization process in any way. It is only a different parametrization.
 
 %------------------------------------------------------------------------------
 

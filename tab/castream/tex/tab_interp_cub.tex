@@ -1,0 +1,42 @@
+%------------------------------------------------------------------------------
+\begin{table}
+    \centering
+    \scriptsize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{llccccc}\toprule                    
+        \mc{7}{\textbf{\Th{CUB-200-2011 - ResNet-50}}}\\\midrule
+        &\Th{Pooling}&\mc{2}{}&\mc{2}{}&\Th{Acc$\uparrow$}\\\midrule
+            &\gap&\mc{2}{}&\mc{2}{}&76.96\\
+            &\ours&\mc{2}{}&\mc{2}{}&75.90\\\midrule
+        
+        \mc{7}{\Th{Interpretability Metrics}}\\\midrule
+        \Th{Method}&\Th{Pooling}&AD$\downarrow$&AG$\uparrow$&AI$\uparrow$&I$\uparrow$&D$\downarrow$\\\midrule
+        \mr{2}{Grad-CAM}&\gap&10.87&10.29&45.81&65.71&\textbf{6.17}\\
+            &\ours&\textbf{10.44}&\textbf{17.61}&\textbf{53.54}&\textbf{74.60}&6.56\\\midrule
+        \mr{2}{Grad-CAM++}&\gap&11.35&9.68&44.32&65.64&\textbf{5.92}\\
+            &\ours&\textbf{11.01}&\textbf{16.50}&\textbf{51.63}&\textbf{74.64}&6.21\\\midrule
+        \mr{2}{Score-CAM}&\gap&9.05&10.62&48.90&65.58&5.94\\
+            &\ours&\textbf{6.37}&\textbf{19.50}&\textbf{60.41}&\textbf{74.22}&\textbf{2.14}\\
+    
+    \midrule
+      \midrule
+    
+        \mc{7}{\textbf{\Th{Pascal VOC 2012 - ResNet-50}}}\\\midrule
+        &\Th{Pooling}&\mc{2}{}&\mc{2}{}&\Th{mAP$\uparrow$}\\\midrule
+            &\gap&\mc{2}{}&\mc{2}{}&78.32\\
+            &\ours&\mc{2}{}&\mc{2}{}&78.35\\\midrule
+        
+        \mc{7}{\Th{Interpretability Metrics}}\\\midrule
+        \Th{Method}&\Th{Pooling}&AD$\downarrow$&AG$\uparrow$&AI$\uparrow$&I$\uparrow$&D$\downarrow$\\\midrule
+        \mr{2}{Grad-CAM}&\gap&\textbf{12.61}&9.68&27.88&\textbf{89.10}&59.39\\
+            &\ours&12.77&\textbf{15.46}&\textbf{34.53}&88.53&\textbf{59.16}\\\midrule
+        \mr{2}{Grad-CAM++}&\gap&\textbf{12.25}&9.68&27.62&\textbf{89.34}&54.23\\
+            &\ours&12.28&\textbf{16.76}&\textbf{34.87}&89.02&\textbf{53.34}\\\midrule
+        \mr{2}{Score-CAM}&\gap&14.8&6.76&36.41&71.10&\textbf{39.95}\\
+            &\ours&\textbf{10.96}&\textbf{21.35}&\textbf{43.82}&\textbf{89.21}&51.44\\\bottomrule
+      
+    \end{tabular}
+    \caption{}
+    %\caption{Accuracy, respectively mean Average Precision, and interpretability metrics of \Ours \vs baseline \gap for ResNet-50 on CUB and Pascal dataset.}
+    \label{tab:pascal}
+\end{table}

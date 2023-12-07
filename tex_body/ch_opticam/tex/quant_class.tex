@@ -64,24 +64,23 @@ not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the
 
 
 \begin{table}[]
-\centering
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrrr rrr} \toprule
-\mr{2}{\Th{Method}} & \mc{3}{\Th{ResNet50}} & \mc{3}{\Th{VGG16}}  \\ \cmidrule{2-7}
-                    & {{$AOPC\uparrow$}} & {{$MS\downarrow$}}& {{$ADCC\downarrow$}} & {{$AOPC\uparrow$}} 
-                    & {{$MS\downarrow$}}& {{$ADCC\downarrow$}}  \\ \midrule
-Grad-CAM            &11.7&1.05&74.3&13.1&1.10&73.7        \\
-Grad-CAM++          &11.6&1.04&73.6&11.6&1.09&74.6          \\
-Score-CAM           &10.2&1.04&61.0&11.0&1.09&73.9             \\
-XGrad-CAM           &11.9&1.05&74.3&13.1&1.10&73.9           \\
-Ablation-CAM        &11.1&1.04&71.5&12.5&1.10&75.5          \\
-Layer-CAM           &\tb{13.0}&1.22&61.1&\tb{13.3}&1.25&51.7 \\
-ExPerturbation      &12.0&1.07&\tb{26.0}&11.2&1.09&\tb{42.8}  \\
-\hline
-Opti-CAM (ours)     &6.3&\tb{1.03}&65.5&8.9&\tb{1.06}&70.0        \\ \bottomrule
-
+    \centering
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{lrrr rrr} \toprule
+        \mr{2}{\Th{Method}} & \mc{3}{\Th{ResNet50}} & \mc{3}{\Th{VGG16}}  \\ \cmidrule{2-7}
+        & {{$AOPC\uparrow$}} & {{$MS\downarrow$}}& {{$ADCC\downarrow$}} & {{$AOPC\uparrow$}} 
+        & {{$MS\downarrow$}}& {{$ADCC\downarrow$}}  \\ \midrule
+        Grad-CAM            &11.7&1.05&74.3&13.1&1.10&73.7        \\
+        Grad-CAM++          &11.6&1.04&73.6&11.6&1.09&74.6          \\
+        Score-CAM           &10.2&1.04&61.0&11.0&1.09&73.9             \\
+        XGrad-CAM           &11.9&1.05&74.3&13.1&1.10&73.9           \\
+        Ablation-CAM        &11.1&1.04&71.5&12.5&1.10&75.5          \\
+        Layer-CAM           &\tb{13.0}&1.22&61.1&\tb{13.3}&1.25&51.7 \\
+        ExPerturbation      &12.0&1.07&\tb{26.0}&11.2&1.09&\tb{42.8}  \\\hline
+        Opti-CAM (ours)     &6.3&\tb{1.03}&65.5&8.9&\tb{1.06}&70.0        \\ \bottomrule
     \end{tabular}
-    \caption{\modify{\emph{AOPC/MS/ADCC} scores on ImageNet validation set.}}
+    \caption{}
+    %\caption{\modify{\emph{AOPC/MS/ADCC} scores on ImageNet validation set.}}
     \label{tab:more-metrics-asked}
 \end{table}
