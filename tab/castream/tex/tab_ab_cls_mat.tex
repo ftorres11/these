@@ -1,0 +1,17 @@
+\begin{table}
+    \centering
+    \scriptsize
+    \setlength{\tabcolsep}{2.5pt}
+    \begin{tabular}{lllccccc}\toprule                    
+        Repr&Accuracy&Method&AD$\downarrow$&AG$\uparrow$&AI$\uparrow$&I$\uparrow$&D$\downarrow$\\\midrule
+        \multirow{3}{*}{CLS$_T$}&\multirow{3}{*}{74.70}&Grad-CAM&12.54&22.67&48.56&75.53&13.50\\
+            & &Grad-CAM++&13.99&19.29&44.60&75.21&13.78\\
+            & &Score-CAM&7.09&23.65&54.20&74.91&14.68\\\midrule
+            \multirow{3}{*}{CLS$_M$}&\multirow{3}{*}{74.68}&Grad-CAM&12.53&22.66&48.58&75.54&13.50\\
+            & &Grad-CAM++&13.99&19.28&44.62&75.20&13.78\\
+            & &Score-CAM&TBA&TBA&TBA&TBA&TBA\\\bottomrule
+    \end{tabular}
+    \vspace{3pt}
+    \caption{Interpretable recognition comparison between Class agnostic tokens (\emph{CLS$_T$}) and Class specific tokens (\emph{CLS$_M$}).}
+    \label{tab:TokenvMatrix}
+\end{table}
