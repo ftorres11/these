@@ -1,0 +1,80 @@
+\section{Method}
+\label{sec:method}
+
+\paragraph{Motivation}
+
+Addressing the OOD problem is possible by using models that have been explicitly trained for this task, that is, replacing the hidden parts with new content that depends on the visible parts, as discussed in \autoref{sec:related}. Of course, the generated content now also depends on the entire \emph{data distribution} where such a model is trained.
+
+Addressing the problem of distribution shift is possible by defining desirable properties for the generated images, translating these properties into loss functions, and then minimizing the loss function with respect to the generated images. Because loss functions are measured at the output of the model to be interpreted, the generation process now also depends on the \emph{model parameters}. Optimization is popular for attribution methods \citep{zhang2023opticam, schulz2020restricting} and evaluation metrics \citep{khakzar2022explanations, poppi2021revisiting}. Here, we are interested in hiding information instead.
+
+In this work, we introduce the \emph{zero information parts} (ZIP) algorithm, which combines the two ideas above to hide information from images such that the generated images remain within the data distribution and the attribution of visible parts remains unaffected.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Problem formulation}
+
+We are given a \emph{classifer function} $f : \cX \to \real^k$ where $\cX = \real^{r \times c}$ and a \emph{binary mask} $M \in \{0,1\}^r$. For images, $r = w \times h$ is the spatial resolution, of width $w$ and height $h$, and $c$ is the number of color channels. Function $f$ makes predictions over $k$ classes. The mask $M$ can be defined by means of thresholding given an \emph{attribution function} $a: \cX \to [0,1]^r$ that we intend to evaluate. Different definitions are given in \autoref{sec:exp}.
+
+Parts of an input $x \in \cX$ for which the mask $M$ is zero are called \emph{masked}, \emph{hidden} or \emph{background}; parts for which $M$ is one are called \emph{visible} or \emph{foreground}. In abstract terms, our objective is to replace the hidden parts of $x$ to generate a new input $x' \in \cX$ with the following properties:
+\begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=3pt]
+	\item The classifier $f$ performs equally well on $x$ and $x'$.
+	\item The visible parts of $x$ and $x'$ have the same attribution.
+	\item The hidden part of $x'$ has zero attribution.
+\end{enumerate}
+For the first property, we assume access to the training data of $f$ to model the data distribution. For the other two properties however, other than defining $M$, we do not have access to the attribution function $a$ when generating $x'$.
+
+%------------------------------------------------------------------------------
+
+\paragraph{In-distribution data}
+
+A common choice for $x'$ is to replace hidden parts of $x$ with zero (black). The problem with this choice is that the resulting $x'$ is \emph{out-of-distribution} (OOD) relative to the data distribution where the $f$ is learned, resulting in poor performance of $f$ on such masked images. To account for property 1, we fill in the hidden parts of $x$ in such a way that $x'$ is \emph{in-distribution} (ID), that is, is interpreted by humans as a natural image. There are many ways to achieve this, as discussed in \autoref{sec:related}. We choose the \emph{masked autoencoder} (MAE)~\citep{9879206}, trained on the same training set as $f$.
+
+MAE consists of an encoder $g^e : \cX \times \{0,1\}^r \to \real^{r^g \times d^g}$, a decoder $f^c: \real^{r^g \times d^g} \to \cX$ and a learnable \emph{mask token} $m \in \real^{d^g}$. Here, $r^g$ is the spatial resolution and $d^g$ the dimension of the latent tensor representation. Given an input $x \in \cX$ and a mask $M \in \{0,1\}^r$, $g^e$ encodes only the visible part of $x$ and yields a latent representation where the hidden part is zero. Then, the mask token $m$ is added to the hidden part before decoding by $g^d$:
+\begin{equation}
+	g^\mae(x, M) = g^d(g^e(x, M) + (1-M^g) \odot m).
+\label{eq:mae}
+\end{equation}
+Here, $M^g \in \{0,1\}^{r^g}$ is resampling of $M$ to spatial resolution $r^g$ and $\odot$ is Hadamard product that broadcasts as needed over the spatial and latent feature dimensions.
+
+%------------------------------------------------------------------------------
+
+\paragraph{The ZIP algorithm}
+
+Our \emph{zero information parts} (ZIP) algorithm extends MAE by incorporating a tensor $z \in \real^{r^g \times d^g}$ in the latent space and optimizes $z$ at test time to accommodate for properties 2 and 3. In particular, given input $x \in \cX$ and mask $M \in \{0,1\}^r$, we modify~\eq{mae} by perturbing the mask token $m$ by $z$, which is different at each spatial location, to generate
+\begin{equation}
+	x' = g^d(g^e(x, M) + (1-M^g) \odot (m + z)),
+\label{eq:rec}
+\end{equation}
+which we call the \emph{reconstructed image}. Note that only the hidden part of $z$ is taken into account. In addition, without using the encoder, we add the hidden part of $z$ to the mask token alone and decode into the \emph{zero image}
+\begin{equation}
+	x^0 = g_d(m + (1-M^g) \odot z).
+\label{eq:zero}
+\end{equation}
+Both $x'$ and $x^0$ are passed through the classifier $f$. The output $f(x')$ is used, along with $f(x)$, to account for property 2. The output $f(x^0)$ is used to account for property 3. This is done by attaching appropriate loss functions to the two outputs, as discussed below. Then, variable $z$ is optimized by back-propagating through the classifier $f$ and the decoder $g^d$ and adding the gradients from the two paths through $x'$~\eq{rec} and $x^0$~\eq{zero}.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Loss functions}
+
+We define one regularizer on $z$ alone and two loss functions for properties 2 and 3:
+\begin{enumerate}
+	\item \emph{Minimal impact.} Variable $z$ is meant as a small perturbation on the mask token $m$ as needed for properties 2 and 3, otherwise having minimal impact on the MAE reconstruction. We thus \alert{initialize $z$ as zero} and regularize it during optimization by a \emph{decay loss}
+	\begin{equation}
+		L_z = \lambda \|z\|^2,
+	\end{equation}
+	where $\lambda$ is a decay hyper-parameter.
+	
+	\item \emph{Foreground stability.} According to property 2, the foreground parts of the original image $x$ and reconstructed image $x'$ should have the same contribution to the prediction of $f$, as reflected by their attribution. Since the attribution function $a$ is not accessible, we use the dense features of $x$ and $x'$ as a surrogate. In particular, we decompose function $f$ as $f^c \circ f^e$, where $f^e: \cX \to \real^{r^f \times d^f}$ is an encoder and $f^c: \real^{r^f \times d^f} \to \real^k$ is a classifier. Here, $r^f$ is the spatial resolution and $d^f$ the dimension of the intermediate tensor representation. With these definitions in place, the \emph{foreground loss}
+	\begin{equation}
+		L_F = \norm{M^f(f^e(x') - f^e(x))}^2,
+	\end{equation}
+	brings the foreground features of $x$ and $x'$ close to each other, where $M^f \in \{0,1\}^{r^f}$ is resampling of $M$ to spatial resolution $r^f$.
+
+	\item \emph{Background neutrality.} According to property 3, when decoded, the generated background part should not contribute to the prediction of $f$, as reflected by having zero attribution. Since the attribution function $a$ is not accessible, we use the output class probabilities of $f$ as a surrogate. Since the ground truth class is unknown, the \emph{background loss}
+	\begin{equation}
+		L_B = -H(f(x^0)).
+	\end{equation}
+	maximizes the entropy of $f(x^0)$ such that the model is completely indecisive between classes for the zero image $x^0$.
+\end{enumerate}
+
+In TODO, we find strong cooperation with the three losses, leading to very accurate results according to different metrics. 

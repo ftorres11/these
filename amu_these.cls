@@ -23,8 +23,7 @@
 \RequirePackage[TS1,T1]{fontenc}			%% encodage des fontes
 %\RequirePackage{lmodern}					%% polices latines (désactivés)
 \RequirePackage{fourier}					%% polices Adobe Utopia (activés)
-\RequirePackage[english,main=french]{babel}	%% typographie (français par défaut)
-%\RequirePackage[english,main=english]{babel}	%% typographie (français par défaut)
+\RequirePackage[french,main=english]{babel}	%% typographie (français par défaut)
 \RequirePackage[babel]{csquotes}			%% guillemets typographiques
 \MakeAutoQuote{«}{»}						%% espacement automatique des guillemets
 
@@ -65,10 +64,14 @@
 %%% appareil de référence (sauf glossaires)
 \PassOptionsToPackage{						%% options biblatex
 	backend=biber,							%% compilateur par défaut pour biblatex
-	maxnames=3,								%% nombre max. de noms auteurs
-	minnames=3,								%% nombre min. de noms auteurs
+	maxnames=3,								%% nombre max. de noms auteurs dans la bibliographie
+	minnames=3,								%% nombre min. de noms auteurs dans la bibliographie
+	maxcitenames=1,							%% nombre max. de noms auteurs dans les citations
+	mincitenames=1,							%% nombre min. de noms auteurs dans les citations
 	sorting=nyt,							%% trier par nom, année, titre
-	citestyle=authoryear,					%% style de citation auteur-année
+	pagetracker,							%% pour l'utilisation d'ibidem
+	ibidtracker=constrict,					%% pour l'utilisation d'ibidem
+	citestyle=authoryear-ibid,				%% style de citation auteur-année
 	bibstyle=alphabetic,					%% style de bibliographie alphabétique
 %	bibstyle=iso-authoryear,				%% style de bibliographie ISO 690
 	backref=true							%% liens retour des références (cf. p.)
@@ -84,11 +87,12 @@
 \RequirePackage{imakeidx}					%% index
 \RequirePackage{etoc}						%% fonctions pour TOC locale (préférable à minitoc avec KOMA-Script)
 \setuptoc{toc}{totoc}						%% ajoute la TOC à la TOC
-\newcommand{\chaptertoc}[1][Sommaire]{%		%% définit une commande pour la TOC locale (Sommaire)
+\newcommand{\chaptertoc}[1][Table of contents]{%		%% définit une commande pour la TOC locale (Sommaire)
 	\etocsetnexttocdepth{3}%				%% profondeur de la TOC locale
 	\etocsettocstyle{\addsec*{#1}}{}%
 	\localtableofcontents%
 }
+\RequirePackage{nameref}					%% références croisées avec nommage littérale
 
 \setcounter{secnumdepth}{3}					%% profondeur des sections numérotées
 \setcounter{tocdepth}{2}					%% profondeur des sections dans la table des matières
@@ -145,7 +149,7 @@
 	linktocpage=false,						%% lien numéro de page dans TOC
 %% métadonnées :							%% ATTENTION à compléter
 	pdftitle={Titre},
-	pdfauthor={Prénom NOM},
+	pdfauthor={Felipe TORRES},
 	pdfsubject={Résumé},
 	pdfkeywords = {mot clé, keyword, ...},
 	}

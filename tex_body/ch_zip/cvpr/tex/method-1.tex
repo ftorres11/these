@@ -1,0 +1,81 @@
+\section{Method}
+\label{sec:method}
+
+\paragraph{Problem formulation}
+
+Consider a function $f:\mathbb{R}^n \to \mathbb{R}^c$, and a masking function $M:\mathbb{R}^n \to \mathbb{R}^n$. For an input $x$, fill the hidden parts of $M(x)$ in such a way that there is no addition/removal of information to/from the visible parts of $M(x)$ with respect to the function $f$.
+
+In computer vision, $f$ is some particular Deep Neural Network architecture, making predictions about $c$ classes. Its domain is the image space $\mathcal{X}$, with dimensions $n\times h\times w$, where the variables $n, h, w$ correspond to the number of channels, the height and width of an image respectively.
+
+%------------------------------------------------------------------------------
+
+\paragraph{The choice of the masking function}
+
+Although the ZIP algorithm tackles the aforementioned problem in its general form, it can also be applied for evaluating different attribution methods. In that case, the choice of the masking function $M$ can be the following: 
+\begin{equation}
+    M(x) = x \odot \mathds{1}[a(x) \geq \overline{(a(x))}]
+\end{equation}
+% \begin{equation}
+% M(x)_i = M_a(x)_i=
+%     \begin{cases}
+%         0 & \text{if } a(x)_i \leq \emph{m}(a(x))\\
+%         x_i & \text{otherwise} 
+%     \end{cases}
+% \end{equation}
+We consider $\odot$ to be the Hadamart product, $\mathds{1}$ to be the indicator function and $a:\mathcal{X} \to \mathcal{X}$ to be a particular attribution method. The over-line represents the mean function. 
+% $\emph{m}:\mathbb{I}^{n\times h\times w} \to \mathbb{R}$ calculates the mean value of a tensor $x$. 
+We call the parts of the image with important attributions as \emph{foreground}, the rest as \emph{background}.
+
+We also define a function $M'$ working opposite of (2) as
+\begin{equation}
+    M'(x) = x \odot \mathds{1}[a(x) < \overline{(a(x))}]
+\end{equation}
+% \begin{equation}
+% M'(x)_i = M'_a(x)_i=
+%     \begin{cases}
+%         x_i & \text{if } a(x)_i \leq \emph{m}(a(x))\\
+%         0 & \text{otherwise} 
+%     \end{cases}
+% \end{equation}
+Different functions could be used instead of the mean, in order for the mask $M$ to distinguish between the important and unimportant features that $a$ suggests. Although, a function that chooses whole image parts and not sparse pixels might be required. The simple choice of the mean value is in alignment with many evaluation metrics used in bibliography [ref]. 
+
+%------------------------------------------------------------------------------
+
+\paragraph{In-distribution criterion}
+
+The main idea of the algorithm is to perform an optimization to the hidden parts, in order to find a local optimum that respects the problem's criterion. Since there is an abundance of local optima to discover, we introduce another criterion that drives our choice: we fill the image in such a way that the resulting image is in-distribution of data of the model $f$ and is also human interpretable. To achieve this, we make use of $MAE$ \citep{9879206}. MAE is an encoder-decoder architecture, that reconstructs an input image $x$ with randomly hidden pixels. We extend this model, defining $g: \mathcal{X} \times \mathcal{X}_{\{0, 1 \}} \to \mathcal{X}$ and integrating $M$ into the encoder of $g$, in order to reconstruct specific hidden image parts. Let's define as $g_e, g_d$ the encoder and decoder of $g$ respectively. Thus, $g(x, M) = g_d(g_e(x, M))$.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Algorithm}
+
+The algorithm starts by masking the input image $x$ according to $M$ and passing it through $g_e$. In that phase, a random variable $z \in \mathcal{X}$, is added only to the hidden parts of $x$, with the use of (3). This variable is initialized by the uniform distribution. The addition  
+\begin{equation}
+    x_{rec} \:= g(M(x) + M'(z)),
+\end{equation}
+$x_{rec} \in \mathcal{X}$, can be defined as \emph{reconstructed image}. In that way, the algorithm calculates the reconstructed image, as well as
+\begin{equation}
+    z_{rec} = g(z, M')
+\end{equation} and pass them both through $f$. It then calculates the loss and back-propagates it all the way back to the variable $z$. This procedure is repeated for a number of epochs, until it converges to a local optimum.
+
+\paragraph{Loss criterion}
+
+The design of the loss function lies at the core of the ZIP algorithm. A robust, well designed loss criterion will lead to an effective solution of the problem. We construct the overall loss to be composed of three parts, each satisfying a different criterion. The criteria are the following;
+\begin{itemize}
+	\item \emph{No information addition.} The variable $z$ should contain no information with respect to model $f$, i.e. maximizing the entropy of $f(z_{rec})$. Thus, we define 
+	\begin{equation}
+		l_1 = H(f(x_0))-H(f(z_{rec})),
+	\end{equation}
+	where $x_0$ is a variable that maximizes the entropy $H$ of $f(x)$, for all $x \in \mathcal{X}$. Put in simple words, the maximization of the model's entropy means that the model is completely indecisive for $z$ and all the neurons of its last layer are equally activated.  
+	\item \emph{Information neutrality w.r.t. the foreground.} The foreground information of the reconstructed image $x_{rec}$ should have the same attribution as that of $x$ to the model $f$. For that reason, we dive into a deep layer of $f$, which we define as $f^d$, and constraint the foreground of the reconstructed part to match that of $x$. Thus, we define
+	\begin{equation}
+		l_2 = \|f^d(M^d(x_{rec)})) - f^d(M^d(x))\|^2
+	\end{equation}
+	This loss ensures that the information infused to the foreground from the background parts resembles that of the initial image. Thus, the background part, although containing no information due to l1, is selected in such a way that it coordinates with the information of the foreground. The deeper the layer, the better the coordination.
+	\item \emph{Minimal impact.} We want to find such $z$ that has the minimum impact to $x$, thus we want to keep its norm low. Hence, 
+	\begin{equation}
+		l_3 = \lambda \|z\|^2,
+	\end{equation}
+	where $\lambda$ is a weight factor that works as a hyper-parameter to the model. TODO. 
+\end{itemize}
+The three losses might not be completely independent of one another. Although, they are all necessary for the algorithm to succeed. In section 5, we test the losses and find strong cooperation with each other, leading to very accurate results, according to different metrics. 

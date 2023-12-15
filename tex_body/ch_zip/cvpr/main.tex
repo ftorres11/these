@@ -1,0 +1,105 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{wacv}
+
+%------------------------------------------------------------------------------
+% needed for externalization of plots (no margins on individual pdfs)
+\newcommand{\finalcopy}{\iccvfinalcopy}
+%------------------------------------------------------------------------------
+% FIGURES: CHOOSE ONE OPTION
+%
+% plots:       build standalone pdfs for figures, then use them
+% plots-ext:   use existing pdfs for figures
+% plots-none:  skip figures
+%
+\input{tex/plots}
+% \input{tex/plots-ext}
+% \input{tex/plots-none}
+%------------------------------------------------------------------------------
+% space before \paragraph (default 4.05ex)
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}{1ex}{-1em}{\normalfont\normalsize\bfseries}}
+\makeatother
+%------------------------------------------------------------------------------
+
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{caption}
+
+\usepackage{float}
+\usepackage{import}
+\usepackage[numbers]{natbib}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{lipsum}  % For placeholder text
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+
+% \iccvfinalcopy % *** Uncomment this line for the final submission
+
+\def\wacvPaperID{1} % *** Enter the ICCV Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ifwacvfinal\pagestyle{empty}\fi
+
+
+\begin{document}
+
+\input{tex/abbrev}
+\input{tex/defn}
+
+\title{The concept of Zero Information in Explainable AI}
+
+\author{First Author\\
+Institution1\\
+Institution1 address\\
+{\tt\small firstauthor@i1.org}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+\and
+Second Author\\
+Institution2\\
+First line of institution2 address\\
+{\tt\small secondauthor@i2.org}
+}
+
+\maketitle
+% Remove page # from the first page of camera-ready.
+\ifwacvfinal\thispagestyle{empty}\fi
+
+\begin{abstract}
+In this paper, we bring a new perspective to the notion of hiding image information from a Deep Neural Network. We consider this notion to be crucial, since it is closely related to Model Explainability, and many attribution methods and evaluation metrics heavily depend on it; they hide information from some features of the input and measure the change in the model's prediction, in order to quantify  their importance. We argue that hiding parts of information might not be as trivial as blackening or blurring them, and that in order to do so properly, we should take into consideration the image and the model's parameters. 
+We thus develop a new optimization algorithm for hiding image parts from a model, which can be used for the design of mathematically robust attribution methods and evaluation metrics. We perform experiments on Imagenet and demonstrate the potency of our approach. We then reevaluate the effectiveness of different attribution methods, by constructing more robust evaluation metrics. 
+\end{abstract}
+
+\import{./}{tex/intro}
+\import{./}{tex/related}
+\import{./}{tex/motiv}
+\import{./}{tex/method}
+\import{./}{tex/exp-setup}
+\import{./}{tex/exp-results}  
+\import{./}{tex/conclusion}
+
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{ref}
+}
+
+\end{document}

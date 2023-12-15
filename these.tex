@@ -4,6 +4,7 @@
 \input{tex_supp/defn}
 \newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}}
 \begin{document}
+	\selectlanguage{english}
 		\input{tex_open/titre}				%% page de titre								
 		\input{tex_open/affidavit}				%% affidavit et licence
 		\input{tex_open/publications}			%% liste de publications et participation aux conférences
@@ -21,8 +22,8 @@
 			toctitle={Liste des acronymes}
 		]
 		\printglossary[						%% glossaire
-			title={Glossaire},
-			toctitle={Glossaire}
+			title={Glossary},
+			toctitle={Glossary}
 		]
 		\printglossary[						%% nomenclature
 			type=notation,
@@ -31,14 +32,14 @@
 		]
     \microtypesetup{protrusion=true}	%% rétabli la protrusion
 
-		\ohead{\leftmark\Ifstr{\rightmark}{\leftmark}{}{ -- \rightmark}}	%% place le chapître et la partie en en-tête
+	\ohead{\leftmark\ifstr{\rightmark}{\leftmark}{}{ --\rightmark}}	%% place le chapître et la partie en en-tête
 
     	\input{tex_body/intro}
     	\input{tex_body/rel/main}
 		\input{tex_body/ch_opticam/main}
 		\input{tex_body/ch_castream/main}
-		\input{tex_body/ch_zip/main}
 		\input{tex_body/ch_grad/main}
+		\input{tex_body/ch_zip/main}
 		\input{tex_body/conc}
 
     	\appendix

@@ -1,7 +1,77 @@
 \chapter{Zero Information in Interpretability}
 \chaptertoc{}
 \label{ch:zip}
+\section{Introduction}
+% -------------------------------------------------------------------------------------------------
+\noindent Whilst classical approaches for interpretability typically generate attribution maps 
+highlighting the most salient regions in an image, alternative approaches  rely on 
+feature occlusion. In this variant, the importance of a specific image region is obtained by 
+its masking and the ensuing measurement of loss in predictive power (\cite{ribeiro2016should}, 
+\cite{dabkowski2017real}, \cite{ablationcam}). An extension of this occlusion-based experimentation
+involves a complete masking of the image as a baseline point which can be considered as devoid of 
+information (\cite{shrikumar2017just}, \cite{shrikumar2019learning}).
+
+\noindent Interestingly, masking techniques are not only employed for attribution generation but also 
+in the development of heuristic thecniques. These methodologies introduce slight perturbations in 
+various forms, such as minor noise (\cite{hsieh2021evaluations}), blurry or black masking 
+(\cite{petsiuk2018rise}) addition of random noise (\cite{haug2021baselines}) or the introduction 
+of maximum distance values for predefined pixels (\cite{sturmfels2020visualizing}). 
+Despite efforts to categorize these proposals within different attribution methods 
+(\cite{kindermans2017unreliability}), however still, a lack of consistency has been observed in 
+the outcomes for each method. Overall there is not a criterion to demonstrate which method provides 
+the best outcomes.
+
+%\noindent Upon further scrutinizing upon heuristic techniques, 
+%Concerns swiftly emerged regarding the validity of such heuristic filling techniques 
+%\citep{hsieh2021evaluations, kindermans2017unreliability}, while perturbation methods failed to 
+%yield notable results. These methods prompted critical issues that captured researchers' attention, 
+%particularly the challenge of introducing bias to the model's decision [TODO] and the problem of 
+%Out-of-Distribution data (OOD) \citep{gomez2022metrics, hase2021outofdistribution, qiu2021resisting}. 
+%The first issue involves the potential introduction of bias when replacing one value with another, 
+%subsequently affecting the model's decision-making process. When the number of masked features increases,
+% this bias can escalate, substantially influencing the model's outcomes. The second issue revolves around 
+%the construction of images that lie outside the data distribution in which the model was trained on. A 
+%problem which is referred as ``Out of distribution" (OOD) problem in bibliography \citep{qiu2021resisting, 
+%janzing20a}. The filled images could feature regions obscured by blurring, blackening, or 
+%random noise—elements not encountered during the model's training. As a consequence, a change in the 
+%model's decision might be attributed to its incapability to effectively assess such uncharted regions 
+%within the data distribution. While various methods have attempted to mitigate the challenge of 
+%OOD data by introducing new filling techniques \citep{jethani2021learned, yoon2018invase, chen2018learning}, 
+%to the best of our knowledge, none of the methods developed thus far have succeeded in simultaneously 
+%addressing both problems. The pursuit of a robust technique to effectively obscure information within an 
+%image remains an ongoing challenge.
+
+%Our focus lies in highlighting the issue of concealing information within images and scrutinizing the 
+%repercussions of an indiscriminate filling approach. We contend that a robust filling method should obscure
+% image segments in a manner that the concealed parts impart no information to the model, while the visible 
+%segments maintain an equivalent contribution to the model's decision. We translate those criteria into a loss 
+%function and employ an optimization algorithm that simultaneously adheres to both these principles, 
+%all while respecting the data distribution. \newline
 \input{tex_body/ch_zip/tex/algo}
+\newpage
 \input{tex_body/ch_zip/tex/ins_del}
+\newpage
 \input{tex_body/ch_zip/tex/qual}
+\newpage
 \input{tex_body/ch_zip/tex/benchmark}
+
+%Classical methods in the field of XAI construct an attribution map for each input, which calculates 
+%the importance of individual features \citep{sundararajan2017axiomatic, selvaraju2017gradcam, 
+%Chattopadhay_2018, Wang_2020_CVPR_Workshops, lundberg2017unified, lrp}. While different methodologies 
+%have emerged \citep{BARREDOARRIETA202082}, several promising approaches rely on feature occlusion, 
+%assessing the importance of a specific input component by masking its information and quantifying 
+%the resulting decline in the model's prediction score \citep{9093360, ribeiro2016why, 
+%lundberg2017unified, jung2021better, novello2022making, dabkowski2017real}. Certain methods extend 
+%this occlusion to cover the entire input, hence defining a ``baseline" point 
+%\footnote{Also defined as ``reference point" \citep{shrikumar2017just, shrikumar2019learning}  or 
+%``root point" \citep{MONTAVON2017211}} which is considered to be devoid of any information. In order 
+%to occlude information contained in a subset of features, researchers in Computer Vision adopted 
+%different heuristic techniques. These techniques encompass subtle perturbations, such as introducing 
+%minor random noise—an approach that has given rise to perturbation methods \citep{hsieh2021evaluations}, 
+%or applied more intensive interventions like blackening or blurring the concealed image parts, 
+%substituting them with random noise, or introducing maximum distance values based on predefined 
+%pixels \citep{haug2021baselines, sturmfels2020visualizing}. These assorted heuristic strategies 
+%have been systematically categorized \citep{haug2021baselines} and applied across different 
+%attribution methods \citep{sturmfels2020visualizing, kindermans2017unreliability}. Nonetheless, 
+%researchers have noted a lack of consistency in the outcomes produced by each method, with 
+%none demonstrating a decisive advantage over others. 

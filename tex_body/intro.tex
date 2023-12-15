@@ -1,13 +1,38 @@
 %--------------------------------------------------------------------------------------------------
 \chapter*{Introduction}
-\chaptertoc{}
+%\chaptertoc{}
 \addcontentsline{toc}{chapter}{Introduction}
-\section*{Motivation}
+
+Amongst the sensory information that the brain processes, visual stimuli accounts 
+for 90\% of data analyzed (\cite{potter2014detecting}). It is argued that a big influence on the brain 
+evolution was as a result of improving the capacity to process this kind of data and the ensuing 
+pattern recognition (\cite{mattson2014superior}). 
+In current time, these shapes and forms evolved too; it is no longer common for a human
+the need to scan the environment for faces that could reveal a potential predator; for a change, 
+the patterns that we now seek to unravel are a product of our own imagination: digits and characters, 
+geometrical shapes.\\
+\paragraph{Visual Recognition} One prioritary subject for scientists is understanding the processes 
+that are involved in visual recognition, as the human brain can be implied to be mostly visual (CITATION!).
+In this regard several attempts at unraveling these mechanisms have taken place, starting with studies by 
+the greeks (\cite{finger2001origins}), we can also find works from Da Vinci (\cite{visualleonardo}), 
+Netwon and Locke (\cite{swenson2010optics}) to name a few. However, these studies were centered 
+around the innerworkings or the eye, and the physics that enable light to bounce off objects and 
+into this organ.\\
+
+In modern times, the work by Hermann von Helmholtz is credited to be the first study on visual perception,
+
+
+
+
+\paragraph{Interpretability}
+
 \noindent The current success of deep models and their assimilation within society has started a 
 switch in paradigm between wondering whether \textit{can a given model perform an specific task}, 
 to \textit{how can this model perform this task?} The main issue regarding these questions lies 
 within the size and complexity of deep models, where providing interpretable explanations has lead
  to the surge of a novel field of research. (Citations)
+
+
 
  %The success of \emph{deep neural networks} (DNN) and their increasing penetration into most sectors
 % of human activity has led to growing interest in understanding how these models make their 
@@ -15,12 +40,12 @@ within the size and complexity of deep models, where providing interpretable exp
 % explain their inference process in a human understandable manner. This challenge has opened up an 
 % entire research field~\citep{guidotti2018survey, montavon2018methods, samek2021explaining, bodria2021benchmarking, li2021interpretable}.
 
-\section*{Dissertation Outline}
+\paragraph{Dissertation Outline}
 %\addcontentsline{toc}{section}{Dissertation Outline}
 \noindent This dissertation is organized in the following manner: First we introduce a background 
 on existing approaches towards interpretability of image recognition models; for that, we make 
 mention on  current architectures dedicated to this approach, while also presenting concepts on 
-interpretability and enunciating current approaches for this study. 
+interpretability and enunciating current approaches for this study. \\
 
 \noindent In Chapter \ref{ch:opticam}, we propose Opti-CAM as a methodology that generates 
 optimized saliency maps highlighting the relevant regions on an image towards image classification. 
@@ -28,27 +53,27 @@ On Section \ref{sec:av_gain} we extend existing evaluation metrics with a novel 
 model coinfidence. extends evaluation metrics with the introduction of a novel measurement yielding
  improvements on model confidence when using a given attribution approach. 
 On Sections \ref{sec:oc_qual} and \ref{sec:oc_quant} we evaluate the effect of these contributions 
-towards interpretability assessment.
+towards interpretability assessment.\\
 
-Chapter \ref{ch:castream} introduces the Cross Attention Stream, an approach that boosts existing 
+\noindent Chapter \ref{ch:castream} introduces the Cross Attention Stream, an approach that boosts existing 
 architectures interpretable properties. We ste up the modulus of this approach on 
 Section \ref{sec:ca_defn} alongside its deployment on Section \ref{sec:ca_design}. 
 On Sections \ref{sec:ca_qual} and \ref{sec:ca_quant} we demonstrate the benefits of using this
-proposal.
+proposal.\\
 
-Chapter \ref{ch:grad} characterizes a gradient denoising approach with a gradient denoising 
+\noindent Chapter \ref{ch:grad} characterizes a gradient denoising approach with a gradient denoising 
 methodology as an approach to enhance the trainining procedure of current models while improving 
 interpretability properties. On Section \ref{sec:grad_defn}, we define the gradient denoising 
 protocol alongside the regularization proposals to do so.
 Sections \ref{sec:grad_qual} and \ref{sec:grad_quant} illustrate the effects of this paradigmn
-on the trained models and its effects on interpretability.
+on the trained models and its effects on interpretability.\\
 
-Chapter \ref{ch:zip} raises the Zero-Information algorithm and its usage as a substitute
+\noindent Chapter \ref{ch:zip} raises the Zero-Information algorithm and its usage as a substitute
 for mask-dependent evaluation proposals. Section \ref{sec:zip_algo} develops this 
 method. Section \ref{sec:zip_insdel} demonstrates its incorporation of this 
 algorithm onto evaluation protocols. Section \ref{sec:zip_qual} displays
 the effect of this approach when applied to mask patches on images. Section 
 \ref{sec:zip_benchmark} displays the results of benchmarking these protocols 
-with this approach. 
+with this approach. \\
     
-Finally, we draw conclusions on our work and detail future research perspectives.
+\noindent Finally, we draw conclusions on our work and detail future research perspectives.

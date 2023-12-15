@@ -3,12 +3,12 @@
 %--------------------------------------------------------------------------------------------------
 \label{ch:opticam}
 % Introduction, to move to a more verbatum approach
-
+\section{Introduction}
 \noindent Within existing attribution approaches for interpretable saliency map generation, the CAM 
-(\cite{zhou2016learning}) based family of methods takes special interest given its reliance of
-existing  information and properties of a given model to generate explanations. In particular we 
-note that following Equation \ref{eq:sal}, should the computation of the weighting coefficient 
-$w_k^c$ be modified a different attribution is generated. Moreover, this computation can be altered
+(\cite{zhou2016learning})-based family of methods takes special interest given its reliance of
+existing  information and properties of a given model to generate explanations. In particular, we 
+note that following Equation \ref{eq:sal}, modifying computation of the weighting coefficient 
+$w_k^c$ results in a different attribution being generated. Moreover, this computation can be altered,
  for instance by relying on information found while performing the backward pass 
  (\cite{selvaraju2017grad}, \cite{chattopadhay2018grad}, \cite{axiombased}, 
  \cite{smilkov2017smoothgrad}) and the forward pass (\cite{wang2020score}) of the model during 
@@ -16,10 +16,10 @@ $w_k^c$ be modified a different attribution is generated. Moreover, this computa
 
 \noindent Additionally, following attribution based methods such as extremal perturbations 
 (\cite{fong2019understanding}) or IBA (\cite{schulz2020restricting}), 
-we note that their class scores are optimized via gradient descent; in this regard, it can 
+we note that their class scores are optimized via gradient descent. In this regard, it can 
 be stated that these masks then become variables within input-feature space, and the aforementioned 
 scores then become a function of said masking. However it is important to point that optimizing 
-these masks ultimately ends turning into an expensive process as several constraints are needed 
+these masks ultimately becomes an expensive process, as several constraints are needed 
 to be taken into consideration to further control the masking area.\\
 
 \noindent Complementary to the computation of the weighting coefficient for the computation of 
@@ -34,12 +34,17 @@ generates saliency maps by optimizing the weighting coefficient $w_k^c$, while a
 novel metric to complement the existing evaluation of attribution methods.\\
 
 \input{tex_body/ch_opticam/tex/preliminar}
+\newpage
 \input{tex_body/ch_opticam/tex/def}
+\newpage
 \input{tex_body/ch_opticam/tex/av_gain}
+\newpage
 Opti-CAM is evaluated quantitatively using classification metrics and qualitatively by visualizing
  saliency maps.
 \input{tex_body/ch_opticam/tex/qual}
+\newpage
 \input{tex_body/ch_opticam/tex/quant_class}
+\newpage
 \input{tex_body/ch_opticam/tex/quant_loc}
 
 

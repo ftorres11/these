@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.2in, 8in}]{geometry}
+\usepackage{graphicx} 
+\usepackage{import}
+\usepackage[numbers]{natbib}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{bbm}
+\usepackage{multicol, caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{lipsum}  % For placeholder text
+\usepackage{booktabs}
+\usepackage{pgfplots}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+
+\title{The concept of Zero Information in Explainable AI}
+% \author{Thodoris Lymperopoulos - Yiannis Avrithis - Felipe Torres}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols}{2}
+
+\import{./}{abstract-intro.tex}
+
+\import{./}{Related_Work.tex}
+
+\import{./}{motivation.tex}
+
+\import{./}{Method.tex}
+
+\import{./}{Experiments.tex}
+
+\import{./}{Results.tex}
+
+\end{multicols}
+
+\bibliographystyle{plainnat}
+\bibliography{References}
+
+\end{document}

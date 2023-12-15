@@ -1,19 +1,19 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'these.blg'
-[26] biber:313> INFO - === Tue Dec 12, 2023, 02:18:58
-[45] Biber.pm:371> INFO - Reading 'these.bcf'
-[100] Biber.pm:857> INFO - Found 39 citekeys in bib section 0
-[113] Biber.pm:3981> INFO - Processing section 0
-[123] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
-[125] bibtex.pm:1468> INFO - LaTeX decoding ...
-[158] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
-[502] Utils.pm:169> WARN - BibTeX subsystem: /tmp/oEQTPqpm0_/biblio.bib_24288.utf8, line 184, warning: 15 characters of junk seen at toplevel
-[503] Utils.pm:169> WARN - I didn't find a database entry for 'shetty2019not' (section 0)
-[503] Utils.pm:169> WARN - I didn't find a database entry for 'rao2022towards' (section 0)
-[589] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[589] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[589] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'fr-FR'
-[589] Biber.pm:3815> INFO - No sort tailoring available for locale 'fr-FR'
-[633] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
-[685] bbl.pm:720> INFO - Output to these.bbl
-[686] Biber.pm:110> INFO - WARNINGS: 3
+[37] biber:313> INFO - === Fri Dec 15, 2023, 23:39:18
+[67] Biber.pm:371> INFO - Reading 'these.bcf'
+[158] Biber.pm:857> INFO - Found 52 citekeys in bib section 0
+[179] Biber.pm:3981> INFO - Processing section 0
+[194] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
+[199] bibtex.pm:1468> INFO - LaTeX decoding ...
+[273] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
+[873] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bz1bm1n5Ag/biblio.bib_13300.utf8, line 184, warning: 15 characters of junk seen at toplevel
+[873] Utils.pm:169> WARN - I didn't find a database entry for 'shetty2019not' (section 0)
+[874] Utils.pm:169> WARN - I didn't find a database entry for 'rao2022towards' (section 0)
+[1021] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1021] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1021] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1021] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1104] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
+[1194] bbl.pm:720> INFO - Output to these.bbl
+[1194] Biber.pm:110> INFO - WARNINGS: 3

@@ -1,0 +1,98 @@
+\section{Experiments}
+\label{sec:exp}
+
+We conduct a comprehensive set of experiments in order to evaluate the robustness of our method. In order to do so, we use different metrics and visualizations that provide insights into the effectiveness of ZIP. We then apply our method to design revised versions for highly popular evaluation metrics and evaluate different attribution methods.
+
+%------------------------------------------------------------------------------
+
+\subsection{Experimental Setup}
+\label{sec:exp-setup}
+
+\paragraph{Models and attribution methods} The models we used are two common CNN architectures, namely the Resnet50 \citep{he2015deep} and the VGG16 \citep{simonyan2015deep}. We select those two models based on their prediction power and implementation handling. The attribution methods we evaluate are some of the most popular among others, namely the GradCAM \citep{selvaraju2017gradcam}, GradCAM++ \citep{Chattopadhay_2018}, TODO.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Filling methods} We compare the ZIP algorithm with different heuristic methods, as mentioned in \citep{haug2021baselines}. More specifically, we define as:
+\begin{itemize}
+	\item \textbf{blk}; filling the background with black color.
+	\item \textbf{blr\_x}; filling the background with blurry versions of the input image where \textbf{x} is the size of the blurry filter.
+	\item \textbf{inj\_rn}; injecting random noise to the background.
+	\item \textbf{rep\_rn}; replacing the background with random noise.
+\end{itemize}
+
+%------------------------------------------------------------------------------
+
+\alert{\paragraph{The choice of the masking function}
+
+Although the ZIP algorithm tackles the aforementioned problem in its general form, it can also be applied for evaluating different attribution methods. In that case, the choice of the masking function $M$ can be the following: 
+\begin{equation}
+    M(x) = x \odot \mathds{1}[a(x) \geq \overline{(a(x))}]
+\end{equation}
+We consider $\odot$ to be the Hadamart product, $\mathds{1}$ to be the indicator function and $a:\mathcal{X} \to \mathcal{X}$ to be a particular attribution method. The over-line represents the mean function. We call the parts of the image with important attributions as \emph{foreground}, the rest as \emph{background}.
+
+Different functions could be used instead of the mean, in order for the mask $M$ to distinguish between the important and unimportant features that $a$ suggests. Although, a function that chooses whole image parts and not sparse pixels might be required.}
+
+%------------------------------------------------------------------------------
+
+\subsection{Evaluation metrics}
+\label{sec:metrics}
+We consider three evaluation metrics to boost their functionality with the use of the ZIP algorithm. The first metric is the Average Drop (AD), defined in \citep{Chattopadhay_2018}. This metric leverages the attribution map of a particular method and makes it function as a mask for the input. It then 
+
+%------------------------------------------------------------------------------
+
+\paragraph{Attribution Mask}
+
+We introduce the \textbf{AttMask} metric, which helps us compare our method with other filling methods and techniques. The metric calculates a score: for a given attribution method $a$, it calculates the attribution of the reconstructed image $x_{rec}$ and compares it with the masked attribution of the image $M(a(x))$. Then, it calculates the mean of that vector. Thus, the score can be defined as 
+\begin{equation}
+    \textbf{AttMask} = \|(M(a(x)) - a(x_{rec}))\|^2_2
+    \label{eq:attmask}
+\end{equation}
+This score helps us get a rough estimate of the effectiveness of our algorithm, since our initial goal was to fill the hidden parts of the image such that the attribution of the foreground does not change, while that of the background gets zeroed. This metric calculates accurately the deviation from the criteria for the true and correct attribution $a$. Since such attribution is not known, we approximate it by using different attribution methods.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Accuracy Drop}
+
+\textbf The objective of this newly defined score is to measure how closely the reconstructed images are to the model's data distribution. In order to do so, we fill the hidden parts of the images with the aforementioned methods and measure the drop of the model's accuracy. For the dataset $D$, we define
+\begin{equation}
+    \textbf{AccDrop} = \frac{\sum_{d \in D} \mathds{1}[\hat{y}_{x}=\hat{y}_{x_{rec}}]}{|D|} 
+\end{equation} where we define $\hat{y}_x=argmax\{f(x)\}$ to be the class with the highest probability for the model $f$ and input $x$. The intuition behind this approach, is that if the images are OOD for the model, the later would not be able to perform well. Although a drop in accuracy might be attributed to the model's functioning, this metric provides a rough estimate of how close to the data distribution a filling method might be, when applied to large datasets. The results are shown in Table \autoref{tab:evals}. For all the different attribution methods and model architectures, the ZIP algorithm consistently outperforms the heuristic techniques, often by a scaling factor.
+
+%------------------------------------------------------------------------------
+\begin{table}[t]
+\scriptsize
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccccccc} \toprule
+\multirow{3}{*}{\Th{Method}} & \multicolumn{4}{c}{\Th{ResNet50}} & \multicolumn{4}{c}{VGG16} \\
+\cmidrule{2-9}
+& \multicolumn{2}{c}{\Th{GradCAM}} & \multicolumn{2}{c}{\Th{GradCAM++}} & \multicolumn{2}{c}{\Th{GradCAM}} & \multicolumn{2}{c}{\Th{GradCAM++}} \\
+\cmidrule{2-9}
+ & AM$\downarrow$ & AD$\uparrow$ & AM$\downarrow$ & AD$\uparrow$ & AM$\downarrow$ & AD$\uparrow$ & AM$\downarrow$ & AD$\uparrow$ \\
+\midrule
+\text{blk} & 0.226 & 0.111 & 0.201 & 0.102 & 0.151 & 0.267 & 0.132 & 0.227 \\
+\text{blr\_20} & 0.175 & 0.228 & 0.165 & 0.219 & 0.137 & 0.348 & 0.122 & 0.316 \\
+\text{blr\_75} & 0.201 & 0.164 & 0.182 & 0.153 & 0.143 & 0.316 & 0.124 & 0.278 \\
+\text{inj\_rn} & 0.049 & 0.251 & 0.047 & 0.270 & 0.056 & 0.055 & 0.044 & 0.073 \\
+\text{rep\_rn} & 0.150 & 0.001 & 0.081 & 0.002 & 0.086 & 0.000 & 0.06 & 0.001 \\
+\midrule
+\text{MAE} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\text{ZIP} (Ours) & 0.029 & 0.616 & 0.030 & 0.626 & 0.036 & 0.347 &  0.033 & 0.394 \\
+\bottomrule
+\end{tabular}
+\vspace{3pt}
+\caption{The results for the application of \textbf{AttMask} (AM) and \textbf{AccDrop} (AD) for the different filling methods, compared to ours. For the different experiments at the \textbf{AttMask} score, the length of the 95\% confidence interval for each of the heuristic methods ranges at around 0.0008-0.0016, while that of the ZIP algorithm remains constant at around 0.0002.}
+\label{tab:evals}
+\end{table}
+
+%------------------------------------------------------------------------------
+
+\subsection{Loss evolution and number of epochs}
+
+The results show the strong performance of ZIP and that the different losses work in accordance with each other, each complementing the others towards the main objective. A visualization of the evolution of the losses can be seen in fig. TODO. After performing multiple tests, we conclude that a sufficient number of steps to run the algorithm in order to find an effective solution is TODO.
+
+%------------------------------------------------------------------------------
+
+\subsection{Visualization}
+
+A visual inspection of the results might be helpful to verify that the reconstructed image seems natural, while containing no information at the same time. Some reconstructed images can be seen in table TODO. 

@@ -1,0 +1,39 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Attribution methods}
+
+Many attribution methods estimate the importance of a set of features by calculating the drop in the model's score when masking this particular set of values.
+LIME \citep{ribeiro2016why} performs a local linear approximation: it trains a linear model for each input, by minimizing an MSE loss, which contains masked versions of the input being fed to the initial model. 
+RISE \citep{petsiuk2018rise} gives an importance score to a feature by approximating the mean value of the scores for all subsets of features containing it -thus hiding the others. 
+IBA \citep{schulz2020restricting} introduces random noise to intermediate feature maps for contribution calculation. 
+SHAP values \citep{lundberg2017unified} also approximate a mean value, but on the drop in value when the feature is hidden from a subset, for all possible subsets of features. 
+X-Grad CAM \citep{fu2020axiombased} optimizes the criterion of sensitivity, which is based on hiding a set of features, to calculate a CAM activation. 
+Path methods, namely Integrated gradients \citep{sundararajan2017axiomatic} and DeepLift \citep{shrikumar2019learning}, acquire information in the path from the input point to a baseline. 
+Many other methods use perturbation or occlusion at the core of their design \citep{ignatiev2018abductionbased, fel2021look, novello2022making, dabkowski2017real, NEURIPS2021_4e246a38, fong2019understanding, Fong2017}.
+
+\paragraph{Evaluation metrics}
+
+Different evaluation metrics use heuristic techniques for hiding the most/least important features that an attribution method indicates, and calculate the drop/increase in the model's accuracy. Average Drop \citep{Chattopadhay_2018} measures the drop in model's prediction score when the masked regions are applied. 
+Top$-K$ ablation \citep{haug2021baselines} applies the same methodology, but calculates the F1 score. 
+Deletion/Insertion in AUC\footnote{Area Under the Curve. Also referred as "LeRF/NoRF" in \citep{schulz2020restricting}} \citep{petsiuk2018rise}  sorts the features according to the attribution map score in descending/ascending order respectively, calculates the drop/increase in model's score for each step, and then aggregates those values for all steps to get a final score for each input. 
+ROAR \citep{hooker2019benchmark} retrains the model with black-masked versions of the input images and calculates the drop in model's accuracy. 
+Sensitivity$-N$ \citep{schulz2020restricting} computes the correlation between region attribution and accuracy drop when black-masked. 
+All those approaches might add serious bias to the model, when trying to evaluate it.
+
+Apart from classical metrics, alternative evaluation techniques, aligned with the concept of zero information, have surfaced, bearing relevance to our study. 
+Authors in \citep{9879032} and \citep{khakzar2022explanations} aim to delineate regions devoid of information and ensure diverse attribution methods yield zero attribution within these regions. 
+The former method achieves this by generating a 2x2 image grid -with each image corresponding to a different class- aiming to confine class attribution to distinct grid segments. The latter approach involves inserting one or two images within a large area filled with random noise, employing an optimization criterion to restrict attribution to a single image.
+These methods lack robustness for when constructing zero information parts. 
+Although the second work is closely related to ours. 
+Also, in \citep{kindermans2017unreliability} authors observe that altering the image background results in diverse attribution maps across different methods, although, as discussed in \autoref{sec:problem}, we posit this outcome as anticipated.
+Authors of \citep{fakecam} design a metric in which they quantify the difference in attribution when the image is masked with black. 
+Their metric is closely related to ours \autoref{eq:attmask}, however they use it to test the effectiveness of an attribution method, not a masking function. 
+Lastly, \citep{rong2022consistent} introduces an evaluation metric akin to Average Drop, accomplished by applying a straightforward function to the image's hidden parts' vicinity. 
+While intriguing, their approach remains insufficient in addressing the challenge of introduced bias. \newline
+
+\paragraph{OOD and generative models}
+
+The problem of reconstructing OOD images is well known in literature \citep{qiu2021resisting, janzing20a}. In order to address it, some methods require retraining the model, such as PLS \citep{hase2021outofdistribution} and ROAR \citep{hooker2019benchmark}, while others make use of a generative model to reconstruct the hidden parts of the image \citep{chang2019explaining}. The model's parameters are adjusted in such a way that a loss function, which is usually based on fidelity scores, is minimized. Different techniques were developed, such as EVAL-X \citep{jethani2021learned}, INVASE \citep{yoon2018invase} and L2X \citep{chen2018learning}. Different choices for generative models were considered, such as Multivariate Gaussian distribution with kernel estimations \citep{janzing2019feature}, Variational Autoencoders and GANs \citep{chang2019explaining}. Those methods while related to our algorithm, do not address the problem of added bias. A state-of-the-art model for image generation is the model of Masked Autoencoders \citep{9879206}, an encoder-decoder architecture that can reconstruct hidden image parts effectively, while offering flexibility for adjusting the model. 
+
+%has already demonstrated remarkable capabilities in data augmentation \citep{xu2022masked} and attack detection \citep{tsai2023testtime}. Herein, we showcase the prowess of this architecture within the domain of XAI.
