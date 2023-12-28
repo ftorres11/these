@@ -1,2 +1,38 @@
-Warning: File 'these.acn' is empty.
-Have you used any entries defined in glossary 'acronym'?
+;; This logfile was generated automatically by `xindy'
+;; at 28.12.2023  15:39:40
+;; Indexstyle: "/tmp/H7vIDbWbTO", Rawindex: "/tmp/zCvqs0yEpR", Output: "these.acr"
+
+
+Building indexentry-tree:
+Hierdepth of index is :TREE
+
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+
+Forming letter-groups:
+Letter-group: "Èà" -> "G"
+Letter-group: "È†€" -> "P"
+Letter-group: "†¼¼" -> "C"
+Letter-group: "œ´ÃÈÐ" -> "G"
+Letter-group: "¤Ã" -> "H"
+Letter-group: "Ðå»" -> "S"
+Letter-group: "€" -> "A"
+Letter-group: "€¨" -> "A"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "€" -> "A"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "†¼¼" -> "C"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "œ´ÃÈÐ" -> "G"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "¤Ã" -> "H"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "È†€" -> "P"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "Ðå»" -> "S"

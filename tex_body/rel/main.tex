@@ -1,11 +1,54 @@
-\chapter{Literature Review}
-\chaptertoc{}
-%\addcontentsline{toc}{chapter}{Literature Review}
+\chapter{Literature Review: Image Recognition Models and Interpretability}
 \label{ch:rel}
-\newpage
+\chaptertoc{}
+\section{Introduction}
+The capacities of image recognition models have improved greatly over time, the constant 
+development aligned with the increase in computing power has allowed these models to witness 
+constant improvements in performance and complexity. Early approaches for this task were built 
+using feature extraction methods in conjuction with traditional machine learning methods;
+this hand crafted feautre extraction step ultimately limited these methodologies capacity to 
+capture rich and intricate visual information. In particular, one approach that had a strong 
+initial impact and high performance was that of \gls{hog} \autocite{dalal2005histograms}, 
+where gradient information was used to train an \gls{svm} to perform pedestrian recognition. 
+This approach while achieving high performance in the dataset it was designed, ultimatately 
+failed in data collections where data complexity was higher \autocite{5975165}.\\
+Furthermore, with the reappearance of convolutional neural networks and the ensuing advent of 
+deep learning, a paradigm shift in this field occurred. In this change, it was observed that 
+no longer were hand crafted features needed to be extracted; deep learning allowed CNNs to act 
+as both feature extractor and classifiers on themselves. Moreover, based on the aggregation of 
+convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchichal 
+representations of data, extracting intricate features directly from the data. 
+This led to substantial improvements in accuracy and performance in various image recognition 
+tasks. In \autoref{rel:sub_background} we explore some of the most important early approaches based 
+on machine learning designed towards image recognition. Additionally in \autoref{rel:sub_cnn}, we 
+introduce the basis of deep learning and CNNs. Moving on, in \autoref{rel:sub_att} we make mention 
+of the Transformer architecture, its basis and how it has reshaped the landscape of image 
+recognition. Finally in \autoref{rel:sub_hybrid} we display approaches that make use of combinations 
+of the last two forementioned approaches.
+
+\noindent Over time and tied to the increasing compute of power (\cite{schaller1997moore}, 
+\cite{theis2017end}), and the improving performance of these models; their adoption into society 
+and real world applications has taken place. 
+
+\noindent Despite their remarkable performance, the interpretability of these deep learning models 
+became a growing concern. The inherent complexity of deep neural networks often made it 
+challenging to understand how these models arrive at their predictions. This lack of 
+interpretability posed significant hurdles, especially in critical applications where 
+understanding the model's decision-making process is crucial, such as in healthcare or 
+autonomous systems.
+To address this issue, researchers delved into enhancing the interpretability of image recognition 
+models. They explored various techniques and methodologies aimed at making these models more 
+transparent and understandable. Methods such as saliency maps, class activation maps, gradient-based 
+attribution methods, and attention mechanisms were developed to provide insights into the model's 
+decision-making processes and highlight regions of importance within images.
+
+The quest for interpretability in image recognition models continues as researchers strive to 
+strike a balance between model complexity and transparency. The ongoing efforts focus on developing 
+models that not only achieve high accuracy but also offer explanations and insights into their 
+reasoning, fostering trust and understanding in their applications across diverse domains.
+%\addcontentsline{toc}{chapter}{Literature Review}
 \input{tex_body/rel/tex/imrecon}
 \newpage
 \input{tex_body/rel/tex/interp}
-
-
-%\lipsum[1-2]
+\newpage
+\input{tex_body/rel/tex/evaluating}

@@ -10,7 +10,7 @@ module as a building block. Moreover with the proposal of the Vision Transformer
 (\cite{dosovitskiy2020image}) transformers were adopted into computer vision, this module gained 
 prominence as it allowed models to push the boundaries in existing benchmarks. This led to an 
 expansion with models such as Swin-T (\cite{liu2021swin}), LeViT \cite{graham2021levit}. Conversely
-hybrid architectures combining ideas from both CNN and transformers can be observed 
+hybrid architectures combining ideas from both \gls{cnn} and transformers can be observed 
 like Conformer (\cite{peng2021conformer}), Patchconvnet (\cite{touvron2021augmenting}),
 while on another hand a modernization of CNNs in the shape of ConvNeXt (\cite{liu2022convnet}) drew 
 inspiration from these models, whilst adressing their shortcomings in downstream tasks.\\
@@ -25,7 +25,7 @@ protocol, resulting in research aimed at improved visualizations and their assse
 \noindent In this chapter we study the correlation between CAM and one such attention visualization 
 proposal that is the raw attention found in the classification (\cls) token (\cite{devlin2018bert}).
 In particular, we note that self attention is defined for all patch tokens including \cls, however 
-we can generate a cross attention between this token and the feature maps found at any given depth 
+we can generate cross attention between this token and the feature maps found at any given depth 
 of a CNN; this being expressed in via linear combination of feature maps with this token, ultimately 
 resembling a class agnostic CAM. As an extension of this, we propose the inclusion of a 
 cross-attention module used to train this token as a replacement of GAP (\cite{lin2013network}), 

@@ -1,7 +1,4 @@
 This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
-Scanning style file ./alpha.ist...done (3 attributes redefined, 0 ignored).
-Scanning input file these.idx....done (2 entries accepted, 0 rejected).
-Sorting entries....done (2 comparisons).
-Generating output file these.ind....done (6 lines written, 0 warnings).
-Output written in these.ind.
+Scanning input file these.idx...done (0 entries accepted, 0 rejected).
+Nothing written in these.ind.
 Transcript written in these.ilg.

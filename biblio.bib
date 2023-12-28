@@ -1,3 +1,49 @@
+%% HOG
+@inproceedings{dalal2005histograms,
+  title={Histograms of oriented gradients for human detection},
+  author={Dalal, Navneet and Triggs, Bill},
+  booktitle={2005 IEEE computer society conference on computer vision and pattern recognition (CVPR'05)},
+  volume={1},
+  pages={886--893},
+  year={2005},
+  organization={Ieee}
+}
+
+@ARTICLE{5975165,
+  author={Dollar, Piotr and Wojek, Christian and Schiele, Bernt and Perona, Pietro},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Pedestrian Detection: An Evaluation of the State of the Art}, 
+  year={2012},
+  volume={34},
+  number={4},
+  pages={743-761},
+  doi={10.1109/TPAMI.2011.155}
+  }
+
+%% Moore's Law #1
+@article{schaller1997moore,
+  title={Moore's law: past, present and future},
+  author={Schaller, Robert R},
+  journal={IEEE spectrum},
+  volume={34},
+  number={6},
+  pages={52--59},
+  year={1997},
+  publisher={IEEE}
+}
+
+$ Moore's Law discussion #2 
+@article{theis2017end,
+  title={The end of moore's law: A new beginning for information technology},
+  author={Theis, Thomas N and Wong, H-S Philip},
+  journal={Computing in science \& engineering},
+  volume={19},
+  number={2},
+  pages={41--50},
+  year={2017},
+  publisher={IEEE}
+}
+
 % Grad-CAM++
 @inproceedings{chattopadhay2018grad,
     author = {A. Chattopadhay and A. Sarkar and P. Howlader and V. N. Balasubramanian},
@@ -125,6 +171,24 @@
   journal={Advances in neural information processing systems},
   volume={32},
   year={2019}
+}
+
+%% Inception V1 - GoogleNet
+@inproceedings{szegedy2015going,
+  title={Going deeper with convolutions},
+  author={Szegedy, Christian and Liu, Wei and Jia, Yangqing and Sermanet, Pierre and Reed, Scott and Anguelov, Dragomir and Erhan, Dumitru and Vanhoucke, Vincent and Rabinovich, Andrew},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={1--9},
+  year={2015}
+}
+
+%% Inception V3
+@inproceedings{szegedy2016rethinking,
+  title={Rethinking the inception architecture for computer vision},
+  author={Szegedy, Christian and Vanhoucke, Vincent and Ioffe, Sergey and Shlens, Jon and Wojna, Zbigniew},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={2818--2826},
+  year={2016}
 }
 
 % Global SA
@@ -392,6 +456,7 @@ $ Slot-Attention
       primaryClass={cs.LG}
 }
 
+%% Backprop learning
 @misc{shrikumar2019learning,
       title={Learning Important Features Through Propagating Activation Differences}, 
       author={Avanti Shrikumar and Peyton Greenside and Anshul Kundaje},
@@ -410,6 +475,7 @@ $ Slot-Attention
       archivePrefix={arXiv},
       primaryClass={cs.LG}
 }
+
 %% More Baselines
 @misc{haug2021baselines,
       title={On Baselines for Local Feature Attributions}, 
@@ -420,6 +486,7 @@ $ Slot-Attention
       primaryClass={cs.LG}
 }
 
+%% Attrib visualiation
 @article{sturmfels2020visualizing,
   author = {Sturmfels, Pascal and Lundberg, Scott and Lee, Su-In},
   title = {Visualizing the Impact of Feature Attribution Baselines},
@@ -548,15 +615,24 @@ eprint = {"\url{https://doi.org/10.1177/003591575504800512"}
   year={1998},
   publisher={Elsevier Current Trends}
 }
-
   
-  %% AlexNet 
-  @article{krizhevsky2012imagenet,
+ %% AlexNet 
+ @article{krizhevsky2012imagenet,
   title={Imagenet classification with deep convolutional neural networks},
   author={Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
   journal={Advances in neural information processing systems},
   volume={25},
   year={2012}
+}
+
+%% VGG
+@misc{simonyan2015deep,
+      title={Very Deep Convolutional Networks for Large-Scale Image Recognition}, 
+      author={Karen Simonyan and Andrew Zisserman},
+      year={2015},
+      eprint={1409.1556},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 
 %% ResNet architecture
@@ -574,6 +650,15 @@ eprint = {"\url{https://doi.org/10.1177/003591575504800512"}
   author={Wightman, Ross and Touvron, Hugo and J{\'e}gou, Herv{\'e}},
   journal={arXiv preprint arXiv:2110.00476},
   year={2021}
+}
+
+%% NasNet
+@inproceedings{zoph2018learning,
+  title={Learning transferable architectures for scalable image recognition},
+  author={Zoph, Barret and Vasudevan, Vijay and Shlens, Jonathon and Le, Quoc V},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={8697--8710},
+  year={2018}
 }
 
 % ImageNet 2015
@@ -727,3 +812,32 @@ url = {http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model
   pages={607--617},
   year={2020}
 }
+
+%% EfficientNet
+@inproceedings{tan2019efficientnet,
+  title={Efficientnet: Rethinking model scaling for convolutional neural networks},
+  author={Tan, Mingxing and Le, Quoc},
+  booktitle={International conference on machine learning},
+  pages={6105--6114},
+  year={2019},
+  organization={PMLR}
+}
+
+%% EfficientNet variant  - Noisy Student
+@inproceedings{xie2020self,
+  title={Self-training with noisy student improves imagenet classification},
+  author={Xie, Qizhe and Luong, Minh-Thang and Hovy, Eduard and Le, Quoc V},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={10687--10698},
+  year={2020}
+}
+
+%% Meta Pseudo Labels
+@inproceedings{pham2021meta,
+  title={Meta pseudo labels},
+  author={Pham, Hieu and Dai, Zihang and Xie, Qizhe and Le, Quoc V},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={11557--11568},
+  year={2021}
+}
+

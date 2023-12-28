@@ -1,20 +1,22 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'these.blg'
-[42] biber:313> INFO - === Tue Dec 26, 2023, 16:49:03
-[74] Biber.pm:371> INFO - Reading 'these.bcf'
-[184] Biber.pm:857> INFO - Found 74 citekeys in bib section 0
-[207] Biber.pm:3981> INFO - Processing section 0
-[223] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
-[229] bibtex.pm:1468> INFO - LaTeX decoding ...
-[353] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
-[555] Utils.pm:169> WARN - month field 'July' in entry 'MartinFTM01' is not an integer - this will probably not sort properly.
-[1443] Utils.pm:169> WARN - BibTeX subsystem: /tmp/7S1RdKQk9I/biblio.bib_19033.utf8, line 184, warning: 15 characters of junk seen at toplevel
-[1444] Utils.pm:169> WARN - I didn't find a database entry for 'shetty2019not' (section 0)
-[1444] Utils.pm:169> WARN - I didn't find a database entry for 'rao2022towards' (section 0)
-[1731] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1732] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1732] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1732] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[1887] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
-[2046] bbl.pm:720> INFO - Output to these.bbl
-[2046] Biber.pm:110> INFO - WARNINGS: 4
+[31] biber:313> INFO - === Thu Dec 28, 2023, 16:13:21
+[56] Biber.pm:371> INFO - Reading 'these.bcf'
+[135] Biber.pm:857> INFO - Found 84 citekeys in bib section 0
+[149] Biber.pm:3981> INFO - Processing section 0
+[160] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
+[165] bibtex.pm:1468> INFO - LaTeX decoding ...
+[263] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
+[374] Utils.pm:169> WARN - month field 'July' in entry 'MartinFTM01' is not an integer - this will probably not sort properly.
+[979] Utils.pm:169> WARN - BibTeX subsystem: /tmp/PSXgUmHgX6/biblio.bib_4389.utf8, line 36, warning: 23 characters of junk seen at toplevel
+[979] Utils.pm:169> WARN - BibTeX subsystem: /tmp/PSXgUmHgX6/biblio.bib_4389.utf8, line 248, warning: 15 characters of junk seen at toplevel
+[979] Utils.pm:169> WARN - I didn't find a database entry for 'REQUIRED' (section 0)
+[980] Utils.pm:169> WARN - I didn't find a database entry for 'shetty2019not' (section 0)
+[980] Utils.pm:169> WARN - I didn't find a database entry for 'rao2022towards' (section 0)
+[1197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1197] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1197] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1303] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
+[1417] bbl.pm:720> INFO - Output to these.bbl
+[1417] Biber.pm:110> INFO - WARNINGS: 6

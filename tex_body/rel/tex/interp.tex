@@ -1,18 +1,18 @@
 %--------------------------------------------------------------------------------------------------
-\section*{Interpretability}
+\section{Interpretability}
 \label{rel:sec_int}
-\addcontentsline{toc}{section}{Interpretability}
 
-\subsection*{Transparency}
+
+\subsection{Transparency}
 \label{rel:sub_transp}
 
-\subsection*{Post-Hoc Interpretability}
+\subsection{Post-Hoc Interpretability}
 \label{rel:sub_post}
 
 \paragraph{Notation}
 \label{sec:oc_notation}
 
-Consider a classifier network $f: \cX \to \real^C$ that maps an input image $\mathbf{u} \in \cX$ to a 
+Consider a classifier network \gls{fx}$: \cX \to \real^C$ that maps an input image $\mathbf{u} \in \cX$ to a 
 logit vector $\vy = f(\mathbf{u}) \in \real^C$, where $\cX$ is the image space and $C$ is the number 
 of classes. We denote by $y_c = f(\mathbf{u})_c$ the predicted logit and by $p_c = \softmax(\vy)_c 
 \defn e^{y_c} / \sum_j e^{y_j}$ the predicted probability for class $c$. For layer $\ell$ 
@@ -114,112 +114,4 @@ certain way. This makes optimization harder or more expensive and introduces mor
 like $\lambda$. One could simply constrain $\vm$ to lie in the linear span of $\{A_\ell^k\}_{k=1}
 ^{K_\ell}$ instead, like all CAM-based methods.}
 
-\subsection*{Evaluating Interpretability}
-\subsubsection*{Classification Metrics}
-Average drop ($\AD$) and average increase ($\AI$) \autocite{chattopadhay2018grad} are 
-well-established classification metrics. 
-They measure the effect on the predicted class probabilities by masking the input image with the
- saliency map. Let $p^c_i$ and $o^c_i$ be the predicted probability for class $c$ given as input 
- the $i$-th test image $\vx_i$ and its masked version respectively. 
-Masking refers to element-wise multiplication with the saliency map, which is at the same 
-resolution as the original image with values in $[0,1]$. 
-Let $N$ be the number of test images. Class $c$ is taken as the ground truth.
-
-\emph{Average drop} ($\AD$) quantifies how much predictive power, measured as class probability, 
-is lost when we only mask the image; lower is better:
-\begin{equation}
-	\AD(\%) \defn \frac{1}{N} \sum_{i=1}^N \frac{[p^c_i - o^c_i]_+}{p^c_i} \cdot 100.
-\label{eq:ad}
-\end{equation}
-
-\emph{Average increase} ($\AI$), also known as \emph{increase in confidence}, measures the 
-percentage of images where the masked image yields a higher class probability than the original; 
-higher is better:
-\begin{equation}
-	\AI(\%) \defn \frac{1}{N} \sum_i^N \mathbb{1}_{p^c_i < o^c_i} \cdot 100.
-\label{eq:ai}
-\end{equation}
-
-$\AD$ and $\AI$ are not defined in a symmetric way. $\AD$ measures changes in class probability 
-whereas $\AI$ measures a percentage of images. It is possible that the percentage is high while 
-the actual increase is small. Hence, it is possible that an attribution method improves both. 
-Indeed, \autocite{poppi2021revisiting} observes that a trivial method called Fake-CAM outperforms 
-state-of-the-art methods, including Score-CAM, by a large margin. Fake-CAM simply defines a 
-saliency map where the top-left pixel is set to zero and is uniform elsewhere. 
-This questions the purpose of $\AD$ and $\AI$.
-
-%--------------------------------------------------------------------------------------------------
-\subsubsection*{Localization metrics}
-\label{sec:loc-metrics}
-Several works measure the localization ability of saliency maps, using metrics from the 
-\emph{weakly-supervised object localization} (WSOL) task.
-
-We are given the saliency map $S^c$ obtained from test image $\vx$ for ground truth class $c$. 
-We denote by $S^c_{\vp}$ its value at pixel $\vp$. We binarize the saliency map by thresholding at 
-its average value and we take the bounding box of the largest connected component of the resulting 
-mask as the predicted bounding box $B_p$, represented as a set of pixels. We compare this box 
-against the set of ground truth bounding boxes $\cB$, which typically contains 1 or 2 boxes of the 
-same class $c$, or with their union $U = \cup \cB$, again represented as a set of pixels. We also 
-compare the predicted class label $c_p$ with the ground truth label $c$. All metrics take values in 
-$[0,1]$ and are expressed as percentages, except SM~\eq{sm}, which is unbounded.
-
-\emph{Official Metric (OM)}
-measures the maximum overlap of the predicted bounding box with any ground truth bounding box, 
-requiring that the predicted class label is correct:
-\begin{equation}
-	\OM \defn 1 - \paren{\max_{B \in \cB} \iou(B, B_p)} \mathbbm{1}_{c_p = c},
-\label{eq:om}
-\end{equation}
-where $\iou$ is intersection over union.
-% is defined as $\iou(B, B_p) \defn \frac{B \cap B_p}{B \cup B_p}$.
-
-\emph{Localization Error (LE)} is similar but ignores the predicted class label:
-\begin{equation}
-	\LE \defn 1 - \max_{B \in \cB} \iou(B, B_p).
-\label{eq:le}
-\end{equation}
-
-\emph{Pixel-wise $F_1$ score (F1)} is defined as $F_1 = 2 \frac{P R}{P + R}$, where 
-\emph{precision} $P$ is the fraction of mass of the saliency map that is within the ground truth 
-union
-\begin{equation}
-	P \defn \frac{\sum_{\vp \in U} S^c_{\vp}}{\sum_{\vp} S^c_{\vp}}
-\label{eq:prec}
-\end{equation}
-
-and \emph{recall} $R$ is the fraction of the ground truth union that is covered by the saliency map
-\begin{equation}
-	R \defn \frac{\sum_{\vp \in U} S^c_{\vp}}{\card{U}}.
-	\label{eq:rec}
-\end{equation}
-
-\emph{Box Accuracy (BA)\autocite{choe2020evaluating}} Given threshold values $\eta$ and $\delta$, 
-we find the bounding box $B^\eta_p$ of the largest connected component of the binary mask 
-$\set{\vp: S_{\vp} > \eta}$ and require that it overlaps by 
-$\delta$ with at least one ground truth box:
-\begin{equation}
-	\BA(\eta, \delta) \defn \max_{B \in \cB} \mathbbm{1}_{\iou(B^\eta_p, B) \ge \delta}.
-\label{eq:ba}
-\end{equation}
-After averaging over the test images, we take the maximum of this measure over a set of values 
-$\eta$ and then the average over a set of values $\delta$.\\
-%--------------------------------------------------------------------------------------------------
-\emph{Standard Pointing game (SP)\autocite{zhang2018top}} We find the pixel 
-$\vp^* \defn \arg\max_{\vp} S^c_{\vp}$ having the maximum saliency value and 
-require that it lands in any of the ground truth bounding boxes:
-\begin{equation}
-	\spg \defn \mathbbm{1}_{\vp^* \in U}.
-\label{eq:spg}
-\end{equation}\\
-
-\emph{Energy Pointing game (EP)\autocite{wang2020score}} is equivalent to precision~\eq{prec}.\\
-
-\emph{Saliency Metric (SM)\autocite{dabkowski2017real}} penalizes the size of the predicted bounding
- box $B_p$ relative to the image and the cross-entropy
- loss:
-\begin{equation}
-	\SM \defn \log \max\paren{ 0.05, \frac{\card{B_p}}{hw} } - \log p^c,
-\label{eq:sm}
-\end{equation}
-where $h \times w$ is the input image resolution and $p^c$ is the precicted probability for ground 
-truth class label $c$.
+\subsection{Discussion}

@@ -1,8 +1,6 @@
 %--------------------------------------------------------------------------------------------------
-\chapter*{Introduction}
-%\chaptertoc{}
-\addcontentsline{toc}{chapter}{Introduction}
-
+\addchap{Introduction}
+%\addcontentsline{toc}{chapter}{Introduction}
 Amongst the sensory information that the brain processes, visual stimuli accounts 
 for 90\% of data analyzed (\cite{potter2014detecting}), while consuming a great amount of energy 
 in human metabolism (\cite{phelps1981metabolic}). It is argued that a big influence on the 
@@ -25,9 +23,8 @@ regarding this domain. One such study that proved seminal in this domain is that
 David Marr (\cite{poggio1981marr}). Amongst Marr's proposals, addressing that vision can be 
 understood as a computational task stands out in particular, as algorithms and models have been 
 developed, generating the research field of compter vision.
-
 Over the past decade great advancements were made on computer vision. In particular with the 
-optimization and popularization of GPUs, models requiring a strong computational power became 
+optimization and popularization of \gls{gpu}, models requiring a strong computational power became 
 accesible for researchers. More specifically, the framework developed by Yann LeCun 
 (\cite{lecun1998gradient}) got revitalized in 2012 with the introduction of AlexNet 
 (\cite{krizhevsky2012imagenet}) where proper leverage of these machines outclassed that of 
@@ -36,9 +33,9 @@ In this short span of time, several groundbreaking architectures have been propo
 particular the ResNet family (\cite{he2016deep}) has remained relevant given its properties
 (\cite{wightman2021resnet}); furthermore, with the introduction of the transformer architecture 
 (\cite{vaswani2017attention}) this field of research recieved a new impulse and more powerful models 
-based upon its functional unit are being brought forth. 
+based upon its functional unit are being brought forth.\\
 
-It is not only with the increase of computational power that computer vision has improved over time. 
+\noindent It is not only with the increase of computational power that computer vision has improved over time. 
 With the developement, popularization and spread of the internet; large collections of data are 
 formed. These aggregations can be extremely specific for a given end, or 
 quite general representing the common interests of its users. Over time, these compilations have 
@@ -47,9 +44,9 @@ researchers to experiment and control the development of models such as MNIST (\
 BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
 ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}). Additionally, data collection is
 an ongoing and maybe never ending process; as such, the idea of a dataset containing all types of 
-information is no longer deemded a dream but a reality that may come into fruition soon.\\
+information is no longer deemded a dream but a reality that may come into fruition soon. \autocite{REQUIRED}\\
 
-Taking into consideration the aforementioned  increase on  both compute power and data 
+\noindent Taking into consideration the aforementioned  increase on  both compute power and data 
 availability, deep learning based models have been steadily adopted and assimiliated within society; 
 nowadays its no longer so much a question \textit{whether can a model achieve a given task}, but 
 rather a question on \textit{how can this given model perform this task}. The main issue regarding 
@@ -73,26 +70,28 @@ transparency due to their straightforward formulation and inherent properties. C
 in terms of post-hoc interpretations, methods like decision trees \cite{breiman2017classification} 
 can be pruned to study their performance by removing branches (\cite{lakkaraju2016interpretable},
 \cite{mothilal2020explaining}). 
-On another hand, established techniques such as Principal Component Analysis (PCA) 
+On another hand, established techniques such as Principal Component Analysis \gls{pca} 
 (\cite{wold1987principal}), can be used to gain insight within data leading to a prediction.\\
 
-When studying deep models, we find that  it is after their size and complexity that their 
-interpretable propierties get hindered . Common Convolutional Neural Networks (CNNs) 
+\noindent When studying deep models, we find that it is after their size and complexity that their 
+interpretable propierties get hindered. Common Convolutional Neural Networks \gls{cnn} 
 rely convolution as their corner stone, coupled with non-linear operations such as 
 ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
 This aggregation of convolutions on one hand enable these models to process large quantities of 
 data, and to a certain extent generalize; however, it also results in an extensive parameter count,
 often reaching of millions, and most recently, even billions (\cite{openai_compute}). The 
-computational load required for inference, typically measured in GFLOPs (Giga Floating Point 
-Operations Per Second) further compounds the complexity.
-\noindent Among the properties proposed by Lipton, we observe offering model transparency is a rather 
-challenging task. While understanding the behaviour of convolutions and 
+computational load required for inference, typically measured in \gls{gflops} further compounds 
+complexity.\\
+
+\noindent Among the properties proposed by Lipton, we observe that offering model transparency is a 
+rather challenging task. While understanding the behaviour of convolutions and 
 self-attention might seem straightforward, it is their aggregation and subsequent flow of information what 
-makes this process intricate. Moreover,  transparency encompases aspects related to both
-inference and training. In this aspect, while deep learning research is often seen as an open field;
+makes this process intricate. Moreover, transparency encompases aspects related to both
+inference and training. In this regard, while deep learning research is often seen as an open field;
 complete transparency is often disregarded as some authors frequently omit key details in their 
 descriptions and methodologies. 
-\noindent In addition to transparency, providing post-hoc interpretations from deep models is a 
+
+In addition to transparency, providing post-hoc interpretations from deep models is a 
 thriving field, where many of the challenges found within transparency are no longer found.
 Within this field, various approaches have been proposed to achieve post-hoc interpretability,
 including input masking (\cite{petsiuk2018rise}), attribution generation (\cite{NIPS2017_7062}, 
@@ -104,16 +103,16 @@ these works.
 
 \paragraph{Dissertation Outline}
 %\addcontentsline{toc}{section}{Dissertation Outline}
-\noindent This dissertation is organized in the following manner: First we introduce a background 
-on existing approaches towards interpretability of image recognition models; for that, we make 
-mention on  current architectures dedicated to this approach, while also presenting concepts on 
-interpretability and enunciating current approaches for this study. \\
+\noindent This dissertation is organized in the following manner: In Chapter \ref{ch:rel} we 
+introduce a background for image recognition models (\ref{rel:sec_imrecon}) and the ensuing 
+approaches developed to study the interpretability on them. 
+Additionally, we introduce evaluation procedures for these approaches which will be further used to 
+evaluate ourproposals.\\
 
 \noindent In Chapter \ref{ch:opticam}, we propose Opti-CAM as a methodology that generates 
 optimized saliency maps highlighting the relevant regions on an image towards image classification. 
 On Section \ref{sec:av_gain} we extend existing evaluation metrics with a novel measurement for 
-model coinfidence. extends evaluation metrics with the introduction of a novel measurement yielding
- improvements on model confidence when using a given attribution approach. 
+model coinfidence. 
 On Sections \ref{sec:oc_qual} and \ref{sec:oc_quant} we evaluate the effect of these contributions 
 towards interpretability assessment.\\
 

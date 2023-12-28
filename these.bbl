@@ -408,6 +408,44 @@
       \field{title}{Real Time Image Saliency for Black Box Classifiers}
       \field{year}{2017}
     \endentry
+    \entry{dalal2005histograms}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=56b04d8128bc6b04002f2bba11177d2d}{%
+           family={Dalal},
+           familyi={D\bibinitperiod},
+           given={Navneet},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=7edc70f9ce27f4a800aa68cbd1625f51}{%
+           family={Triggs},
+           familyi={T\bibinitperiod},
+           given={Bill},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Ieee}%
+      }
+      \strng{namehash}{df4ac326cd0fc21c8122179d44135fc9}
+      \strng{fullhash}{061fc00534f121cc44884e9acda158db}
+      \strng{bibnamehash}{061fc00534f121cc44884e9acda158db}
+      \strng{authorbibnamehash}{061fc00534f121cc44884e9acda158db}
+      \strng{authornamehash}{df4ac326cd0fc21c8122179d44135fc9}
+      \strng{authorfullhash}{061fc00534f121cc44884e9acda158db}
+      \field{labelalpha}{DT05}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2005 IEEE computer society conference on computer vision and pattern recognition (CVPR'05)}
+      \field{title}{Histograms of oriented gradients for human detection}
+      \field{volume}{1}
+      \field{year}{2005}
+      \field{pages}{886\bibrangedash 893}
+      \range{pages}{8}
+    \endentry
     \entry{ablationcam}{inproceedings}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=0ada5715441deba288e05d6cbbc03a60}{%
@@ -488,6 +526,57 @@
       \field{journaltitle}{arXiv preprint arXiv:1810.04805}
       \field{title}{Bert: Pre-training of deep bidirectional transformers for language understanding}
       \field{year}{2018}
+    \endentry
+    \entry{5975165}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=37843fd1a96680e7945ac1a059b6e8b8}{%
+           family={Dollar},
+           familyi={D\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b9bb834e5b0ced9c0bc58238df26fc20}{%
+           family={Wojek},
+           familyi={W\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=457dd3049a60059cf69e775a47f0c154}{%
+           family={Schiele},
+           familyi={S\bibinitperiod},
+           given={Bernt},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e52876f830a8a20786ff3e4d7dd6f083}{%
+           family={Perona},
+           familyi={P\bibinitperiod},
+           given={Pietro},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{19920f62f33839c387612020ae196f53}
+      \strng{fullhash}{833b84508c72301967d68636c231ce25}
+      \strng{bibnamehash}{f3f002e788fd8c49e33bdf0be8d9db1a}
+      \strng{authorbibnamehash}{f3f002e788fd8c49e33bdf0be8d9db1a}
+      \strng{authornamehash}{19920f62f33839c387612020ae196f53}
+      \strng{authorfullhash}{833b84508c72301967d68636c231ce25}
+      \field{labelalpha}{Dol+12}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{number}{4}
+      \field{title}{Pedestrian Detection: An Evaluation of the State of the Art}
+      \field{volume}{34}
+      \field{year}{2012}
+      \field{pages}{743\bibrangedash 761}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1109/TPAMI.2011.155
+      \endverb
     \endentry
     \entry{dosovitskiy2020image}{article}{}
       \true{moreauthor}
@@ -2580,6 +2669,39 @@
       \field{pages}{2660\bibrangedash 2673}
       \range{pages}{14}
     \endentry
+    \entry{schaller1997moore}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b72d8bef6fda3e3234cc583c3fc1dde1}{%
+           family={Schaller},
+           familyi={S\bibinitperiod},
+           given={Robert\bibnamedelima R},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
+      \strng{fullhash}{b72d8bef6fda3e3234cc583c3fc1dde1}
+      \strng{bibnamehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
+      \strng{authorbibnamehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
+      \strng{authornamehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
+      \strng{authorfullhash}{b72d8bef6fda3e3234cc583c3fc1dde1}
+      \field{labelalpha}{Sch97}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE spectrum}
+      \field{number}{6}
+      \field{title}{Moore's law: past, present and future}
+      \field{volume}{34}
+      \field{year}{1997}
+      \field{pages}{52\bibrangedash 59}
+      \range{pages}{8}
+    \endentry
     \entry{schulz2020restricting}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=64393cfbef25007a2c5bce80f5792747}{%
@@ -2820,6 +2942,42 @@
       \verb 1605.01713
       \endverb
     \endentry
+    \entry{simonyan2015deep}{misc}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=9d16b7284df92c9adaee86c37ab992df}{%
+           family={Simonyan},
+           familyi={S\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c72fc39e94030f67717052309266a44d}{%
+           family={Zisserman},
+           familyi={Z\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a90a2fabc80322eeadf67872d62faed2}
+      \strng{fullhash}{25d2f3c4577a6632d37f0126cc781232}
+      \strng{bibnamehash}{25d2f3c4577a6632d37f0126cc781232}
+      \strng{authorbibnamehash}{25d2f3c4577a6632d37f0126cc781232}
+      \strng{authornamehash}{a90a2fabc80322eeadf67872d62faed2}
+      \strng{authorfullhash}{25d2f3c4577a6632d37f0126cc781232}
+      \field{labelalpha}{SZ15}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{Very Deep Convolutional Networks for Large-Scale Image Recognition}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1409.1556
+      \endverb
+    \endentry
     \entry{smilkov2017smoothgrad}{article}{}
       \name{author}{5}{}{%
         {{uniquename=0,uniquepart=base,hash=bb2e0dfdbba1fad9c1db3218456c7bd8}{%
@@ -2988,6 +3146,210 @@
       \field{year}{2010}
       \field{pages}{27\bibrangedash 43}
       \range{pages}{17}
+    \endentry
+    \entry{szegedy2015going}{inproceedings}{}
+      \name{author}{9}{uniquelist=2}{%
+        {{uniquename=0,uniquepart=base,hash=ed568d9c3bb059e6bf22899fbf170f86}{%
+           family={Szegedy},
+           familyi={S\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=1,uniquepart=given,hash=c0e0d23e2d09e45e6f51cc2bcea6d9f9}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=9fce03efe6b3331a1b93ed2e7c0da9d5}{%
+           family={Jia},
+           familyi={J\bibinitperiod},
+           given={Yangqing},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=15f5333df96deaf51c72d065bded37d8}{%
+           family={Sermanet},
+           familyi={S\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=698ee61a2f3fa29734204496d2d36aef}{%
+           family={Reed},
+           familyi={R\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c1826f3465579186aff299a9b0e16ed7}{%
+           family={Anguelov},
+           familyi={A\bibinitperiod},
+           given={Dragomir},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8bbc4c5d96f205bada839e74e0202146}{%
+           family={Erhan},
+           familyi={E\bibinitperiod},
+           given={Dumitru},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8051922e7bd286f884bfbd1023ef62f5}{%
+           family={Vanhoucke},
+           familyi={V\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aa04c4d6213a1e867b1650e298cb2668}{%
+           family={Rabinovich},
+           familyi={R\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ea4d5ff3f70ecfa1bc3b2f814efbfd30}
+      \strng{fullhash}{64fbaf3c8a6b53523f74f0087b58e7e6}
+      \strng{bibnamehash}{ea4d5ff3f70ecfa1bc3b2f814efbfd30}
+      \strng{authorbibnamehash}{ea4d5ff3f70ecfa1bc3b2f814efbfd30}
+      \strng{authornamehash}{ea4d5ff3f70ecfa1bc3b2f814efbfd30}
+      \strng{authorfullhash}{64fbaf3c8a6b53523f74f0087b58e7e6}
+      \field{labelalpha}{Sze+15}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE conference on computer vision and pattern recognition}
+      \field{title}{Going deeper with convolutions}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 9}
+      \range{pages}{9}
+    \endentry
+    \entry{szegedy2016rethinking}{inproceedings}{}
+      \name{author}{5}{uniquelist=2}{%
+        {{uniquename=0,uniquepart=base,hash=ed568d9c3bb059e6bf22899fbf170f86}{%
+           family={Szegedy},
+           familyi={S\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8051922e7bd286f884bfbd1023ef62f5}{%
+           family={Vanhoucke},
+           familyi={V\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5543e82359e26b035efc009cb3efff9d}{%
+           family={Ioffe},
+           familyi={I\bibinitperiod},
+           given={Sergey},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9b81f43a31f185cea38a7a03620764eb}{%
+           family={Shlens},
+           familyi={S\bibinitperiod},
+           given={Jon},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5f1430f41772f4a524875e509005837c}{%
+           family={Wojna},
+           familyi={W\bibinitperiod},
+           given={Zbigniew},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{897d5ffdb460eb1cf59d383d2c9fdb32}
+      \strng{fullhash}{c417fe1f0815ac3cb9624bfc45d0cc3b}
+      \strng{bibnamehash}{897d5ffdb460eb1cf59d383d2c9fdb32}
+      \strng{authorbibnamehash}{897d5ffdb460eb1cf59d383d2c9fdb32}
+      \strng{authornamehash}{897d5ffdb460eb1cf59d383d2c9fdb32}
+      \strng{authorfullhash}{c417fe1f0815ac3cb9624bfc45d0cc3b}
+      \field{labelalpha}{Sze+16}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE conference on computer vision and pattern recognition}
+      \field{title}{Rethinking the inception architecture for computer vision}
+      \field{year}{2016}
+      \field{pages}{2818\bibrangedash 2826}
+      \range{pages}{9}
+    \endentry
+    \entry{tan2019efficientnet}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=1e7d6abb8225099acc71f672b9ec336e}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Mingxing},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=841a83a4bb5e622d6e1bde4818879016}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Quoc},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{5e97bd2eda320ead44850b05dff9f549}
+      \strng{fullhash}{3c6ed03914c0610af0050fb8a809b599}
+      \strng{bibnamehash}{3c6ed03914c0610af0050fb8a809b599}
+      \strng{authorbibnamehash}{3c6ed03914c0610af0050fb8a809b599}
+      \strng{authornamehash}{5e97bd2eda320ead44850b05dff9f549}
+      \strng{authorfullhash}{3c6ed03914c0610af0050fb8a809b599}
+      \field{labelalpha}{TL19}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International conference on machine learning}
+      \field{title}{Efficientnet: Rethinking model scaling for convolutional neural networks}
+      \field{year}{2019}
+      \field{pages}{6105\bibrangedash 6114}
+      \range{pages}{10}
+    \endentry
+    \entry{theis2017end}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=c019040d20e84ba376602a92b5b32bdb}{%
+           family={Theis},
+           familyi={T\bibinitperiod},
+           given={Thomas\bibnamedelima N},
+           giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0f4650b38be7345f75645473a6eb2f1f}{%
+           family={Wong},
+           familyi={W\bibinitperiod},
+           given={H-S\bibnamedelima Philip},
+           giveni={H\bibinithyphendelim S\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{7e8935193f63bc79f9957a7da3a2ae27}
+      \strng{fullhash}{68c2df343a2b0c4d7748228797fb01c5}
+      \strng{bibnamehash}{68c2df343a2b0c4d7748228797fb01c5}
+      \strng{authorbibnamehash}{68c2df343a2b0c4d7748228797fb01c5}
+      \strng{authornamehash}{7e8935193f63bc79f9957a7da3a2ae27}
+      \strng{authorfullhash}{68c2df343a2b0c4d7748228797fb01c5}
+      \field{labelalpha}{TW17}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computing in science \& engineering}
+      \field{number}{2}
+      \field{title}{The end of moore's law: A new beginning for information technology}
+      \field{volume}{19}
+      \field{year}{2017}
+      \field{pages}{41\bibrangedash 50}
+      \range{pages}{10}
     \endentry
     \entry{touvron2021augmenting}{article}{}
       \name{author}{7}{}{%
@@ -3609,7 +3971,54 @@
       \field{title}{Learning Deep Features for Discriminative Localization}
       \field{year}{2016}
     \endentry
+    \entry{zoph2018learning}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=91aafc93e68e8c6a55e8cd804c2acaf2}{%
+           family={Zoph},
+           familyi={Z\bibinitperiod},
+           given={Barret},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bab2011f2b9e7af47ab45308470b9faf}{%
+           family={Vasudevan},
+           familyi={V\bibinitperiod},
+           given={Vijay},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8f128e70084608a2c29c497ebd794f87}{%
+           family={Shlens},
+           familyi={S\bibinitperiod},
+           given={Jonathon},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9fd2dcec218c0c88f5cf6dcdefdbadbb}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Quoc\bibnamedelima V},
+           giveni={Q\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7732c13c59acbfe077121b1a24b2996b}
+      \strng{fullhash}{43e23cc839c73e8e03eec033081f91ab}
+      \strng{bibnamehash}{8aca55c94df29a9434bd321049fc3eb6}
+      \strng{authorbibnamehash}{8aca55c94df29a9434bd321049fc3eb6}
+      \strng{authornamehash}{7732c13c59acbfe077121b1a24b2996b}
+      \strng{authorfullhash}{43e23cc839c73e8e03eec033081f91ab}
+      \field{labelalpha}{Zop+18}
+      \field{sortinit}{Z}
+      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE conference on computer vision and pattern recognition}
+      \field{title}{Learning transferable architectures for scalable image recognition}
+      \field{year}{2018}
+      \field{pages}{8697\bibrangedash 8710}
+      \range{pages}{14}
+    \endentry
   \enddatalist
+  \missing{REQUIRED}
   \missing{rao2022towards}
   \missing{shetty2019not}
 \endrefsection
