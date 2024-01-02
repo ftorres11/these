@@ -2,50 +2,71 @@
 \label{ch:rel}
 \chaptertoc{}
 \section{Introduction}
-The capacities of image recognition models have improved greatly over time, the constant 
-development aligned with the increase in computing power has allowed these models to witness 
-constant improvements in performance and complexity. Early approaches for this task were built 
-using feature extraction methods in conjuction with traditional machine learning methods;
-this hand crafted feautre extraction step ultimately limited these methodologies capacity to 
-capture rich and intricate visual information. In particular, one approach that had a strong 
-initial impact and high performance was that of \gls{hog} \autocite{dalal2005histograms}, 
-where gradient information was used to train an \gls{svm} to perform pedestrian recognition. 
-This approach while achieving high performance in the dataset it was designed, ultimatately 
+The capacities of image recognition models have improved with constant development, 
+closely aligned with the increase in computing power. This evolution has lead to steady 
+improvements in both performance and complexity. On its early approaches, image recognition models 
+relied on feature extraction methods  in conjuction with traditional machine learning methods.
+However, this relianceon handcrafted features ultimately limits these methodologies' capabilities 
+to capture intricate visual patterns.
+On particular, one approach that had a strong initial impact and high performance was \gls{hog} 
+\autocite{dalal2005histograms}. In this methodology, gradient information was used to train a 
+\gls{svm} to perform pedestrian recognition. While achieving high performance in the dataset it was 
+designed, ultimatately 
 failed in data collections where data complexity was higher \autocite{5975165}.\\
-Furthermore, with the reappearance of convolutional neural networks and the ensuing advent of 
-deep learning, a paradigm shift in this field occurred. In this change, it was observed that 
-no longer were hand crafted features needed to be extracted; deep learning allowed CNNs to act 
+Furthermore, with the resurgence of convolutional neural networks and the ensuing advent of 
+deep learning, a paradigm shift in this field occurred. This transition led to the elimination of 
+the need for handcrafted feature extraction; instead, deep learning allowed CNNs to act 
 as both feature extractor and classifiers on themselves. Moreover, based on the aggregation of 
 convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchichal 
 representations of data, extracting intricate features directly from the data. 
-This led to substantial improvements in accuracy and performance in various image recognition 
-tasks. In \autoref{rel:sub_background} we explore some of the most important early approaches based 
+Consequently, this shift resulted in improvements in accuracy and performance in various image 
+recognition tasks. \\
+
+\noindent In \autoref{rel:sub_background} we explore some of the most important early approaches based 
 on machine learning designed towards image recognition. Additionally in \autoref{rel:sub_cnn}, we 
 introduce the basis of deep learning and CNNs. Moving on, in \autoref{rel:sub_att} we make mention 
 of the Transformer architecture, its basis and how it has reshaped the landscape of image 
 recognition. Finally in \autoref{rel:sub_hybrid} we display approaches that make use of combinations 
-of the last two forementioned approaches.
+of the last two forementioned approaches.\\
 
-\noindent Over time and tied to the increasing compute of power (\cite{schaller1997moore}, 
-\cite{theis2017end}), and the improving performance of these models; their adoption into society 
-and real world applications has taken place. 
 
-\noindent Despite their remarkable performance, the interpretability of these deep learning models 
-became a growing concern. The inherent complexity of deep neural networks often made it 
-challenging to understand how these models arrive at their predictions. This lack of 
-interpretability posed significant hurdles, especially in critical applications where 
-understanding the model's decision-making process is crucial, such as in healthcare or 
-autonomous systems.
-To address this issue, researchers delved into enhancing the interpretability of image recognition 
-models. They explored various techniques and methodologies aimed at making these models more 
-transparent and understandable. Methods such as saliency maps, class activation maps, gradient-based 
-attribution methods, and attention mechanisms were developed to provide insights into the model's 
-decision-making processes and highlight regions of importance within images.
+\noindent However, with the adoption of deep image recognition into society; understanding the 
+innerworkings of these models has become a top priority. We shine light into some fields where 
+this is the case:
+\begin{itemize}
+    \item \textbf{Facial Recognition} Facial recognition as a fine grained classification task, 
+    that can be mostly associated with identification and re-identification of individuals. 
+    In this aspect, understanding model predictions is associated with accountability, ethical 
+    considerations and safety.
+    (\cite{selinger2020inconsentability}, \cite{andrejevic2020facial}).
+    \item \textbf{Automated Medical Diagnosis} Regarding medical imaging, the education 
+    required to read and provide analysis, often requires experience based 
+    on personal expertise \autocite{nakashima2013visual}. Examples of automated diagnosis encompas 
+    melanoma detection, bone age assessment and most recently, COVID-19 diagnosis (\cite{yu2016automated}, 
+    \cite{BoNet2019hand}, \cite{huang2021artificial}). The medical domain is of special care 
+    specially as human lives are directly at stake.
+    \item \textbf{Self-driving Vehicles} Over the past decade, advancements in this field have lead to 
+    discussions regarding the impact of the adoption of these kind of vehicles within smart capacities 
+    (\cite{duarte2018impact}, \cite{millard2018pedestrians}). Nevertheless their 
+    navigation is not completely perfect and it is also possible to alter it, leading to possible 
+    traffic accidents \autocite{dixit2016autonomous}.
+\end{itemize}
 
-The quest for interpretability in image recognition models continues as researchers strive to 
-strike a balance between model complexity and transparency. The ongoing efforts focus on developing 
-models that not only achieve high accuracy but also offer explanations and insights into their 
-reasoning, fostering trust and understanding in their applications across diverse domains.
+We observe that interpretability needs in these fields and real world applications follow 
+Lipton's discussion on the \textit{Desiderata of Interpretability Research} 
+\autocite{mythos_interp}. In this aspect, we expect that the explanations that any given 
+approach help us \textbf{trust} any model. Conversely, we expect a model to be explained in a 
+\textbf{causal} manner according to its explanations. On another hand, 
+we expect these remarks be \textbf{informative} and shine light on similar examples that the 
+model processes. Finally, we expect interpretable explanations to guarantee that the outputs 
+of a model are \textbf{fair} and \textbf{ethical}.
+
+With these properties in mind leading the desiredata of interpretability study, we further 
+investigate in this work some of the most important works on interpretability. In 
+\autoref{rel:sec_int} we explore the preliminary works of this field. Delving deeper, in 
+\autoref{rel:sub_transp} we . In contrast, \autoref{rel:sub_post} we explore and study 
+some of the most relevant studies on post-hoc interpretability. Finally, in \autoref{rel:sub_evl}, 
+we outline the evaluation metrics used for evaluation the aforementioned works.
 %\addcontentsline{toc}{chapter}{Literature Review}
 \input{tex_body/rel/tex/imrecon}
 \newpage

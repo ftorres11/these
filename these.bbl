@@ -51,6 +51,45 @@
       \field{title}{Quantifying attention flow in transformers}
       \field{year}{2020}
     \endentry
+    \entry{andrejevic2020facial}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=cfe9428a8f6e21533912667263b8f5f7}{%
+           family={Andrejevic},
+           familyi={A\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=53f4fd60300743492f845c19a2397d9c}{%
+           family={Selwyn},
+           familyi={S\bibinitperiod},
+           given={Neil},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{cd6f3fb9f8739ee013763069f8952104}
+      \strng{fullhash}{20738f8aae94fcd154b20ab2f8034011}
+      \strng{bibnamehash}{20738f8aae94fcd154b20ab2f8034011}
+      \strng{authorbibnamehash}{20738f8aae94fcd154b20ab2f8034011}
+      \strng{authornamehash}{cd6f3fb9f8739ee013763069f8952104}
+      \strng{authorfullhash}{20738f8aae94fcd154b20ab2f8034011}
+      \field{labelalpha}{AS20}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Learning, Media and Technology}
+      \field{number}{2}
+      \field{title}{Facial recognition technology in schools: Critical questions and concerns}
+      \field{volume}{45}
+      \field{year}{2020}
+      \field{pages}{115\bibrangedash 128}
+      \range{pages}{14}
+    \endentry
     \entry{bello2019attention}{inproceedings}{}
       \name{author}{5}{}{%
         {{uniquename=0,uniquepart=base,hash=6b8f07f4771197fda9eba469f897bee3}{%
@@ -527,6 +566,51 @@
       \field{title}{Bert: Pre-training of deep bidirectional transformers for language understanding}
       \field{year}{2018}
     \endentry
+    \entry{dixit2016autonomous}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=b040b41cf2507e69a523320d96b2dbd6}{%
+           family={Dixit},
+           familyi={D\bibinitperiod},
+           given={Vinayak\bibnamedelima V},
+           giveni={V\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0de7b1182cc54bb318e3b08c8146e0ca}{%
+           family={Chand},
+           familyi={C\bibinitperiod},
+           given={Sai},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=de161f3a08d439d2df2b85949627a1fe}{%
+           family={Nair},
+           familyi={N\bibinitperiod},
+           given={Divya\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science San Francisco, CA USA}%
+      }
+      \strng{namehash}{fcc6b66e5ea0087aa01d840fe265b0a7}
+      \strng{fullhash}{8c0ed4b77866c0a6e779434f72515930}
+      \strng{bibnamehash}{8c0ed4b77866c0a6e779434f72515930}
+      \strng{authorbibnamehash}{8c0ed4b77866c0a6e779434f72515930}
+      \strng{authornamehash}{fcc6b66e5ea0087aa01d840fe265b0a7}
+      \strng{authorfullhash}{8c0ed4b77866c0a6e779434f72515930}
+      \field{labelalpha}{DCN16}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLoS one}
+      \field{number}{12}
+      \field{title}{Autonomous vehicles: disengagements, accidents and reaction times}
+      \field{volume}{11}
+      \field{year}{2016}
+      \field{pages}{e0168054}
+      \range{pages}{-1}
+    \endentry
     \entry{5975165}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=37843fd1a96680e7945ac1a059b6e8b8}{%
@@ -659,6 +743,104 @@
       \field{journaltitle}{arXiv preprint arXiv:2010.11929}
       \field{title}{An image is worth 16x16 words: Transformers for image recognition at scale}
       \field{year}{2020}
+    \endentry
+    \entry{duarte2018impact}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=5559f111ef2df197dc0eabffafd0df50}{%
+           family={Duarte},
+           familyi={D\bibinitperiod},
+           given={F{á}bio},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=aeb05a80989b576d5948e4cbf97421cc}{%
+           family={Ratti},
+           familyi={R\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{cb3ea4edf13fe3445c7bb7612b3f3b39}
+      \strng{fullhash}{66663bc101b6117e138d60a053a021e7}
+      \strng{bibnamehash}{66663bc101b6117e138d60a053a021e7}
+      \strng{authorbibnamehash}{66663bc101b6117e138d60a053a021e7}
+      \strng{authornamehash}{cb3ea4edf13fe3445c7bb7612b3f3b39}
+      \strng{authorfullhash}{66663bc101b6117e138d60a053a021e7}
+      \field{labelalpha}{DR18}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Urban Technology}
+      \field{number}{4}
+      \field{title}{The impact of autonomous vehicles on cities: A review}
+      \field{volume}{25}
+      \field{year}{2018}
+      \field{pages}{3\bibrangedash 18}
+      \range{pages}{16}
+    \endentry
+    \entry{BoNet2019hand}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,uniquepart=base,hash=c3923f14ee3a8cd16d977e140b9e4ba6}{%
+           family={Escobar},
+           familyi={E\bibinitperiod},
+           given={María},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b78e0ee7bc4218ec7d19cd4357df93e1}{%
+           family={González},
+           familyi={G\bibinitperiod},
+           given={Cristina},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=781f82188e77e78671f4623d577f0c2e}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Felipe},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6be6e0df4fbe8402cbb7660c05dab76d}{%
+           family={Daza},
+           familyi={D\bibinitperiod},
+           given={Laura},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=fee699685394d5614e19a9693c5962d2}{%
+           family={Triana},
+           familyi={T\bibinitperiod},
+           given={Gustavo},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a2e469525d819a078d47774a74a8fcb6}{%
+           family={Arbeláez},
+           familyi={A\bibinitperiod},
+           given={Pablo},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9a86df21fb53a68f5504200ead4ad6f8}
+      \strng{fullhash}{064b1a9f8b13700e0da50ca13a9eee68}
+      \strng{bibnamehash}{267c9dd95fcc6fc2900f2dee7aae5a46}
+      \strng{authorbibnamehash}{267c9dd95fcc6fc2900f2dee7aae5a46}
+      \strng{authornamehash}{9a86df21fb53a68f5504200ead4ad6f8}
+      \strng{authorfullhash}{064b1a9f8b13700e0da50ca13a9eee68}
+      \field{labelalpha}{Esc+19}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Medical Image Computing and Computer-Assisted Intervention}
+      \field{title}{Hand Pose Estimation for Pediatric Bone Age Assessment}
+      \field{year}{2019}
     \endentry
     \entry{pascal-voc-2012}{misc}{}
       \name{author}{5}{}{%
@@ -1309,6 +1491,57 @@
       \verb{eprint}
       \verb 2006.00442
       \endverb
+    \endentry
+    \entry{huang2021artificial}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=8e2d085ac99482b1a8763e273aabc9a6}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Shigao},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=4656453b716273b4ea07ab731e9b6dd5}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=75b85ef51cae301e0b2cdcdbebdeba5d}{%
+           family={Fong},
+           familyi={F\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=fb2121ec50debb9bbe4e9bc0625fd719}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Qi},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Ivyspring International Publisher}%
+      }
+      \strng{namehash}{a1e8461783f843431b46d4ffc8f8089c}
+      \strng{fullhash}{4f5769f17f37972e35138060bc76a178}
+      \strng{bibnamehash}{8186b5c971d775106cf7d3c7a7552830}
+      \strng{authorbibnamehash}{8186b5c971d775106cf7d3c7a7552830}
+      \strng{authornamehash}{a1e8461783f843431b46d4ffc8f8089c}
+      \strng{authorfullhash}{4f5769f17f37972e35138060bc76a178}
+      \field{labelalpha}{Hua+21}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International journal of biological sciences}
+      \field{number}{6}
+      \field{title}{Artificial intelligence in the diagnosis of COVID-19: challenges and perspectives}
+      \field{volume}{17}
+      \field{year}{2021}
+      \field{pages}{1581}
+      \range{pages}{1}
     \endentry
     \entry{kindermans2017unreliability}{misc}{}
       \name{author}{8}{}{%
@@ -2074,6 +2307,39 @@
       \field{pages}{265}
       \range{pages}{1}
     \endentry
+    \entry{millard2018pedestrians}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=a7c6eb77bd9de5af0f15906ac5364a53}{%
+           family={Millard-Ball},
+           familyi={M\bibinithyphendelim B\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications Sage CA: Los Angeles, CA}%
+      }
+      \strng{namehash}{a7c6eb77bd9de5af0f15906ac5364a53}
+      \strng{fullhash}{a7c6eb77bd9de5af0f15906ac5364a53}
+      \strng{bibnamehash}{a7c6eb77bd9de5af0f15906ac5364a53}
+      \strng{authorbibnamehash}{a7c6eb77bd9de5af0f15906ac5364a53}
+      \strng{authornamehash}{a7c6eb77bd9de5af0f15906ac5364a53}
+      \strng{authorfullhash}{a7c6eb77bd9de5af0f15906ac5364a53}
+      \field{labelalpha}{Mil18}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of planning education and research}
+      \field{number}{1}
+      \field{title}{Pedestrians, autonomous vehicles, and cities}
+      \field{volume}{38}
+      \field{year}{2018}
+      \field{pages}{6\bibrangedash 12}
+      \range{pages}{7}
+    \endentry
     \entry{mothilal2020explaining}{inproceedings}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=98cce7115e6f0474833a19d6b1e095c7}{%
@@ -2113,6 +2379,62 @@
       \field{year}{2020}
       \field{pages}{607\bibrangedash 617}
       \range{pages}{11}
+    \endentry
+    \entry{nakashima2013visual}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=c718ec47e20f731f8c66c7e525c71899}{%
+           family={Nakashima},
+           familyi={N\bibinitperiod},
+           given={Ryoichi},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b83bc099c1068d3b94fcbe05eb3f1ae6}{%
+           family={Kobayashi},
+           familyi={K\bibinitperiod},
+           given={Kazufumi},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6746e269f1c1cbea6506afe203b770b1}{%
+           family={Maeda},
+           familyi={M\bibinitperiod},
+           given={Eriko},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=87a66edfebd2ced8a81d38328fd409b3}{%
+           family={Yoshikawa},
+           familyi={Y\bibinitperiod},
+           given={Takeharu},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5f2b2f98b319cf3797a0c11fce56680a}{%
+           family={Yokosawa},
+           familyi={Y\bibinitperiod},
+           given={Kazuhiko},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Frontiers Media SA}%
+      }
+      \strng{namehash}{57b64a4b9e1771ab769c41ca3627830c}
+      \strng{fullhash}{392cdb4deb312eba6a81a24ef942382a}
+      \strng{bibnamehash}{f6609086b13ad1fb612a07205e67d9dd}
+      \strng{authorbibnamehash}{f6609086b13ad1fb612a07205e67d9dd}
+      \strng{authornamehash}{57b64a4b9e1771ab769c41ca3627830c}
+      \strng{authorfullhash}{392cdb4deb312eba6a81a24ef942382a}
+      \field{labelalpha}{Nak+13}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in psychology}
+      \field{title}{Visual search of experts in medical image reading: the effect of training, target prevalence, and expert knowledge}
+      \field{volume}{4}
+      \field{year}{2013}
+      \field{pages}{166}
+      \range{pages}{1}
     \endentry
     \entry{openai_compute}{misc}{}
       \name{author}{1}{}{%
@@ -2669,39 +2991,6 @@
       \field{pages}{2660\bibrangedash 2673}
       \range{pages}{14}
     \endentry
-    \entry{schaller1997moore}{article}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=b72d8bef6fda3e3234cc583c3fc1dde1}{%
-           family={Schaller},
-           familyi={S\bibinitperiod},
-           given={Robert\bibnamedelima R},
-           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
-      \strng{fullhash}{b72d8bef6fda3e3234cc583c3fc1dde1}
-      \strng{bibnamehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
-      \strng{authorbibnamehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
-      \strng{authornamehash}{b72d8bef6fda3e3234cc583c3fc1dde1}
-      \strng{authorfullhash}{b72d8bef6fda3e3234cc583c3fc1dde1}
-      \field{labelalpha}{Sch97}
-      \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE spectrum}
-      \field{number}{6}
-      \field{title}{Moore's law: past, present and future}
-      \field{volume}{34}
-      \field{year}{1997}
-      \field{pages}{52\bibrangedash 59}
-      \range{pages}{8}
-    \endentry
     \entry{schulz2020restricting}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=64393cfbef25007a2c5bce80f5792747}{%
@@ -2745,6 +3034,44 @@
       \field{journaltitle}{arXiv preprint arXiv:2001.00396}
       \field{title}{Restricting the flow: Information bottlenecks for attribution}
       \field{year}{2020}
+    \endentry
+    \entry{selinger2020inconsentability}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=72649eac78229865ae603aea20f1379a}{%
+           family={Selinger},
+           familyi={S\bibinitperiod},
+           given={Evan},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1a3ec60217cf7cffe5b55d445b55ef89}{%
+           family={Hartzog},
+           familyi={H\bibinitperiod},
+           given={Woodrow},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {HeinOnline}%
+      }
+      \strng{namehash}{f8570b0a5d6fecb4039df98a2a192515}
+      \strng{fullhash}{6d19b9685007b55deb2ae82be96bde3e}
+      \strng{bibnamehash}{6d19b9685007b55deb2ae82be96bde3e}
+      \strng{authorbibnamehash}{6d19b9685007b55deb2ae82be96bde3e}
+      \strng{authornamehash}{f8570b0a5d6fecb4039df98a2a192515}
+      \strng{authorfullhash}{6d19b9685007b55deb2ae82be96bde3e}
+      \field{labelalpha}{SH20}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Loy. L. Rev.}
+      \field{title}{The inconsentability of facial surveillance}
+      \field{volume}{66}
+      \field{year}{2020}
+      \field{pages}{33}
+      \range{pages}{1}
     \endentry
     \entry{selvaraju2017grad}{inproceedings}{}
       \name{author}{6}{}{%
@@ -3312,45 +3639,6 @@
       \field{pages}{6105\bibrangedash 6114}
       \range{pages}{10}
     \endentry
-    \entry{theis2017end}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=c019040d20e84ba376602a92b5b32bdb}{%
-           family={Theis},
-           familyi={T\bibinitperiod},
-           given={Thomas\bibnamedelima N},
-           giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=0f4650b38be7345f75645473a6eb2f1f}{%
-           family={Wong},
-           familyi={W\bibinitperiod},
-           given={H-S\bibnamedelima Philip},
-           giveni={H\bibinithyphendelim S\bibinitperiod\bibinitdelim P\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{7e8935193f63bc79f9957a7da3a2ae27}
-      \strng{fullhash}{68c2df343a2b0c4d7748228797fb01c5}
-      \strng{bibnamehash}{68c2df343a2b0c4d7748228797fb01c5}
-      \strng{authorbibnamehash}{68c2df343a2b0c4d7748228797fb01c5}
-      \strng{authornamehash}{7e8935193f63bc79f9957a7da3a2ae27}
-      \strng{authorfullhash}{68c2df343a2b0c4d7748228797fb01c5}
-      \field{labelalpha}{TW17}
-      \field{sortinit}{T}
-      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Computing in science \& engineering}
-      \field{number}{2}
-      \field{title}{The end of moore's law: A new beginning for information technology}
-      \field{volume}{19}
-      \field{year}{2017}
-      \field{pages}{41\bibrangedash 50}
-      \range{pages}{10}
-    \endentry
     \entry{touvron2021augmenting}{article}{}
       \name{author}{7}{}{%
         {{uniquename=0,uniquepart=base,hash=a2a13fcd633ec70c55a7f3f4812afdcf}{%
@@ -3812,6 +4100,63 @@
       \field{volume}{32}
       \field{year}{2019}
     \endentry
+    \entry{yu2016automated}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=151ed9ce1bf14870fe4af0f93156c742}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Lequan},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=dd060cd064f8f607eb1bee6712820270}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9654fa8a13dc7c57bdb7b4b35aa01ff6}{%
+           family={Dou},
+           familyi={D\bibinitperiod},
+           given={Qi},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=697fd343883f28bcc58dffdf5acded14}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0d34c36ec384cc59df4468cc1a3324b7}{%
+           family={Heng},
+           familyi={H\bibinitperiod},
+           given={Pheng-Ann},
+           giveni={P\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{d2443dca72763caec06ca8292927d4a1}
+      \strng{fullhash}{9fb473fd4f84fadced868ca8963e170b}
+      \strng{bibnamehash}{3b77e2c3d5999c51f17ba4e074f0df51}
+      \strng{authorbibnamehash}{3b77e2c3d5999c51f17ba4e074f0df51}
+      \strng{authornamehash}{d2443dca72763caec06ca8292927d4a1}
+      \strng{authorfullhash}{9fb473fd4f84fadced868ca8963e170b}
+      \field{labelalpha}{Yu+16}
+      \field{sortinit}{Y}
+      \field{sortinithash}{b8d711a035f7be9840c721c82920477e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE transactions on medical imaging}
+      \field{number}{4}
+      \field{title}{Automated melanoma recognition in dermoscopy images via very deep residual networks}
+      \field{volume}{36}
+      \field{year}{2016}
+      \field{pages}{994\bibrangedash 1004}
+      \range{pages}{11}
+    \endentry
     \entry{zhang2023opti}{article}{}
       \name{author}{5}{}{%
         {{uniquename=1,uniquepart=given,hash=d753d89dae07290ba0d94d65d1bbab18}{%
@@ -4018,7 +4363,6 @@
       \range{pages}{14}
     \endentry
   \enddatalist
-  \missing{REQUIRED}
   \missing{rao2022towards}
   \missing{shetty2019not}
 \endrefsection
