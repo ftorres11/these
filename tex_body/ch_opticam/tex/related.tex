@@ -1,0 +1,35 @@
+\section{Related Work}
+
+A large number of works study \emph{explainability}, \emph{interpretability} or \emph{attribution} of machine learning models, especially DNN~\citep{guidotti2018survey, montavon2018methods, samek2021explaining, bodria2021benchmarking, li2021interpretable}. These works can be categorized into \emph{transparency} and \emph{post-hoc interpretability}~\citep{lipton2018mythos, guidotti2018survey}. The former addresses how to design an internally understandable model. Here we are interested in the latter, which treats the studied network as a black box and interprets its inner processing~\citep{ribeiro2016should, lundberg2017unified, fong2017interpretable, elliott2021explaining, selvaraju2017grad, petsiuk2018rise}. Among post-hoc methods, LIME~\citep{ribeiro2016should} and SHAP~\citep{lundberg2017unified} are well-known model-agnostic methods that rate feature importance. More specifically, we are interested in the generation of \emph{saliency maps}. These methods are mostly based on gradients, CAM~\citep{zhou2016learning}, occlusion, or a combination.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Gradient-based methods}
+
+Gradient-based methods~\citep{adebayo2018local,springenberg2014striving,baehrens2010explain} use the gradient of a target class score with respect to the input to measure the effect of different image regions on the prediction. In~\citep{simonyan2013deep}, the gradient is directly treated as a saliency map. Inspired by DeconvNet~\citep{zeiler2014visualizing}, \emph{guided backpropagation}~\citep{springenberg2014striving} improves the explanation by setting negative gradients to zero using ReLU units. Other methods~\citep{shrikumar2017learning, zhang2018top, bastings2020elephant} are inspired by Layer-wise Relevance Propagation (LRP)~\citep{bach2015pixel}. SmoothGrad~\citep{smilkov2017smoothgrad} and \emph{integrated gradients}~\cite{sundararajan2017axiomatic} accumulate gradients into saliency maps, while NormGrad~\citep{rebuffi2020there} attempts to unify gradient-based methods. A different approach is to use adversarial attacks~\citep{elliott2021explaining, jalwana2020attack}. Several of these methods do not satisfy the fundamental property of implementation invariance~\cite{sundararajan2017axiomatic}.
+
+%------------------------------------------------------------------------------
+
+\paragraph{CAM-based methods}
+
+\emph{Class activation maps} (CAM)~\citep{zhou2016learning} is a visualization method that highlights the image regions most relevant to a target class by a linear combination of feature maps. A number of variants use different definitions of weights. Many rely on gradients, including GradCAM~\citep{selvaraju2017grad}, GradCAM++~\citep{chattopadhay2018grad}, XGradCAM~\citep{fu2020axiom}, LayerCAM~\citep{jiang2021layercam}, \modify{HiRes-CAM~\citep{draelos2020use}, and Libra-CAM~\citep{lee2022libra}}. Gradient-free methods, including Ablation-CAM~\citep{ramaswamy2020ablation}, Score-CAM~\cite{wang2020score}, SS-CAM~\citep{wang2020ss}, \modify{F-CAM~\citep{belharbi2022f}, Abs-CAM~\citep{zeng2023abs}, Poly-CAM~\citep{englebert2022poly} and Shap-CAM~\citep{zheng2022shap}}, rather measure the effect on the target class score of each feature map acting as a mask on the input. We inherit the idea of masking but for linear combinations of feature maps and we iteratively optimize the coefficients by analytical gradient computation. Our method is thus faster when the number of iterations is less than the number of channels.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Occlusion (masking)-based methods}
+
+These methods use a number of candidate masks, measure their effect on the prediction, then combine them in a single saliency map. RISE~\citep{petsiuk2018rise} randomly masks input images and uses the class score as a weight to define a linear combination. \emph{Meaningful perturbations} \citep{fong2017interpretable} and \emph{extremal perturbations}~\citep{fong2019understanding} directly optimize the mask in the image space by using gradients. They require a large number of parameters as well as regularizers, \eg for smoothness. \emph{Information bottleneck attribution} (IBA)~\citep{schulz2020restricting} optimizes the mask in the feature space as a tensor instead. Score-CAM~\cite{wang2020score} is also an occlusion-based method, using individual feature maps as candidate masks. The same holds for our Opti-CAM, but for candidate masks constrained in the linear span of the feature maps. Compared with~\citep{fong2019understanding,schulz2020restricting}, we have fewer parameters and do not require a regularizer.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Learning-based methods}
+
+While occlusion-based methods compute or optimize a mask for a particular image at inference, learning-based methods use an additional network or branch and they train it on extra data and image-level labels to predict a saliency map given an input image. This includes for example generators \citep{chang2018explaining} or auto-encoders \citep{dabkowski2017real, phang2020investigating, zolna2020classifier}. This approach may be compared with weakly-supervised object detection~\citep{bilen2016weakly}, segmentation~\citep{KoLa16} or instance segmentation~\citep{AhCK19}. IBA~\citep{schulz2020restricting} includes a learning-based approach in the feature space. Apart from requiring extra data, it is not satisfying in the sense that the learned decoder would need to be explained too. Our method does not need any extra data, network, or training.
+
+%------------------------------------------------------------------------------
+
+\paragraph{Evaluation of attribution methods}
+
+Evaluating saliency maps is challenging because no ground truth attributions exist. \emph{Average drop} ($\AD$) and \emph{average increase} ($\AI$), also known as increase in confidence~\cite{chattopadhay2018grad} are well-established metrics. They consider the effect on the predicted class probabilities by masking the input image with the saliency map. There is a fundamental flaw in using $\AD$, $\AI$ as a pair of metrics, which we fix by replacing $\AI$ by a new metric, \emph{average gain} ($\AG$).
+
+\emph{Insertion} (I) and \emph{deletion} (D) sequentially insert or delete pixels by decreasing order of saliency and observe the effect on the prediction. The resulting images are out-of-distribution (OOD)~\cite{gomez2022metrics} and the metrics favor small and compact regions. Localization metrics measure how the saliency maps are aligned with object bounding boxes, which ignores the importance of background context~\cite{shetty2019not, rao2022towards}. We demonstrate that localization and attribution are not well-aligned as tasks.
