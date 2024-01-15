@@ -8,7 +8,7 @@ brain evolution was as a result of improving the capacity to process this kind o
 ensuing  pattern recognition (\cite{mattson2014superior}). 
 In current time, these shapes and forms have evolved too: it is no longer common for a human
 the need to scan the environment for faces that could reveal a potential predator; for a change, 
-the patterns that we now seek to unravel are a product of our own imagination: digits and 
+the patterns that we now seek to unravel also contain products of our own imagination: digits and 
 characters, geometrical shapes.\\
 
 \paragraph{Visual Recognition} Understanding the processes behind visual recognition has been a 
@@ -20,8 +20,8 @@ to understand and describe this process have been brought forth. Moreover, visio
 only studied in fields like physics, medicine and psychology; 
 with the advent of computer science, computational approaches and theories started emerging 
 regarding this domain. One such study that proved seminal in this domain is that carried out by 
-David Marr (\cite{poggio1981marr}). Amongst Marr's proposals, addressing that vision can be 
-understood as a computational task stands out in particular, as algorithms and models have been 
+David Marr (\cite{poggio1981marr}, \cite{marr2010vision}). Most notably, Marr addressed that vision 
+can be understood as a computational task, as algorithms and models have been 
 developed, generating the research field of compter vision.
 Over the past decade great advancements were made on computer vision. In particular with the 
 optimization and popularization of \gls{gpu}, models requiring a strong computational power became 
@@ -44,7 +44,7 @@ researchers to experiment and control the development of models such as MNIST (\
 BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
 ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}). Additionally, data collection is
 an ongoing and a never ending process; as such, the idea of a dataset containing all types of 
-information is no longer deemded a dream but a reality that may come into fruition soon.\\
+information is no longer deemded a dream but a reality that might come true in the forseeable future.\\
 
 \noindent Taking into consideration the aforementioned  increase on  both compute power and data 
 availability, deep learning based models have been steadily adopted and assimiliated within society; 
@@ -74,10 +74,10 @@ On another hand, established techniques such as Principal Component Analysis \gl
 (\cite{wold1987principal}), can be used to gain insight within data leading to a prediction.\\
 
 \noindent When studying deep models, we find that it is after their size and complexity that their 
-interpretable propierties get hindered. Common Convolutional Neural Networks \gls{cnn} 
+interpretable propierties get hindered. Common Convolutional Neural Networks \glspl{cnn} 
 rely convolution as their corner stone, coupled with non-linear operations such as 
 ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
-This aggregation of convolutions on one hand enable these models to process large quantities of 
+This aggregation of convolutions on one hand enables these models to process large quantities of 
 data, and to a certain extent generalize; however, it also results in an extensive parameter count,
 often reaching of millions, and most recently, even billions (\cite{openai_compute}). The 
 computational load required for inference, typically measured in \gls{gflops} further compounds 
@@ -91,7 +91,7 @@ inference and training. In this regard, while deep learning research is often se
 complete transparency is often disregarded as some authors frequently omit key details in their 
 descriptions and methodologies. 
 
-In addition to transparency, providing post-hoc interpretations from deep models is a 
+In contrast to transparency, providing post-hoc interpretations from deep models is a 
 thriving field, where many of the challenges found within transparency are no longer found.
 Within this field, various approaches have been proposed to achieve post-hoc interpretability,
 including input masking (\cite{petsiuk2018rise}), attribution generation (\cite{NIPS2017_7062}, 
@@ -104,30 +104,30 @@ these works.
 \paragraph{Dissertation Outline}
 %\addcontentsline{toc}{section}{Dissertation Outline}
 \noindent This dissertation is organized in the following manner: In Chapter \ref{ch:rel} we 
-introduce a background for image recognition models (\ref{rel:sec_imrecon}) and the ensuing 
-approaches developed to study the interpretability on them. 
+introduce a background for image recognition models (Section \ref{rel:sec_imrecon}) and the ensuing 
+approaches developed to study the interpretability on them (Section \ref{rel:sec_int}). 
 Additionally, we introduce evaluation procedures for these approaches which will be further used to 
 evaluate ourproposals.\\
 
 \noindent In Chapter \ref{ch:opticam}, we propose Opti-CAM as a methodology that generates 
 optimized saliency maps highlighting the relevant regions on an image towards image classification. 
-On Section \ref{sec:av_gain} we extend existing evaluation metrics with a novel measurement for 
+In Section \ref{sec:av_gain} we extend existing evaluation metrics with a novel measurement for 
 model coinfidence. 
-On Sections \ref{sec:oc_qual} and \ref{sec:oc_quant} we evaluate the effect of these contributions 
+In Sections \ref{sec:oc_qual} and \ref{sec:oc_quant} we evaluate the effect of these contributions 
 towards interpretability assessment.\\
 
 \noindent Chapter \ref{ch:castream} introduces the Cross Attention Stream, an approach that boosts existing 
-architectures interpretable properties. We ste up the modulus of this approach on 
+architectures interpretable properties. We ste up the modulus of this approach in 
 Section \ref{sec:ca_defn} alongside its deployment on Section \ref{sec:ca_design}. 
-On Sections \ref{sec:ca_qual} and \ref{sec:ca_quant} we demonstrate the benefits of using this
+In Sections \ref{sec:ca_qual} and \ref{sec:ca_quant} we demonstrate the benefits of using this
 proposal.\\
 
 \noindent Chapter \ref{ch:grad} characterizes a gradient denoising approach with a gradient denoising 
 methodology as an approach to enhance the trainining procedure of current models while improving 
-interpretability properties. On Section \ref{sec:grad_defn}, we define the gradient denoising 
+interpretability properties. In Section \ref{sec:grad_defn}, we define the gradient denoising 
 protocol alongside the regularization proposals to do so.
 Sections \ref{sec:grad_qual} and \ref{sec:grad_quant} illustrate the effects of this paradigmn
-on the trained models and its effects on interpretability.\\
+in the trained models and its effects on interpretability.\\
 
 \noindent Chapter \ref{ch:zip} raises the Zero-Information algorithm and its usage as a substitute
 for mask-dependent evaluation proposals. Section \ref{sec:zip_algo} develops this 

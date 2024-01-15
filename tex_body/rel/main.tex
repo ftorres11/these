@@ -15,7 +15,7 @@ designed, \gls{hog} ultimatately failed in data collections where complexity was
 \autocite{5975165}.\\
 Furthermore, with the resurgence of convolutional neural networks and the ensuing advent of 
 deep learning, a paradigm shift in this field occurred. This transition led to the elimination of 
-the need for handcrafted feature extraction; instead, deep learning allowed CNNs to act 
+the need for handcrafted feature extraction; instead, deep learning allowed \glspl{cnn} to act 
 as both feature extractor and classifiers on themselves. Moreover, based on the aggregation of 
 convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchichal 
 representations of data, extracting intricate features directly. 
@@ -24,32 +24,33 @@ recognition tasks. \\
 
 \noindent In \autoref{rel:sub_background} we explore some of the most important early approaches based 
 on machine learning designed towards image recognition. Additionally in \autoref{rel:sub_cnn}, we 
-introduce the basis of deep learning and CNNs. Moving on, in \autoref{rel:sub_att} we make mention 
+introduce the basis of deep learning and \glspl{cnn}. Moving on, in \autoref{rel:sub_att} we make mention 
 of the Transformer architecture, its basis and how it has reshaped the landscape of image 
 recognition. Finally in \autoref{rel:sub_hybrid} we display approaches that make use of combinations 
 of the last two forementioned approaches.\\
 
 
-\noindent However, with the adoption of deep image recognition into society; understanding the 
+\noindent With the adoption of deep image recognition into society; understanding the 
 innerworkings of these models has become a top priority. We shine light into some fields where 
 this is the case:
 \begin{itemize}
-    \item \textbf{Facial Recognition} Facial recognition as a fine grained classification task, 
+    \item \textbf{Facial Recognition} Facial recognition is a fine grained classification task, 
     that can be mostly associated with identification and re-identification of individuals. 
     In this aspect, understanding model predictions is associated with accountability, ethical 
     considerations and safety.
     (\cite{selinger2020inconsentability}, \cite{andrejevic2020facial}).
-    \item \textbf{Automated Medical Diagnosis} Regarding medical imaging, the education 
+    \item \textbf{Automated Medical Diagnosis} In medical imaging, the education 
     required to read and provide analysis, often requires experience based 
     on personal expertise \autocite{nakashima2013visual}. Examples of automated diagnosis encompas 
     melanoma detection, bone age assessment and most recently, COVID-19 diagnosis (\cite{yu2016automated}, 
     \cite{BoNet2019hand}, \cite{huang2021artificial}). The medical domain is of special care 
-    as human lives are directly at stake.
+    as human lives are directly at stake, therefore understanding predictions is highly desired.
     \item \textbf{Self-driving Vehicles} Over the past decade, advancements in this field have lead to 
-    discussions regarding the impact of the adoption of these kind of vehicles within smart capacities 
+    discussions regarding the impact of the adoption of these kind of vehicles within smart cities  
     (\cite{duarte2018impact}, \cite{millard2018pedestrians}). Nevertheless their 
     navigation is not completely perfect and it is also possible to attack it, leading to possible 
-    traffic accidents \autocite{dixit2016autonomous}.
+    traffic accidents \autocite{dixit2016autonomous}; in this case, accountability is then again 
+    taken into consideration.
 \end{itemize}
 
 We observe that interpretability needs in these fields and real world applications follows 

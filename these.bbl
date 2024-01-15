@@ -1543,6 +1543,45 @@
       \field{pages}{1581}
       \range{pages}{1}
     \endentry
+    \entry{hubel1959receptive}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=ef1cf54b3dd47533c335360701d44376}{%
+           family={Hubel},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima H},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6fd186cf41a1dd6feb1964146d18a3c5}{%
+           family={Wiesel},
+           familyi={W\bibinitperiod},
+           given={Torsten\bibnamedelima N},
+           giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-Blackwell}%
+      }
+      \strng{namehash}{5f4db4139de68e446512b2d8d96992db}
+      \strng{fullhash}{b61026f392e3b6ea6663b1c55f3d5bb9}
+      \strng{bibnamehash}{b61026f392e3b6ea6663b1c55f3d5bb9}
+      \strng{authorbibnamehash}{b61026f392e3b6ea6663b1c55f3d5bb9}
+      \strng{authornamehash}{5f4db4139de68e446512b2d8d96992db}
+      \strng{authorfullhash}{b61026f392e3b6ea6663b1c55f3d5bb9}
+      \field{labelalpha}{HW59}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of physiology}
+      \field{number}{3}
+      \field{title}{Receptive fields of single neurones in the cat's striate cortex}
+      \field{volume}{148}
+      \field{year}{1959}
+      \field{pages}{574}
+      \range{pages}{1}
+    \endentry
     \entry{kindermans2017unreliability}{misc}{}
       \name{author}{8}{}{%
         {{uniquename=0,uniquepart=base,hash=7f7e0a5910ade4b14a74f3a61e46f917}{%
@@ -2227,6 +2266,120 @@
       \verb{url}
       \verb http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf
       \endverb
+    \endentry
+    \entry{malik2016three}{article}{}
+      \name{author}{10}{}{%
+        {{uniquename=0,uniquepart=base,hash=c75a5377b6dc5213831576e88ffe553c}{%
+           family={Malik},
+           familyi={M\bibinitperiod},
+           given={Jitendra},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=859dbd66bd4e6fe4de5beb3ad8b9eb40}{%
+           family={Arbel{á}ez},
+           familyi={A\bibinitperiod},
+           given={Pablo},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9769c01477fd6a34e0f7732729ee8eb4}{%
+           family={Carreira},
+           familyi={C\bibinitperiod},
+           given={Joao},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5e165f4af3bedfb3b6fb88da5eb778e2}{%
+           family={Fragkiadaki},
+           familyi={F\bibinitperiod},
+           given={Katerina},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6e67eba235a8cccf3a69b746a53d5722}{%
+           family={Gkioxari},
+           familyi={G\bibinitperiod},
+           given={Georgia},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d911dc0980eee427099fd8a37bc58968}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Saurabh},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9cadf8ca1dd9b5f5a830ba2059b2517f}{%
+           family={Hariharan},
+           familyi={H\bibinitperiod},
+           given={Bharath},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ccd76da52edfaa9427ed504800c16b2d}{%
+           family={Kar},
+           familyi={K\bibinitperiod},
+           given={Abhishek},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=37db473ebe5ac667e698a954ea084723}{%
+           family={Tulsiani},
+           familyi={T\bibinitperiod},
+           given={Shubham},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{691c83a7c8de00cc78f7af53bad96d0d}
+      \strng{fullhash}{d6c199281c2bcec4627bd6050b0163c7}
+      \strng{bibnamehash}{070eadf402912260e994dfa409df6028}
+      \strng{authorbibnamehash}{070eadf402912260e994dfa409df6028}
+      \strng{authornamehash}{691c83a7c8de00cc78f7af53bad96d0d}
+      \strng{authorfullhash}{d6c199281c2bcec4627bd6050b0163c7}
+      \field{labelalpha}{Mal+16}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pattern Recognition Letters}
+      \field{title}{The three R’s of computer vision: Recognition, reconstruction and reorganization}
+      \field{volume}{72}
+      \field{year}{2016}
+      \field{pages}{4\bibrangedash 14}
+      \range{pages}{11}
+    \endentry
+    \entry{marr2010vision}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2cf5062b61963ac0956179a605c38d66}{%
+           family={Marr},
+           familyi={M\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {MIT press}%
+      }
+      \strng{namehash}{2cf5062b61963ac0956179a605c38d66}
+      \strng{fullhash}{2cf5062b61963ac0956179a605c38d66}
+      \strng{bibnamehash}{2cf5062b61963ac0956179a605c38d66}
+      \strng{authorbibnamehash}{2cf5062b61963ac0956179a605c38d66}
+      \strng{authornamehash}{2cf5062b61963ac0956179a605c38d66}
+      \strng{authorfullhash}{2cf5062b61963ac0956179a605c38d66}
+      \field{labelalpha}{Mar10}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vision: A computational investigation into the human representation and processing of visual information}
+      \field{year}{2010}
     \endentry
     \entry{MartinFTM01}{inproceedings}{}
       \name{author}{4}{}{%
