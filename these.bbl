@@ -142,6 +142,43 @@
       \field{pages}{3286\bibrangedash 3295}
       \range{pages}{10}
     \endentry
+    \entry{berg2010large}{misc}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=0085267e3ebdea73f44481429dae4034}{%
+           family={Berg},
+           familyi={B\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0ae7fdc13773f928525f673b05f37149}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f536a9246365f63717886015403a0964}{%
+           family={Fei-Fei},
+           familyi={F\bibinithyphendelim F\bibinitperiod},
+           given={L},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0aad271046ea3564964c0134193c8f4d}
+      \strng{fullhash}{8ccc0881442bc5a1b89ec87941a6bf49}
+      \strng{bibnamehash}{8ccc0881442bc5a1b89ec87941a6bf49}
+      \strng{authorbibnamehash}{8ccc0881442bc5a1b89ec87941a6bf49}
+      \strng{authornamehash}{0aad271046ea3564964c0134193c8f4d}
+      \strng{authorfullhash}{8ccc0881442bc5a1b89ec87941a6bf49}
+      \field{labelalpha}{BDF10}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Large scale visual recognition challenge 2010}
+      \field{year}{2010}
+    \endentry
     \entry{bodria2021benchmarking}{article}{}
       \name{author}{6}{}{%
         {{uniquename=0,uniquepart=base,hash=dbb0978b51d7ce20899e6219b9d319de}{%
@@ -1283,20 +1320,66 @@
       \verb 2101.00905
       \endverb
     \endentry
-    \entry{he2016deep}{inproceedings}{}
-      \name{author}{4}{}{%
+    \entry{he2017mask}{inproceedings}{}
+      \name{author}{4}{uniquelist=2}{%
         {{uniquename=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
            family={He},
            familyi={H\bibinitperiod},
            given={Kaiming},
            giveni={K\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=5e72bc22dbcf0984c6d113d280e36990}{%
+        {{uniquename=0,uniquepart=base,hash=6e67eba235a8cccf3a69b746a53d5722}{%
+           family={Gkioxari},
+           familyi={G\bibinitperiod},
+           given={Georgia},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e38ddb38a8e769642319731dae30fa2d}{%
+           family={Doll{á}r},
+           familyi={D\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4abf6bec84ad4d7b0f29b0e9b41c50f8}
+      \strng{fullhash}{326eb28a5068aca9c42fef32e78ba03e}
+      \strng{bibnamehash}{4abf6bec84ad4d7b0f29b0e9b41c50f8}
+      \strng{authorbibnamehash}{4abf6bec84ad4d7b0f29b0e9b41c50f8}
+      \strng{authornamehash}{4abf6bec84ad4d7b0f29b0e9b41c50f8}
+      \strng{authorfullhash}{326eb28a5068aca9c42fef32e78ba03e}
+      \field{labelalpha}{He+17}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE international conference on computer vision}
+      \field{title}{Mask r-cnn}
+      \field{year}{2017}
+      \field{pages}{2961\bibrangedash 2969}
+      \range{pages}{9}
+    \endentry
+    \entry{he2016deep}{inproceedings}{}
+      \name{author}{4}{uniquelist=2}{%
+        {{uniquename=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=1,uniquepart=given,hash=5e72bc22dbcf0984c6d113d280e36990}{%
            family={Zhang},
            familyi={Z\bibinitperiod},
            given={Xiangyu},
            giveni={X\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
         {{uniquename=0,uniquepart=base,hash=bb295293acacd54387339079ebbe4ead}{%
            family={Ren},
            familyi={R\bibinitperiod},
@@ -1310,11 +1393,11 @@
            giveni={J\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{namehash}{10c7c08062904458c9f350fb94fb0588}
       \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
-      \strng{bibnamehash}{3733dbdff90171390240438fddfbc952}
-      \strng{authorbibnamehash}{3733dbdff90171390240438fddfbc952}
-      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{bibnamehash}{10c7c08062904458c9f350fb94fb0588}
+      \strng{authorbibnamehash}{10c7c08062904458c9f350fb94fb0588}
+      \strng{authornamehash}{10c7c08062904458c9f350fb94fb0588}
       \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
       \field{labelalpha}{He+16}
       \field{sortinit}{H}
@@ -1492,14 +1575,60 @@
       \verb 2006.00442
       \endverb
     \endentry
+    \entry{huang2017densely}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{uniquename=1,uniquepart=given,hash=0d12f90a1d1945cb1b98f583c9dc9572}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Gao},
+           giveni={G\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=f7eda249dc15ce9f452344ec95bbcc67}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Zhuang},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1b46cc02fccefd7adaf784f3a98193f1}{%
+           family={Van\bibnamedelimb Der\bibnamedelima Maaten},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Laurens},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d4806c5e19f2bed51b4188ae242ad629}{%
+           family={Weinberger},
+           familyi={W\bibinitperiod},
+           given={Kilian\bibnamedelima Q},
+           giveni={K\bibinitperiod\bibinitdelim Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3dcda21c08021918fcbe6ecf2e003538}
+      \strng{fullhash}{6ef453c01635d6cfb8aa28ca9843221e}
+      \strng{bibnamehash}{b2c0d447a59e7fc1bf517fbc86ce6488}
+      \strng{authorbibnamehash}{b2c0d447a59e7fc1bf517fbc86ce6488}
+      \strng{authornamehash}{3dcda21c08021918fcbe6ecf2e003538}
+      \strng{authorfullhash}{6ef453c01635d6cfb8aa28ca9843221e}
+      \field{labelalpha}{Hua+17}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE conference on computer vision and pattern recognition}
+      \field{title}{Densely connected convolutional networks}
+      \field{year}{2017}
+      \field{pages}{4700\bibrangedash 4708}
+      \range{pages}{9}
+    \endentry
     \entry{huang2021artificial}{article}{}
       \name{author}{4}{}{%
-        {{uniquename=0,uniquepart=base,hash=8e2d085ac99482b1a8763e273aabc9a6}{%
+        {{uniquename=1,uniquepart=given,hash=8e2d085ac99482b1a8763e273aabc9a6}{%
            family={Huang},
            familyi={H\bibinitperiod},
            given={Shigao},
            giveni={S\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
         {{uniquename=0,uniquepart=base,hash=4656453b716273b4ea07ab731e9b6dd5}{%
            family={Yang},
            familyi={Y\bibinitperiod},
@@ -1924,11 +2053,63 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv preprint arXiv:1312.4400}
-      \field{title}{Network in network}
+      \field{title}{Network in Network}
       \field{year}{2013}
     \endentry
+    \entry{lin2017focal}{inproceedings}{}
+      \name{author}{5}{uniquelist=2}{%
+        {{uniquename=1,uniquepart=given,hash=08f925fe4692d130a1d7cb7d94483351}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Tsung-Yi},
+           giveni={T\bibinithyphendelim Y\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=d87be7c19fa16049347907c9820816c6}{%
+           family={Goyal},
+           familyi={G\bibinitperiod},
+           given={Priya},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e38ddb38a8e769642319731dae30fa2d}{%
+           family={Doll{á}r},
+           familyi={D\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2904afed52d5535883645291488634e9}
+      \strng{fullhash}{83b5b0e280a121a189a18bb9777850a6}
+      \strng{bibnamehash}{2904afed52d5535883645291488634e9}
+      \strng{authorbibnamehash}{2904afed52d5535883645291488634e9}
+      \strng{authornamehash}{2904afed52d5535883645291488634e9}
+      \strng{authorfullhash}{83b5b0e280a121a189a18bb9777850a6}
+      \field{labelalpha}{Lin+17}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE international conference on computer vision}
+      \field{title}{Focal loss for dense object detection}
+      \field{year}{2017}
+      \field{pages}{2980\bibrangedash 2988}
+      \range{pages}{9}
+    \endentry
     \entry{lin2014microsoft}{inproceedings}{}
-      \name{author}{8}{}{%
+      \name{author}{8}{uniquelist=2}{%
         {{uniquename=1,uniquepart=given,hash=08f925fe4692d130a1d7cb7d94483351}{%
            family={Lin},
            familyi={L\bibinitperiod},
@@ -1981,11 +2162,11 @@
       \list{organization}{1}{%
         {Springer}%
       }
-      \strng{namehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{namehash}{fe01aca554e5a652c7b277e6aa0bfcc4}
       \strng{fullhash}{494d173f6b1d5ba6e83791ec1028de5b}
-      \strng{bibnamehash}{72b744e79c74738c617fd08b4f3d7e36}
-      \strng{authorbibnamehash}{72b744e79c74738c617fd08b4f3d7e36}
-      \strng{authornamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{bibnamehash}{fe01aca554e5a652c7b277e6aa0bfcc4}
+      \strng{authorbibnamehash}{fe01aca554e5a652c7b277e6aa0bfcc4}
+      \strng{authornamehash}{fe01aca554e5a652c7b277e6aa0bfcc4}
       \strng{authorfullhash}{494d173f6b1d5ba6e83791ec1028de5b}
       \field{labelalpha}{Lin+14}
       \field{sortinit}{L}
@@ -2422,7 +2603,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proc. 8th Int'l Conf. Computer Vision}
-      \field{month}{7}
+      \field{month}{6}
       \field{title}{A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics}
       \field{volume}{2}
       \field{year}{2001}
@@ -2944,6 +3125,51 @@
       \field{volume}{32}
       \field{year}{2019}
     \endentry
+    \entry{ren2015faster}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f086ca4da3e532e8a41cb758ea461825}
+      \strng{fullhash}{008a132af3e2d4ff15eb01a8fb4b005c}
+      \strng{bibnamehash}{4bf4b5f7210e9b6395f54bde43f47ca5}
+      \strng{authorbibnamehash}{4bf4b5f7210e9b6395f54bde43f47ca5}
+      \strng{authornamehash}{f086ca4da3e532e8a41cb758ea461825}
+      \strng{authorfullhash}{008a132af3e2d4ff15eb01a8fb4b005c}
+      \field{labelalpha}{Ren+15}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in neural information processing systems}
+      \field{title}{Faster r-cnn: Towards real-time object detection with region proposal networks}
+      \field{volume}{28}
+      \field{year}{2015}
+    \endentry
     \entry{ribeiro2016should}{inproceedings}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=3eb86ce401344495cd2509779cc25930}{%
@@ -3143,6 +3369,43 @@
       \field{year}{2016}
       \field{pages}{2660\bibrangedash 2673}
       \range{pages}{14}
+    \endentry
+    \entry{sanchez2011high}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=38548ef53530a7169ddb0420e476bd6d}{%
+           family={S{á}nchez},
+           familyi={S\bibinitperiod},
+           given={Jorge},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5a3c11e2931f5c99d33069b6ed09adca}{%
+           family={Perronnin},
+           familyi={P\bibinitperiod},
+           given={Florent},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3b9d79f55575975a6c7a771de823249c}
+      \strng{fullhash}{99c0210e7ed0771fa37a3cf82cf2955e}
+      \strng{bibnamehash}{99c0210e7ed0771fa37a3cf82cf2955e}
+      \strng{authorbibnamehash}{99c0210e7ed0771fa37a3cf82cf2955e}
+      \strng{authornamehash}{3b9d79f55575975a6c7a771de823249c}
+      \strng{authorfullhash}{99c0210e7ed0771fa37a3cf82cf2955e}
+      \field{labelalpha}{SP11}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{CVPR 2011}
+      \field{title}{High-dimensional signature compression for large-scale image classification}
+      \field{year}{2011}
+      \field{pages}{1665\bibrangedash 1672}
+      \range{pages}{8}
     \endentry
     \entry{schulz2020restricting}{article}{}
       \name{author}{4}{}{%
@@ -3994,12 +4257,12 @@
     \endentry
     \entry{wang2020score}{inproceedings}{}
       \name{author}{8}{}{%
-        {{uniquename=0,uniquepart=base,hash=2af57f63f16bd5ef869fcd7a0764dae5}{%
+        {{uniquename=1,uniquepart=given,hash=2af57f63f16bd5ef869fcd7a0764dae5}{%
            family={Wang},
            familyi={W\bibinitperiod},
            given={Haofan},
            giveni={H\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
         {{uniquename=0,uniquepart=base,hash=5ddb055abfa86a367168a9254a94cdfb}{%
            family={Wang},
            familyi={W\bibinitperiod},
@@ -4059,6 +4322,52 @@
       \field{booktitle}{CVPR Workshop}
       \field{title}{Score-{CAM}: Score-Weighted Visual Explanations for Convolutional Neural Networks}
       \field{year}{2020}
+    \endentry
+    \entry{wang2018non}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{uniquename=1,uniquepart=given,hash=84a57ab121539e94069a33b4d40492c1}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaolong},
+           giveni={X\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=83dd9d464c9f0ea982254939a7f021d8}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Abhinav},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f6d3f9621ed5e17f4801a833099443d2}
+      \strng{fullhash}{0a5e10579e3fbfb83c4d9ea2b1d94081}
+      \strng{bibnamehash}{c7c8b2b197fb5feb7d3a0e691445de14}
+      \strng{authorbibnamehash}{c7c8b2b197fb5feb7d3a0e691445de14}
+      \strng{authornamehash}{f6d3f9621ed5e17f4801a833099443d2}
+      \strng{authorfullhash}{0a5e10579e3fbfb83c4d9ea2b1d94081}
+      \field{labelalpha}{Wan+18}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE conference on computer vision and pattern recognition}
+      \field{title}{Non-local neural networks}
+      \field{year}{2018}
+      \field{pages}{7794\bibrangedash 7803}
+      \range{pages}{10}
     \endentry
     \entry{wightman2021resnet}{article}{}
       \name{author}{3}{}{%

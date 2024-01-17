@@ -18,21 +18,21 @@ used to drive forth its peers; moreover, (words).
 
 Ultimately, it was with inspiration on studies on neuroscience \autocite{hubel1959receptive} that the 
 development of \glspl{nn} started. In particular, the Neocognitron \autocite{fukushima1975cognitron} 
-proposes the first \gls{nn} where kernel operations, feature aggregation in a hierarchical 
+proposes the first \gls{nn} where kernel operations and feature aggregation in a hierarchical 
 manner and non-linearities stand out as these contributions can be seen as the main components of a 
 most recent image recogniton models.
-
 Still, the Neocognitron's hierarchical properties and aggregation didn't really achieve 
 a great deal of momentum on early days; around this time, other image recognition models were being 
 used yielding better results, examples of this can be seen with the amount of traditional machine 
-learning based methods that dominated this task around that time. Still getting close to the dawn 
-of the 1990s, Yann LeCunn proposed LeNet to perform digit recognition \autocite{lecun1998gradient}.\\
+learning based methods that dominated this task around that time. Nevertheless, getting close to the 
+dawn of the year 2000, Yann LeCun proposed LeNet to perform digit recognition 
+\autocite{lecun1998gradient} the first \gls{cnn}.\\
 
 \subsection{Convolutional Neural Networks}
 \label{rel:sub_cnn}
 Starting with LeNet, the convolution took prominence as the fundamental building block 
 of most current image recognition models. On itself, a convolutional layer operates by the 
-interaction of a kernel with a set of features at any given layer. This interaction depends in 
+interaction of a kernel with a set of features. This interaction depends in 
 direct correlation with the kernel size, mediated by its width and height. Furthermore, 
 these kernels are meant to project features into different spaces; with this in mind we point out 
 that convolutions are mostly a local operation. 
@@ -42,35 +42,84 @@ that convolutions are mostly a local operation.
 
 \noindent On top of convolutions, LeNet led to the introduction of more components of \glspl{cnn}: 
 pooling operations and non-linearities. Pooling operations are used to reduce the spatial 
-resolutions of feature maps, which in turn aids convolutions in capturing features from longer 
+resolution of feature maps, which in turn aids convolutions in capturing features from longer 
 range dependencies within the image. Moreover, via pooling it is possible to capture the most 
-relevant features within a neighborhood.
-
+relevant features within a neighborhood.\\
 On another hand non-linearities such as Sigmoid and ReLU, are designed to capture complex 
-relationships within data and stop the model collapsing into a linear operation. Moreover, these 
+relationships within data, stopping the model collapsing into a linear operation. Moreover, these 
 operations also contribute with stability: they maintain values within feature maps and the gradient 
 in ranges in which the network can operate with. %cite this?
 Still, the key contribution leading to the success of LeNet was not only the usage of 
-convolutions, pooling and nonlinearities; but its training process, that guided by gradient to 
-optimize ultimately enabled \glspl{cnn} to outperform traditional computer vision methods for document 
-recognition. \\
+convolutions, pooling and nonlinearities; but its training process, that guided by gradient descent 
+to optimize ultimately enabled \glspl{cnn} to outperform traditional computer vision methods for 
+document recognition. 
 
-\noindent With the advent of the 2010s and the organization of the \gls{ilsvrc} \autocite{ILSVRC15} 
-a proper environment for further devolpement of models was found. Unlike prior datasets in the 
-time, ImageNet was composed of images that presented more complexity than earlier datasets; instead 
-of catalogue-like compositions, for instance, elements in this dataset are closer to those found in 
-the wild by having multiple classes or instances of a class in one  image. Upon its release, 
-several traditional approaches were trained and evaluated in this collection, achieving a low 
-performance. Nevertheless, \glspl{cnn} returned to the front of image recognition with the 
-introduction of AlexNet \autocite{krizhevsky2012imagenet}. Inspired by LeNet, Krizhevsky designed a 
-\gls{cnn} that added a few more convolutions but most importantly, allowed for a more eficient 
-convolution by effective communication with the \gls{gpu}.
+\input{fig/rel/tex/cnn_timeline.tex}
+
+\noindent With the advent of the 2010s and the initiation of the \gls{ilsvrc} \autocite{ILSVRC15} 
+a proper environment for further devolpement of models was established. Unlike prior datasets, 
+ImageNet was composed of images that presented more complexity than earlier datasets. Instead 
+of catalogue-like compositions, for instance, elements in this dataset closely resemble those found 
+in the wild, featuring multiple classes or instances of a class in a single image.
+
+Upon its release, several traditional approaches were trained and evaluated on this collection, 
+achieving a low performance. However, \glspl{cnn} regained prominence with the introduction of
+AlexNet \autocite{krizhevsky2012imagenet}. Inspired by LeNet, Krizhevsky designed a 
+\gls{cnn} that incorporated additional convolutions and, more importantly, facilitated faster 
+computation through effective communication with the \gls{gpu}.
+AlexNet gained notoriety by emerging as the winner of the 2012 \gls{ilsvrc}, achieving a top-1 
+classification accuracy difference of nearly 10\% compared to previous year's winners 
+(\cite{berg2010large}, \cite{sanchez2011high}). This substantial improvement in recognition 
+capabilities led in a paradigm shift in various machine learning tasks, laying the foundation 
+for the deep learning revolution.\\
+
+\noindent Following this success, several \glspl{cnn} were introduced in the decade of 2010, where 
+a considerable of models where introduced. Nevertheless, we can stablish a timeline with the 
+milestone models that influenced the most this development, as seen in \autoref{fig:cnn_timeline}.
+In the year following AlexNet's publication, an updated form of mapping feature maps into 
+classification embeddings was proposed  in the shape of \gls{gap} \autocite{lin2013network}. 
+This pooling protocol improves classification as it enforces correspondences between feature maps 
+and categories; conversely it doesn't require any optimization whatsoever, negating effects of 
+overfitting. 
+
+\input{fig/rel/tex/resnet_overall.tex}
+
+Similar to 2012 and 2013, 2015 saw the proposal of two milestone models: the Inception architecture 
+\autocite{szegedy2015going} and VGG models \autocite{simonyan2015deep}. On one hand, the Inception 
+architecture is designed to learn features in different scale. To achieve this, \emph{Inception 
+Block} is introduced, where the multi-scale behaviour is captured with the incorporation of 
+convolutional kernels with sizes of $5\times5$, $3\times 3$ and $1\times1$. In contrast to 
+the Inception architecture, VGG models are built with a simplistic design, relying solely on 
+$3\times 3$ convolutions; in turn, VGG has been shown to be an excellent feature extractor network. 
+Led by the desire to increase depth of \glspl{cnn}, VGG and Inception attempted to make models 
+deeper; nevertheless this was not possible because of the vanishing gradient issue. As an answer to 
+this, the ResNet architecture was proposed \autocite{he2016deep}.\\
+
+
+%\input{fig/rel/tex/resnet_bbone.tex}
+\noindent The ResNet architecture is designed with the idea of residual connections as their 
+building block. On itself, a residual generates outputs via the summation of its input and a 
+linear mapping of it. This in turn enhances the network capabilities to scale in size, leading to 
+improvements in performance while being easier to optimize. A thorough representation of this 
+architecture is presented in \autoref{fig:resnet}. 
+This architecture has maintained its relevancy because of its modularity and the aforementioned 
+scaling properties. For instance, some of the most important \gls{cnn} based object detectors are 
+designed using ResNet as backbone (\cite{ren2015faster}, \cite{lin2017focal}, \cite{he2017mask}). 
+
+In a similar fashion to the residual connections introduced in ResNet, DenseNet 
+\autocite{huang2017densely} was proposed with the idea of connecting all layers operating within 
+matching feature-map sizes. This architecture on one hand enables the training of very deep 
+models; the dense connections allow for feature reuse and identity mappings, thus negating the 
+effect of vanishing gradients. However one issue that be brought forth with DenseNet is modularity 
+and ease of use. Since a great number of neurons are interconnected by design, introduction of 
+modifications such as \gls{nlb}\cite{wang2018non} can seem  rather challenging; whereas in 
+architectures such as ResNet, this procedure is rather simple.
 
 
 
- LeNet \cite{lecun1998gradient}, AlexNet \cite{krizhevsky2012imagenet}, VGG \cite{simonyan2015deep}, ResNet \cite{he2016deep}, 
+ResNet \cite{he2016deep}, 
 Inception (\cite{szegedy2015going}, \cite{szegedy2016rethinking}), NasNet (\cite{zoph2018learning})
-EfficientNet(\cite{tan2019efficientnet}) 
+DenseNet \autocite{huang2017densely} EfficientNet(\cite{tan2019efficientnet}) 
 ResNet Strikes back (\cite{wightman2021resnet}) \autocite{liu2022convnet}
 %\addcontentsline{toc}{subsection}{Convolutional Neural Networks}
 

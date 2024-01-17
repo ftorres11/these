@@ -4,34 +4,47 @@
 \label{ch:opticam}
 % Introduction, to move to a more verbatum approach
 \section{Introduction}
+\label{sec:intro}
 \noindent Within existing attribution approaches for interpretable saliency map generation, the CAM 
-(\cite{zhou2016learning})-based family of methods takes special interest given its reliance of
+\autocite{zhou2016learning} based family of methods takes special interest given its reliance of
 existing  information and properties of a given model to generate explanations. In particular, we 
-note that following Equation \ref{eq:sal}, modifying computation of the weighting coefficient 
+note that following \autoref{eq:sal}, modifying computation of the weighting coefficient 
 $w_k^c$ results in a different attribution being generated. Moreover, this computation can be altered,
  for instance by relying on information found while performing the backward pass 
  (\cite{selvaraju2017grad}, \cite{chattopadhay2018grad}, \cite{axiombased}, 
- \cite{smilkov2017smoothgrad}) and the forward pass (\cite{wang2020score}) of the model during 
- inference.\\
+ \cite{smilkov2017smoothgrad}) and the forward pass \autocite{wang2020score} of the model during 
+ inference. Nevertheless, we observe that among existing weighting coefficient computation 
+ proposals, none has been directed at maximizing the predicted probability of the generated 
+ saliency maps.
 
-\noindent Additionally, following attribution based methods such as extremal perturbations 
-(\cite{fong2019understanding}) or IBA (\cite{schulz2020restricting}), 
-we note that their class scores are optimized via gradient descent. In this regard, it can 
+Complementary to CAM methods, we observe that within attribution methods based on extremal 
+perturbations \autocite{fong2019understanding} or IBA \autocite{schulz2020restricting}, 
+their class scores are optimized via gradient descent. In this regard, it can 
 be stated that these masks then become variables within input-feature space, and the aforementioned 
 scores then become a function of said masking. However it is important to point that optimizing 
 these masks ultimately becomes an expensive process, as several constraints are needed 
-to be taken into consideration to further control the masking area.\\
+to be taken into consideration to further control the masking area.
 
-\noindent Complementary to the computation of the weighting coefficient for the computation of 
-saliency maps, we note that existing metrics to evaluate the interpretable properties of these 
-attributions do provide complete insight onto how good an approach is. In particular, we take 
-interest in Fake-CAM (\cite{poppi2021revisiting}) as this methodology raises questions with 
-relation to AD \ref{eq:ad} and AI \ref{eq:ai}; as perfect scores are achieved by generated a 
-saliency map where all the elements of the image have maximum importance bar one pixel.\\
+Drawing inspiration from the aforementioned observations, we set ourselves to design \emph{Opti-
+CAM}, an attribution method that generates saliency maps with enhanced interpretability. In 
+particular, we hypothesize that the weighting coefficient $w_k^c$ can be optimized to attain this 
+task; moreover, we also suggest that should the predicted probability of the attribution map is 
+optimized, we can gain insight within the regions of the image that appear to be the most important 
+for the classifier. For this, we set up the preliminaries in \autoref{sec:oc_prelim} to fully 
+define our approach in \autoref{sec:oc_def}\\
 
-\noindent With the observations previously mentioned, in this chapter we propose a CAM variant that 
-generates saliency maps by optimizing the weighting coefficient $w_k^c$, while also introducing a 
-novel metric to complement the existing evaluation of attribution methods.\\
+\noindent In addition to the proposal of an attribution method in this chapter, we aim towards the 
+design of a complementary interpretability evaluation metric of saliency maps. In particular, 
+based on the remarks found in Fake-CAM \autocite{poppi2021revisiting}; where it is noted that 
+existing metrics such as \gls{ad} (\ref{eq:ad}) and \gls{ai} (\ref{eq:ai}) can be manipulated. As a 
+result of this, we argue that a complementary criterion is missing regarding \textit{Objective 
+Evaluation for Object Recognition}. In \autoref{sec:av_gain} we define this novel measurement 
+under the name \gls{ag}. To support our approach, we demonstrate our generated saliency maps in 
+\autoref{sec:oc_qual} and we evaluate them in \autoref{sec:oc_quant} and \autoref{sec:oc_loc}.
+
+\noindent To sum up, with the observations previously mentioned, in this chapter we propose a CAM 
+variant that generates saliency maps by optimizing the weighting coefficient $w_k^c$, while also 
+introducing a novel metric to complement the existing evaluation of attribution methods.\\
 
 \input{tex_body/ch_opticam/tex/preliminar}
 \newpage
