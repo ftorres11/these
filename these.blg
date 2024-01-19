@@ -1,20 +1,21 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
-[0] Config.pm:305> INFO - Logfile is 'these.blg'
-[20] biber:313> INFO - === Wed Jan 17, 2024, 19:41:55
-[37] Biber.pm:371> INFO - Reading 'these.bcf'
-[86] Biber.pm:857> INFO - Found 100 citekeys in bib section 0
-[96] Biber.pm:3981> INFO - Processing section 0
-[105] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
-[109] bibtex.pm:1468> INFO - LaTeX decoding ...
-[189] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
-[728] Utils.pm:169> WARN - BibTeX subsystem: /tmp/1z4RqpyUaY/biblio.bib_13172.utf8, line 37, warning: 23 characters of junk seen at toplevel
-[728] Utils.pm:169> WARN - BibTeX subsystem: /tmp/1z4RqpyUaY/biblio.bib_13172.utf8, line 249, warning: 15 characters of junk seen at toplevel
-[729] Utils.pm:169> WARN - I didn't find a database entry for 'shetty2019not' (section 0)
-[729] Utils.pm:169> WARN - I didn't find a database entry for 'rao2022towards' (section 0)
-[916] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[916] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[917] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[917] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[1019] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
-[1117] bbl.pm:720> INFO - Output to these.bbl
-[1118] Biber.pm:110> INFO - WARNINGS: 4
+[2] Config.pm:305> INFO - Logfile is 'these.blg'
+[26] biber:313> INFO - === Fri Jan 19, 2024, 20:06:22
+[49] Biber.pm:371> INFO - Reading 'these.bcf'
+[112] Biber.pm:857> INFO - Found 103 citekeys in bib section 0
+[122] Biber.pm:3981> INFO - Processing section 0
+[132] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
+[137] bibtex.pm:1468> INFO - LaTeX decoding ...
+[248] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
+[256] Utils.pm:169> WARN - Duplicate entry key: 'kingma2014adam' in file 'biblio.bib', skipping ...
+[1283] Utils.pm:169> WARN - BibTeX subsystem: /tmp/P2yOqTPigp/biblio.bib_23396.utf8, line 37, warning: 23 characters of junk seen at toplevel
+[1283] Utils.pm:169> WARN - BibTeX subsystem: /tmp/P2yOqTPigp/biblio.bib_23396.utf8, line 249, warning: 15 characters of junk seen at toplevel
+[1284] Utils.pm:169> WARN - I didn't find a database entry for 'shetty2019not' (section 0)
+[1284] Utils.pm:169> WARN - I didn't find a database entry for 'rao2022towards' (section 0)
+[1580] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1580] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1580] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1580] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1704] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
+[1824] bbl.pm:720> INFO - Output to these.bbl
+[1824] Biber.pm:110> INFO - WARNINGS: 5

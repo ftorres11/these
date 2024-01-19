@@ -56,7 +56,7 @@
 \RequirePackage{array}						%% amélioration des tableaux
 \RequirePackage{booktabs}					%% tables formelles
 \RequirePackage{tikz}						%% figures en code natif
-\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.markings, positioning}
 
 \floatplacement{figure}{H}					%% placer une figure là où elle a été appelée
 \graphicspath{{fig/}{logo/}}				%% chemins vers fichiers images

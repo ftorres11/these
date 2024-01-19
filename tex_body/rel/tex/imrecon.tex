@@ -1,14 +1,19 @@
 %--------------------------------------------------------------------------------------------------
 \section{Image Recognition Models}
 \label{rel:sec_imrecon}
-Image recognition is a substask of computer science that aims at replicating human vision capabilities 
-with a machine. Arguably, it is with the improvement and interaction of the three fundamental tasks 
-of computer vision (Recognition, Reconstruction and Reorganization) \autocite{malik2016three} that we 
-find this field moves forward. Interestingly, improvements in one these fundamental Rs can be 
-used to drive forth its peers; moreover, (words).
+Image recognition is a substask of computer science that aims at replicating human vision 
+capabilities with a machine. From its early developements  with David Marr's postulates 
+on vision (\cite{poggio1981marr}, \cite{marr2010vision}), this field has been approached on a 
+computational level since the 1980s. 
 
+\textbf{WORDS!}
+%Arguably, it is with the improvement and interaction of the three 
+%fundamental tasks of computer vision (Recognition, Reconstruction and Reorganization) 
+%\autocite{malik2016three} that we find this field moves forward. Indeed we cannot consider these 
+%tasks as having no correlation with each other whatsoever, instead there is a connectivity binding 
+%them as shown on \autoref{fig:malik_rs}. In particular with image recognition models 
 
-
+%\input{fig/rel/tex/maliks_rs.tex}
 
 %1960s, first thesis, image processing, pattern recognition
 %1970s foundational work on image recognition
@@ -16,7 +21,7 @@ used to drive forth its peers; moreover, (words).
 %1990s geometric analysis coplete, graphics,statistical learning
 %200s advances in visual recognition, practical applications
 
-Ultimately, it was with inspiration on studies on neuroscience \autocite{hubel1959receptive} that the 
+Ultimately it was with inspiration on studies on neuroscience \autocite{hubel1959receptive} that the 
 development of \glspl{nn} started. In particular, the Neocognitron \autocite{fukushima1975cognitron} 
 proposes the first \gls{nn} where kernel operations and feature aggregation in a hierarchical 
 manner and non-linearities stand out as these contributions can be seen as the main components of a 
@@ -42,7 +47,7 @@ that convolutions are mostly a local operation.
 
 \noindent On top of convolutions, LeNet led to the introduction of more components of \glspl{cnn}: 
 pooling operations and non-linearities. Pooling operations are used to reduce the spatial 
-resolution of feature maps, which in turn aids convolutions in capturing features from longer 
+resolution of feature maps, which in turn aids convolutions in capturing features from long 
 range dependencies within the image. Moreover, via pooling it is possible to capture the most 
 relevant features within a neighborhood.\\
 On another hand non-linearities such as Sigmoid and ReLU, are designed to capture complex 
@@ -59,8 +64,8 @@ document recognition.
 \noindent With the advent of the 2010s and the initiation of the \gls{ilsvrc} \autocite{ILSVRC15} 
 a proper environment for further devolpement of models was established. Unlike prior datasets, 
 ImageNet was composed of images that presented more complexity than earlier datasets. Instead 
-of catalogue-like compositions, for instance, elements in this dataset closely resemble those found 
-in the wild, featuring multiple classes or instances of a class in a single image.
+of catalogue-like compositions; elements in this dataset closely resemble those found 
+in the wild, featuring multiple classes or instances of a class within a single image.
 
 Upon its release, several traditional approaches were trained and evaluated on this collection, 
 achieving a low performance. However, \glspl{cnn} regained prominence with the introduction of
@@ -74,7 +79,7 @@ capabilities led in a paradigm shift in various machine learning tasks, laying t
 for the deep learning revolution.\\
 
 \noindent Following this success, several \glspl{cnn} were introduced in the decade of 2010, where 
-a considerable of models where introduced. Nevertheless, we can stablish a timeline with the 
+a considerable amount of models where introduced. Nevertheless, we can stablish a timeline with the 
 milestone models that influenced the most this development, as seen in \autoref{fig:cnn_timeline}.
 In the year following AlexNet's publication, an updated form of mapping feature maps into 
 classification embeddings was proposed  in the shape of \gls{gap} \autocite{lin2013network}. 
@@ -82,49 +87,109 @@ This pooling protocol improves classification as it enforces correspondences bet
 and categories; conversely it doesn't require any optimization whatsoever, negating effects of 
 overfitting. 
 
-\input{fig/rel/tex/resnet_overall.tex}
-
 Similar to 2012 and 2013, 2015 saw the proposal of two milestone models: the Inception architecture 
 \autocite{szegedy2015going} and VGG models \autocite{simonyan2015deep}. On one hand, the Inception 
-architecture is designed to learn features in different scale. To achieve this, \emph{Inception 
+architecture is designed to learn features in different scale. To achieve this, the \emph{Inception 
 Block} is introduced, where the multi-scale behaviour is captured with the incorporation of 
 convolutional kernels with sizes of $5\times5$, $3\times 3$ and $1\times1$. In contrast to 
 the Inception architecture, VGG models are built with a simplistic design, relying solely on 
-$3\times 3$ convolutions; in turn, VGG has been shown to be an excellent feature extractor network. 
+$3\times 3$ convolutions. For a change, VGG has been shown to be an excellent feature extractor network. 
 Led by the desire to increase depth of \glspl{cnn}, VGG and Inception attempted to make models 
 deeper; nevertheless this was not possible because of the vanishing gradient issue. As an answer to 
 this, the ResNet architecture was proposed \autocite{he2016deep}.\\
 
+\input{fig/rel/tex/resnet_overall.tex}
 
 %\input{fig/rel/tex/resnet_bbone.tex}
 \noindent The ResNet architecture is designed with the idea of residual connections as their 
-building block. On itself, a residual generates outputs via the summation of its input and a 
+building block. On itself, a residual block generates outputs via the summation of its input and a 
 linear mapping of it. This in turn enhances the network capabilities to scale in size, leading to 
-improvements in performance while being easier to optimize. A thorough representation of this 
+improvements in performance while being easier to optimize. This architecture has maintained its 
+relevancy because of its modularity and the aforementioned scaling properties. For instance, some 
+of the most important \gls{cnn} based object detectors are designed using ResNet as backbone 
+(\cite{ren2015faster}, \cite{lin2017focal}, \cite{he2017mask}). A thorough representation of this 
 architecture is presented in \autoref{fig:resnet}. 
-This architecture has maintained its relevancy because of its modularity and the aforementioned 
-scaling properties. For instance, some of the most important \gls{cnn} based object detectors are 
-designed using ResNet as backbone (\cite{ren2015faster}, \cite{lin2017focal}, \cite{he2017mask}). 
 
 In a similar fashion to the residual connections introduced in ResNet, DenseNet 
 \autocite{huang2017densely} was proposed with the idea of connecting all layers operating within 
 matching feature-map sizes. This architecture on one hand enables the training of very deep 
-models; the dense connections allow for feature reuse and identity mappings, thus negating the 
-effect of vanishing gradients. However one issue that be brought forth with DenseNet is modularity 
-and ease of use. Since a great number of neurons are interconnected by design, introduction of 
-modifications such as \gls{nlb}\cite{wang2018non} can seem  rather challenging; whereas in 
-architectures such as ResNet, this procedure is rather simple.
+models; these connections allow for feature reuse and identity mappings, thus negating the 
+effect of vanishing gradients. However one issue that be brought forth with DenseNet is its 
+lack of  modularity and ease of use. Since a great number of neurons are interconnected by design, 
+introduction of modifications such as \gls{nlb}\autocite{wang2018non} or \gls{senet} 
+\autocite{hu2018squeeze} can be  rather challenging; whereas in architectures such as ResNet, 
+this procedure is rather simple.
 
+Moreover, it is arguable that convolutional block design can be improved if a model learns on 
+itself the best configuration possible for a specific task. This is idea is embodied by the 
+\gls{nasnet} \autocite{zoph2018learning} where the model learns a fundamental building block on a 
+small dataset and it is then transferred into a larger one. Some of the biggest drawbacks for this 
+model however, are its computational load and the dependency on search space selection towards 
+optimization. One last milestone attempt at improved architecture design was proposed in 2019 with 
+EfficientNet \autocite{tan2019efficientnet}. In sharp contrast to its contemporaries' approach at 
+scaling depth, width and resolution; EfficientNet proposes an \emph{compound coefficient} to 
+perform this process.
 
+Alongside these models, several improvements have been introduced to aid the optimization process. 
+In particular, some of the earliest approaches were trained using \gls{sgd} 
+\autocite{bottou2010large}; while Adam \autocite{kingma2014adam} and Lamb \autocite{you2019large} 
+optimizers have taken prominence in later years. Additionally, data augmentation strategies have 
+evolved too; researchers have proposed methodologies to enhance data variability by the 
+incorporation of characteristics of different classes in a particular one within an image 
+(\cite{zhang2017mixup}, \cite{yun2019cutmix}). Still, some of the aforementioned architectures 
+were not proposed with such contributions, and as such it is possible to suggest that an unfair 
+comparison is performed, aswell as an incomplete study on said model's capabilities. One such 
+answer to this issue was proposed for ResNet in 2021 \autocite{wightman2021resnet}. In 
+ResNet strikes back, this backbone was retrained under updated training regimes, achieving a 
+high classification performance, rivaling that of transformers.
 
-ResNet \cite{he2016deep}, 
-Inception (\cite{szegedy2015going}, \cite{szegedy2016rethinking}), NasNet (\cite{zoph2018learning})
-DenseNet \autocite{huang2017densely} EfficientNet(\cite{tan2019efficientnet}) 
-ResNet Strikes back (\cite{wightman2021resnet}) \autocite{liu2022convnet}
-%\addcontentsline{toc}{subsection}{Convolutional Neural Networks}
+Finally, with the advent of transformer based image recognition models in the early years of the 
+2020 decade, \glspl{cnn} started being outshined by these kind of models; however, an architecture 
+incorporating the key principles of these models was presented, ConvNeXt \autocite{liu2022convnet}.
+These family of models addressed some shortcomings of transformer models and proposed their 
+mitigation with the modernization of a ResNet architecture, enhancing its performance not only in 
+image recognition, but also in segmentation and detection. Still, having mentioned transformers, 
+we dedicate the following subsection to their description, their basic unit and some milestone 
+models.
+
+%% ------------------------------------------------------------------------------------------------
 
 \subsection{Attention-Based Architectures}
 \label{rel:sub_att}
+One key remark we should not forget is that Computer Vision isn't isolated within Artificial 
+Intelligence; advances on this field have conversely contributed to complementary fields such as 
+\gls{nlp}. Furthermore, proposals made for that domain have also made their way into image 
+recognition; one such developement is that of Transformers. The Transformer architecture was first 
+proposed in 2017 with the article \emph{Attention is All You Need} \autocite{vaswani2017attention}. 
+This model answered to limitations in existing methodologies to perform \gls{nlp} such as LSTMs and 
+RNNs; in particular their struggles with capturing long range dependencies and efficient training. 
+
+In a similar fashion with the impact AlexNet had on image recognition, transformers revolutionized 
+the landscape of \gls{nlp} with their key component, \emph{Self Attention}. In particular, this 
+function weights different parts of an input sequence, enabling focus on relevant information. 
+This is defined in the following manner:
+
+\begin{equation}
+    \mbox{Attention(}Q, K, V) = \mbox{softmax(}\frac{QK^T}{\sqrt{d_k}})V
+    \label{eq:att}
+\end{equation}
+
+where $Q, K, V$ are embedding matrices representing \emph{queries}, \emph{keys} and \emph{values}, 
+each having dimension $d_k$. The activation function softmax is used to highlight the relevant 
+information for each of the products between $Q$ and $V$; conversely the scaling coefficient 
+$\sqrt{d_k}$ uses this root as large values of $d_k$ push softmax into regions which small 
+gradients. This function can be further paralellized by separating these embeddings into different 
+heads, where the dot products are ultimately easier to compute; this in turn is called \gls{mhsa}.
+
+One key remark is that self attention which has no parameters whatsoever, this function is used in 
+blocks that ultimately form the encoder part of the transformer. One encoder block is composed of a 
+residual  operation where the input embedding is updated with the product of \gls{mhsa}, normalized, 
+and then this updated with the residual operation on top of a feed forward network. This is best 
+explained in \autoref{fig:transf_block}.
+
+\input{fig/rel/tex/transf_block}
+
+
 %\addcontentsline{toc}{subsection}{Attention-Based Architectures}
 Attention is a powerful mechanism that has been introduced into convolutional networks in several 
 ocasions (\cite{bello2019attention}, \cite{ramachandran2019stand}, \cite{shen2020global}). 
