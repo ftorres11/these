@@ -38,9 +38,8 @@ dawn of the year 2000, Yann LeCun proposed LeNet to perform digit recognition
 Starting with LeNet, the convolution took prominence as the fundamental building block 
 of most current image recognition models. On itself, a convolutional layer operates by the 
 interaction of a kernel with a set of features. This interaction depends in 
-direct correlation with the kernel size, mediated by its width and height. Furthermore, 
-these kernels are meant to project features into different spaces; with this in mind we point out 
-that convolutions are mostly a local operation. 
+direct correlation with the kernel size, mediated by its width and height, denoting a receptive field,
+which is ultimately, mostly local. 
 %Figure \ref{fig:conv_local} illustrates these 
 %properties of the convolution operation.
 %\input{fig/rel/tex/conv_desc.tex}
@@ -181,15 +180,20 @@ $\sqrt{d_k}$ uses this root as large values of $d_k$ push softmax into regions w
 gradients. This function can be further paralellized by separating these embeddings into different 
 heads, where the dot products are ultimately easier to compute; this in turn is called \gls{mhsa}.
 
-One key remark is that self attention which has no parameters whatsoever, this function is used in 
+One key remark is that self attention has no parameters whatsoever; this function is used in 
 blocks that ultimately form the encoder part of the transformer. One encoder block is composed of a 
 residual  operation where the input embedding is updated with the product of \gls{mhsa}, normalized, 
-and then this updated with the residual operation on top of a feed forward network. This is best 
-explained in \autoref{fig:transf_block}.
+and then this representation is further recombined with the residual operation on top of a feed 
+forward network. This is best explained in \autoref{fig:transf_block}.
 
 \input{fig/rel/tex/transf_block}
 
-
+Another key characteristic that differentiates transformers from previous approaches on \gls{nlp} 
+and convolutions is its capability to process data in a global approach. In stark contrast to the 
+aforementioned convolutions in \autoref{rel:sub_cnn}, the self-attention operation is not mediated 
+with parameters such as width-height, a receptive field; this operation is instead mediated by a 
+number of embeddings that will represent the whole of data (\textit{i}. \textit{e}) and the 
+aforementioned $d_k$ which would be the dimensions to which the data is projected to. 
 %\addcontentsline{toc}{subsection}{Attention-Based Architectures}
 Attention is a powerful mechanism that has been introduced into convolutional networks in several 
 ocasions (\cite{bello2019attention}, \cite{ramachandran2019stand}, \cite{shen2020global}). 
