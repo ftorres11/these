@@ -1,13 +1,77 @@
 %--------------------------------------------------------------------------------------------------
 \section{Interpretability}
 \label{rel:sec_int}
+As deep learning based models for Computer Vision have continued to improve in their recognition 
+properties, their structure and functioning have become more opaque; in turn making these 
+technologies seen as black boxes. A black-box model is defined as a model for which its 
+interpretation is not straightforward for humans \autocite{petch2022opening}. In recent years 
+with the assimilation of deeplearning into everyday tasks, and the implicit effect these models 
+are having on human lives; the novel research field of \emph{Interpretability} has been brought 
+forth to open up this black-box behaviour. This research field investigated alongside two 
+directions(\cite{mythos_interp}, \cite{guidotti2018survey}, \cite{zhang2021survey}):
 
+\begin{enumerate}
+	\item \emph{Post-hoc interpretability} considers the model as a black-box and provides 
+	explanations based on inputs and outputs, without modifying the model or its training process.
+	\item \emph{Transparency} modifies the model or the training process to better explain the 
+	behavior of the inner parts of the model.
+\end{enumerate}
 
 \subsection{Transparency}
 \label{rel:sub_transp}
+Transparent 
+%Transparency in interpretability research represents a pivotal pursuit within the broader 
+%landscape of artificial intelligence. In the ever-evolving field of machine learning, 
+%particularly deep neural networks, the inherent complexity of models often gives rise to a lack of 
+%transparency, making it challenging to comprehend the decision-making processes. Researchers 
+%focusing on transparency in interpretability seek to address this opacity by developing 
+%methodologies and frameworks that not only reveal how models arrive at specific outcomes but 
+%also provide a comprehensive understanding of the underlying mechanisms. The ultimate goal is to 
+%empower users, stakeholders, and policymakers with the knowledge necessary to trust, validate, and 
+%navigate the applications of artificial intelligence effectively. This emphasis on transparency not 
+%only enhances the accountability of AI systems but also contributes to broader societal acceptance 
+%and ethical deployment of these powerful technologies.
+Approaches are grouped in a number of categories according to the type of the given explanation. \\
+\emph{Rule-based methods} (\cite{wu2018beyond}, \cite{wu2020regional}) train a decision tree as a 
+surrogate regularization term to force a network to be easily approximated by a decision tree.
+% or learn a set of logit rules as an explanation~\citep{azzolin2022global}.
+\emph{Hidden semantics-based methods} (\cite{bau2017network}, \cite{zhou2018interpreting}, 
+\cite{zhang2018interpretable}, \cite{zhou2014object},\cite{bohle2022b}. \cite{bohle2024b}) aim to 
+make a convolutional network learn disentangled hidden semantics with hierarchical structure or 
+object-level concepts.\\
+\emph{Prototype-based methods} (\cite{li2018deep}, \cite{chen2019looks}) learn a set of prototypes 
+or parts as an intermediate representation in the network, which can be aligned with categories. 
+\emph{Attribution-based methods} (\cite{ismail2021improving}, \cite{Zhou_2022_BMVC}, \\
+\cite{ross2017right}, \cite{ghaeini2019saliency}) usually modify the architecture of a network or 
+the training process to help post-hoc methods produce better saliency maps. Unlike 
+(\cite{ross2017right}, \cite{ghaeini2019saliency}), saliency guided localization 
+\autocite{Zhou_2022_BMVC} does not need ground truth explanations but replaces them with 
+information bottleneck attribution \autocite{schulz2020restricting}. Finally, saliency-guided 
+training \autocite{ismail2021improving} minimizes the KL divergence between the output of original 
+and masked images.
 
 \subsection{Post-Hoc Interpretability}
 \label{rel:sub_post}
+
+Approaches can be grouped into a number of possibly overlapping categories. 
+\emph{Gradient-based methods} (\cite{adebayo2018local}, \cite{guidedbackprop}, 
+\cite{baehrens2010explain}, \cite{simonyan2013deep}, \cite{smilkov2017smoothgrad}, 
+\cite{bach2015pixel}, \cite{sundararajan2017axiomatic}) use the gradient of a target class score 
+with respect to the input to compute the contribution of different input regions to the prediction. 
+\emph{CAM-based methods} (\cite{wang2020score}, 
+\cite{chattopadhay2018grad}, \cite{selvaraju2017grad}, 
+\cite{axiombased}, \cite{jiang2021layercam}, \cite{ablationcam}) compute saliency maps 
+as a linear combination of feature maps, with different definitions for the weights. 
+
+\emph{Occlusion or masking-based methods} (\cite{petsiuk2018rise}, \cite{fong2017interpretable}, 
+\cite{fong2019understanding}, \cite{schulz2020restricting}, \cite{ribeiro2016should}) apply a 
+number of candidate masks in the input space, measure their effect on the prediction and then 
+combine them into a saliency map. Masking in feature space has been explored too 
+\autocite{schulz2020restricting}. 
+
+Finally, \emph{learning-based methods} (\cite{chang2018explaining}, \cite{dabkowski2017real}, 
+\cite{phang2020investigating}, \cite{zolna2020classifier}, \cite{schulz2020restricting}) learn an 
+additional network or branch on extra data to produce an explanation map for a given input. 
 
 \paragraph{Notation}
 \label{sec:oc_notation}

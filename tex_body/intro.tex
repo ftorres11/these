@@ -1,15 +1,15 @@
 %--------------------------------------------------------------------------------------------------
 \addchap{Introduction}
 %\addcontentsline{toc}{chapter}{Introduction}
-Amongst the sensory information that the brain processes, visual stimuli accounts 
-for 90\% of data analyzed (\cite{potter2014detecting}), while consuming a great amount of energy 
+\noindent Amongst the sensory information that the brain processes, visual stimuli accounts 
+for 90\% of data analyzed \autocite{potter2014detecting}, while consuming a great amount of energy 
 in human metabolism (\cite{phelps1981metabolic}). It is argued that a big influence on the 
 brain evolution was as a result of improving the capacity to process this kind of data and the 
 ensuing  pattern recognition (\cite{mattson2014superior}). 
-In current time, these shapes and forms have evolved too: it is no longer common for a human
-the need to scan the environment for faces that could reveal a potential predator; for a change, 
-the patterns that we now seek to unravel also contain products of our own imagination: digits and 
-characters, geometrical shapes.\\
+Currently, these shapes and forms have evolved too: it is no longer common for a human in most 
+metropolitan areas, the need to scan the environment for faces that could reveal a potential 
+predator; for a change, the patterns that we now seek to unravel also contain products of our own 
+imagination: digits and characters, geometrical shapes.\\
 
 \paragraph{Visual Recognition} Understanding the processes behind visual recognition has been a 
 prominent research question throughout human history. From the preliminary questionings by greek  
@@ -20,23 +20,24 @@ to understand and describe this process have been brought forth. Moreover, visio
 only studied in fields like physics, medicine and psychology; 
 with the advent of computer science, computational approaches and theories started emerging 
 regarding this domain. One such study that proved seminal in this domain is that carried out by 
-David Marr (\cite{poggio1981marr}, \cite{marr2010vision}). Most notably, Marr addressed that vision 
-can be understood as a computational task, as algorithms and models have been 
-developed, generating the research field of compter vision. 
-Over the past decade great advancements were made on computer vision. In particular with the 
-optimization and popularization of \gls{gpu}, models requiring a strong computational power became 
-accesible for researchers. More specifically, the framework developed by Yann LeCun 
-(\cite{lecun1998gradient}) got revitalized in 2012 with the introduction of AlexNet 
-(\cite{krizhevsky2012imagenet}) where proper leverage of these machines outclassed that of 
+David Marr (\cite{poggio1981marr}, \cite{marr2010vision}). Most notably, Marr addressed vision on 
+three levels: comptational, algorithmic and implementation. In particular, upon the computational 
+level, Marr pondered around issues that the visual system answers and their explanation; this 
+ultimately led to the formulation of fundamental tasks within computer vision such as object 
+recognition and reconstruction. Over the past decade great advancements were made on computer 
+vision. In particular with the optimization and popularization of \gls{gpu}, models requiring 
+a strong computational power became accesible for researchers. To be specific, the framework 
+developed by Yann LeCun (\cite{lecun1998gradient}) got revitalized in 2012 with the introduction of 
+AlexNet (\cite{krizhevsky2012imagenet}) where proper leverage of these machines outclassed that of 
 more traditional machine learning models, Chapter \ref{ch:rel} discusses this in more depth. 
 In this short span of time, several groundbreaking architectures have been proposed, in 
 particular the ResNet family (\cite{he2016deep}) has remained relevant given its properties
 (\cite{wightman2021resnet}); furthermore, with the introduction of the transformer architecture 
-(\cite{vaswani2017attention}) this field of research recieved a new impulse and more powerful models 
-based upon its functional unit are being brought forth.\\
+(\cite{vaswani2017attention}) this field of research recieved a new impulse and more powerful 
+models based upon its functional unit are being brought forth.\\
 
 \noindent It is not only with the increase of computational power that computer vision has improved over time. 
-With the developement, popularization and spread of the internet; large collections of data are 
+With the developement, popularization and spread of the internet; large collections of data have been 
 formed. These aggregations can be extremely specific for a given end, or 
 quite general representing the common interests of its users. Over time, these compilations have 
 continued to grow both in volume and variety; still, several curated collections are introduced by 
@@ -44,32 +45,34 @@ researchers to experiment and control the development of models such as MNIST (\
 BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
 ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}). Additionally, data collection is
 an ongoing and a never ending process; as such, the idea of a dataset containing all types of 
-information is no longer deemded a dream but a reality that might come true in the forseeable future.\\
+information is no longer deemded a dream but a reality that might come true aided by Big Data in 
+the foreseeable future \autocite{chen2014big}.\\
 
 \noindent Taking into consideration the aforementioned  increase on  both compute power and data 
 availability, deep learning based models have been steadily adopted and assimiliated within society; 
 nowadays its no longer so much a question \textit{whether can a model achieve a given task}, but 
-rather a question on \textit{how can this given model perform this task}. The main issue regarding 
-these questions lies within the size and complexity of deep models, where providing interpretable 
-explanations has lead to the surge of a novel field of research (\cite{guidotti2018survey}, 
-\cite{bodria2021benchmarking}).
+rather a question on \textit{how can this given model perform this task}. Providing an answer to 
+this question is paramount as human lives are now being directly affected by such kind of models. 
+The main issue behind understanding deep models, lies within the size and complexity of deep 
+architecttures, where providing interpretable explanations has lead to the surge of a novel field 
+of research (\cite{guidotti2018survey}, \cite{bodria2021benchmarking}).
 
 \paragraph{Interpretability}
 To begin discussing about interpretability, one must ponder around its definition. 
 Over the last decade, many authors have attempted to address to this question. One 
-of the most notable discussions can be found within \textbf{The Mythos of Model Interpretability} 
-(\cite{mythos_interp}). In this work, Lipton argues that for a model to be interpretable it must display 
-two properties, \textbf{Transparency} and \textbf{Post-Hoc Interpretability}. In one hand, 
+of the most notable discussions can be found within \emph{The Mythos of Model Interpretability} 
+(\cite{mythos_interp}). In this work, Lipton argues that for a model to be interpretable it must 
+display two properties, \emph{Transparency} and \emph{Post-Hoc Interpretability}. In one hand, 
 \textit{Transparency} answers questions regarding the model structure, training and inference 
 processes; while on another hand, \textit{Post-Hoc Interpretability} relates to the explanations 
 and information that can be drawn of the model itself.
-\noindent Considering these properties, we observe that as machine learning models grew in complexity; 
-their transparency properties vanished  
-proportionaly to their size. It can be argued that traditional models offer themselves to  
-transparency due to their straightforward formulation and inherent properties. Conversely, 
-in terms of post-hoc interpretations, methods like decision trees \cite{breiman2017classification} 
-can be pruned to study their performance by removing branches (\cite{lakkaraju2016interpretable},
-\cite{mothilal2020explaining}). 
+
+\noindent Considering these properties, we observe that as machine learning models grew in 
+complexity; their transparent properties vanished proportionaly to their size. It can be argued 
+that traditional models offer themselves to  transparency due to their straightforward formulation 
+and inherent properties. Conversely, in terms of post-hoc interpretations, methods like decision 
+trees \cite{breiman2017classification} can be pruned to study their performance by removing 
+branches (\cite{lakkaraju2016interpretable},\cite{mothilal2020explaining}). 
 On another hand, established techniques such as Principal Component Analysis \gls{pca} 
 (\cite{wold1987principal}), can be used to gain insight within data leading to a prediction.\\
 

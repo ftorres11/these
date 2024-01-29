@@ -75,12 +75,23 @@ $ Moore's Law discussion #2
 }
 
 % Score-CAM 
-@inproceedings{wang2020score,
-    author = {Wang, Haofan and Wang, Zifan and Du, Mengnan and Yang, Fan and Zhang, Zijian and Ding, Sirui and Mardziel, Piotr and Hu, Xia},
-    title = {Score-{CAM}: Score-Weighted Visual Explanations for Convolutional Neural Networks},
-    booktitle = {CVPR Workshop},
-    year = {2020}
-} 
+@article{wang2020score,
+  author    = {Haofan Wang and
+               Mengnan Du and
+               Fan Yang and
+               Zijian Zhang},
+  title     = {Score-CAM: Improved Visual Explanations Via Score-Weighted Class Activation
+               Mapping},
+  journal   = {CoRR},
+  volume    = {abs/1910.01279},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1910.01279},
+  eprinttype = {arXiv},
+  eprint    = {1910.01279},
+  timestamp = {Thu, 04 Feb 2021 15:37:59 +0100},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1910-01279.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 
 % Real Time Saliency for BB Classifiers
 @article{dabkowski2017real,
@@ -289,13 +300,25 @@ $ Slot-Attention
 }
 
 % GradCAM
-@inproceedings{selvaraju2017grad,
-  title={Grad-cam: Visual explanations from deep networks via gradient-based localization},
-  author={Selvaraju, Ramprasaath R and Cogswell, Michael and Das, Abhishek and Vedantam, Ramakrishna and Parikh, Devi and Batra, Dhruv},
-  booktitle={CVPR},
-  year={2017}
+@article{selvaraju2017grad,
+  author    = {Ramprasaath R. Selvaraju and
+               Abhishek Das and
+               Ramakrishna Vedantam and
+               Michael Cogswell and
+               Devi Parikh and
+               Dhruv Batra},
+  title     = {Grad-CAM: Why did you say that? Visual Explanations from Deep Networks
+               via Gradient-based Localization},
+  journal   = {CoRR},
+  volume    = {abs/1610.02391},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1610.02391},
+  eprinttype = {arXiv},
+  eprint    = {1610.02391},
+  timestamp = {Mon, 13 Aug 2018 16:46:58 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/SelvarajuDVCPB16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
 }
-
 % Network Inspection
 @article{zhou2018interpreting,
   author={Zhou, Bolei and Bau, David and Oliva, Aude and Torralba, Antonio},
@@ -366,9 +389,9 @@ $ Slot-Attention
 
 %% XGrad-CAM
 @article{axiombased,
-  title={Axiom-based grad-cam: Towards accurate visualization and explanation of cnns},
+  title={Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation of CNNs},
   author={Fu, Ruigang and Hu, Qingyong and Dong, Xiaohu and Guo, Yulan and Gao, Yinghui and Li, Biao},
-  journal={arXiv preprint arXiv:2008.02312},
+  journal={BMVC},
   year={2020}
 }
 
@@ -635,6 +658,13 @@ eprint = {"\url{https://doi.org/10.1177/003591575504800512"}
 }
 
 %% VGG
+@article{simonyan2013deep,
+  author       = "Karen Simonyan and Andrea Vedaldi and Andrew Zisserman",
+  title        = "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+  journal    = "ICLR Workshop",
+  year         = "2014",
+}
+
 @misc{simonyan2015deep,
       title={Very Deep Convolutional Networks for Large-Scale Image Recognition}, 
       author={Karen Simonyan and Andrew Zisserman},
@@ -1071,14 +1101,6 @@ url = {http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model
   organization={Springer}
 }
 
-%% ADAM
-@article{kingma2014adam,
-  title={Adam: A method for stochastic optimization},
-  author={Kingma, Diederik P and Ba, Jimmy},
-  journal={arXiv preprint arXiv:1412.6980},
-  year={2014}
-}
-
 %% Lamb
 @article{you2019large,
   title={Large batch optimization for deep learning: Training bert in 76 minutes},
@@ -1112,4 +1134,235 @@ url = {http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model
   pages={681--699},
   year={2020},
   organization={Springer}
+}
+
+%% JFT-300M
+@inproceedings{sun2017revisiting,
+  title={Revisiting unreasonable effectiveness of data in deep learning era},
+  author={Sun, Chen and Shrivastava, Abhinav and Singh, Saurabh and Gupta, Abhinav},
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  pages={843--852},
+  year={2017}
+}
+
+%% Big Data in DL
+@article{chen2014big,
+  title={Big data deep learning: challenges and perspectives},
+  author={Chen, Xue-Wen and Lin, Xiaotong},
+  journal={IEEE access},
+  volume={2},
+  pages={514--525},
+  year={2014},
+  publisher={Ieee}
+}
+
+%% Interp Survey
+@article{zhang2021survey,
+  title={A survey on neural network interpretability},
+  author={Zhang, Yu and Ti{\v{n}}o, Peter and Leonardis, Ale{\v{s}} and Tang, Ke},
+  journal={IEEE Transactions on Emerging Topics in Computational Intelligence},
+  volume={5},
+  number={5},
+  pages={726--742},
+  year={2021},
+  publisher={IEEE}
+}
+%% Beyond Sparsity
+@inproceedings{wu2018beyond,
+  title={Beyond sparsity: Tree regularization of deep models for interpretability},
+  author={Wu, Mike and Hughes, Michael and Parbhoo, Sonali and Zazzi, Maurizio and Roth, Volker and Doshi-Velez, Finale},
+  booktitle={Proceedings of the AAAI conference on artificial intelligence},
+  volume={32},
+  year={2018}
+}
+@inproceedings{wu2020regional,
+  title={Regional tree regularization for interpretability in deep neural networks},
+  author={Wu, Mike and Parbhoo, Sonali and Hughes, Michael and Kindle, Ryan and Celi, Leo and Zazzi, Maurizio and Roth, Volker and Doshi-Velez, Finale},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={34},
+  pages={6413--6421},
+  year={2020}
+}
+%% Network dissection
+@inproceedings{bau2017network,
+  title={Network dissection: Quantifying interpretability of deep visual representations},
+  author={Bau, David and Zhou, Bolei and Khosla, Aditya and Oliva, Aude and Torralba, Antonio},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={6541--6549},
+  year={2017}
+}
+
+%% Interpretable convnets
+@inproceedings{zhang2018interpretable,
+  title={Interpretable convolutional neural networks},
+  author={Zhang, Quanshi and Wu, Ying Nian and Zhu, Song-Chun},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={8827--8836},
+  year={2018}
+}
+%% Object detectors in deep scene cnns
+@article{zhou2014object,
+  title={Object detectors emerge in deep scene cnns},
+  author={Zhou, Bolei and Khosla, Aditya and Lapedriza, Agata and Oliva, Aude and Torralba, Antonio},
+  journal={ICLR},
+  year={2015}
+}
+%% Bcos networks #1
+@inproceedings{bohle2022b,
+  title={B-cos networks: Alignment is all we need for interpretability},
+  author={B{\"o}hle, Moritz and Fritz, Mario and Schiele, Bernt},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={10329--10338},
+  year={2022}
+}
+
+%% Bcos networks #2
+@article{bohle2024b,
+  title={B-cos Alignment for Inherently Interpretable CNNs and Vision Transformers},
+  author={B{\"o}hle, Moritz and Singh, Navdeeppal and Fritz, Mario and Schiele, Bernt},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2024},
+  publisher={IEEE}
+}
+
+%% Prototype - based
+@inproceedings{li2018deep,
+  title={Deep learning for case-based reasoning through prototypes: A neural network that explains its predictions},
+  author={Li, Oscar and Liu, Hao and Chen, Chaofan and Rudin, Cynthia},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={32},
+  number={1},
+  year={2018}
+}
+
+@article{chen2019looks,
+  title={This looks like that: deep learning for interpretable image recognition},
+  author={Chen, Chaofan and Li, Oscar and Tao, Daniel and Barnett, Alina and Rudin, Cynthia and Su, Jonathan K},
+  journal={Advances in neural information processing systems},
+  volume={32},
+  year={2019}
+}
+
+%% Attribution - based
+@article{ismail2021improving,
+  title={Improving deep learning interpretability by saliency guided training},
+  author={Ismail, Aya Abdelsalam and Corrada Bravo, Hector and Feizi, Soheil},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  pages={26726--26739},
+  year={2021}
+}
+
+@inproceedings{Zhou_2022_BMVC,
+author    = {Hao Zhou and Keyang Cheng and Yu Si and Liuyang Yan},
+title     = {Improving Interpretability by Information Bottleneck Saliency Guided Localization},
+booktitle = {33rd British Machine Vision Conference 2022, {BMVC} 2022, London, UK, November 21-24, 2022},
+publisher = {{BMVA} Press},
+year      = {2022},
+url       = {https://bmvc2022.mpi-inf.mpg.de/0605.pdf}
+}
+
+
+@article{ross2017right,
+  title={Right for the right reasons: Training differentiable models by constraining their explanations},
+  author={Ross, Andrew Slavin and Hughes, Michael C and Doshi-Velez, Finale},
+  journal={IJCAI},
+  year={2017}
+}
+
+@article{ghaeini2019saliency,
+  title={Saliency learning: Teaching the model where to pay attention},
+  author={Ghaeini, Reza and Fern, Xiaoli Z and Shahbazi, Hamed and Tadepalli, Prasad},
+  journal={NAACL},
+  year={2019}
+}
+
+%%% gradient-based 
+@article{adebayo2018local,
+  author    = {Julius Adebayo and
+               Justin Gilmer and
+               Ian J. Goodfellow and
+               Been Kim},
+  title     = {Local Explanation Methods for Deep Neural Networks Lack Sensitivity
+               to Parameter Values},
+  journal = {ICLR Workshop},
+  year      = {2018},
+
+}
+
+@article{baehrens2010explain,
+  author    = {David Baehrens and
+               Timon Schroeter and
+               Stefan Harmeling and
+               Motoaki Kawanabe and
+               Katja Hansen and
+               Klaus{-}Robert M{\"{u}}ller},
+  title     = {How to Explain Individual Classification Decisions},
+  journal   = {J. MLR},
+  year      = {2010}
+}
+
+@article{bach2015pixel,
+  title={On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation},
+  author={Bach, Sebastian and Binder, Alexander and Montavon, Gr{\'e}goire and Klauschen, Frederick and M{\"u}ller, Klaus-Robert and Samek, Wojciech},
+  journal={PloS one},
+  year={2015},
+  publisher={Public Library of Science San Francisco, CA USA}
+  }
+
+@inproceedings{sundararajan2017axiomatic,
+    author = {Sundararajan, Mukund and Taly, Ankur and Yan, Qiqi},
+    title = {Axiomatic Attribution for Deep Networks},
+    year = {2017},
+    booktitle = {ICML},
+}
+
+@article{jiang2021layercam,
+  title={Layer-CAM: Exploring hierarchical class activation maps for localization},
+  author={Jiang, Peng-Tao and Zhang, Chang-Bin and Hou, Qibin and Cheng, Ming-Ming and Wei, Yunchao},
+  journal={IEEE Transactions on Image Processing},
+  volume={30},
+  pages={5875--5888},
+  year={2021},
+  publisher={IEEE}
+}
+
+%%%% learning based
+@article{chang2018explaining,
+  author    = {Chun{-}Hao Chang and
+               Elliot Creager and
+               Anna Goldenberg and
+               David Duvenaud},
+  title     = {Explaining Image Classifiers by Counterfactual Generation},
+  journal = {ICLR},
+  year      = {2019},
+}
+
+@article{phang2020investigating,
+  title={Investigating and Simplifying Masking-based Saliency Methods for Model Interpretability},
+  author={Phang, Jason and Park, Jungkyu and Geras, Krzysztof J},
+  journal={arXiv preprint arXiv:2010.09750},
+  year={2020}
+}
+
+@article{zolna2020classifier,
+    title = {Classifier-agnostic saliency map extraction},
+    journal = {CVIU},
+    volume = {196},
+    pages = {102969},
+    year = {2020},
+    issn = {1077-3142},
+    author = {Konrad Zolna and Krzysztof J. Geras and Kyunghyun Cho},
+}
+
+% Black-box definition
+@article{petch2022opening,
+  title={Opening the black box: the promise and limitations of explainable machine learning in cardiology},
+  author={Petch, Jeremy and Di, Shuang and Nelson, Walter},
+  journal={Canadian Journal of Cardiology},
+  volume={38},
+  number={2},
+  pages={204--213},
+  year={2022},
+  publisher={Elsevier}
 }
