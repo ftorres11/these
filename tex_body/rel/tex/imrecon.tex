@@ -4,30 +4,63 @@
 Image recognition is a substask of computer science that aims at replicating human vision 
 capabilities with a machine. From its early developements  with David Marr's postulates 
 on vision (\cite{poggio1981marr}, \cite{marr2010vision}), this field has been approached on a 
-computational level since the 1980s. Following this suggestion, \\
-\textbf{WORDS!}\\
-In one hand, image recognition approaches based on traditional machine learning algorithms are a 
-two step process; where the first step is comprised upon the extraction of features from the data, 
-and the last step lies in the training of a classifier. 
-%Arguably, it is with the improvement and interaction of the three 
-%fundamental tasks of computer vision (Recognition, Reconstruction and Reorganization) 
-%\autocite{malik2016three} that we find this field moves forward. Indeed we cannot consider these 
-%tasks as having no correlation with each other whatsoever, instead there is a connectivity binding 
-%them as shown on \autoref{fig:malik_rs}. In particular with image recognition models 
+computational level since the 1980s. Following this, early works in computer vision 
+paved the way for the application of classical machine learning models in image recognition. In 
+the beginnig, researchers focused on fundamental challenges such as edge detection and image 
+segmentation. The 1970s and 1980s witnessed pioneering efforts, with 
+techniques like the Hough Transform for line detection and the development of feature-based 
+methods \autocite{duda1972use}. These early approaches set the groundwork for the later integration 
+of classical machine learning models, as they provided preliminary insight into how visual 
+information could be analyzed and processed computationally. The emergence of classical machine 
+learning models, and their application in the 1980s, marked a shift towards more sophisticated 
+image recognition methodologies.\\
+%such as Support Vector Machines, Random Forests, and k-Nearest Neighbors, marked a pivotal shift 
 
-%\input{fig/rel/tex/maliks_rs.tex}
+\noindent On one hand, image recognition approaches based on traditional machine learning 
+algorithms are a two-step process. The first step involves the extraction of features from the 
+data, and the last step lies in the training of a classifier. Examples of this 
+can be found in methodologies such as \gls{sift} \autocite{lowe1999object}, \gls{bow} 
+\autocite{csurka2004visual}, and \gls{hog}. 
+SIFT, stands out as a powerful keypoint detector that incorporates image alignment. 
+More importantly, its robustness towards scale and rotation has led to widespread adopted in real 
+world applications \autocite{cruz2012scale}. 
 
-%1960s, first thesis, image processing, pattern recognition
-%1970s foundational work on image recognition
-%1980 vision applied to maths, geometry, control theory, optimization
-%1990s geometric analysis coplete, graphics,statistical learning
-%200s advances in visual recognition, practical applications
+Complementary to SIFT and adopting ideas based on 
+\gls{nlp}, the concept behind the BOW descriptor originated from the identification keywords text 
+in order to identify its contents \autocite{harris1954distributional}. On itself BOW extracts 
+features akin to SIFT, clustering them to generate a dictionary which will ultimately form the 
+possible words to describe images. Each image is recognized by the frequency of which certain 
+words are used to describe it. 
 
-Ultimately it was with inspiration on studies on neuroscience \autocite{hubel1959receptive} that the 
-development of \glspl{nn} started. In particular, the Neocognitron \autocite{fukushima1975cognitron} 
-proposes the first \gls{nn} where kernel operations and feature aggregation in a hierarchical 
-manner and non-linearities stand out as these contributions can be seen as the main components of a 
-most recent image recogniton models.
+Finally, HOG follows a simpler approach, where image gradient 
+information is organized in histograms describing the orientation of image components. \\ 
+
+Once image descriptors are extracted, classifiers are trained using algorithms such as \gls{svm} 
+\autocite{cortes1995support}, Random Forests \autocite{ho1995random} and \gls{knn}
+(\cite{cover1967nearest}, \cite{fix1989discriminatory}). \glspl{svm} are classifiers that operate 
+by finding the most optimal hyperplane in the feature space to discriminate between classes. 
+However, challenges arise when the assumption of data being linearly separable is not met. This 
+difficulty was addressed with the introduction of the kernel trick \autocite{hofmann2008kernel}, 
+where data is transformed to another space where its separation more straightforward.
+
+Complementary to SVMs, Random Forest Trees is a methodology that constructs a plethora of decision 
+trees, where each tree uses a random subset of the training data, and each node uses a random 
+subset of features to make a decision. This randomness ensures diversity among trees, providing a 
+degree of robustness towards overfitting.
+
+On a much simpler note, \gls{knn} operates based on the assumption of data being contained in 
+$k$ different categories. The classification method involves assigning one category to a data 
+point that is the closest in feature space to a category centroid, obtained through K-Means 
+\autocite{macqueen1967some}.\\
+
+%Ultimately it was with inspiration on studies on neuroscience \autocite{hubel1959receptive} that the 
+\noindent Although many of the early image recognition models were based on traditional machine 
+and statistic methods, neuroscience research still inspired scholars to propose alternative 
+approaches. Moreover, with studies on the visual cortex regarding receptive fields 
+\autocite{hubel1959receptive}, the development of \glspl{nn} started. Notably, the 
+Neocognitron \autocite{fukushima1975cognitron} sparked the inception of  \gls{nn}, by introducing 
+kernel operations, hierarchical feature aggregation and non-linearities. These contributions stand 
+out as they are key components in most recent image recogniton models.
 Still, the Neocognitron's hierarchical properties and aggregation didn't really achieve 
 a great deal of momentum on early days; around this time, other image recognition models were being 
 used yielding better results, examples of this can be seen with the amount of traditional machine 
@@ -113,13 +146,13 @@ architecture is presented in \autoref{fig:resnet}.
 
 In a similar fashion to the residual connections introduced in ResNet, DenseNet 
 \autocite{huang2017densely} was proposed with the idea of connecting all layers operating within 
-matching feature-map sizes. This architecture on one hand enables the training of very deep 
-models; these connections allow for feature reuse and identity mappings, thus negating the 
+matching feature-map sizes. On one hand, this architecture enables the training of very deep 
+models, as these connections facilitate feature reuse and identity mappings, thus negating the 
 effect of vanishing gradients. However one issue that be brought forth with DenseNet is its 
-lack of  modularity and ease of use. Since a great number of neurons are interconnected by design, 
-introduction of modifications such as \gls{nlb}\autocite{wang2018non} or Squeeze Excitation Blocks  
-\autocite{hu2018squeeze} can be  rather challenging; whereas in architectures such as ResNet, 
-this procedure is rather simple.
+lack of  modularity and ease of use. Due to a great number of neurons being interconnected by 
+design, introducing of modifications such as \gls{nlb}\autocite{wang2018non} or Squeeze Excitation 
+Blocks  \autocite{hu2018squeeze} can be  rather challenging. In contrast, in architectures such as 
+ResNet, this procedure is rather simple.
 
 Moreover, it is arguable that convolutional block design can be improved if a model learns on 
 itself the best configuration possible for a specific task. This is idea is embodied by the 
@@ -163,11 +196,11 @@ such as \gls{nlp}. Furthermore, proposals made for that domain have found applic
 recognition; one such developement is that of Transformers. The Transformer architecture was 
 initially proposed in 2017 with the article \emph{Attention is All You Need} 
 \autocite{vaswani2017attention}. This model addressed limitations in existing methodologies for 
-\gls{nlp} such as LSTMs and RNNs, particularly their struggles in capturing long range dependencies 
+NLP such as LSTMs and RNNs, particularly their struggles in capturing long range dependencies 
 and efficient training. 
 
 In a similar fashion to the impact AlexNet had on image recognition, transformers revolutionized 
-the landscape of \gls{nlp} with their key component: \emph{Self-Attention}. This function assigns 
+the landscape of NLP with their key component: \emph{Self-Attention}. This function assigns 
 weights to different input sequence, enabling focus on relevant information. 
 This is defined in the following manner:
 
@@ -192,7 +225,7 @@ a feed forward network. This is best explained in \autoref{fig:transf_block}.
 
 \input{fig/rel/tex/transf_block}
 
-Another pivotal characteristic setting transformers apart from previous approaches on \gls{nlp} 
+Another pivotal characteristic setting transformers apart from previous approaches on NLP 
 and convolutions is its capability to process data in a global context. In sharp contrast to 
 convolutions discussed in \autoref{rel:sub_cnn}, the self-attention operation is not constrained by 
 parameters like width and height; it has no receptive field. Instead, this operation is guided 
@@ -200,7 +233,7 @@ the number of embeddings that will represent the whole of data (\textit{i}.\text
 of different chunks a sentence is split into) and the aforementioned $d_k$, which represents the 
 dimensions to which the data is projected. 
 
-Continuing on with transformers within the \gls{nlp} domain, several additions 
+Continuing on with transformers within the NLP domain, several additions 
 to this architecture have resulted in further improvements. One notable example is the inclusion of 
 the classification token ([\Th{CLS}]) as proposed in BERT \autocite{devlin2018bert}. The rationale 
 behind incorporating this token can be traced back to the previously discussed concept of globality 
@@ -214,7 +247,7 @@ the token is then used for classification purposes.\\
 community, and in late 2020, the first fully attention based architecture \gls{vit}, was proposed.
 This architecture emerges as an adaptation of the transformer model for the realm of computer vision. 
 The crucial contribution lies in treating the image as a sequence of of patches, processed 
-analogously to a sequence of tokens in a \gls{nlp} application. \autoref{fig:rel_vit} provides an 
+analogously to a sequence of tokens in a NLP application. \autoref{fig:rel_vit} provides an 
 overview of this approach.\\
 
 \input{fig/rel/tex/vit_struct.tex}
@@ -233,7 +266,6 @@ turn is highly dominant in \glspl{cnn}; still, this makes these models prone to 
 collections sufficiently small where this bias still remains useful.\\
 
 
-% Chat-GPT Paragraph, fact check and style adapt
 In addition to ViT, several other transformer architectures have emerged, contributing to the 
 diversity and advancement of the field. One noteworthy example is PiT (Pooling in Transformer) 
 \autocite{heo2021rethinking}, which re-introduces the concept pooling into transformers. To benefit 

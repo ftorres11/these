@@ -5,21 +5,45 @@ As deep learning based models for Computer Vision have continued to improve in t
 properties, their structure and functioning have become more opaque; in turn making these 
 technologies seen as black boxes. A black-box model is defined as a model for which its 
 interpretation is not straightforward for humans \autocite{petch2022opening}. In recent years 
-with the assimilation of deeplearning into everyday tasks, and the implicit effect these models 
+with the assimilation of deep learning into everyday tasks, and the implicit effect these models 
 are having on human lives; the novel research field of \emph{Interpretability} has been brought 
-forth to open up this black-box behaviour. This research field investigated alongside two 
-directions(\cite{mythos_interp}, \cite{guidotti2018survey}, \cite{zhang2021survey}):
+forth to open up this black-box behaviour. Different scholars have approached intepretability 
+alongside different directions. Starting with the work of \cite{li2018deep}, interpretability is 
+suggested to present two categories, \emph{Transparency} and \emph{Post-hoc Interpretability}.
+For the former, Lipton argues that it follows modifications of the model or the training process, 
+in order to explain the inner-workings of the model. Conversely, for the latter Lipton builds upon 
+the black-box behaviour of the model, providing explanations istead based on inputs nad outputs; 
+without adding any further modifications for the model or altering its training process.\\
 
-\begin{enumerate}
-	\item \emph{Post-hoc interpretability} considers the model as a black-box and provides 
-	explanations based on inputs and outputs, without modifying the model or its training process.
-	\item \emph{Transparency} modifies the model or the training process to better explain the 
-	behavior of the inner parts of the model.
-\end{enumerate}
+Complementary to Lipton's proposal, \cite{guidotti2018survey} points that interpretability is 
+contained along different dimensions. On one hand, a model can be understood on its entirety 
+following \emph{Global} interpretation; whereas in situations where only the reasons leading to a 
+specific prediction a \emph{Local} interpretation is found. Guidotti also considers time,
+more specifically \emph{Time Limitation} as its availability is strictly correlated to the scenario 
+where the model is used. Finally, the \emph{Nature of User Expertise} covers the last dimension of 
+interpretability; where knowing the experience of an user in a given task is considered to be a 
+key aspect describing the interpretability of a model.\\
+
+In recent years \cite{zhang2021survey} suggested that three different dimensions encompass this 
+study. The first dimension answers to the nature of an approach; where it can be either 
+\emph{Passive} or \emph{Active}. The first direction in this dimension correlates to Lipton's 
+\emph{Post-hoc interpretabity}, the latter follows the aforementioned \emph{Transparency} property.
+Zhang's second dimension is addressed towards the type of explanations, where the order of 
+explanatory power follows examples, into attributions, leading into hidden semantics and 
+finishing in rules. The last dimension that Zhang covers explanations in the input space, 
+where a \emph{Local} explanation describes the network's prediction following individual 
+samples; while on another hand, a \emph{Global} explanation describes the network as a whole. This 
+last dimension is similar to the first point described by \cite{guidotti2018survey}.\\
+
+\noindent In this thesis we study interpretability following Lipton's properties towards describing 
+an interpretable model, in the following subsections we go into detail in works alongside each 
+property.
+
 
 \subsection{Transparency}
 \label{rel:sub_transp}
-Transparent 
+According to Lipton, Transparency is the opposite of the black-box behaviour of a model, therefore 
+a transparent model ought to provide a sense of understanding on its innerworkings. 
 %Transparency in interpretability research represents a pivotal pursuit within the broader 
 %landscape of artificial intelligence. In the ever-evolving field of machine learning, 
 %particularly deep neural networks, the inherent complexity of models often gives rise to a lack of 
@@ -32,50 +56,77 @@ Transparent
 %only enhances the accountability of AI systems but also contributes to broader societal acceptance 
 %and ethical deployment of these powerful technologies.
 Approaches are grouped in a number of categories according to the type of the given explanation. \\
-\emph{Rule-based methods} (\cite{wu2018beyond}, \cite{wu2020regional}) train a decision tree as a 
-surrogate regularization term to force a network to be easily approximated by a decision tree.
-% or learn a set of logit rules as an explanation~\citep{azzolin2022global}.
-\emph{Hidden semantics-based methods} (\cite{bau2017network}, \cite{zhou2018interpreting}, 
+
+\noindent \emph{Rule-based methods} (\cite{wu2018beyond}, \cite{wu2020regional}) train a decision tree as a 
+surrogate regularization term to force a network to be easily approximated by a decision tree.\\
+
+\noindent \emph{Hidden semantics-based methods} (\cite{bau2017network}, \cite{zhou2018interpreting}, 
 \cite{zhang2018interpretable}, \cite{zhou2014object},\cite{bohle2022b}. \cite{bohle2024b}) aim to 
 make a convolutional network learn disentangled hidden semantics with hierarchical structure or 
 object-level concepts.\\
-\emph{Prototype-based methods} (\cite{li2018deep}, \cite{chen2019looks}) learn a set of prototypes 
-or parts as an intermediate representation in the network, which can be aligned with categories. 
-\emph{Attribution-based methods} (\cite{ismail2021improving}, \cite{Zhou_2022_BMVC}, \\
+
+\noindent \emph{Prototype-based methods} (\cite{li2018deep}, \cite{chen2019looks}) learn a set of prototypes 
+or parts as an intermediate representation in the network, which can be aligned with categories.\\
+
+\noindent \emph{Attribution-based methods} (\cite{ismail2021improving}, \cite{Zhou_2022_BMVC}, 
 \cite{ross2017right}, \cite{ghaeini2019saliency}) usually modify the architecture of a network or 
 the training process to help post-hoc methods produce better saliency maps. Unlike 
 (\cite{ross2017right}, \cite{ghaeini2019saliency}), saliency guided localization 
 \autocite{Zhou_2022_BMVC} does not need ground truth explanations but replaces them with 
 information bottleneck attribution \autocite{schulz2020restricting}. Finally, saliency-guided 
 training \autocite{ismail2021improving} minimizes the KL divergence between the output of original 
-and masked images.
+and masked images. \\
+
+
 
 \subsection{Post-Hoc Interpretability}
 \label{rel:sub_post}
 
 Approaches can be grouped into a number of possibly overlapping categories. 
-\emph{Gradient-based methods} (\cite{adebayo2018local}, \cite{guidedbackprop}, 
+\noindent \emph{Gradient-based methods} (\cite{adebayo2018local}, \cite{guidedbackprop}, 
 \cite{baehrens2010explain}, \cite{simonyan2013deep}, \cite{smilkov2017smoothgrad}, 
-\cite{bach2015pixel}, \cite{sundararajan2017axiomatic}) use the gradient of a target class score 
-with respect to the input to compute the contribution of different input regions to the prediction. 
-\emph{CAM-based methods} (\cite{wang2020score}, 
-\cite{chattopadhay2018grad}, \cite{selvaraju2017grad}, 
-\cite{axiombased}, \cite{jiang2021layercam}, \cite{ablationcam}) compute saliency maps 
-as a linear combination of feature maps, with different definitions for the weights. 
+\cite{bach2015pixel}, \cite{sundararajan2017axiomatic}) use the gradient of a target class 
+score with respect to the input to compute the contribution of different input regions to the 
+prediction. \\
 
-\emph{Occlusion or masking-based methods} (\cite{petsiuk2018rise}, \cite{fong2017interpretable}, 
-\cite{fong2019understanding}, \cite{schulz2020restricting}, \cite{ribeiro2016should}) apply a 
-number of candidate masks in the input space, measure their effect on the prediction and then 
-combine them into a saliency map. Masking in feature space has been explored too 
-\autocite{schulz2020restricting}. 
+\noindent \emph{\gls{cam}-based methods} (\cite{wang2020score}, \cite{chattopadhay2018grad}, 
+\cite{selvaraju2017grad}, \cite{axiombased}, \cite{jiang2021layercam}, \cite{ablationcam}) 
+compute saliency maps as a linear combination of feature maps, with different definitions for 
+the weights.\\
 
-Finally, \emph{learning-based methods} (\cite{chang2018explaining}, \cite{dabkowski2017real}, 
+\noindent \emph{learning-based methods} (\cite{chang2018explaining}, \cite{dabkowski2017real}, 
 \cite{phang2020investigating}, \cite{zolna2020classifier}, \cite{schulz2020restricting}) learn an 
 additional network or branch on extra data to produce an explanation map for a given input. 
 
+\noindent \emph{Occlusion or masking-based methods} (\cite{petsiuk2018rise}, 
+\cite{fong2017interpretable}, \cite{fong2019understanding}, \cite{schulz2020restricting}, 
+\cite{ribeiro2016should}) apply a 	number of candidate masks in the input space, measure their 
+effect on the prediction and then combine them into a saliency map. Masking in feature space 
+has been explored too \autocite{schulz2020restricting}. 
+
+
+%--------------------------------------------------------------------------------------------------
+\paragraph{CAM-based saliency maps}
+In this thesis we take particular interest in proposing and evaluating our interpretability 
+methodologies based on \gls{cam}. In particular, we find CAM to be an appealing approach because of 
+its ease of use and adaptation to interpret existing models. Moreover, it can be argued that while 
+it is possible find and use a plethora of the most popular models towards recognition; providing 
+explanations ought to be similarly easy to use, a property that CAM-based models share.
+
+One property that \glspl{cnn} display is the presence of semantic information found within the 
+deepest layers prior to the classifier. In detail, it has been observed that these kind of models 
+operate in a similar manner to the visual cortex in the brain; basic textures and their orientation 
+is processed in shallow layers, whereas deep layers associate this information into concepts 
+\autocite{hubel1959receptive}. This characteristic in turn is the main motivation behind making 
+use of CAM methods: by addressing interpretations on the layers prior to the classifier, we 
+reconstruct the features deemed salient according to the flow of information within a model. We 
+present a representation of filter responses from texture to semantics in \autoref{fig:cnn_depth}.
+
+\input{fig/rel/tex/cnn_depth.tex}
+% In particular regarding the issues addressed by \cite{bohle2021convolutional}
+
 \paragraph{Notation}
 \label{sec:oc_notation}
-
 Consider a classifier network $:fx \cX \to \real^C$ that maps an input image $\mathbf{u} \in \cX$ to a 
 logit vector $\vy = f(\mathbf{u}) \in \real^C$, where $\cX$ is the image space and $C$ is the number 
 of classes. We denote by $y_c = f(\mathbf{u})_c$ the predicted logit and by $p_c = \softmax(\vy)_c 
@@ -85,9 +136,10 @@ the feature map for channel $k \in \{1,\dots,K_\ell\}$, with spatial resolution 
 w_\ell$. Because of $\relu$ non-linearities, we assume that feature maps are non-negative. 
 Similarly, we denote by $S_\ell \in \real^{h_\ell \times w_\ell}$ a 2D saliency map.
 
+\input{fig/rel/tex/cam_schema.tex}
 %--------------------------------------------------------------------------------------------------
 
-\paragraph{Background: CAM-based saliency maps}
+
 \label{sec:oc_back}
 
 Given a layer $\ell$ and a class of interest $c$, we consider saliency maps given by the general 
@@ -178,4 +230,4 @@ certain way. This makes optimization harder or more expensive and introduces mor
 like $\lambda$. One could simply constrain $\vm$ to lie in the linear span of $\{A_\ell^k\}_{k=1}
 ^{K_\ell}$ instead, like all CAM-based methods.}
 
-\subsection{Discussion}
+
