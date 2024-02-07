@@ -88,11 +88,18 @@ complexity.\\
 
 \noindent Among the properties proposed by Lipton, we observe that offering model transparency is a 
 rather challenging task. While understanding the behaviour of convolutions and 
-self-attention might seem straightforward, it is their aggregation and subsequent flow of information what 
-makes this process intricate. Moreover, transparency encompases aspects related to both
-inference and training. In this regard, while deep learning research is often seen as an open field;
-complete transparency is often disregarded as some authors frequently omit key details in their 
-descriptions and methodologies. 
+self-attention might seem straightforward, it is their aggregation and subsequent flow of 
+information what makes this process intricate. Moreover, transparency encompases aspects related to 
+both inference and training. In this regard, to understand the behaviour and functioning of a model, 
+it is possible to introduce modifications: attempting  to simplify it (\cite{wu2018beyond}, 
+\cite{wu2020regional}), to improve and make sense of the semantic information in deep layers 
+(\cite{bau2017network}, \cite{zhou2018interpreting}), to provide prototypes describing the learned
+categories (\cite{li2018deep}, \cite{chen2019looks}, \cite{rymarczyk2022interpretable}), and to 
+improve the quality of information contained within the network, thereby improving interpretable 
+properties from other approximations (\cite{ismail2021improving}, \cite{Zhou_2022_BMVC}, 
+\cite{ross2017right}). Nevertheless, these modifications included during the training process may 
+modify the built-in properties of the models they are attempting to interpret, all the while 
+including another level of uncertainty amongst them.\\
 
 In contrast to transparency, providing post-hoc interpretations from deep models is a 
 thriving field, where many of the challenges found within transparency are no longer found.

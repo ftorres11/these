@@ -22,7 +22,7 @@ data, and the last step lies in the training of a classifier. Examples of this
 can be found in methodologies such as \gls{sift} \autocite{lowe1999object}, \gls{bow} 
 \autocite{csurka2004visual}, and \gls{hog}. 
 SIFT, stands out as a powerful keypoint detector that incorporates image alignment. 
-More importantly, its robustness towards scale and rotation has led to widespread adopted in real 
+More importantly, its robustness towards scale and rotation led to widespread adoption in real 
 world applications \autocite{cruz2012scale}. 
 
 Complementary to SIFT and adopting ideas based on 
@@ -127,7 +127,7 @@ architecture is designed to learn features in different scale. To achieve this, 
 Block} is introduced, where the multi-scale behaviour is captured with the incorporation of 
 convolutional kernels with sizes of $5\times5$, $3\times 3$ and $1\times1$. In contrast to 
 the Inception architecture, VGG models are built with a simplistic design, relying solely on 
-$3\times 3$ convolutions. For a change, VGG has been shown to be an excellent feature extractor network. 
+$3\times 3$ convolutions. For a change, VGG is shown to be an excellent feature extractor network. 
 Led by the desire to increase depth of \glspl{cnn}, VGG and Inception attempted to make models 
 deeper; nevertheless this was not possible because of the vanishing gradient issue. As an answer to 
 this, the ResNet architecture was proposed \autocite{he2016deep}.\\
@@ -138,7 +138,7 @@ this, the ResNet architecture was proposed \autocite{he2016deep}.\\
 \noindent The ResNet architecture is designed with the idea of residual connections as their 
 building block. On itself, a residual block generates outputs via the summation of its input and a 
 linear mapping of it. This in turn enhances the network capabilities to scale in size, leading to 
-improvements in performance while being easier to optimize. This architecture has maintained its 
+improvements in performance while being easier to optimize. This architecture maintains its 
 relevancy because of its modularity and the aforementioned scaling properties. For instance, some 
 of the most important \gls{cnn} based object detectors are designed using ResNet as backbone 
 (\cite{ren2015faster}, \cite{lin2017focal}, \cite{he2017mask}). A thorough representation of this 
@@ -294,7 +294,7 @@ architectures.
 
 \subsection{Hybrid Architectures}
 \label{rel:sub_hybrid}
-Following the locality properties of \glspl{cnn} and globality of \glspl{vit}; it has been proven 
+Following the locality properties of \glspl{cnn} and globality of \glspl{vit}; it is proved 
 that incorporating ideas from these architectures is feasible, generating a model that attends in 
 to both local information and scalates well with training data. In particular, some of the 
 preliminary studies towards these combinations performed on ViT suggested modifications of the 
@@ -322,7 +322,7 @@ models. In a similar fashion to LeViT, by the addition of early convolutions it 
 this issue can be overcome, as proposed on \emph{Early convolutions help transformers see 
 better} \autocite{xiao2021early}. Moreover, in this work a direct comparison between ViT trained 
 using a patchifier, versus using convolutions; where \emph{Optimizability}\footnote{As defined by 
-\cite{xiao2021early}, it refers to the presence of difficulties charactherizing the training 
+\cite{xiao2021early}, it refers to the presence of difficulties characterizing the training 
 process of deep models while varying their optimizers, data augmentation and performance drop 
 when scaling in size} is used to stablish differences.\\
 

@@ -1,0 +1,18 @@
+[0] Config.pm:302> INFO - This is Biber 2.9
+[0] Config.pm:305> INFO - Logfile is 'these.blg'
+[26] biber:313> INFO - === Wed Feb  7, 2024, 19:36:16
+[52] Biber.pm:371> INFO - Reading 'these.bcf'
+[120] Biber.pm:857> INFO - Found 144 citekeys in bib section 0
+[132] Biber.pm:3981> INFO - Processing section 0
+[146] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
+[154] bibtex.pm:1468> INFO - LaTeX decoding ...
+[316] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
+[1337] Utils.pm:169> WARN - BibTeX subsystem: /tmp/5LlCaIhvB5/biblio.bib_3495.utf8, line 37, warning: 23 characters of junk seen at toplevel
+[1337] Utils.pm:169> WARN - BibTeX subsystem: /tmp/5LlCaIhvB5/biblio.bib_3495.utf8, line 260, warning: 15 characters of junk seen at toplevel
+[1692] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1692] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1692] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1692] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1853] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
+[1998] bbl.pm:720> INFO - Output to these.bbl
+[1999] Biber.pm:110> INFO - WARNINGS: 2
