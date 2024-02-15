@@ -1,0 +1,36 @@
+%--------------------------------------------------------------------------------------------------
+\begin{algorithm}[H]\small
+    \SetAlgoLined
+    \textbf{Input:} black-box $f$, image $x$, saliency map $s^c$, number of pixels $N$ removed 
+    per step.\\
+    \textbf{Output:} insertion score \emph{ins}.
+    $n\leftarrow 0$\\
+    $x'\leftarrow \mbox{Blur}(x)$\\
+    $p^c_n \leftarrow f(x)$\\
+    \textbf{while} $x\neq x'$ \textbf{do}\\
+        \hskip1.0em According to $s$, set the next $n$ pixels in $x'$ to corresponding pixels in 
+        $x$\\
+        \hskip1.0em $n\leftarrow n+1$\\
+        \hskip1.0em $p^c_n \leftarrow f(x')$\\
+    \emph{ins} $\leftarrow\mbox{AreaUnderCurve}(p^c_n  \mbox{vs.}  i/n, \forall i = 0,... n)$\\
+    \textbf{return} \emph{ins}\\
+    \caption{Insertion Algorithm}
+    \label{algo:rel_ins}
+\end{algorithm}
+%--------------------------------------------------------------------------------------------------
+\begin{algorithm}[H]\small
+    \SetAlgoLined
+    \textbf{Input:} black-box $f$, image $x$, saliency map $s^c$, number of pixels $N$ removed 
+    per step.\\
+    \textbf{Output:} deletion score $del$.\\
+    $n\leftarrow 0$\\
+    $p^c_n \leftarrow f(x)$\\
+    \text{while} $x$ has non-zero pixels \textbf{do}\\
+        \hskip1.0em According to $s$, set the next $n$ pixels in $x$ to 0\\
+        \hskip1.0em $n\leftarrow n+1$\\
+        \hskip1.0em $p^c_n \leftarrow f(x)$\\
+    \emph{del} $\leftarrow\mbox{AreaUnderCurve}(p^c_n  \mbox{vs.}  i/n, \forall i = 0,... n)$\\
+    \textbf{return} \emph{del}\\
+    \caption{Deletion Algorithm}
+    \label{algo:rel_del}
+\end{algorithm}

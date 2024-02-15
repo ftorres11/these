@@ -1,24 +1,70 @@
 %--------------------------------------------------------------------------------------------------
 \subsection{Evaluating Interpretability}
 \label{rel:sub_evl}
-\paragraph{Classification Metrics}
-\gls{ad} and \gls{ai} \autocite{chattopadhay2018grad} are 
-well-established classification metrics. 
-They measure the effect on the predicted class probabilities by masking the input image with the
- saliency map. Let $p^c_i$ and $o^c_i$ be the predicted probability for class $c$ given as input 
- the $i$-th test image $\vx_i$ and its masked version respectively. 
-Masking refers to element-wise multiplication with the saliency map, which is at the same 
-resolution as the original image with values in $[0,1]$. 
-Let $N$ be the number of test images. Class $c$ is taken as the ground truth.
+Following the \emph{desiredata of model interpretabiltiy}, we note that proposing interpretations 
+does not compose the only step in understanding the prediction process of a model; in order to 
+claim to be interpretable, the effect of its explanations should be quantifiable for an approach 
+or model. Lipton addresses this in the discussion section of \emph{The Mythos of Model 
+Interpretability}, where he points: 
+\begin{quote}
+	\emph{To be meaningful, any assertion regarding interpretability should fix a specific 
+	definition. If the model satiesfies a form of transparency, this can be shown directly. 
+	For post-hoc interpretability, papers ought to fix a clear objective and demonstrate evidence 
+	that the offered form of interpretation achieves it.}
+\end{quote}
+On one hand, we note that this definition is not completely up-to date for deep image recognition 
+models. In particular, given the difficulties of the original definition of transparency covering 
+deep models, especially with the introduction of active interpretability approaches introduced 
+earlier. A direct display of transparency is not straightforward, particularly given that some of 
+these proposals involve modifying the behaviour of models or lack inherent interpretability 
+themselves. Conversely, post-hoc interpretations are often found in the input space. As a result, 
+the impact of these modifications is traditionally evaluated through human centric assessments of 
+\emph{trust} or \emph{reliablity}. Additionally, a quantitative approach,involves probing changes 
+in the predictive power of the input masked by the saliency map (\emph{interpretable object 
+recognition}), randomly perturbing the input guided by saliency information descibed by the 
+attribution map (\emph{causal analysis}), and considering these attributions in a weakly supervised 
+object localization manner (\emph{interpretable object localization}).
 
-\emph{Average drop} (\gls{ad}) quantifies how much predictive power, measured as class probability, 
+%--------------------------------------------------------------------------------------------------
+\subsubsection{Trust and Reliability} Following the desiredata of model interpretability. In this, 
+the interpretabiltiy properties of \emph{trust} and \emph{informativeness} are the main driving 
+force of this approach. To begin with, it is desired to be able to trust a model on its predictions, 
+the examples for which it is right and how often is it; this in turn can be seen via 
+informativeness. Given the black-box behaviour of image recognition models, informativeness can be 
+gained by taking interest in salient regions of an image leading to a prediction. Therefore, 
+assessing human trust of a saliency map describing a prediction is traditionally used to assess 
+interpretability (\cite{ribeiro2016should}, \cite{zhou2016learning}, \cite{selvaraju2017grad}, 
+\cite{chattopadhay2018grad}, \cite{bau2017network}). Nevertheless, this evaluation methodology is 
+not favoured in recent times, as human interpretations are not always aligned with what the model 
+or classifier deems important; conversely, this kind of evaluation can be often biased or not 
+replicable at all.
+
+% -------------------------------------------------------------------------------------------------
+\subsubsection{Interpretable Object Recognition} 
+\label{sec:class_metrics}
+Proposed based on the capability of current image 
+recognition models to provide outputs over the distribution of classes that it was trained in, 
+for any given input. Conversely, since saliency maps are class-specific, a logical manner of 
+assessing their interpretability properties involves masking on the input space and measuring the 
+changes of the predictive power of the model with regards of the highlighted regions provided by 
+the saliency map. This methodology is first proposed by \cite{chattopadhay2018grad}, where in 
+addition of traditional human evaluation of saliency maps, their predictive capabilities are 
+measured using \glsfirst{ad}, \glsfirst{ai}.\\
+
+\paragraph{Notation}
+Let $p^c_i$ and $o^c_i$ be the predicted probability for class $c$ given as input  the $i$-th test 
+image $\vx_i$ and its masked version respectively. Masking refers to element-wise multiplication 
+with the saliency map, which is at the same resolution as the original image with values in $[0,1]$. 
+Let $N$ be the number of test images. Class $c$ is taken as the ground truth.\\
+
+\emph{\gls{ad}}  quantifies how much predictive power, measured as class probability, 
 is lost when we only mask the image; lower is better:
 \begin{equation}
 	\AD(\%) \defn \frac{1}{N} \sum_{i=1}^N \frac{[p^c_i - o^c_i]_+}{p^c_i} \cdot 100.
 \label{eq:ad}
 \end{equation}
 
-\emph{Average increase} (\gls{ai}), also known as \emph{increase in confidence}, measures the 
+\emph{\gls{ai}}, also known as \emph{increase in confidence}, measures the 
 percentage of images where the masked image yiel ds a higher class probability than the original; 
 higher is better:
 \begin{equation}
@@ -34,22 +80,67 @@ state-of-the-art methods, including Score-CAM, by a large margin. Fake-CAM simpl
 saliency map where the top-left pixel is set to zero and is uniform elsewhere. 
 This questions the purpose of $\AD$ and $\AI$.
 
+% -------------------------------------------------------------------------------------------------
+\subsubsection{Causal Analysis} 
+\label{sec:causal_metrics}
+Inspired by the work described in (\cite{fong2017interpretable}, 
+\cite{fong2019understanding}), instead adding perturbations on an image level in order to generate 
+and attribution map, \cite{petsiuk2018rise} proposes an evaluation scheme where images are modified 
+according to their saliency maps, and the subsequent change of predictive power is measured. This 
+methodology contemplates two styles of modifications: on one hand, the input image is blurred 
+entirely and the information is reconstructed by the \glsfirst{ins} of pixels following the 
+saliency map; conversely, information can be steadily removed from the image by iterative
+\glsfirst{del} of salient pixels.
+
+\paragraph{Notation} let $x$ be an input image with the corresponding saliency map $s^c$ and $N$ the 
+number of pixels removed per step, we calculate the predicted probability $p^c_n$ at step $n$ for 
+groundtruth class $c$ using the model $f$.  Similar to \gls{ad} and \gls{ai} \cite{petsiuk2018rise} 
+considers $s^c$ to maintain the same image resolution as $x$ and be normalized in values $[0,1]$.\\
+
+\emph{\gls{ins}} measures the increase of probability when introducing pixels from an input image 
+into a blurry version of itself, following the salient order described by the saliency map. Best 
+described in \autoref{algo:rel_ins}\\
+
+\emph{\gls{del}} measures the decrease of probability as pixels are zeroed out in an input image, 
+following the salient order described by the saliency map. Best 
+described in \autoref{algo:rel_del}\\
+
+\input{tex_body/rel/tex/ins_del.tex}
 %--------------------------------------------------------------------------------------------------
-\paragraph{Localization metrics}
+\subsubsection{Interpretable object localization}
 \label{sec:loc-metrics}
-Several works measure the localization ability of saliency maps, using metrics from the 
-\emph{weakly-supervised object localization} (WSOL) task.
+Following in line with the desire of saliency maps aligning with the object belonging to the class 
+they are computed for, interpretality properties are evaluated using object localization.
+One preliminar approach considering this, is found within the \emph{Broden} dataset 
+\autocite{bau2017network}. In this work, interpretabiltiy is measured at the unit level, where 
+individual channels from a convolutional layers are compared with semantic concepts previously 
+annotated within the dataset. 
 
-We are given the saliency map $S^c$ obtained from test image $\vx$ for ground truth class $c$. 
-We denote by $S^c_{\vp}$ its value at pixel $\vp$. We binarize the saliency map by thresholding at 
-its average value and we take the bounding box of the largest connected component of the resulting 
-mask as the predicted bounding box $B_p$, represented as a set of pixels. We compare this box 
-against the set of ground truth bounding boxes $\cB$, which typically contains 1 or 2 boxes of the 
-same class $c$, or with their union $U = \cup \cB$, again represented as a set of pixels. We also 
-compare the predicted class label $c_p$ with the ground truth label $c$. All metrics take values in 
-$[0,1]$ and are expressed as percentages, except SM~\eq{sm}, which is unbounded.
+In addition to the evaluation procedure proposed in Broden, weakly supervised evaluation approaches 
+are taken into consideration for this task. 
 
-\emph{Official Metric (OM)}
+%--------------------------------------------------------------------------------------------------
+\paragraph{Notation} given the saliency map $S^c$ obtained from test image $\vx$ for ground truth 
+class $c$. We denote by $S^c_{\vp}$ its value at pixel $\vp$. We binarize the saliency map by 
+thresholding at its average value and we take the bounding box of the largest connected component 
+of the resulting mask as the predicted bounding box $B_p$, represented as a set of pixels. We 
+compare this box against the set of ground truth bounding boxes $\cB$, which typically contains 1 
+or 2 boxes of the same class $c$, or with their union $U = \cup \cB$, again represented as a set 
+of pixels. We also compare the predicted class label $c_p$ with the ground truth label $c$. All 
+metrics take values in $[0,1]$ and are expressed as percentages, except SM~\eq{sm}, which is 
+unbounded.
+
+\emph{Unit Interpretability} defined in Broden, this metric is different from those defined in 
+the coming weakly-supervised approaches; compares each individual feature map $A^k$ with the 
+localization mask $L_c$ of class $c$ for a given image $x$. To compute this comparison, 
+the activation map $A^k$ is upsampled into the original image resolution and then binarized 
+generating the binary mask $M^k$. This mask is used following:
+
+\begin{equation}
+	\iou_{k,c} \defn \frac{\sum \abs{M^k(x) \cap L_c(x)}}{\sum \abs{M^k(x) \cup L_c(x)}}
+\end{equation}
+
+\emph{\gls{om}}
 measures the maximum overlap of the predicted bounding box with any ground truth bounding box, 
 requiring that the predicted class label is correct:
 \begin{equation}
@@ -59,7 +150,7 @@ requiring that the predicted class label is correct:
 where $\iou$ is intersection over union.
 % is defined as $\iou(B, B_p) \defn \frac{B \cap B_p}{B \cup B_p}$.
 
-\emph{Localization Error (LE)} is similar but ignores the predicted class label:
+\emph{\gls{le}} is similar but ignores the predicted class label:
 \begin{equation}
 	\LE \defn 1 - \max_{B \in \cB} \iou(B, B_p).
 \label{eq:le}
@@ -79,7 +170,7 @@ and \emph{recall} $R$ is the fraction of the ground truth union that is covered 
 	\label{eq:rec}
 \end{equation}
 
-\emph{Box Accuracy (BA)\autocite{choe2020evaluating}} Given threshold values $\eta$ and $\delta$, 
+\emph{\gls{ba}\autocite{choe2020evaluating}} Given threshold values $\eta$ and $\delta$, 
 we find the bounding box $B^\eta_p$ of the largest connected component of the binary mask 
 $\set{\vp: S_{\vp} > \eta}$ and require that it overlaps by 
 $\delta$ with at least one ground truth box:
@@ -90,7 +181,7 @@ $\delta$ with at least one ground truth box:
 After averaging over the test images, we take the maximum of this measure over a set of values 
 $\eta$ and then the average over a set of values $\delta$.\\
 %--------------------------------------------------------------------------------------------------
-\emph{Standard Pointing game (SP)\autocite{zhang2018top}} We find the pixel 
+\emph{\gls{sp}\autocite{zhang2018top}} We find the pixel 
 $\vp^* \defn \arg\max_{\vp} S^c_{\vp}$ having the maximum saliency value and 
 require that it lands in any of the ground truth bounding boxes:
 \begin{equation}
@@ -98,9 +189,9 @@ require that it lands in any of the ground truth bounding boxes:
 \label{eq:spg}
 \end{equation}\\
 
-\emph{Energy Pointing game (EP)\autocite{wang2020score}} is equivalent to precision~\eq{prec}.\\
+\emph{\gls{ep}\autocite{wang2020score}} is equivalent to precision~\eq{prec}.\\
 
-\emph{Saliency Metric (SM)\autocite{dabkowski2017real}} penalizes the size of the predicted bounding
+\emph{\gls{sm} \autocite{dabkowski2017real}} penalizes the size of the predicted bounding
  box $B_p$ relative to the image and the cross-entropy
  loss:
 \begin{equation}

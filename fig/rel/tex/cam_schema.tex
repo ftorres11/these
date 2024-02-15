@@ -17,6 +17,7 @@
             \node(wck) at (-0.5, -3) {\includegraphics[width=0.02\textwidth, angle=90]{fig/rel/images/classifier.pdf}};
             \node(comb) at (-0.5, -3.5) {Weighting coefficient $w_k^c$};
             \node[draw, circle] (odot) at (-0.5, -1.8) {$\times$};
+            \node(activ) at (-2.75, -1.5) {$h$};
             \node(salient) at (-3, -1.8) {\includegraphics[width=.1\textwidth]{fig/rel/images/cat_cam.jpg}};
             \node[below] at (salient.south) {Saliency map $\mathbf{S_\ell}$};
             
@@ -31,6 +32,6 @@
             \draw[->] (odot.west) -- node {} (salient);           
 
     \end{tikzpicture}
-    \label{fig:cam_schema}
     \caption{\gls{cam} based methodologies overview.}
+    \label{fig:cam_schema}
 \end{figure}
