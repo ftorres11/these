@@ -1,10 +1,7 @@
-\section{Preliminaries}
-\label{sec:oc_prelim}
-
-\paragraph{Motivation}
+\section{Motivation}
 \label{sec:motiv}
 
-\iavr{Score-CAM considers each feature map as a mask in isolation. How about linear combinations?} 
+Score-CAM considers each feature map as a mask in isolation. How about linear combinations?
 Given a vector $\vw \in \real^{K_\ell}$ with $w_k$ its $k$-th element, let
 \begin{equation}
 	F(\vw) \defn f \left( \mathbf{u} \odot n \left( \operatorname{up} \left(
@@ -12,9 +9,9 @@ Given a vector $\vw \in \real^{K_\ell}$ with $w_k$ its $k$-th element, let
 	\right) \right) \right)_c.
 \label{eq:s-obj}
 \end{equation}
-\ronan{If we assume that $\mathbf{u}_b = \vzero$ in~\eq{s-cam} and define $n(\vzero) \defn \vzero$ 
+If we assume that $\mathbf{u}_b = \vzero$ in~\eq{s-cam} and define $n(\vzero) \defn \vzero$ 
 in~\eq{norm}, then we can rewrite the right-hand side of~\eq{s-cam} as
-\begin{equation}
+\begin{equation}	
 	\frac{F(\vw_0 + \delta \ve_k) - F(\vw_0)}{\delta},
 \label{eq:s-cam2}
 \end{equation}
@@ -40,5 +37,5 @@ optimizes $\vm$. However, because $\vm$ is high-dimensional, there are constrain
 $\vm \in \cM$, \eg $\vm$ has a certain norm, and regularizers like $R(\vm)$, \eg $\vm$ is smooth in a 
 certain way. This makes optimization harder or more expensive and introduces more hyperparameters 
 like $\lambda$. One could simply constrain $\vm$ to lie in the linear span of $\{A_\ell^k\}_{k=1}
-^{K_\ell}$ instead, like all CAM-based methods.}
+^{K_\ell}$ instead, like all CAM-based methods.
 
