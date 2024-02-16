@@ -8,11 +8,23 @@ ground truth.
 %A sanity check, additional classification results, localization metrics, more ablations, more 
 %visualizations \redred{and code} are given in supplementary material}
 
+\subsection{Implementation details}
+\label{sec:oc_details}
+
+All input images are resized to $224 \times 224 \times 3$. To optimize the saliency map with 
+Opti-CAM~\eq{opt}, we use the Adam \autocite{kingma2014adam} optimizer with learning rate $0.1$ by 
+default, setting the maximum number of iterations to $100$ and stopping early when the change in 
+loss is less than $10^{-10}$. For VGG16, we generate the saliency map \eq{v-sal} from the feature 
+maps of the last convolutional layer before max pooling by default, \ie convolutional layer 3 of 
+block 5. For ResNet50, we choose the last convolutional layer by default, \ie convolutional layer 3 
+of bottleneck 2 of block 4. For ViT and DeiT, we choose the last self-attention block by default, 
+\ie layer normalization of self-attention block 12. Ablations concerning the layer $\ell$ and the 
+convergence of Opti-CAM are included in \autoref{sec:oc_more-ablation}.
+
 \subsection{Datasets}
 \label{sec:oc_data}
 
 \paragraph{ImageNet}
-
 We use the validation set of ImageNet ILSVRC 2012 (\cite{krizhevsky2012imagenet}, \cite{ILSVRC15}), 
 containing $50,000$ images evenly distributed over the $1,000$ categories. For the ablation study 
 and for timing, we sample $1,000$ images from this set. Concerning the localization experiments, 
@@ -56,13 +68,13 @@ the input image by a saliency map. In addition, we report \emph{ins} and \emph{\
 the limitations of using the localization ground truth for the evaluation of attribution methods. 
 In \autoref{sec:oc_wsol}, we provide a number of localization metrics from the 
 \emph{weakly-supervised object localization} (WSOL) task of ILSVRC2014
-\footnote{\url{https://www.image-net.org/challenges/ILSVRC/2014/index\#}}.
+\footnote{\url{https://www.image-net.org/challenges/LSVRC/2014/index\#}}.
 
 \paragraph{Methods}
 
 We compare against the following state-of-the-art methods: Grad-CAM \autocite{selvaraju2017grad}, 
 Grad-CAM++\cite{chattopadhay2018grad}, Score-CAM \autocite{wang2020score}, Ablation-CAM 
-\autocite{ramaswamy2020ablation}, XGrad-CAM \autocite{fu2020axiom}, Layer-CAM 
+\autocite{ramaswamy2020ablation}, XGrad-CAM \autocite{axiombased}, Layer-CAM 
 \autocite{jiang2021layercam}, ExtremalPerturbation \autocite{fong2019understanding} 
 and HiRes-CAM \autocite{draelos2020use}. Implementations are obtained from the PyTorch CAM 
 library\footnote{\url{https://github.com/jacobgil/pytorch-grad-cam}} or 

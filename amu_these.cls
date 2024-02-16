@@ -129,13 +129,14 @@
 %%% PDF
 \RequirePackage{pdfpages}					%% insertion de pdf
 \RequirePackage{hyperref}					%% pdf interactifs (charger le package hyperref en dernier)
+%\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
 
 \pdfminorversion=5							%% PDF en version 1.5
 \pdfobjcompresslevel 0						%% compression des objets
 \pdfcompresslevel 0							%% compression du PDF
 
 \hypersetup{
-	%backref=true,							%% ajout de liens (par défaut)
+	backref=true,							%% ajout de liens (par défaut)
 	%pagebackref=true,						%% dans la bibliographie (par défaut)
 	%hyperindex=true,						%% dans l'index (par défaut)
 	%bookmarks=true,						%% signets Acrobat (par défaut)
@@ -148,9 +149,9 @@
 	bookmarksopen=false,					%% signets repliés par défaut
 	linktocpage=false,						%% lien numéro de page dans TOC
 %% métadonnées :							%% ATTENTION à compléter
-	pdftitle={Titre},
+	pdftitle={Thèse de doctorat},
 	pdfauthor={Felipe TORRES},
-	pdfsubject={Résumé},
+	pdfsubject={Learning discriminative representations to interpret image recognition models},
 	pdfkeywords = {mot clé, keyword, ...},
 	}
 
