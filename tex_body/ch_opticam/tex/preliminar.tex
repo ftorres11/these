@@ -1,5 +1,5 @@
 \section{Motivation}
-\label{sec:motiv}
+\label{sec:oc_motiv}
 
 Score-CAM considers each feature map as a mask in isolation. How about linear combinations?
 Given a vector $\vw \in \real^{K_\ell}$ with $w_k$ its $k$-th element, let
@@ -19,9 +19,9 @@ where $\vw_0 = \vzero$, $\delta = 1$ and $\ve_k$ is the $k$-th standard basis ve
 $\real^{K_\ell}$. This resembles the numerical approximation of the derivative $\pder{F}{w_k}(\vw_0)$,
  except that $\delta$ is not small as usual. One could compute derivatives efficiently by 
  standard backpropagation instead. It is then possible to iteratively optimize $F$ with respect
-  to $\vw$, starting at any $\vw_0$.}
+  to $\vw$, starting at any $\vw_0$.
 
-\iavr{As an alternative, consider masking-based methods relying on optimization in the input space, 
+As an alternative, consider masking-based methods relying on optimization in the input space, 
 like \emph{meaningful perturbations} (MP) \parencite{fong2017interpretable} or 
 \emph{extremal perturbations} \parencite{fong2019understanding}. In general, optimization takes the form
 \begin{equation}
