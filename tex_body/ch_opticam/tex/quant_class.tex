@@ -64,7 +64,7 @@ reported in \autoref{tab:more-metrics-asked}. Since AOPC shares the same philoso
 not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the best performance on MS.
 
 
-\begin{table}[]
+\begin{table}[t]
     \centering
     \footnotesize
     \setlength{\tabcolsep}{4pt}
@@ -84,4 +84,65 @@ not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the
     \caption{}
     %\caption{\modify{\emph{AOPC/MS/ADCC} scores on ImageNet validation set.}}
     \label{tab:more-metrics-asked}
+\end{table}
+
+% -------------------------------------------------------------------------------------------------
+The experimental results are shown in \autoref{tab:imagenet_cnn_hihd} for CNNs and transformers. 
+ExPerturbation \autocite{fong2019understanding} is expected to perform best in insertion because its 
+optimization objective is very similar to this evaluation metric, using blurring for masked regions. 
+However, ExPerturbation \autocite{fong2019understanding}  only performs best on ResNet50. 
+TIBAV \autocite{chefer2021transformer}, which is designed for transformers, outperforms the other 
+methods on DeiT and ViT. According to the results of Insertion/Deletion, Opti-CAM has low 
+performance but there is no clear winner on either CNNs or transformers.
+
+To further understand the behavior of Opti-CAM, we investigate in \autoref{fig:hihd} examples where 
+Score-CAM succeeds (insertion score greater than $90$ and deletion score less than $10$) and 
+Opti-CAM fails (insertion score less than $70$ and deletion score greater than $15$). Compared with 
+Score-CAM, the saliency maps obtained by Opti-CAM are more spread out and highlight several parts 
+of the object and background context. In most of the cases, Opti-CAM fails I/D because it not only 
+finds the object but also attaches importance to the background.
+
+\input{fig/opticam/tex/failure_v_scorecam.tex}
+
+We argue that this is not a failure. As our localization experiment in \autoref{tab:localization} 
+indicates, the background is useful in discriminating a class. Often, the network recognizes the 
+background better than the object itself. For example, a gas pump is likely to be seen with a truck, 
+and a hare is often seen on grass. Several parts of the object are highlighted by Opti-CAM for the 
+worm fence, terrier dog, hare, and manhole cover. Finally, several instances of spaniel dog are found 
+by Opti-CAM.
+
+Insertion/Deletion include 224 steps of binarization, with a set of 224 pixels being 
+inserted/deleted at each step. If these pixels are all inserted over a single small area, the 
+effect on the classifier is more immediate than when sparsely inserting pixels over multiple areas. 
+The same observation holds for deletion. By contrast, Opti-CAM attempts to find regions that 
+contribute to the classification as a whole. There is no guarantee that those regions are effective 
+when used in isolation.
+
+\begin{table}[t]
+    \centering
+    \footnotesize
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{0.8}
+    \begin{tabular}{lrr rr rr rr} \toprule
+    \mr{2}{\Th{Method}} & \mc{2}{\Th{ResNet50}} & \mc{2}{\Th{VGG16}} & \mc{2}{\Th{ViT-B}}& \mc{2}{\Th{DeiT-B}} \\ \cmidrule{2-9}
+                        & {{$\I\!\uparrow$}} & {{$\D\!\downarrow$}}& {{$\I\!\uparrow$}} & {{$\D\!\downarrow$}} & {{$\I\!\uparrow$}} & {{$\D\!\downarrow$}}& {{$\I\!\uparrow$}} & {{$\D\!\downarrow$}}\\ \midrule
+    Fake-CAM&50.7&28.1&46.1&26.9&57.4&33.3&57.5&34.2\\\midrule
+    Grad-CAM&66.3&14.7&\tb{64.1}&11.6&62.9&19.8&61.8&17.5\\
+    Grad-CAM++&66.0&14.7&62.9&12.2&56.7&29.3&60.5&21.9\\
+    Score-CAM&65.7&16.3&62.5&12.1&\tb{66.5}&15.1 &60.6&24.4\\
+    XGrad-CAM&66.3&14.7&\tb{64.1}&11.7&55.6&26.5  &55.2&31.1\\
+    %\midrule
+    Layer-CAM&67.0&\tb{14.2}&58.3&\tb{6.4}&62.9&14.6 &61.6&21.2\\
+    ExPerturbation&\tb{70.7}&15.0&61.1&15.0&64.4&18.4&62.1&27.0\\
+    Ablation-CAM&65.9&14.6&63.8&11.4&-&-&-&-\\
+    RawAtt&-&-&-&-&62.2&17.9 &56.3&29.3\\
+    Rollout&-&-&-&-&64.8&15.2 &56.7&32.8\\
+    TIBAV&-&-&-&-&66.1&\tb{14.1} &\tb{63.7}&\tb{16.3}\\
+    Opti-CAM (ours)&62.0&19.7&59.2&11.0 &60.5&22.0  &59.2&22.8\\
+    \bottomrule
+    \end{tabular}
+    % \vspace{6pt}
+    \caption{
+    I/D: insertion/deletion \autocite{petsiuk2018rise} scores on ImageNet validation set; $\downarrow$ / $\uparrow$: lower / higher is better.}% Bold: best, excluding Fake-CAM.}
+    \label{tab:imagenet_cnn_hihd}
 \end{table}

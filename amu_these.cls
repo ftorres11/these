@@ -60,7 +60,7 @@
 \RequirePackage[ruled,vlined]{algorithm2e}
 \floatplacement{figure}{H}					%% placer une figure là où elle a été appelée
 \graphicspath{{fig/}{logo/}}				%% chemins vers fichiers images
-
+\RequirePackage{cellspace}
 %%% appareil de référence (sauf glossaires)
 \PassOptionsToPackage{						%% options biblatex
 	backend=biber,							%% compilateur par défaut pour biblatex

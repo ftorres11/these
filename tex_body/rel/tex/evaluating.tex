@@ -53,14 +53,14 @@ measured using \glsfirst{ad}, \glsfirst{ai}.\\
 
 \paragraph{Notation}
 Let $p^c_i$ and $o^c_i$ be the predicted probability for class $c$ given as input  the $i$-th test 
-image $\vx_i$ and its masked version respectively. Masking refers to element-wise multiplication 
-with the saliency map, which is at the same resolution as the original image with values in $[0,1]$. 
-Let $N$ be the number of test images. Class $c$ is taken as the ground truth.\\
+image $\mathbf{u}$ and its masked version respectively. Masking refers to element-wise 
+multiplication with the saliency map, which is at the same resolution as the original image with 
+values in $[0,1]$. Let $N$ be the number of test images. Class $c$ is taken as the ground truth.\\
 
 \emph{\gls{ad}}  quantifies how much predictive power, measured as class probability, 
 is lost when we only mask the image; lower is better:
 \begin{equation}
-	\AD(\%) \defn \frac{1}{N} \sum_{i=1}^N \frac{[p^c_i - o^c_i]_+}{p^c_i} \cdot 100.
+	\AD \defn \frac{1}{N} \sum_{i=1}^N \frac{[p^c_i - o^c_i]_+}{p^c_i} \cdot 100.
 \label{eq:ad}
 \end{equation}
 
@@ -68,7 +68,7 @@ is lost when we only mask the image; lower is better:
 percentage of images where the masked image yiel ds a higher class probability than the original; 
 higher is better:
 \begin{equation}
-	\AI(\%) \defn \frac{1}{N} \sum_i^N \mathbb{1}_{p^c_i < o^c_i} \cdot 100.
+	\AI \defn \frac{1}{N} \sum_i^N \mathbb{1}_{p^c_i < o^c_i} \cdot 100.
 \label{eq:ai}
 \end{equation}
 
@@ -78,8 +78,36 @@ the actual increase is small. Hence, it is possible that an attribution method i
 Indeed, \autocite{poppi2021revisiting} observes that a trivial method called Fake-CAM outperforms 
 state-of-the-art methods, including Score-CAM, by a large margin. Fake-CAM simply defines a 
 saliency map where the top-left pixel is set to zero and is uniform elsewhere. 
-This questions the purpose of $\AD$ and $\AI$.
+This questions the purpose of $\AD$ and $\AI$. Addressing this, Poppi proposes \gls{adcc}, a metric 
+that combines \gls{ad} and two complementary measurements: \emph{Coherency} and \emph{Complexity}.
+In detail:\\
 
+\emph{Coherency} answers the requirement that the CAM-attribution of one image has to equate to the 
+corresponding attribution of the explanation map obtained by the combination of said attribution 
+map and the original input image. This is defined using the Pearson Correlation Coefficient between 
+both attributions following:
+
+\begin{equation}
+	\mbox{Coherency}(u) = \frac{\mbox{Cov}\left(\mbox{CAM}_c(\mathbf{u}\odot \mbox{CAM}_c(\mathbf{u})),
+	                       \mbox{CAM}_c(\mathbf{u})\right)}{\sigma\mbox{CAM}_c(\mathbf{u}
+						   \odot \mbox{CAM}_c(\mathbf{u}))\sigma\mbox{CAM}_c(\mathbf{u})}
+\end{equation}
+
+\emph{Complexity} is addressed to the requirement of CAM attributions being as \emph{simple} or 
+less complex as possible. It is defined using the $L_1$ norm as a proxy of complexity:
+
+\begin{equation}
+	\mbox{Complexity}(\mathbf{u}) = ||\mbox{CAM}_c(\mathbf{u})||_1
+\end{equation}
+
+\emph{\gls{adcc}} Encompasing the previously introduced metrics and \gls{ad}, ADCC encompases 
+these metrics taking their harmonic mean in the following manner:
+
+\begin{equation}
+	\mbox{ADCC}(\mathbf{u}) = 3\left(\frac{1}{\mbox{Coherency}(\mathbf)} + 
+	                           \frac{1}{1-\mbox{Complexity}(\mathbf{u}) + 
+							   \frac{1}{1-AD(\mathbf{u})}}\right)^{-1}
+\end{equation}
 % -------------------------------------------------------------------------------------------------
 \subsubsection{Causal Analysis} 
 \label{sec:causal_metrics}
@@ -90,7 +118,7 @@ according to their saliency maps, and the subsequent change of predictive power 
 methodology contemplates two styles of modifications: on one hand, the input image is blurred 
 entirely and the information is reconstructed by the \glsfirst{ins} of pixels following the 
 saliency map; conversely, information can be steadily removed from the image by iterative
-\glsfirst{del} of salient pixels.
+\glsfirst{del} of salient pixels.\\
 
 \paragraph{Notation} let $x$ be an input image with the corresponding saliency map $s^c$ and $N$ the 
 number of pixels removed per step, we calculate the predicted probability $p^c_n$ at step $n$ for 
@@ -100,12 +128,11 @@ considers $s^c$ to maintain the same image resolution as $x$ and be normalized i
 \emph{\gls{ins}} measures the increase of probability when introducing pixels from an input image 
 into a blurry version of itself, following the salient order described by the saliency map. Best 
 described in \autoref{algo:rel_ins}\\
-
+\input{tex_body/rel/tex/ins.tex}
 \emph{\gls{del}} measures the decrease of probability as pixels are zeroed out in an input image, 
 following the salient order described by the saliency map. Best 
 described in \autoref{algo:rel_del}\\
-
-\input{tex_body/rel/tex/ins_del.tex}
+\input{tex_body/rel/tex/del.tex}
 %--------------------------------------------------------------------------------------------------
 \subsubsection{Interpretable object localization}
 \label{sec:loc-metrics}
@@ -128,7 +155,7 @@ compare this box against the set of ground truth bounding boxes $\cB$, which typ
 or 2 boxes of the same class $c$, or with their union $U = \cup \cB$, again represented as a set 
 of pixels. We also compare the predicted class label $c_p$ with the ground truth label $c$. All 
 metrics take values in $[0,1]$ and are expressed as percentages, except SM~\eq{sm}, which is 
-unbounded.
+unbounded.\\
 
 \emph{Unit Interpretability} defined in Broden, this metric is different from those defined in 
 the coming weakly-supervised approaches; compares each individual feature map $A^k$ with the 
@@ -202,3 +229,4 @@ where $h \times w$ is the input image resolution and $p^c$ is the precicted prob
 truth class label $c$.
 
 \subsection{Discussion}
+TBA

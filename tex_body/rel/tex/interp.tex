@@ -201,7 +201,7 @@ been proposed, including considering only positive values \autocite{guidedbackpr
 on the input space for denoising \autocite{smilkov2017smoothgrad}, introducing rules and axioms to 
 constrain the computation \autocite{sundararajan2017axiomatic} and proposal of concepts like 
 relevance \autocite{bach2015pixel} to compute the importance pixel interaction leading to a 
-prediction.\\
+prediction \emph{(LRP)}.\\
 
 \noindent \emph{Learning-based methods.} Approaches in this family of methods exhibit a behaviour 
 intersecting  \emph{transparency} based approaches, where an additional network or branch is 
@@ -240,7 +240,20 @@ correlated with class information to compute explanations (\cite{selvaraju2017gr
 \cite{chattopadhay2018grad}, \cite{wang2020score}, \cite{axiombased}, \cite{ablationcam}
 \cite{jiang2021layercam})\\
 
-\input{fig/rel/tex/cnn_depth.tex}
+\noindent \emph{Attention-based techniques.} Given the innate properties of attention based 
+architectures, most interpretability methods are ill fitted towards explaining the inference 
+process of these models. Nevertheless, with the current design of these models it is possible to 
+address salient information, although in a class-agnostic manner. In particular, in the computation 
+of self attention, this information is highlighted by the product of \emph{query} and \emph{key} 
+vectors by focusing on the \Th{[CLS]} token; this in turn is called \emph{Raw Attention}. 
+Conversely, since attention is computed at every layer of a transformer, the flow of information 
+can be traced across different layers across the network in an approach named \emph{Rollout 
+Attention} \autocite{abnar2020quantifying}. Inspired by \emph{rollout attention} and gradient 
+methods such as \emph{LRP} \autocite{bach2015pixel} and the indadequacy property of CAM methods on 
+transformers, a novel computation of relevance across layers providing high quality attribution 
+maps is introduced, allowing at the same time for a quantitative study of the interpretable 
+properties of these methodologies \autocite{chefer2021transformer}.\\
+
 In this thesis we take particular interest in proposing and evaluating our interpretability 
 methodologies based on \gls{cam}. In particular, we find CAM to be an appealing approach because of 
 its ease of use and adaptation to interpret existing models. Moreover, it can be argued that while 
@@ -268,6 +281,7 @@ the feature map for channel $k \in \{1,\dots,K_\ell\}$, with spatial resolution 
 w_\ell$. Because of $\relu$ non-linearities, we assume that feature maps are non-negative. 
 Similarly, we denote by $S_\ell \in \real^{h_\ell \times w_\ell}$ a 2D saliency map.
 %--------------------------------------------------------------------------------------------------
+\input{fig/rel/tex/cnn_depth.tex}
 \label{sec:oc_back}
 Given a layer $\ell$ and a class of interest $c$, we consider saliency maps given by the general 
 formula: \\
