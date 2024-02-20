@@ -104,7 +104,7 @@ less complex as possible. It is defined using the $L_1$ norm as a proxy of compl
 these metrics taking their harmonic mean in the following manner:
 
 \begin{equation}
-	\mbox{ADCC}(\mathbf{u}) = 3\left(\frac{1}{\mbox{Coherency}(\mathbf)} + 
+	\mbox{ADCC}(\mathbf{u}) = 3\left(\frac{1}{\mbox{Coherency}(\mathbf{u})} + 
 	                           \frac{1}{1-\mbox{Complexity}(\mathbf{u}) + 
 							   \frac{1}{1-AD(\mathbf{u})}}\right)^{-1}
 \end{equation}
@@ -164,7 +164,8 @@ the activation map $A^k$ is upsampled into the original image resolution and the
 generating the binary mask $M^k$. This mask is used following:
 
 \begin{equation}
-	\iou_{k,c} \defn \frac{\sum \abs{M^k(x) \cap L_c(x)}}{\sum \abs{M^k(x) \cup L_c(x)}}
+	\iou_{k,c} \defn \frac{\sum \abs{M^k(\mathbf{u}) \cap L_c(x)}}
+					      {\sum \abs{M^k(\mathbf{u}) \cup L_c(x)}}
 \end{equation}
 
 \emph{\gls{om}}

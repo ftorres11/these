@@ -212,8 +212,16 @@ This is defined in the following manner:
 \emph{values}, each with a dimension $d_k$. The softmax activation function is employed to 
 emphasize relevant information for each product between $Q$ and $V$. Conversely the scaling 
 coefficient $\sqrt{d_k}$ uses the square root to prevent softmax from entering regions with small 
-gradients,particularly important as large values of $d_k$ push softmax into this outcome. This 
-function can be further paralellized by segregatomg these embeddings into different 
+gradients,particularly important as large values of $d_k$ push softmax into this outcome. 
+Conversely, for each token \emph{self-attention} is then defined as an average of all values 
+(rows of $V$), weighted by the attention (corresponding row of A).
+
+\begin{equation}
+	\sa(X_\ell) \defn A V \in \real^{t_\ell \times d_\ell}.
+\label{eq:SA}
+\end{equation}
+
+This function can be further paralellized by segregatomg these embeddings into different 
 heads, where the dot products are ultimately easier to compute; this in turn is called \gls{mhsa}.
 
 An important observation is that self attention has no parameters whatsoever: this function is 

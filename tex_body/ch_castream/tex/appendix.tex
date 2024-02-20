@@ -2,10 +2,6 @@
 
 \paragraph{Implementation details}
 
-Following the training recipes from the pytorch models\footnote{https://github.com/pytorch/vision/tree/main/references/classification}, we choose the ResNet protocol given its simplicity. Thus, we train over 90 epochs with SGD optimizer with momentum 0.9 and weight decay $10^{-4}$. We start our training with a learning rate of 0.1 and decrease it every 30 epochs by a factor of 10. Our models are trained on 8 V100 GPUs with a batch size 32 per GPU,  thus global batch size 256.
-
-We follow the same protocol for both ResNet and ConvNeXt, though a different protocol might lead to improvements on ConvNeXt.
-
 % %------------------------------------------------------------------------------
 % \begin{table}[h]
 % \centering

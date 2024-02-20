@@ -6,7 +6,7 @@ Let matrix $F_\ell \in \real^{p_\ell \times d_\ell}$ be a reshaping of feature t
  layer $\ell$, where $p_\ell \defn w_\ell h_\ell$ is the number of patch tokens without \cls, and
   let $\vq_\ell \in \real^{d_\ell}$ be the \cls token embedding at layer $\ell$. By focusing on the 
   \emph{cross attention} only between the \cls (query) token $\vq_\ell$ and the patch (key) tokens 
-  $F_\ell$ and by ignoring projections $W_Q, W_K, W_V$ for simplicity, attention $A$~\eq{attention} 
+  $F_\ell$ and by ignoring projections $W_Q, W_K, W_V$ for simplicity, attention $A$ ~\eq{att} 
   is now a $1 \times p_\ell$ matrix that can be written as a vector $\mathbf{a} \in \real^{p_\ell}$
 
 \begin{equation}
@@ -18,16 +18,17 @@ Here, $F_\ell \vq_\ell$ expresses the pairwise similarities between the global \
 $\vq_\ell$ and the local patch features $F_\ell$. Now, by replacing $\vq_\ell$ by an arbitrary vector 
 $\mathbf{a}lpha \in \real^{d_\ell}$ and by writing the feature matrix as $F_\ell = (\vf_\ell^1 \dots 
 \vf_\ell^{d_\ell})$ where $\vf_\ell^k = \vect(F_\ell^k) \in \real^{p_\ell}$ for channel $k$, 
-attention \eq{cross-attention} becomes
+attention ~\eq{cross-attention} becomes
 
 \begin{equation}
-	\mathbf{a} = h_\ell (F_\ell \mathbf{a}lpha) =
+	\mathbf{a} = h_\ell (F_\ell \mathbf{\alpha}) =
 		h_\ell \left( \sum_k \alpha_k \vf_\ell^k \right).
 \label{eq:connection}
 \end{equation}
+
 This takes the same form as~\eq{sal}, with feature maps $F_\ell^k$ being vectorized into 
 $\vf_\ell^k$ and the activation function is defined as $h_\ell(\vx) = \softmax(\vx / \sqrt{d_\ell})$. 
-Eq.~\eq{connection} is visualized in \autoref{fig:connection}. We thus observe the following.
+Eq. ~\eq{connection} is visualized in \autoref{fig:connection}. We thus observe the following.
 
 \begin{quote}
 	\emph{Pairwise similarities between one query and all patch token embeddings in cross attention 
@@ -38,14 +39,15 @@ Eq.~\eq{connection} is visualized in \autoref{fig:connection}. We thus observe t
 As it stands, one difference between~\eq{sal} and~\eq{connection} is that~\eq{connection} is class 
 agnostic, although it could be extended by using one query (weight) vector per class. For simplicity, 
 we choose the class agnostic form in the following. %We also choose to have no query/key projections. 
-%However, we do provide additional experiments with class specific representation as well as projections in \autoref{sec:gen_ablation}. 
-
+%However, we do provide additional experiments with class specific representation as well as projections
+% in \autoref{sec:gen_ablation}. 
 %--------------------------------------------------------------------------------------------------
 \paragraph{Pooling, or masking}
-
 We are thus motivated to integrate an attention mechanism into any network such that making a 
 prediction and explaining (localizing) it are inherently connected. In particular, considering 
 cross attention only between \cls and patch tokens~\eq{cross-attention}, equation~\eq{SA} becomes
+
+\input{fig/castream/tex/connection.tex}
 
 \begin{align}
 	\ca_\ell(\vq_\ell, F_\ell) \defn F_\ell\tran \mathbf{a} = F_\ell\tran h_\ell(F_\ell \vq_\ell) 
@@ -77,4 +79,4 @@ We thus observe the following.
 	space followed by \gap, where the weights are given by a class agnostic CAM-based saliency map.}
 \end{quote}
 
-%\input{fig/castream/tex/CAfig}
+%\input{fig/castream/tex/CAfig.tex}

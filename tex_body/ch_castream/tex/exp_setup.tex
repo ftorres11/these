@@ -1,22 +1,51 @@
+%--------------------------------------------------------------------------------------------------
 \section{Experiments}
-\label{sec:exp}
-
-We evaluate the interpretability and recognition capabilities of our approach. In particular, we generate explanations following current state-of-the art post-hoc interpretability methods derived from CAM~\cite{zhou2016learning}. We compare the properties of the backbone network $f$ with and without our \Ours, where $f$ is pretrained and fixed.
+\label{sec:castream_exp}
+We evaluate the interpretability and recognition capabilities of our approach. In particular, we 
+generate explanations following current state-of-the art post-hoc interpretability methods derived 
+from CAM \autocite{zhou2016learning}. We compare the properties of the backbone network $f$ with 
+and without our \Ours, where $f$ is pretrained and fixed.
 
 \subsection{Experimental setup}
-\label{subsec:setup}
-
+\label{subsec:castream_setup}
 \paragraph{Training}
+We train and evaluate our models on the ImageNet ILSVRC-2012 dataset \autocite{ILSVRC15}, 
+on the training and validation splits respectively. Thus, we experiment with ResNet-based 
+architectures \autocite{he2016deep} such as ResNet-18 and ResNet-50, and ConvNeXt based 
+architectures \autocite{liu2022convnet} such as ConvNeXt-Small and ConvNeXt-Base. We aim at 
+learning our \Ours, generating a \cls token that interacts with feature maps at different stages of 
+network $f$, to serve as an attention-based pooling mechanism in order to interpret the predictions 
+of $f$. Therefore, we experiment with pretrained models\footnote{https://pytorch.org/vision/0.8/models.html}, 
+that we keep frozen while the parameters of the \Ours are optimized. 
+Moreover, we present experiments on the bird dataset: CUB-200-2011 \cite{WahCUB_200_2011} and on 
+PASCAL VOC 2012 dataset \cite{Everingham15}. Here the ResNet-50 network is fine-tuned to these 
+dataset as baseline. Then, our \Ours is learned as for ImageNet.
 
-We train and evaluate our models on the ImageNet ILSVRC-2012 dataset~\cite{deng2009imagenet}, on the training and validation splits respectively. Thus, we experiment with ResNet-based architectures~\cite{he2016deep} such as ResNet-18 and ResNet-50, and ConvNeXt based architectures~\cite{liu2022convnet} such as ConvNeXt-Small and ConvNeXt-Base. We aim at learning our \Ours, generating a \cls token that interacts with feature maps at different stages of network $f$, to serve as an attention-based pooling mechanism in order to interpret the predictions of $f$. Therefore, we experiment with pretrained models\footnote{https://pytorch.org/vision/0.8/models.html}, that we keep frozen while the parameters of the \Ours are optimized. Details on training hyperparameters are given in the appendix.
+\paragraph{Implementation Details}
+Following the training recipes from the pytorch models 
+\footnote{https://github.com/pytorch/vision/tree/main/references/classification}, we choose the 
+ResNet protocol given its simplicity. Thus, we train over 90 epochs with SGD optimizer with 
+momentum 0.9 and weight decay $10^{-4}$. We start our training with a learning rate of 0.1 and 
+decrease it every 30 epochs by a factor of 10. Our models are trained on 8 V100 GPUs with a batch 
+size 32 per GPU,  thus global batch size 256.\\
 
-Moreover, we present experiments on the bird dataset: CUB-200-2011 \cite{WahCUB_200_2011} and on PASCAL VOC 2012 dataset \cite{Everingham15}. Here the ResNet-50 network is fine-tuned to these dataset as baseline. Then, our \Ours is learned as for ImageNet.
+We follow the same protocol for both ResNet and ConvNeXt, though a different protocol might lead to improvements on ConvNeXt.
+
 
 \paragraph{Evaluation}
+We employ existing post-hoc interpretability methods to generate saliency maps with and without 
+\Ours and compare interpretability metrics as well as classification accuracy. Regarding 
+interpretability methods, we use Grad-CAM \autocite{selvaraju2017grad}, 
+Grad-CAM++ \autocite{chattopadhay2018grad} and ScoreCAM \autocite{wang2020score}. We note that the 
+evaluation is performed on the entire validation set, unlike the previous approaches.
 
-We employ existing post-hoc interpretability methods to generate saliency maps with and without \Ours and compare interpretability metrics as well as classification accuracy. Regarding interpretability methods, we use Grad-CAM~\cite{DBLP:journals/corr/SelvarajuDVCPB16}, Grad-CAM++~\cite{DBLP:journals/corr/abs-1710-11063} and ScoreCAM~\cite{DBLP:journals/corr/abs-1910-01279}. We note that the evaluation is performed on the entire validation set, unlike the previous approaches.
+Following Opti-CAM \ref{ch:opticam}, we use a number of classification metrics for interpretability. 
+In particular, we consider the changes in predictive power measured by \emph{average drop} 
+(AD) \autocite{chattopadhay2018grad} and \emph{average gain} (AG) \autoref{sec:av_gain}, the 
+proportion of better explanations measured by \emph{average increase} (AI) 
+\autocite{chattopadhay2018grad} and the impact of different extent of masking measured by 
+\emph{insertion} (I) and \emph{deletion} (D) \autocite{petsiuk2018rise}.
 
-Following Opti-CAM~\cite{zhang2023opti}, we use a number of classification metrics for interpretability. In particular, we consider the changes in predictive power measured by \emph{average drop} (AD)~\cite{DBLP:journals/corr/abs-1710-11063} and \emph{average gain} (AG)~\cite{zhang2023opti}, the proportion of better explanations measured by \emph{average increase} (AI)~\cite{DBLP:journals/corr/abs-1710-11063} and the impact of different extent of masking measured by \emph{insertion} (I) and \emph{deletion} (D)~\citep{petsiuk2018rise}.
 
 % For localization, we use metrics from the \emph{weakly-supervised object localization} (WSOL) task to measure the maximum overlap between the saliency map (or corresponding predicted bounding boxes) and ground truth bounding boxes, \ie \emph{official metric} (OM), \emph{localization error} (LE), \emph{pixel-wise $F_1$ score}, \emph{box accuracy} (BoxAcc)~\citep{choe2020evaluating} and \emph{saliency metric} (SM)~\citep{dabkowski2017real}. We also measure the localization of the pixel of maximum saliency by the \emph{standard pointing game} (SP)~\cite{zhang2018top} and the fraction of the saliency map within the ground truth bounding boxes by \emph{energy pointing game} (EP)~\citep{DBLP:journals/corr/abs-1910-01279}. We obtain the ground truth bounding boxes from the ILSVRC2014\footnote{\url{https://www.image-net.org/challenges/LSVRC/2014/index\#}} dataset. 
 
