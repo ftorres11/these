@@ -2000,6 +2000,49 @@
       \field{title}{Saliency learning: Teaching the model where to pay attention}
       \field{year}{2019}
     \endentry
+    \entry{gomez2022metrics}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=fab9d97afee028e85507d79221046c42}{%
+           family={Gomez},
+           familyi={G\bibinitperiod},
+           given={Tristan},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=21990128e354e6eef25cdd3d92cab98b}{%
+           family={Fr{é}our},
+           familyi={F\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1c041ec33be633a2832d37be8e07327c}{%
+           family={Mouch{è}re},
+           familyi={M\bibinitperiod},
+           given={Harold},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{7b66d1c6be4002b04f758f66a3c0c7f1}
+      \strng{fullhash}{7441fb998d4f85b9caec7f979b928e00}
+      \strng{bibnamehash}{7441fb998d4f85b9caec7f979b928e00}
+      \strng{authorbibnamehash}{7441fb998d4f85b9caec7f979b928e00}
+      \strng{authornamehash}{7b66d1c6be4002b04f758f66a3c0c7f1}
+      \strng{authorfullhash}{7441fb998d4f85b9caec7f979b928e00}
+      \field{labelalpha}{GFM22}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Pattern Recognition and Artificial Intelligence}
+      \field{title}{Metrics for saliency map evaluation of deep learning explanation methods}
+      \field{year}{2022}
+      \field{pages}{84\bibrangedash 95}
+      \range{pages}{12}
+    \endentry
     \entry{graham2021levit}{inproceedings}{}
       \name{author}{7}{}{%
         {{uniquename=0,uniquepart=base,hash=0ff8508086e7a2ac42be5574d8205ced}{%
@@ -2188,6 +2231,48 @@
       \field{year}{1954}
       \field{pages}{146\bibrangedash 162}
       \range{pages}{17}
+    \endentry
+    \entry{hase2021outofdistribution}{misc}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=141b5bd704afa4ee0592066165f2bd46}{%
+           family={Hase},
+           familyi={H\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cc4948979898162143a8ce9a160e4cf3}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Harry},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b118f9d5c7ddaa3d38926cc7de6586e0}{%
+           family={Bansal},
+           familyi={B\bibinitperiod},
+           given={Mohit},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{068f3656b2320ce7cc4483cd6fd1ca58}
+      \strng{fullhash}{e161b8b2eba7598b54d30ac798e60e18}
+      \strng{bibnamehash}{e161b8b2eba7598b54d30ac798e60e18}
+      \strng{authorbibnamehash}{e161b8b2eba7598b54d30ac798e60e18}
+      \strng{authornamehash}{068f3656b2320ce7cc4483cd6fd1ca58}
+      \strng{authorfullhash}{e161b8b2eba7598b54d30ac798e60e18}
+      \field{labelalpha}{HXB21}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{The Out-of-Distribution Problem in Explainability and Search Methods for Feature Importance Explanations}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 2106.00786
+      \endverb
     \endentry
     \entry{haug2021baselines}{misc}{}
       \name{author}{4}{}{%
@@ -4573,6 +4658,78 @@
       \field{pages}{270\bibrangedash 279}
       \range{pages}{10}
     \endentry
+    \entry{qiu2021resisting}{misc}{}
+      \name{author}{8}{}{%
+        {{uniquename=0,uniquepart=base,hash=0fd3dc47700530019a8183be38fcc6ed}{%
+           family={Qiu},
+           familyi={Q\bibinitperiod},
+           given={Luyu},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=446e84a6f09f26fc6cf5730853e551ba}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8c33303c3257d7c3766b70397885238a}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Caleb\bibnamedelima Chen},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=83f95dca7c81df3fe67380769eb0321c}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=080f8d50e4714552cc394c3927aea051}{%
+           family={Zheng},
+           familyi={Z\bibinitperiod},
+           given={Yueyuan},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c8d02f14e570ed96ead5035fa77e2a80}{%
+           family={Ngai},
+           familyi={N\bibinitperiod},
+           given={Hilary\bibnamedelimb Hei\bibnamedelima Ting},
+           giveni={H\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=833246513006c876eaae2f9340484cc6}{%
+           family={Hsiao},
+           familyi={H\bibinitperiod},
+           given={Janet},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=046842e5933d7131df18c28d8bce94ff}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b166a281d4ed581ac84a75e5e4419d41}
+      \strng{fullhash}{4b9b7d172a8527aaca9c979299f5ecdc}
+      \strng{bibnamehash}{a7710acb83aa1b252bdbc9d34a489df6}
+      \strng{authorbibnamehash}{a7710acb83aa1b252bdbc9d34a489df6}
+      \strng{authornamehash}{b166a281d4ed581ac84a75e5e4419d41}
+      \strng{authorfullhash}{4b9b7d172a8527aaca9c979299f5ecdc}
+      \field{labelalpha}{Qiu+21}
+      \field{sortinit}{Q}
+      \field{sortinithash}{d257e420984a3a5c57a3330114cd646a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.AI}
+      \field{eprinttype}{arXiv}
+      \field{title}{Resisting Out-of-Distribution Data Problem in Perturbation of XAI}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 2107.14000
+      \endverb
+    \endentry
     \entry{quattoni2009recognizing}{inproceedings}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=491fe51dad2ec5723ef30a03f1a3b9f3}{%
@@ -4776,6 +4933,60 @@
       \field{year}{2020}
       \field{pages}{647\bibrangedash 664}
       \range{pages}{18}
+    \endentry
+    \entry{rong2022consistent}{misc}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=36794ff87012ba3ad0acdc7737f93a1d}{%
+           family={Rong},
+           familyi={R\bibinitperiod},
+           given={Yao},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e99d5023766dbdeb483e6f0912227dde}{%
+           family={Leemann},
+           familyi={L\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0d01891f2b7ffd8f394336b5286dabcc}{%
+           family={Borisov},
+           familyi={B\bibinitperiod},
+           given={Vadim},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=38a915387a57fd2fe2a67ca2c13d444f}{%
+           family={Kasneci},
+           familyi={K\bibinitperiod},
+           given={Gjergji},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c72fad49713fef4e273c39cc783e7c68}{%
+           family={Kasneci},
+           familyi={K\bibinitperiod},
+           given={Enkelejda},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2839a13caecea93e02027dd17d4da8fd}
+      \strng{fullhash}{be185fb91035b151b664930d4754b140}
+      \strng{bibnamehash}{892ea70881dfc2c7f09bd20e8aa6b873}
+      \strng{authorbibnamehash}{892ea70881dfc2c7f09bd20e8aa6b873}
+      \strng{authornamehash}{2839a13caecea93e02027dd17d4da8fd}
+      \strng{authorfullhash}{be185fb91035b151b664930d4754b140}
+      \field{labelalpha}{Ron+22}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{A Consistent and Efficient Evaluation Strategy for Attribution Methods}
+      \field{year}{2022}
+      \verb{eprint}
+      \verb 2202.00449
+      \endverb
     \endentry
     \entry{ross2017right}{article}{}
       \name{author}{3}{}{%
@@ -7240,6 +7451,8 @@
       \range{pages}{14}
     \endentry
   \enddatalist
+  \missing{cam}
+  \missing{krizhevsky2009learning}
 \endrefsection
 \endinput
 

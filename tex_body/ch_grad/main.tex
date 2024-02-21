@@ -25,55 +25,8 @@ introducing of a regularization term to the error function. This term is aimed a
 the gradient by aligning it with guided back-propagation in the input space.
 
 
-%The improvements of deep learning methods in the last decade has led to very large developments and 
-%a large diffusion to most sectors. Since these models are computationally complex and opaque, the 
-%requirements for explanations or interpretable models receives a lot of attention nowadays 
-%\cite{mythos_interp}. Explanations and transparency becomes a legal requirements for diverse types 
-%of systems that are used to assist high-stakes decisions.
-
-
-%In this work, we study deep learning models visual interpretability.
-%Model interpretability is often categorized into transparency or post-hoc methods. Transparency 
-%aims at producing interpretable models where the inner process or part of it can be understood. 
-%Post-hoc methods consider models as black-boxes and interpret decisions mainly based on inputs and 
-%outputs. Regarding visual recognition models post-hoc methods producing saliency maps are mostly 
-%used as they directly highlight the most important areas of an image related to the decision.
-%Initial works focused on gradient information such as guided back-propagation \cite{guidedbackprop}.
-%CAM \cite{cam} later presented a class-specific linear combination of feature maps that opened the 
-%way to numerous weighting strategies.
-%Several methods use gradient information \cite{gradcam}, masking \cite{scorecam}, etc.
-%GradCAM \cite{gradcam} and other variants \cite{omeiza2019smooth} are particularly successful 
-%gradient methods.Interestingly SmoothGrad \cite{smoothgrad} and SmoothGrad-CAM++ \cite{omeiza2019smooth} 
-%improve the precision of saliency maps by denoising gradient.
-%These CAM-based methods are the most popular and best performing methods at the moment.
-
-%In this work, we follow a similar idea and propose a learning paradigm for model training that 
-%constraint gradient in order to improve the performance of interpretability methods.
-%In fact, we add a regularization term to the loss function pulling the gradient in the input space 
-%to align with the values obtained by guided back-propagation. 
-%Such regularization has a smoothing effect on gradient and is expected to improve the precision of 
-%model interpretations.
-
-
-%More specifically the Figure \ref{fig:method} summarizes our method.
-%When training each input image is forwarded to the network to compute the cross-entropy loss. 
-%Then a standard and guided back-propagations are computed back to the input image space, where our 
-%regularization term is computed. This term is added to the loss and back-propagated only through the 
-%standard back-propagation branch.
-
-
-
-%The key contributions of this learning interpretable gradients approach follows:
-%\begin{itemize}
-%    \item We introduce a new learning framework with regularized gradient.
-%    \item The proposed method is further evaluated on several architectures both in term of accuracy and interpretability metrics.
-%\end{itemize}
-
-
-\input{tex_body/ch_grad/tex/preliminar}
-\newpage
 \input{tex_body/ch_grad/tex/def}
-\newpage
+\input{tex_body/ch_grad/tex/expes}
 \input{tex_body/ch_grad/tex/qual}
 \newpage
 \input{tex_body/ch_grad/tex/quant}

@@ -26,6 +26,7 @@
 \RequirePackage[french,main=english]{babel}	%% typographie (français par défaut)
 \RequirePackage[babel]{csquotes}			%% guillemets typographiques
 \MakeAutoQuote{«}{»}						%% espacement automatique des guillemets
+\RequirePackage{multicol}
 
 %%% typographie et mise en page
 \RequirePackage{scrhack}					%% macros personnalisées (KOMA-Script)
@@ -130,6 +131,7 @@
 \RequirePackage{pdfpages}					%% insertion de pdf
 \RequirePackage{hyperref}					%% pdf interactifs (charger le package hyperref en dernier)
 %\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
+\RequirePackage{enumitem}
 
 \pdfminorversion=5							%% PDF en version 1.5
 \pdfobjcompresslevel 0						%% compression des objets
