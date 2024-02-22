@@ -1,2 +1,17 @@
+%--------------------------------------------------------------------------------------------------
 \section{Qualitative Evaluation}
 \label{sec:grad_qual}
+We visualize the effect of our approach on saliency maps and gradients, obtained for the baseline 
+model \vs the one trained with our approach.
+\input{fig/grad/tex/cam_mainfig.tex}
+
+
+\noindent \autoref{fig:salient} shows saliency maps. We observe the differences brought by our 
+training method. The differences are particularly important for Grad-CAM, which directly averages 
+the gradient to weigh feature maps. Interestingly, the differences are smaller for Score-CAM, which 
+is not gradient-based but only obtains changes of predicted probabilities.
+
+\input{fig/grad/tex/grads.tex}
+\noindent \autoref{fig:grads} shows gradients. We observe slightly less noise with our method, while 
+the object of interest is better covered by gradient activations.
+
