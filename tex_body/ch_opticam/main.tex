@@ -49,47 +49,6 @@ introducing a novel metric to complement the existing evaluation of attribution 
 \input{tex_body/ch_opticam/tex/def}
 \input{tex_body/ch_opticam/tex/av_gain}
 \input{tex_body/ch_opticam/tex/exp-setup}
- saliency maps.
 \input{tex_body/ch_opticam/tex/qual}
-\newpage
 \input{tex_body/ch_opticam/tex/quant_class}
-\newpage
 \input{tex_body/ch_opticam/tex/quant_loc}
-
-
-
-
-
-
-%In this work, we are interested in the interpretability of deep neural networks through the 
-%generation of \emph{saliency maps}, highlighting regions of an image that are responsible for the 
-%prediction. This originates in \emph{gradient-based} methods \citep{simonyan2013deep, 
-%yosinski2015understanding}, including variants of backpropagation \citep{zeiler2014visualizing, 
-%springenberg2014striving, bach2015pixel}. CAM~\citep{zhou2016learning} introduced class-specific 
-%linear combinations of feature maps, and led to several alternative weighting schemes 
-%\citep{ramaswamy2020ablation, wang2020score, muhammad2020eigen}, including the use of gradients 
-%\citep{selvaraju2017grad, chattopadhay2018grad}. On the other hand, \emph{occlusion-} or 
-%\emph{masking-based} methods \citep{dabkowski2017real, fong2017interpretable, fong2019understanding, 
-%schulz2020restricting} remove regions in the image space while improving classification performance.
-
-%Score-CAM~\cite{wang2020score} uses each feature map as a mask and defines a corresponding weight 
-%based on the resulting increase of class score; hence, it is both CAM-based and masking-based but does
-% not use gradients. It resembles the numerical gradient approximation, in that it needs \emph{one 
-% forward pass per weight}. Instead, the analytical approach would be to use a linear combination of feature 
-% maps as a mask, express the class score as a function of the weights and measure the gradient analytically,
-%  in a \emph{single backward pass}. Then, \emph{why not use gradient descent to maximize the class score?} 
-%  The optimal mask should highlight regions for which the network is most confident.
-
-%\emph{Masking-based} methods, such as extremal perturbations~\citep{fong2019understanding} or 
-%IBA~\citep{schulz2020restricting}, do use gradient descent to maximize the class score. The mask is now 
-%a variable in the input or feature space and the class score is expressed as a function of the mask 
-%directly. Because the variable being optimized is a high-dimensional image or tensor, additional constraints 
-%or regularizers are needed to control \eg the smoothness and the salient area. This translates to 
-%more hyperparameters or more expensive optimization.
-
-%Motivated by the above, we introduce Opti-CAM, illustrated in \autoref{fig:idea}. We form a linear 
-%combination of feature maps, where the weights are a variable. Treating it as a saliency map, we 
-%form a masked version of the input image that is fed again to the network. Then, the logit of a given 
-%class for the masked version of the input is maximized to obtain the optimal weights. Thus, Opti-CAM can 
-%be seen as an analytical counterpart of Score-CAM that is optimized iteratively, or as a masking-based 
-%method where the mask to be optimized lies in the linear span of the feature maps, like CAM-based methods.
