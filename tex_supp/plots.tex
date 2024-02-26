@@ -11,6 +11,7 @@
 \usetikzlibrary{arrows.meta,shapes,calc,matrix,fit,positioning,backgrounds,decorations.markings,fadings}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepgfplotslibrary{dateplot}
 \pgfplotsset{compat=1.9}
 \usepackage{xstring}
 
@@ -68,7 +69,7 @@
 	xticklabel={\pgfmathprintnumber[assume math mode=true]{\tick}},
 	yticklabel={\pgfmathprintnumber[assume math mode=true]{\tick}},
 	nodes near coords math/.style={
-		nodes near coords={\pgfmathprintnumber[assume math mode=true]{\pgfplotspointmeta}},
+	nodes near coords={\pgfmathprintnumber[assume math mode=true]{\pgfplotspointmeta}},
 	},
 }
 
@@ -78,6 +79,7 @@
 	nolim/.style={enlargelimits=false},
 	plain/.style={every axis plot/.append style={},nolim,grid=none},
 }
+%\pgfplotsset{scaled y ticks = false}
 \newcommand{\kilo}[1]{\thisrow{#1}/1000}
 
 %--------------------------------------------------------------------

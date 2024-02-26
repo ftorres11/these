@@ -40,18 +40,18 @@ is very slow by performing a complex optimization in the image space.
 Unlike CAM-based methods that rely on a class-specific linear combination of feature maps, 
 raw attention \autocite{dosovitskiy2020image} and rollout \autocite{abnar2020quantifying} use the 
 attention map of the [CLS] token from the last attention block and from all blocks respectively. 
-\iavr{This attention map depends only on the particular image and not on the target class, hence it
- is not really comparable. TIBAV \autocite{chefer2021transformer} uses both instance-specific and 
- class-specific information.
+This attention map depends only on the particular image and not on the target class, hence it 
+is not really comparable. TIBAV \autocite{chefer2021transformer} uses both instance-specific and 
+class-specific information.
 
 Opti-CAM outperforms all other methods dramatically, reaching near-zero $\AD$ and $\AI$ above 80 or 
 90\%. According to our new $\AG$ metric, Opti-CAM still works while all other methods fail, 
 but $\AG$ is much more conservative than $\AI$. On ViT-B for example, the classification score 
-increases for 90.1\% of the images by masking with Opti-CAM, but the gain is only 18.0\% on average.}
+increases for 90.1\% of the images by masking with Opti-CAM, but the gain is only 18.0\% on average.
 
 \paragraph{More metrics}
 In this section, we show additional metrics including AOPC \autocite{samek2016evaluating}, Max-Sensitivity
- \autocite{yeh2019fidelity} and ADCC \autocite{poppi2021revisiting}.
+\autocite{yeh2019fidelity} and ADCC \autocite{poppi2021revisiting}.
 
 We use the code and suggested parameters of package 
 Quantus\footnote{\url{https://github.com/understandable-machine-intelligence-lab/Quantus}} to measure AOPC 
@@ -81,8 +81,8 @@ not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the
         ExPerturbation      &12.0&1.07&\tb{26.0}&11.2&1.09&\tb{42.8}  \\\hline
         Opti-CAM (ours)     &6.3&\tb{1.03}&65.5&8.9&\tb{1.06}&70.0        \\ \bottomrule
     \end{tabular}
-    \caption{}
-    %\caption{\modify{\emph{AOPC/MS/ADCC} scores on ImageNet validation set.}}
+    %\caption{}
+    \caption{\emph{AOPC/MS/ADCC} scores on ImageNet validation set.}
     \label{tab:more-metrics-asked}
 \end{table}
 

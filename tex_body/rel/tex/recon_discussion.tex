@@ -1,0 +1,43 @@
+%--------------------------------------------------------------------------------------------------
+\subsection{Discussion}
+\label{{subsec:rel_recon_discussion}}
+In the realm of computer vision, the developement of image recognition model has been crucial 
+towards the advancement of different tasks such as image segmentation and object localization. 
+Supported by the theory of the interaction of Malik's three Rs of computer vision 
+\autocite{malik2016three}, we observe that progress of one of these three fields, leads to strides 
+in complementary fields. As described in the previous section, many of the proposals demonstrated 
+therein act as excellent feature extractors. This capacity in turn, facilitates adjacent tasks 
+such as segmentation (regrouping) and reconstruction. With this in mind, we suggest that model 
+developement and design account for interactions between the Rs (better seen in  
+\autoref{fig:malik_rs}), and consequently, model developement being rooted mostly in image 
+recognition, we aknowledge image recognition as one foundational task on computer vision.
+
+\input{fig/rel/tex/maliks_rs.tex}
+
+\noindent Furthermore, this domain has seen constant evolution in recent years. Following the 
+resurgence of \glspl{cnn} after the introduction of AlexNet, a plethora of image recognition models 
+were proposed. Still, we note that while these models are variate in structural units, complexity, 
+and depth; the model formulation  itself is not the solely determining factor of performance.  
+In a similar fashion to the points described by \emph{A Metric Learning Reality 
+Check} \autocite{musgrave2020metric}, where a revision of metric learning methodologies revealed 
+biases in the evaluation of novel methodologies and the enhanced power of 
+previous methods when optimized under better considitions, overall performance evaluation of 
+architectures and methodologies often lacks fair comparison due to advancement in optimization 
+techniques. This is clearly demonstrated in \emph{ResNet Strikes Back} \autocite{wightman2021resnet}. 
+Nevertheless, it is also possible to consider that \glspl{cnn} may be approaching a plateau in 
+their capabilities, similar to traditional computer vision methods  when applied to ImageNet. As 
+a response of this, we take special interest on transfomers, given their recent adoption and 
+overall their promising capabilities. \\
+
+\noindent Delvig into transformers, we take interest in the promise that they display 
+given recent advances in tasks such as text recognition, text generation and notably in vision, 
+on image generation, captioning and recognition. Comparable to the surge of convolution 
+based methods in the early 2010s, overtaking traditional machine learning methods in computer 
+vision applications, the paradigm shift previously mentioned is already taking place as 
+we can observe on figure \autoref{fig:paradigmn_shift}. However, the enhancement of recognition 
+capabilities is highly dependent on the amount and quality of data that is used in their 
+design and optimization. At this point, it is important to highlight that recognition capabilities 
+on ImageNet are nearing saturation point for the dataset, leading us to question whether it is 
+truly a feat of model generalization or a severe case of overfitting.
+
+\input{fig/rel/tex/cnns_impact_year.tex}

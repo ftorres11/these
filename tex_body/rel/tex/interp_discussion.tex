@@ -1,0 +1,60 @@
+%--------------------------------------------------------------------------------------------------
+\subsection{Discussion}
+\label{sec:rel_interp_discussion}
+Following the rapid developement of image recognition models and the subsequent need to understand 
+their behaviour models, interpretabilities have become a sought a after task within the community. 
+As a result, several studies have been introduced over time, as demonstrated in the prior section.
+Yet, the work proposed by Lipton is unique in questioning what interpretability truly entails. 
+Instead, most interpretability approaches are designed to address specific needs of current image 
+recognition models, ranging from simplifying a model, to describing its components, disentangling 
+embeddings on feature space and ultimately explaining predictions by responses on the input space. 
+We suggest that some recurring issues that interpretability presents is an outdated vision on some 
+properties and a lack of of concensus, either in definitions, and evaluation.\\
+
+\noindent Starting with propositions, according to different scholars interpretability is described 
+across various dimensions depending on the nature of the approach. In this thesis we chose to 
+follow the original propositions of Lipton, describing interpretability according to the 
+properties of \emph{transparency} and the ability to provide\emph{post-hoc interpretations.} We 
+aknowledge these properties as base descriptors for interpretability. However, we note that these 
+properties are ill-fitted for describing current image recognition models according 
+to their original definitions. In particular, transparency on its preliminary definition applies 
+mostly to traditional machine learning proposals. Nevertheless by aligning transparency with 
+the active dimension proposed by \cite{zhang2021survey}, the definition holds and subsequent 
+studies adhere it.\\
+
+\noindent Regarding saliency we also note that this study is-ill formulated. When we obtain a 
+saliency map, \emph{how do we define what is important in an image?}. On one hand, although computer  
+vision draws heavy inspiration from by human vision, the reasoning process is different between 
+human and machine. In particular, a human might identify salient parts to describe an object in 
+particular in a different fashion that a machine would. Conversely, when discussing an attribution, 
+\emph{who are we considering the explanation for?}. As we mentioned previously, saliency is not 
+well aligned for humans and machines, especially when machines derive their knowledge from context. 
+Consequently, when evaluating the interpretable properties of an attribution, we find that usually 
+those that provide the best results in terms of metrics are not usually the ones that a human 
+would consider best. This question remains open up to this day.\\
+
+\noindent Regarding evaluation of interpretability methods, in \autoref{rel:sub_evl} we made mention 
+of current evaluation methodologies, but, several questions arise from them. To begin with, and                                                                                                          
+relating to the previous paragraphm it is safe to assume that the quantitative metrics presented 
+are taking into consideration relevance towards the classifier. In particular \emph{these 
+methods are telling us which representation explains the best a given class for the model}. 
+And yet, in this case we can also wonder about \emph{which class should we inquire about; groundtruth
+ or predictions?}. In most applications scholars extract attributions and provide explanations for 
+groundtruth objects. However, in real-world applications we expect models to predict incorrectly some 
+instances in the task that they are given; these instances then require explanations for the class 
+being predicted. This is crucial given Lipton's desiderdata of model interpretability. We usually 
+care the most for the instances in which the model fails and we have to provide accountability 
+for the effects these inferences provide.\\
+
+\noindent In addition of this selection of instances to provide explanations for, quantitative 
+evaluation suffers another drawback: lack of homogenenity in evaluation procedures. Complementary 
+to the qualitative evaluation of attribution maps via visual inspection and human criteria, 
+quantitative evaluation ought to be more robust, replicable and homogeneus. Yet, we observe that 
+evaluation methodologies variate across proposals, and while an effort to provide fair comparisson 
+is attempted, complete insight on the behaviour of the proposed methodologies is not attained. 
+To exemplify, with the introduction of \emph{objective evaluation for object recognition} in Grad-
+CAM++ \autocite{chattopadhay2018grad}, the evaluation procedure stated 
+%To begin with, 
+%adhering to the lack of clarity on the definition of interpretability, we consequently find works 
+%claiming to provide interpretability in their approaches but no quantitative results to support 
+%them. As a result of this, we wonder around 

@@ -22,20 +22,17 @@ can be found in methodologies such as \gls{sift} \autocite{lowe1999object}, \gls
 \autocite{csurka2004visual}, and \gls{hog}. 
 SIFT, stands out as a powerful keypoint detector that incorporates image alignment. 
 More importantly, its robustness towards scale and rotation led to widespread adoption in real 
-world applications \autocite{cruz2012scale}. 
+world applications \autocite{cruz2012scale}.
+Complementary to SIFT and adopting ideas based on \gls{nlp}, the concept behind the BOW descriptor 
+originated from the identification keywords text in order to identify its contents 
+\autocite{harris1954distributional}. On itself BOW extracts features akin to SIFT, clustering them 
+to generate a dictionary which will ultimately form the possible words to describe images. Each 
+image is recognized by the frequency of which certain words are used to describe it.
+Finally, HOG follows a simpler approach, where image gradient information is organized in histograms 
+describing the orientation of image components. \\ 
 
-Complementary to SIFT and adopting ideas based on 
-\gls{nlp}, the concept behind the BOW descriptor originated from the identification keywords text 
-in order to identify its contents \autocite{harris1954distributional}. On itself BOW extracts 
-features akin to SIFT, clustering them to generate a dictionary which will ultimately form the 
-possible words to describe images. Each image is recognized by the frequency of which certain 
-words are used to describe it. 
-
-Finally, HOG follows a simpler approach, where image gradient 
-information is organized in histograms describing the orientation of image components. \\ 
-
-Once image descriptors are extracted, classifiers are trained using algorithms such as \gls{svm} 
-\autocite{cortes1995support}, Random Forests \autocite{ho1995random} and \gls{knn}
+\noindent Once image descriptors are extracted, classifiers are trained using algorithms such as 
+\gls{svm} \autocite{cortes1995support}, Random Forests \autocite{ho1995random} and \gls{knn}
 (\cite{cover1967nearest}, \cite{fix1989discriminatory}). \glspl{svm} are classifiers that operate 
 by finding the most optimal hyperplane in the feature space to discriminate between classes. 
 However, challenges arise when the assumption of data being linearly separable is not met. This 
@@ -65,7 +62,7 @@ a great deal of momentum on early days; around this time, other image recognitio
 used yielding better results, examples of this can be seen with the amount of traditional machine 
 learning based methods that dominated this task around that time. Nevertheless, getting close to the 
 dawn of the year 2000, Yann LeCun proposed LeNet to perform digit recognition 
-\autocite{lecun1998gradient} the first \gls{cnn}.\\
+\autocite{lecun1998gradient} the first modern \gls{cnn}.\\
 
 \subsection{Convolutional Neural Networks}
 \label{rel:sub_cnn}
@@ -84,7 +81,7 @@ resolution of feature maps, which in turn aids convolutions in capturing feature
 range dependencies within the image. Moreover, via pooling it is possible to capture the most 
 relevant features within a neighborhood.\\
 On another hand non-linearities such as Sigmoid and ReLU, are designed to capture complex 
-relationships within data, stopping the model collapsing into a linear operation. Moreover, these 
+relationships within data, stopping the model collapsing into a linear operation. Furthermore, these 
 operations also contribute with stability: they maintain values within feature maps and the gradient 
 in ranges in which the network can operate with. %cite this?
 Still, the key contribution leading to the success of LeNet was not only the usage of 
@@ -134,7 +131,7 @@ this, the ResNet architecture was proposed \autocite{he2016deep}.\\
 \input{fig/rel/tex/resnet_overall.tex}
 
 %\input{fig/rel/tex/resnet_bbone.tex}
-\noindent The ResNet architecture is designed with the idea of residual connections as their 
+\noindent The ResNet architecture is designed with the idea of residual connections as its 
 building block. On itself, a residual block generates outputs via the summation of its input and a 
 linear mapping of it. This in turn enhances the network capabilities to scale in size, leading to 
 improvements in performance while being easier to optimize. This architecture maintains its 
@@ -348,8 +345,3 @@ branch, this model introduces a modified ViT, where the number of encoder blocks
 less than the totality of residual blocks. Moreover, the aforementioned FCU is introduced to update 
 features in between residual blocks. Ultimately, any prediction is given by the average prediction 
 between both branches. Adetailed explanation of this model is found in \autoref{fig:rel_conformer}.
-
-\subsection{Discussion}
-\label{{rel:discussion}}
-\input{fig/rel/tex/transformer_impact.tex}
-TBA
