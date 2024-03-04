@@ -15,6 +15,19 @@ in order to explain the inner-workings of the model. Conversely, for the latter 
 the black-box behaviour of the model, providing explanations istead based on inputs and outputs; 
 without adding any further modifications for the model or altering its training process.\\
 
+Considering these properties, we observe that as machine learning models grew in 
+complexity; their transparent properties vanished proportionaly to their size. It can be argued 
+that traditional models offer themselves to  transparency due to their straightforward formulation 
+and inherent properties. Conversely, regarding deep models, we find that it is after their size and 
+complexity that their interpretable propierties get hindered. Common  \glspl{cnn} 
+rely convolution as their corner stone, coupled with non-linear operations such as 
+ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
+This aggregation of convolutions on one hand enables these models to process large quantities of 
+data, and to a certain extent generalize; however, it also results in an extensive parameter count,
+often reaching of millions, and most recently, even billions (\cite{openai_compute}). The 
+computational load required for inference, typically measured in \gls{gflops} further compounds 
+complexity. We expand on this in following sections.
+
 Complementary to Lipton's proposal, \cite{guidotti2018survey} points that interpretability is 
 contained along different dimensions. On one hand, a model can be understood on its entirety 
 following a \emph{Global} interpretation; whereas in situations where only the reasons leading to a 
