@@ -2,13 +2,45 @@
 \label{ch:rel}
 \chaptertoc{}
 \section{Introduction}
-Image recognition models capabilities have improved with constant development, 
+\noindent Amongst the sensory information that the brain processes, visual stimuli accounts 
+for 90\% of data analyzed \autocite{potter2014detecting}, while consuming a great amount of energy 
+in human metabolism (\cite{phelps1981metabolic}). It is argued that a big influence on the 
+brain evolution was as a result of improving the capacity to process this kind of data and the 
+ensuing  pattern recognition (\cite{mattson2014superior}). 
+Currently, these shapes and forms have evolved too: it is no longer common for a human in most 
+metropolitan areas, the need to scan the environment for faces that could reveal a potential 
+predator; for a change, the patterns that we now seek to unravel also contain products of our own 
+imagination: digits and characters, geometrical shapes.\\
+
+\noindent Understanding the processes behind visual recognition has been a prominent research 
+question throughout human history. From the preliminary questionings by greek  philosphers 
+(\cite{finger2001origins}) to physics based studies like those by Newton and Locke 
+(\cite{swenson2010optics}), and more recently with theories like \textit{Unconscious Inference} 
+(\cite{gullstrand1909hemholtz}) and \textit{Gestalt} (\cite{wagemans2012century}), many proposals 
+to understand and describe this process have been brought forth. Moreover, vision recogniton is not 
+only studied in fields like physics, medicine and psychology; 
+with the advent of computer science, computational approaches and theories started emerging 
+regarding this domain. One such study that proved seminal in this domain is that carried out by 
+David Marr (\cite{poggio1981marr}, \cite{marr2010vision}). Most notably, Marr addressed vision on 
+three levels: comptational, algorithmic and implementation. In particular, upon the computational 
+level, Marr pondered around issues that the visual system answers and their explanation; this 
+ultimately led to the formulation of fundamental tasks within computer vision such as object 
+recognition and reconstruction.\\
+
+\noindent Following Marr's proposals and the ensuing research on computer vision, researchers 
+centered their attention at developing methodologies towards performing these fundamental tasks.
+Starting with preliminary works on reconstruction of 3D objects in space, the development of 
+computer vision models then followed specialized approaches for specific tasks. In this thesis, 
+we take are interested on models designed at performing image recognition and, more specially, in 
+understanding their functioning and providing explanations for their inner workings.\\
+
+\noindent Image recognition models capabilities have improved over time with constant development, 
 closely aligned with the increase in computing power. This evolution has lead to steady 
 advancements in both performance and complexity. On its early approaches, image recognition models 
 relied on handcrafted feature extraction methods  in conjuction with traditional machine learning 
 algorithms. However, this reliance on these features ultimately limits these methodologies' 
 capabilities to capture intricate visual patterns.
-On particular, one approach that had a strong initial impact and high performance was \gls{hog} 
+One particular approach that had a strong initial impact and high performance was \gls{hog} 
 \autocite{dalal2005histograms}. In this methodology, gradient information was used to train a 
 \gls{svm} to perform pedestrian recognition. While achieving high performance in the dataset it was 
 designed, \gls{hog} ultimatately failed in data collections where complexity was higher 
@@ -21,6 +53,15 @@ convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchic
 representations of data, extracting intricate features directly. 
 Consequently, this shift resulted in improvements in accuracy and performance in various image 
 recognition tasks. \\
+
+In recent years, a breakthrough in image recognition models was achieved with the development of 
+the transformer architecture. In particular, it was observed that performance of \glspl{cnn} was 
+achieving a plateau, and the introduction of novel architectures stagnated over time. Additionally, 
+these models encountered challenges capturing long range dependencies, in turn  limiting their 
+capacity to construct global representations of data and affecting their generalization capabilities. 
+Transformers however, have shown remarkable improvements not only in the image 
+domain but also in language related tasks, revolutionizing these fields and paving the groundwork 
+for future research and developments.\\
 
 \noindent In \autoref{rel:sec_imrecon} we explore some of the most important approaches based 
 on machine learning designed towards image recognition. In particular, in \autoref{rel:sub_cnn}, we 

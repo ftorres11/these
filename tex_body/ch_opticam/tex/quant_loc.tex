@@ -23,15 +23,23 @@ Classification metrics are clearly more appropriate in this sense.
 Nevertheless, we report localization metrics in the supplementary material. In summary, although 
 its saliency maps are more spread out, Opti-CAM outperforms other methods on a number of metrics.
 
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 \input{tab/opticam/tex/table_loc_cnn_imagenet.tex}
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 
-%Fake-CAM~\citep{poppi2021revisiting}
-%Grad-CAM~\citep{selvaraju2017grad}             
-%Grad-CAM++~\cite{chattopadhay2018grad}
-%Score-CAM~\citep{wang2020score}
-%Ablation-CAM~\citep{ramaswamy2020ablation}
-%XGrad-CAM~\citep{fu2020axiom}                 
-%Layer-CAM~\citep{jiang2021layercam}            
-%ExPerturbation~\citep{fong2019understanding}   
+\subsection{Weakly Supervised Approach}. 
+\label{sec:oc_wsol}
+Several works measure the localization ability of saliency maps, using metrics from the \emph{weakly
+-supervised object localization} (WSOL) task. While we show that localization of the object and 
+classifier interpretability are not well aligned as tasks, we still provide localization results. 
+We use the \emph{official metric} (OM), \emph{localization error} (LE), \emph{pixel-wise $F_1$ 
+score}, \emph{box accuracy} (BoxAcc) \autocite{choe2020evaluating}, standard pointing game (SP) 
+\autocite{zhang2018top}, \emph{energy pointing game} (EP) \autocite{wang2020score} and 
+\emph{saliency metric} (SM) \autocite{dabkowski2017real} on the ILSVRC2014\footnote{\url{
+https://www.image-net.org/challenges/LSVRC/2014/index\#}} dataset. 
+The goal of these metrics is to compare the saliency maps with bounding boxes around the object 
+of interest. 
+
+%--------------------------------------------------------------------------------------------------
+\input{tab/opticam/tex/table_loc_ext_cnn_imagenet.tex}
+%--------------------------------------------------------------------------------------------------

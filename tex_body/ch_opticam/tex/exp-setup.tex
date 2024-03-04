@@ -18,8 +18,7 @@ loss is less than $10^{-10}$. For VGG16, we generate the saliency map \eq{v-sal}
 maps of the last convolutional layer before max pooling by default, \ie convolutional layer 3 of 
 block 5. For ResNet50, we choose the last convolutional layer by default, \ie convolutional layer 3 
 of bottleneck 2 of block 4. For ViT and DeiT, we choose the last self-attention block by default, 
-\ie layer normalization of self-attention block 12. Ablations concerning the layer $\ell$ and the 
-convergence of Opti-CAM are included in \autoref{sec:oc_more-ablation}.
+\ie layer normalization of self-attention block 12. 
 
 \subsection{Datasets}
 \label{sec:oc_data}
@@ -89,4 +88,3 @@ It is standard that images are normalized before feeding them to a network. By d
 we cannot reproduce the results published for the baseline methods; rather, all results are 
 improved dramatically. We can obtain results similar to published ones by \emph{not} normalizing. 
 We believe normalization is important and we include it in all our experiments. 
-In \ref{secsupl}, we provide more details and results without normalization.

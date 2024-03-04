@@ -1,6 +1,6 @@
 \begin{tikzpicture}[]
     % Nodes
-    \node at (1.75,0) (input){$x$};
+    \node at (1.75,0.25) (input){$x$};
     \node[align=center] (conv1) at (1.75, -0.5) {\Th{Conv} $1\times1$};
     \node[align=center] (bn1) at (1.75, -1) {\Th{BatchNorm}};
     \node[align=center] (relu1) at (1.75, -1.5) {\Th{ReLU}};
@@ -15,7 +15,7 @@
 
     \node[align=center] (relu3) at (1.75, -5) {\Th{ReLU}};
     \node(output) at (1.75, -5.5) {$x'$};
-    \node at (1.75,-0.2) (empt0) {};
+    \node at (1.75,-0) (empt0) {};
     \node at (0.5, -2.75) (empt1) {};
     \node at (-1.5, 0) (emptkek) {};
     

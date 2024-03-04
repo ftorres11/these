@@ -1,79 +1,57 @@
-\subsection{Ablation study}
+%--------------------------------------------------------------------------------------------------
+\section{Ablation study}
 \label{sec:ablation}
 
-We perform an ablation study of different choices of the objective function~\eq{obj} and normalization~\eq{norm} of the saliency map. \redred{More choices of~\eq{obj}, layer $\ell$, number of iterations and learning rates, selector function $g_c$
-% , upsampling function $\up$
-and initialization of $\vw$ are studied in the supplementary material.}
-
-%------------------------------------------------------------------------------
+We perform an ablation study of different choices of the objective function~\eq{obj} and 
+normalization~\eq{norm} of the saliency map. %\redred{More choices of~\eq{obj}, layer $\ell$, number 
+%of iterations and learning rates, selector function $g_c$ and initialization of $\vw$ are studied 
+%in the supplementary material.}
 
 \paragraph{Normalization function}
-
 For normalization function $n$~\eq{obj}, we investigate three choices:
 \begin{align}
-	\textrm{range}   : \quad & n(A) \defn \textstyle \frac{A - \min A}{\max A - \min A}  \label{eq:n-rng}  \\
-	\textrm{maximum} : \quad & n(A) \defn \textstyle \frac{A}{\max A}                    \label{eq:n-max}
-	 \\
- 	\textrm{sigmoid} : \quad & n(a_{ij}) \defn \frac{1}{1+e^{-a_{ij}}}             \label{eq:n-sig},
+	\textrm{range}: \quad & n(A) \defn \textstyle \frac{A-\min A}{\max A-\min A}\label{eq:n-rng}\\
+	\textrm{maximum}: \quad & n(A) \defn \textstyle \frac{A}{\max A}\label{eq:n-max}\\
+ 	\textrm{sigmoid}: \quad & n(a_{ij}) \defn \frac{1}{1+e^{-a_{ij}}}\label{eq:n-sig},
 \end{align}
-where $a_{ij}$ is element $(i,j)$ of matrix $A$. The default is~\eq{n-rng}, normalizing by the range of values in the saliency map, as in Score-CAM~\eq{norm}; while~\eq{n-max} normalizes by the maximum value and~\eq{n-sig} by the sigmoid function element-wise.
+where $a_{ij}$ is element $(i,j)$ of matrix $A$. The default is~\eq{n-rng}, normalizing by the 
+range of values in the saliency map, as in Score-CAM~\eq{norm}; while~\eq{n-max} normalizes by the 
+maximum value and~\eq{n-sig} by the sigmoid function element-wise.
 
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 
 \paragraph{Objective function}
 
-We refer to the default definition of $F^c_\ell$~\eq{obj} as \Fdef because it maximizes the logit for the masked image.
-We also consider an alternative definition of objective function $F^c_\ell$, which encourages the masked version to preserve the prediction of original image:
+We refer to the default definition of $F^c_\ell$~\eq{obj} as \Fdef because it maximizes the logit 
+for the masked image.
+We also consider an alternative definition of objective function $F^c_\ell$, which encourages the 
+masked version to preserve the prediction of original image:
 \begin{equation}
 	F^c_\ell(\vx; \vu) \defn -\abs{g_c(f(\vx)) - g_c(f(\vx \odot n(\up(S_\ell(\vx; \vu)))))}.
-	%F^c_\ell(\vx; \vu) \defn g_c(f(\vx)) - g_c(f(\vx \odot n(\up(S_\ell(\vx; \vu))))).
 \label{eq:ref}
 \end{equation}
-This function is named \Fref as it minimizes the difference of logits between the masked and the original image.
+This function is named \Fref as it minimizes the difference of logits between the masked and the 
+original image.
 
-%------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
 
 \paragraph{Results}
 
-\autoref{tab:ablate} shows classification metrics for the different choices of Opti-CAM, as well as comparison to other methods for reference, for the small subset of ImageNet validation set.
+\autoref{tab:ablate} shows classification metrics for the different choices of Opti-CAM, as well as 
+comparison to other methods for reference, for the small subset of ImageNet validation set.
 % \redred{A similar ablation table with localization metrics is available in supplementary material.}
 
-We observe that the choice of normalization function has little effect overall and Sigmoid offers lower performance. Note that the minimum value of saliency maps is often zero or close to zero: Saliency maps are non-negative as convex combinations of non-negative feature maps~\eq{v-sal}. By contrast, the choice of loss function has more impact on performance and we observe that \Fdef~\eq{obj} is superior on all cases.
+We observe that the choice of normalization function has little effect overall and Sigmoid offers 
+lower performance. Note that the minimum value of saliency maps is often zero or close to zero: 
+Saliency maps are non-negative as convex combinations of non-negative feature maps~\eq{v-sal}. By 
+contrast, the choice of loss function has more impact on performance and we observe that \Fdef
+~\eq{obj} is superior on all cases.
 
-\newcommand{\ob}[1]{\textcolor{brown}{\tb{#1}}}
-\newcommand{\ab}[1]{\textcolor{blue}{\tb{#1}}}
-\begin{table}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{0.8}
-\begin{tabular}{lccrrrrr} \toprule
-{\Th{Method}} & {$F^c_\ell$} & {$n$} & {$\AD\!\downarrow$}& {$\AG\!\uparrow$} & {$\AI\!\uparrow$} \\ \midrule
-Fake-CAM~\citep{poppi2021revisiting}              & &          &     0.5  &      0.7  &     42.1  \\
-\midrule
-Grad-CAM~\citep{selvaraju2017grad}                & &          &    15.0  &     15.3  &     40.4  \\
-Grad-CAM++~\cite{chattopadhay2018grad}               & &          &    16.5  &     10.6  &     35.2  \\
-Score-CAM~\citep{wang2020score}                   & &          &    12.5  &     16.1  &     42.6  \\
-Ablation-CAM~\citep{ramaswamy2020ablation}             & &          &    15.1  &     13.5  &     39.9  \\
-XGrad-CAM~\citep{fu2020axiom}                        & &          &    14.3  &     15.1  &     42.1  \\
-Layer-CAM~\citep{jiang2021layercam}               & &          &    49.2  &      2.7  &     12.7  \\
-ExPerturbation~\citep{fong2019understanding}      & &          &    43.8  &      7.1  &     18.9  \\
-\midrule
-\mr{2}{Opti-CAM (ours)} & \Fdef~\eq{obj}  & Range~\eq{n-rng}   & \tb{1.4} & \tb{66.3} & \tb{92.5} \\
-                        & \Fref~\eq{ref}  & Range~\eq{n-rng}   &     7.1  &     18.5  &     54.9  \\ \midrule
-\mr{2}{Opti-CAM (ours)} & \Fdef~\eq{obj}  & Max~\eq{n-max}     &     1.6  &     66.2  &     90.3  \\
-                        & \Fref~\eq{ref}  & Max~\eq{n-max}     &     6.8  &     17.8  &     54.5  \\ \midrule
-\mr{2}{Opti-CAM (ours)} & \Fdef~\eq{obj}  & Sigmoid~\eq{n-sig} &     5.0  &     18.3  &     57.5  \\
-                        & \Fref~\eq{ref}  & Sigmoid~\eq{n-sig} &     6.5  &     10.0  &     45.3  \\ \bottomrule
-\end{tabular}
-\caption{\emph{Ablation study} using VGG16 on 1000 images of ImageNet validation set. $\AD$/$\AI$: average drop/increase~\citep{chattopadhay2018grad}; $\AG$: average gain (ours); $\downarrow$ / $\uparrow$: lower / higher is better; bold: best, excluding Fake-CAM.}
-\label{tab:ablate}
-% \vspace{-0.2cm}
-\end{table}
+\input{tab/opticam/tex/table_ablation_obj_norm.tex}
 %------------------------------------------------------------------------------
 
 %------------------------------------------------------------------------------
-\pgfplotstableread{fig/eval/plain_ai.dat}{\plotAI}
-\pgfplotstableread{fig/eval/plain_ad.dat}{\plotAD}
-\pgfplotstableread{fig/eval/plain_ag.dat}{\plotAG}
+%\pgfplotstableread{fig/eval/plain_ai.dat}{\plotAI}
+%\pgfplotstableread{fig/eval/plain_ad.dat}{\plotAD}
+%\pgfplotstableread{fig/eval/plain_ag.dat}{\plotAG}
 %------------------------------------------------------------------------------
