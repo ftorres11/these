@@ -1,98 +1,79 @@
 %--------------------------------------------------------------------------------------------------
 \addchap{Introduction}
 %\addcontentsline{toc}{chapter}{Introduction}
+Human curiosity has led to the desire for understanding the world that we inhabit, producing 
+explanations for the phenomena we experience. We derive this understanding from the information 
+that we gather via the processing of sensory information. Nevertheless, sensory information is 
+handled differently according to its nature; chemical responses are usually linked to the 
+sense of taste and smell, while on another hand physical changes in the environment in proximity 
+are measured via touch, hearing and sight. In particular, visual stimuli is of particular 
+importance given its abundance and its capacity to provide insight into events from a plethora 
+of sources: visually we reliably navigate our environments in our daily life, as well as 
+visually researchers are trying to track the origin of the universe via observations of distant 
+galaxies in the night sky. As a result of this reliance on visual information it can be stated 
+that we live in a visual world.\\
 
+\noindent Visual information can not only be processed by humans but used to record events. On 
+one hand, most of the understanding of the natural world's history and phenomena is obtained 
+by the processing of natural records: for instance, the history of the earth's formation and 
+evolution can be read from the fossil registry found in ancient rocks. In addition to this, 
+most of human evolution is stored in a visual manner, by studying ancient remains researchers 
+have tracked the first human beings to come from Africa, conversely; the expansion of humanity 
+around the globe is also tracked relying on queues left by our ancestors.\\
+Amongst the sensory information that the brain processes, visual stimuli accounts 
+for 90\% of data analyzed (\cite{potter2014detecting}), while consuming a great amount of energy 
+in human metabolism (\cite{phelps1981metabolic}). It is argued that a big influence on the 
+brain evolution was as a result of improving the capacity to process this kind of data and the 
+ensuing  pattern recognition (\cite{mattson2014superior}). 
+In current time, these shapes and forms have evolved too: it is no longer common for a human
+the need to scan the environment for faces that could reveal a potential predator; for a change, 
+the patterns that we now seek to unravel also contain products of our own imagination: digits and 
+characters, geometrical shapes.\\
 
-\paragraph{Visual Recognition}  Over the past decade great advancements were made on computer 
-vision. In particular with the optimization and popularization of \glspl{gpu}, models requiring 
-a strong computational power became accesible for researchers. To be specific, the framework 
-developed by Yann LeCun (\cite{lecun1998gradient}) got revitalized in 2012 with the introduction of 
-AlexNet (\cite{krizhevsky2012imagenet}) where proper leverage of these machines outclassed that of 
-more traditional machine learning models, Chapter \ref{ch:rel} discusses this in more depth. 
-In this short span of time, several groundbreaking architectures have been proposed, in 
-particular the ResNet family (\cite{he2016deep}) has remained relevant given its properties
-(\cite{wightman2021resnet}); furthermore, with the introduction of the transformer architecture 
-(\cite{vaswani2017attention}) this field of research recieved a new impulse and more powerful 
-models based upon its functional unit are being brought forth.\\
+\noindent The evolution of these patterns did not occur as an isolated process: 
+over time, humans have developed and created new technologies, leading to an interchange of 
+information not found in the natural world. Throughout human history, humans have 
+advanced on the construction of objects and concepts based on data and emerging needs left behind 
+by previous generations. As time progressed, this took humans to new boundaries: covering more 
+distance in shorter time spans, recording and preserving memories for thousands of years, enabling 
+the capacity to safely navigate at night, harvest the power of the atom and most impressively, 
+putting a man on the moon.\\
+Moreover, human development is seen to be intertwined with the technologies introduced 
+at different parts in history. In particular pivotal moments in human history are highlighted by 
+changes in the standard of living: on the agricultural revolution, humankind adopted a sedentary 
+lifestyle and started forming fixed communities; conversely during the industrial revolution, 
+standardization and urbanization led to yet another lifestyle change and a population increase 
+never seen before. In recent times, with the advent of computation another revolution is currently 
+underway, the Artificial Intelligence revolution.\\
 
-\noindent It is not only with the increase of computational power that computer vision has improved over time. 
-With the developement, popularization and spread of the internet; large collections of data have been 
-formed. These aggregations can be extremely specific for a given end, or 
-quite general representing the common interests of its users. Over time, these compilations have 
-continued to grow both in volume and variety; still, several curated collections are introduced by 
-researchers to experiment and control the development of models such as MNIST (\cite{lecun1998gradient}),
-BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
-ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}). Additionally, data collection is
-an ongoing and a never ending process; as such, the idea of a dataset containing all types of 
-information is no longer deemded a dream but a reality that might come true aided by Big Data in 
-the foreseeable future \autocite{chen2014big}.\\
+\noindent Building on last century's advancements, computation is a rather recent field although 
+one with endless potential and a thriving research community. Led by the curiosity to understand 
+the world we inhabit, vision is also approached in the computational level; in this Computer Vision 
+field, researchers aim at replicating human capabilities with a machine. In particular, these 
+capabilities can be observed alongside foundational tasks: recognition, grouping and reconstuction
+\autocite{malik2016three}. Following this proposal, we take particular interest in the task of 
+image recognition, the process in which we produce models to align image information with 
+semantic concepts.\\
+Computer science has enjoyed from constant development over time; on one hand, hardware 
+capabilities and performance has enjoyed an steady increase \autocite{schaller1997moore}, allowing 
+machines to perform more complex tasks. Furthermore, since information is being constantly recorded 
+and categorized, these models have been severely dependent on the quality of quantity of data 
+available to achieve their objectives. One pivotal moment towards the improvement of Computer 
+Vision models occured with the introduction of the internet. With this technology, data has become 
+decentralized and information is readily available.\\
 
 \noindent Taking into consideration the aforementioned  increase on  both compute power and data 
-availability, deep learning based models have been steadily adopted and assimiliated within society; 
+availability, image recognition models have been steadily adopted and assimiliated within society; 
 nowadays its no longer so much a question \textit{whether can a model achieve a given task}, but 
-rather a question on \textit{how can this given model perform this task}. Providing an answer to 
-this question is paramount as human lives are now being directly affected by such kind of models. 
-The main issue behind understanding deep models, lies within the size and complexity of deep 
-architecttures, where providing interpretable explanations has lead to the surge of a novel field 
-of research (\cite{guidotti2018survey}, \cite{bodria2021benchmarking}).
-
-\paragraph{Interpretability}
-To begin discussing about interpretability, one must ponder around its definition. 
-Over the last decade, many authors have attempted to address to this question. One 
-of the most notable discussions can be found within \emph{The Mythos of Model Interpretability} 
-(\cite{mythos_interp}). In this work, Lipton argues that for a model to be interpretable it must 
-display two properties, \emph{Transparency} and \emph{Post-Hoc Interpretability}. In one hand, 
-\textit{Transparency} answers questions regarding the model structure, training and inference 
-processes; while on another hand, \textit{Post-Hoc Interpretability} relates to the explanations 
-and information that can be drawn of the model itself.
-
-\noindent Considering these properties, we observe that as machine learning models grew in 
-complexity; their transparent properties vanished proportionaly to their size. It can be argued 
-that traditional models offer themselves to  transparency due to their straightforward formulation 
-and inherent properties. Conversely, in terms of post-hoc interpretations, methods like decision 
-trees \cite{ho1995random} can be pruned to study their performance by removing 
-branches (\cite{lakkaraju2016interpretable},\cite{mothilal2020explaining}). 
-On another hand, established techniques such as Principal Component Analysis \gls{pca} 
-(\cite{wold1987principal}), can be used to gain insight within data leading to a prediction.\\
-
-\noindent When studying deep models, we find that it is after their size and complexity that their 
-interpretable propierties get hindered. Common  \glspl{cnn} 
-rely convolution as their corner stone, coupled with non-linear operations such as 
-ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
-This aggregation of convolutions on one hand enables these models to process large quantities of 
-data, and to a certain extent generalize; however, it also results in an extensive parameter count,
-often reaching of millions, and most recently, even billions (\cite{openai_compute}). The 
-computational load required for inference, typically measured in \gls{gflops} further compounds 
-complexity.\\
-
-\noindent Among the properties proposed by Lipton, we observe that offering model transparency is a 
-rather challenging task. While understanding the behaviour of convolutions and 
-self-attention might seem straightforward, it is their aggregation and subsequent flow of 
-information what makes this process intricate. Moreover, transparency encompases aspects related to 
-both inference and training. In this regard, to understand the behaviour and functioning of a model, 
-it is possible to introduce modifications: attempting  to simplify it (\cite{wu2018beyond}, 
-\cite{wu2020regional}), to improve and make sense of the semantic information in deep layers 
-(\cite{bau2017network}, \cite{zhou2018interpreting}), to provide prototypes describing the learned
-categories (\cite{li2018deep}, \cite{chen2019looks}, \cite{rymarczyk2022interpretable}), and to 
-improve the quality of information contained within the network, thereby improving interpretable 
-properties from other approximations (\cite{ismail2021improving}, \cite{Zhou_2022_BMVC}, 
-\cite{ross2017right}). Nevertheless, these modifications included during the training process may 
-modify the built-in properties of the models they are attempting to interpret, all the while 
-including another level of uncertainty amongst them.\\
-
-In contrast to transparency, providing post-hoc interpretations from deep models is a 
-thriving field, where many of the challenges found within transparency are no longer found.
-Within this field, various approaches have been proposed to achieve post-hoc interpretability,
-including input masking (\cite{petsiuk2018rise}), attribution generation (\cite{NIPS2017_7062}, 
-\cite{zhou2016learning}) and model perturbations 
-(\cite{fong2017interpretable}, \cite{fong2019understanding}). Furthermore, the development of 
-evaluation methodologies for these approaches has continued in tandem with them 
-(\cite{choe2020evaluating}, \cite{chattopadhay2018grad}). Chapter \ref{ch:rel} delves deeper into 
-these works. 
+rather a question on \textit{how can this given model perform this task}. The main issue regarding 
+these questions lies within the size and complexity of deep models, where providing interpretable 
+explanations has lead to the surge of a novel field of research (\cite{li2018deep}, 
+\cite{guidotti2018survey}, \cite{bodria2021benchmarking}), interpretability and explainable AI.
 
 \paragraph{Dissertation Outline}
 %\addcontentsline{toc}{section}{Dissertation Outline}
-\noindent This dissertation is organized in the following manner: In Chapter \ref{ch:rel} we 
+\noindent This dissertation is aimed towards the development of interpretable image recognition 
+models and is organized in the following manner: In Chapter \ref{ch:rel} we 
 introduce a background for image recognition models (Section \ref{rel:sec_imrecon}) and the ensuing 
 approaches developed to study the interpretability on them (Section \ref{rel:sec_int}). 
 Additionally, we introduce evaluation procedures for these approaches which will be further used to 
@@ -127,3 +108,90 @@ the effect of this approach when applied to mask patches on images. Section
 with this approach. \\
     
 \noindent Finally, we draw conclusions on our work and detail future research perspectives.
+
+%\paragraph{Visual Recognition}  Over the past decade great advancements were made on computer 
+%vision. In particular with the optimization and popularization of \glspl{gpu}, models requiring 
+%a strong computational power became accesible for researchers. To be specific, the framework 
+%developed by Yann LeCun (\cite{lecun1998gradient}) got revitalized in 2012 with the introduction of 
+%AlexNet (\cite{krizhevsky2012imagenet}) where proper leverage of these machines outclassed that of 
+%more traditional machine learning models, Chapter \ref{ch:rel} discusses this in more depth. 
+%In this short span of time, several groundbreaking architectures have been proposed, in 
+%particular the ResNet family (\cite{he2016deep}) has remained relevant given its properties
+%(\cite{wightman2021resnet}); furthermore, with the introduction of the transformer architecture 
+%(\cite{vaswani2017attention}) this field of research recieved a new impulse and more powerful 
+%models based upon its functional unit are being brought forth.\\
+
+%\noindent It is not only with the increase of computational power that computer vision has improved over time. 
+%With the developement, popularization and spread of the internet; large collections of data have been 
+%formed. These aggregations can be extremely specific for a given end, or 
+%quite general representing the common interests of its users. Over time, these compilations have 
+%continued to grow both in volume and variety; still, several curated collections are introduced by 
+%researchers to experiment and control the development of models such as MNIST (\cite{lecun1998gradient}),
+%BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
+%ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}). Additionally, data collection is
+%an ongoing and a never ending process; as such, the idea of a dataset containing all types of 
+%information is no longer deemded a dream but a reality that might come true aided by Big Data in 
+%the foreseeable future \autocite{chen2014big}.\\
+
+%\noindent Taking into consideration the aforementioned  increase on  both compute power and data 
+%availability, deep learning based models have been steadily adopted and assimiliated within society; 
+%nowadays its no longer so much a question \textit{whether can a model achieve a given task}, but 
+%rather a question on \textit{how can this given model perform this task}. Providing an answer to 
+%this question is paramount as human lives are now being directly affected by such kind of models. 
+%The main issue behind understanding deep models, lies within the size and complexity of deep 
+%architecttures, where providing interpretable explanations has lead to the surge of a novel field 
+%of research (\cite{guidotti2018survey}, \cite{bodria2021benchmarking}).
+
+%\paragraph{Interpretability}
+%To begin discussing about interpretability, one must ponder around its definition. 
+%Over the last decade, many authors have attempted to address to this question. One 
+%of the most notable discussions can be found within \emph{The Mythos of Model Interpretability} 
+%(\cite{mythos_interp}). In this work, Lipton argues that for a model to be interpretable it must 
+%display two properties, \emph{Transparency} and \emph{Post-Hoc Interpretability}. In one hand, 
+%\textit{Transparency} answers questions regarding the model structure, training and inference 
+%processes; while on another hand, \textit{Post-Hoc Interpretability} relates to the explanations 
+%and information that can be drawn of the model itself.
+
+%\noindent Considering these properties, we observe that as machine learning models grew in 
+%complexity; their transparent properties vanished proportionaly to their size. It can be argued 
+%that traditional models offer themselves to  transparency due to their straightforward formulation 
+%and inherent properties. Conversely, in terms of post-hoc interpretations, methods like decision 
+%trees \cite{ho1995random} can be pruned to study their performance by removing 
+%branches (\cite{lakkaraju2016interpretable},\cite{mothilal2020explaining}). 
+%On another hand, established techniques such as Principal Component Analysis \gls{pca} 
+%(\cite{wold1987principal}), can be used to gain insight within data leading to a prediction.\\
+
+%\noindent When studying deep models, we find that it is after their size and complexity that their 
+%interpretable propierties get hindered. Common  \glspl{cnn} 
+%rely convolution as their corner stone, coupled with non-linear operations such as 
+%ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
+%This aggregation of convolutions on one hand enables these models to process large quantities of 
+%data, and to a certain extent generalize; however, it also results in an extensive parameter count,
+%often reaching of millions, and most recently, even billions (\cite{openai_compute}). The 
+%computational load required for inference, typically measured in \gls{gflops} further compounds 
+%complexity.\\
+
+%\noindent Among the properties proposed by Lipton, we observe that offering model transparency is a 
+%rather challenging task. While understanding the behaviour of convolutions and 
+%self-attention might seem straightforward, it is their aggregation and subsequent flow of 
+%information what makes this process intricate. Moreover, transparency encompases aspects related to 
+%both inference and training. In this regard, to understand the behaviour and functioning of a model, 
+%it is possible to introduce modifications: attempting  to simplify it (\cite{wu2018beyond}, 
+%\cite{wu2020regional}), to improve and make sense of the semantic information in deep layers 
+%(\cite{bau2017network}, \cite{zhou2018interpreting}), to provide prototypes describing the learned
+%categories (\cite{li2018deep}, \cite{chen2019looks}, \cite{rymarczyk2022interpretable}), and to 
+%improve the quality of information contained within the network, thereby improving interpretable 
+%properties from other approximations (\cite{ismail2021improving}, \cite{Zhou_2022_BMVC}, 
+%\cite{ross2017right}). Nevertheless, these modifications included during the training process may 
+%modify the built-in properties of the models they are attempting to interpret, all the while 
+%including another level of uncertainty amongst them.\\
+
+%In contrast to transparency, providing post-hoc interpretations from deep models is a 
+%thriving field, where many of the challenges found within transparency are no longer found.
+%Within this field, various approaches have been proposed to achieve post-hoc interpretability,
+%including input masking (\cite{petsiuk2018rise}), attribution generation (\cite{NIPS2017_7062}, 
+%\cite{zhou2016learning}) and model perturbations 
+%(\cite{fong2017interpretable}, \cite{fong2019understanding}). Furthermore, the development of 
+%evaluation methodologies for these approaches has continued in tandem with them 
+%(\cite{choe2020evaluating}, \cite{chattopadhay2018grad}). Chapter \ref{ch:rel} delves deeper into 
+%these works. 

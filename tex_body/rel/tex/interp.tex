@@ -26,7 +26,7 @@ This aggregation of convolutions on one hand enables these models to process lar
 data, and to a certain extent generalize; however, it also results in an extensive parameter count,
 often reaching of millions, and most recently, even billions (\cite{openai_compute}). The 
 computational load required for inference, typically measured in \gls{gflops} further compounds 
-complexity. We expand on this in following sections.
+complexity. We expand on this in following sections.\\
 
 Complementary to Lipton's proposal, \cite{guidotti2018survey} points that interpretability is 
 contained along different dimensions. On one hand, a model can be understood on its entirety 
@@ -151,14 +151,14 @@ is further taken into consideration to be modified during training. For instance
 \autocite{lee2021lfi},  an attention branch is included to learn attention feature importance 
 during training; allowing for a straightforward saliency map computation while improving 
 recognition properties. Similarly, saliency-guided training (\cite{ismail2021improving}) 
-minimizes the KL divergence between the output of original and masked images. \\
+minimizes the Kullback Leibler divergence between the output of original and masked images. \\
 
 
 \subsection{Post-Hoc Interpretability}
 \label{rel:sub_post}
 According to Lipton, post-hoc interpretability provides information directly from learned models. 
 Complementary to this, Zhang points out that \emph{passive} interpretability methods extract 
-logical rules or understandable patterns from models. As noted in \autoref{fig:rel_zhangs} a 
+logical rules or understandable patterns from models. As noted in \autoref{fig:rel_zhangs}, a 
 discrepancy in the ratio of \emph{active-passive} methods exist, where the \emph{passive} 
 dimension presents more studies. Furthermore, according to the nature of 
 explanation Lipton groups methods into \emph{textual explanations}, \emph{visualizations}, 

@@ -2,16 +2,6 @@
 \label{ch:rel}
 \chaptertoc{}
 \section{Introduction}
-\noindent Amongst the sensory information that the brain processes, visual stimuli accounts 
-for 90\% of data analyzed \autocite{potter2014detecting}, while consuming a great amount of energy 
-in human metabolism (\cite{phelps1981metabolic}). It is argued that a big influence on the 
-brain evolution was as a result of improving the capacity to process this kind of data and the 
-ensuing  pattern recognition (\cite{mattson2014superior}). 
-Currently, these shapes and forms have evolved too: it is no longer common for a human in most 
-metropolitan areas, the need to scan the environment for faces that could reveal a potential 
-predator; for a change, the patterns that we now seek to unravel also contain products of our own 
-imagination: digits and characters, geometrical shapes.\\
-
 \noindent Understanding the processes behind visual recognition has been a prominent research 
 question throughout human history. From the preliminary questionings by greek  philosphers 
 (\cite{finger2001origins}) to physics based studies like those by Newton and Locke 
@@ -31,7 +21,7 @@ recognition and reconstruction.\\
 centered their attention at developing methodologies towards performing these fundamental tasks.
 Starting with preliminary works on reconstruction of 3D objects in space, the development of 
 computer vision models then followed specialized approaches for specific tasks. In this thesis, 
-we take are interested on models designed at performing image recognition and, more specially, in 
+we are interested on models designed at performing image recognition and, more specially, in 
 understanding their functioning and providing explanations for their inner workings.\\
 
 \noindent Image recognition models capabilities have improved over time with constant development, 
@@ -45,23 +35,31 @@ One particular approach that had a strong initial impact and high performance wa
 \gls{svm} to perform pedestrian recognition. While achieving high performance in the dataset it was 
 designed, \gls{hog} ultimatately failed in data collections where complexity was higher 
 \autocite{5975165}.\\
-Furthermore, with the resurgence of convolutional neural networks and the ensuing advent of 
-deep learning, a paradigm shift in this field occurred. This transition led to the elimination of 
-the need for handcrafted feature extraction; instead, deep learning allowed \glspl{cnn} to act 
+
+\noindent It is not only with the increase of computational power that computer vision has improved 
+over time. With the developement, popularization and spread of the internet; large collections of 
+data are formed. These aggregations can be extremely specific for a given end, or quite general 
+representing the common interests of its users. Over time, these compilations have continued to 
+grow both in volume and variety; still, several curated collections are introduced by researchers 
+to experiment and control the development of models such as MNIST (\cite{lecun1998gradient}), 
+BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
+ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}).\\
+
+\noindent Furthermore, with the resurgence of convolutional neural networks and the ensuing advent 
+of deep learning, a paradigm shift in this field occurred. This transition led to the elimination 
+of the need for handcrafted feature extraction; instead, deep learning allowed \glspl{cnn} to act 
 as both feature extractor and classifiers on themselves. Moreover, based on the aggregation of 
 convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchichal 
 representations of data, extracting intricate features directly. 
 Consequently, this shift resulted in improvements in accuracy and performance in various image 
 recognition tasks. \\
 
-In recent years, a breakthrough in image recognition models was achieved with the development of 
-the transformer architecture. In particular, it was observed that performance of \glspl{cnn} was 
-achieving a plateau, and the introduction of novel architectures stagnated over time. Additionally, 
-these models encountered challenges capturing long range dependencies, in turn  limiting their 
-capacity to construct global representations of data and affecting their generalization capabilities. 
-Transformers however, have shown remarkable improvements not only in the image 
-domain but also in language related tasks, revolutionizing these fields and paving the groundwork 
-for future research and developments.\\
+\noindent However, it was observed that performance of \glspl{cnn} was achieving a plateau, and 
+the introduction of novel architectures stagnated over time. Additionally, these models encountered 
+challenges capturing long range dependencies, in turn  limiting their capacity to construct global 
+representations of data and affecting their generalization capabilities. Transformers however, have 
+shown remarkable improvements not only in the image domain but also in language related tasks, 
+revolutionizing these fields and paving the groundwork for future research and developments.\\
 
 \noindent In \autoref{rel:sec_imrecon} we explore some of the most important approaches based 
 on machine learning designed towards image recognition. In particular, in \autoref{rel:sub_cnn}, we 
@@ -119,3 +117,13 @@ introduce and explain evaluation methodologies in \autoref{rel:sub_evl}.
 \input{tex_body/rel/tex/interp}
 \input{tex_body/rel/tex/evaluating}
 \input{tex_body/rel/tex/interp_discussion}
+
+
+%\noindent In recent years, a breakthrough in image recognition models was achieved with the development of 
+%the transformer architecture. In particular, it was observed that performance of \glspl{cnn} was 
+%achieving a plateau, and the introduction of novel architectures stagnated over time. Additionally, 
+%these models encountered challenges capturing long range dependencies, in turn  limiting their 
+%capacity to construct global representations of data and affecting their generalization capabilities. 
+%Transformers however, have shown remarkable improvements not only in the image 
+%domain but also in language related tasks, revolutionizing these fields and paving the groundwork 
+%for future research and developments.\\
