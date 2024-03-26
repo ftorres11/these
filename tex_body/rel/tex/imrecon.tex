@@ -15,7 +15,7 @@ information could be analyzed and processed computationally. The emergence of cl
 learning models, and their application in the 1980s, marked a shift towards more sophisticated 
 image recognition methodologies.\\
 
-\noindent On one hand, image recognition approaches based on traditional machine learning 
+\noindent Traditional image recognition approaches based on traditional machine learning 
 algorithms are a two-step process. The first step involves the extraction of features from the 
 data, and the last step lies in the training of a classifier. Examples of this 
 can be found in methodologies such as \gls{sift} \autocite{lowe1999object}, \gls{bow} 
@@ -41,7 +41,8 @@ where data is transformed to another space where its separation more straightfor
 Complementary to SVMs, Random Forest Trees is a methodology that constructs a plethora of decision 
 trees, where each tree uses a random subset of the training data, and each node uses a random 
 subset of features to make a decision. This randomness ensures diversity among trees, providing a 
-degree of robustness towards overfitting.\\
+degree of robustness towards overfitting.
+
 On a much simpler note, \gls{knn} operates based on the assumption of data being contained in 
 $k$ different categories. The classification method involves assigning one category to a data 
 point that is the closest in feature space to a category centroid, obtained through K-Means 
@@ -74,8 +75,8 @@ which is ultimately, mostly local. \\
 pooling operations and non-linearities. Pooling operations are used to reduce the spatial 
 resolution of feature maps, which in turn aids convolutions in capturing features from long 
 range dependencies within the image. Moreover, via pooling it is possible to capture the most 
-relevant features within a neighborhood.\\
-On another hand non-linearities such as Sigmoid and ReLU, are designed to capture complex 
+relevant features within a neighborhood.
+Conversely, non-linearities such as Sigmoid and ReLU, are designed to capture complex 
 relationships within data, stopping the model collapsing into a linear operation. Furthermore, these 
 operations also contribute with stability: they maintain values within feature maps and the gradient 
 in ranges in which the network can operate with. %cite this?
@@ -95,7 +96,8 @@ Upon its release, several traditional approaches were trained and evaluated on t
 achieving a low performance. However, \glspl{cnn} regained prominence with the introduction of
 AlexNet \autocite{krizhevsky2012imagenet}. Inspired by LeNet, Krizhevsky designed a 
 \gls{cnn} that incorporated additional convolutions and, more importantly, facilitated faster 
-computation through effective communication with the \gls{gpu}.\\
+computation through effective communication with the \gls{gpu}.
+
 AlexNet gained notoriety by emerging as the winner of the 2012 \gls{ilsvrc}, achieving a top-1 
 classification accuracy difference of nearly 10\% compared to previous year's winners 
 (\cite{berg2010large}, \cite{sanchez2011high}). This substantial improvement in recognition 
@@ -110,16 +112,17 @@ classification embeddings was proposed  in the shape of \gls{gap} \autocite{lin2
 This pooling protocol improves classification as it enforces correspondences between feature maps 
 and categories; conversely it doesn't require any optimization whatsoever, negating effects of 
 overfitting.\\ 
-Similar to 2012 and 2013, 2015 saw the proposal of two milestone models: the Inception architecture 
-\autocite{szegedy2015going} and VGG models \autocite{simonyan2015deep}. On one hand, the Inception 
-architecture is designed to learn features in different scale. To achieve this, the \emph{Inception 
-Block} is introduced, where the multi-scale behaviour is captured with the incorporation of 
-convolutional kernels with sizes of $5\times5$, $3\times 3$ and $1\times1$. In contrast to 
-the Inception architecture, VGG models are built with a simplistic design, relying solely on 
-$3\times 3$ convolutions. For a change, VGG is shown to be an excellent feature extractor network. 
-Led by the desire to increase depth of \glspl{cnn}, VGG and Inception attempted to make models 
-deeper; nevertheless this was not possible because of the vanishing gradient issue. As an answer to 
-this, the ResNet architecture was proposed \autocite{he2016deep}.\\
+
+\noindent Similar to 2012 and 2013, 2015 saw the proposal of two milestone models: the Inception 
+architecture \autocite{szegedy2015going} and VGG models \autocite{simonyan2015deep}. On one hand, 
+the Inception architecture is designed to learn features in different scale. To achieve this, the 
+\emph{Inception Block} is introduced, where the multi-scale behaviour is captured with the 
+incorporation of convolutional kernels with sizes of $5\times5$, $3\times 3$ and $1\times1$. On the 
+other hand, the Inception architecture, VGG models are built with a simplistic design, relying 
+solely on $3\times 3$ convolutions. For a change, VGG is shown to be an excellent feature extractor 
+network. Led by the desire to increase depth of \glspl{cnn}, VGG and Inception attempted to make 
+models deeper; nevertheless this was not possible because of the vanishing gradient issue. As an 
+answer to this, the ResNet architecture was proposed \autocite{he2016deep}.\\
 
 \input{fig/rel/tex/resnet_overall.tex}
 
@@ -132,9 +135,10 @@ relevancy because of its modularity and the aforementioned scaling properties. F
 of the most important \gls{cnn} based object detectors are designed using ResNet as backbone 
 (\cite{ren2015faster}, \cite{lin2017focal}, \cite{he2017mask}). A thorough representation of this 
 architecture is presented in \autoref{fig:resnet}. \\
-In a similar fashion to the residual connections introduced in ResNet, DenseNet 
+
+\noindent In a similar fashion to the residual connections introduced in ResNet, DenseNet 
 \autocite{huang2017densely} was proposed with the idea of connecting all layers operating within 
-matching feature-map sizes. On one hand, this architecture enables the training of very deep 
+matching feature-map sizes. In particular, this architecture enables the training of very deep 
 models, as these connections facilitate feature reuse and identity mappings, thus negating the 
 effect of vanishing gradients. However one issue that be brought forth with DenseNet is its 
 lack of  modularity and ease of use. Due to a great number of neurons being interconnected by 
@@ -165,7 +169,7 @@ answer to this issue was proposed for ResNet in 2021 \autocite{wightman2021resne
 ResNet strikes back, this backbone was retrained under updated training regimes, achieving a 
 high classification performance, rivaling that of transformers.\\
 
-Finally, with the advent of transformer based image recognition models in the early years of the 
+\noindent Finally, with the advent of transformer based image recognition models in the early years of the 
 2020 decade, \glspl{cnn} started being outshined by these kind of models; however, an architecture 
 incorporating the key principles of these models was presented, ConvNeXt \autocite{liu2022convnet}.
 These family of models addressed some shortcomings of transformer models (mentioned in 
@@ -186,9 +190,10 @@ initially proposed in 2017 with the article \emph{Attention is All You Need}
 \autocite{vaswani2017attention}. This model addressed limitations in existing methodologies for 
 NLP such as LSTMs and RNNs, particularly their struggles in capturing long range dependencies 
 and efficient training.\\
-In a similar fashion to the impact AlexNet had on image recognition, transformers revolutionized 
-the landscape of NLP with their key component: \emph{Self-Attention}. This function assigns 
-weights to different input sequence, enabling focus on relevant information. 
+
+\noindent In a similar fashion to the impact AlexNet had on image recognition, transformers 
+revolutionized the landscape of NLP with their key component: \emph{Self-Attention}. This function 
+assigns weights to different input sequence, enabling focus on relevant information. 
 This is defined in the following manner:
 
 \begin{equation}
@@ -216,19 +221,19 @@ An important observation is that self attention has no parameters whatsoever: th
 utilized in blocks that ultimately form the encoder part of the transformer. One encoder block 
 comprises a residual operation where the input embedding is updated with the product of \gls{mhsa}, 
 normalized, and then this representation is further recombined with the residual operation atop of 
-a feed forward network. This is best explained in \autoref{fig:transf_block}.
+a feed forward network. This is best explained in \autoref{fig:transf_block}.\\
 
 \input{fig/rel/tex/transf_block}
 
-Another pivotal characteristic setting transformers apart from previous approaches on NLP 
+\noindent Another pivotal characteristic setting transformers apart from previous approaches on NLP 
 and convolutions is its capability to process data in a global context. In sharp contrast to 
 convolutions discussed in \autoref{rel:sub_cnn}, the self-attention operation is not constrained by 
 parameters like width and height; it has no receptive field. Instead, this operation is guided 
 the number of embeddings that will represent the whole of data (\textit{i}.\textit{e}. the number 
 of different chunks a sentence is split into) and the aforementioned $d_k$, which represents the 
-dimensions to which the data is projected. 
+dimensions to which the data is projected. \\
 
-Continuing on with transformers within the NLP domain, several additions 
+\noindent Continuing on with transformers within the NLP domain, several additions 
 to this architecture have resulted in further improvements. One notable example is the inclusion of 
 the classification token ([\Th{CLS}]) as proposed in BERT \autocite{devlin2018bert}. The rationale 
 behind incorporating this token can be traced back to the previously discussed concept of globality 
@@ -247,18 +252,18 @@ overview of this approach.\\
 
 \input{fig/rel/tex/vit_struct.tex}
 
-In similar manner to prior breakthroughs like the effective convolution computation and the 
+\noindent In similar manner to prior breakthroughs like the effective convolution computation and the 
 emergence of transformers in \gls{nlp}, the introduction of \gls{vit} further revolutionized the 
 landscape on Computer Vision tasks. However, these methodologies exhibit specific characteristics 
-concerning their predictive capabilities. On one hand, when trained using a conventional 
-approach for ImageNet object classification, this model's performance is relatively lower compared 
-to a ResNet model trained under the same conditions. However, when scaling to more modern datasets 
-such as ImageNet-21k and JFT-300M \autocite{sun2017revisiting}, which contain close to 10 times the 
-number of images than those of ImageNet-1k, transformers clearly outperform their convolutional 
-counterparts. Interestingly, this is hypothesized to be primaly due to transformer scalability. 
-In particular, it is observed that transformers are capable of removing inductive bias which in 
-turn is highly dominant in \glspl{cnn}; still, this makes these models prone to overfitting in data 
-collections sufficiently small where this bias still remains useful.\\
+concerning their predictive capabilities. In particular, when trained using a conventional 
+approach for ImageNet object classification, the performance of this model is relatively low 
+compared to a ResNet trained under the same conditions. However, when scaling to more modern 
+datasets such as ImageNet-21k and JFT-300M \autocite{sun2017revisiting}, which contain close to 10 
+times the number of images than those of ImageNet-1k, transformers clearly outperform their 
+convolutional counterparts. Interestingly, this is hypothesized to be primaly due to transformer 
+scalability. In particular, it is observed that transformers are capable of removing inductive bias 
+which in turn is highly dominant in \glspl{cnn}; still, this makes these models prone to overfitting 
+in data collections sufficiently small where this bias still remains useful.\\
 
 
 In addition to ViT, several other transformer architectures have emerged, contributing to the 
@@ -297,9 +302,9 @@ architecture starting with the encoder. Starting with what is arguably the most 
 design, LeViT \autocite{graham2021levit} replaces the original patch encoding with feature 
 extraction using ViT; as well as including a distillation head to lead the training process. 
 These contributions ultimately helped LeViT to outperform ViT all the while not requiring large 
-scale image classification datasets to train as well as well as having a faster inference time.
+scale image classification datasets to train as well as well as having a faster inference time.\\
 
-As a continuation of LeViT, PatchConvNet \autocite{touvron2021augmenting} was subsequently 
+\noindent As a continuation of LeViT, PatchConvNet \autocite{touvron2021augmenting} was subsequently 
 proposed. Building upon LeViT's design, PatchConvNet further expands on the classifier by 
 replacing the original MLP head with \emph{Attention-Based Pooling}. Interestingly, this 
 pooling mechanism integrates a ([\Th{CLS}]) matrix; that in sharp comparison to the stand-alone 

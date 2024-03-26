@@ -19,7 +19,7 @@ previously. A direct display of transparency is not straightforward, particularl
 of these proposals involve modifying the behaviour of models or lack inherent interpretability. 
 Conversely, post-hoc interpretations are frequently found in the input space. As a result, 
 the impact of these modifications is traditionally evaluated through human centric assessments of 
-\emph{trust} or \emph{reliablity}. Additionally, a quantitative approach, involves probing changes 
+\emph{trust} or \emph{reliablity}. In the other hand, a quantitative approach, involves probing changes 
 in the predictive power of the input masked by the saliency map (\emph{interpretable object 
 recognition}), randomly perturbing the input guided by saliency information described by the 
 attribution map (\emph{causal analysis}), and considering these attributions in a weakly supervised 
@@ -57,14 +57,14 @@ image $\mathbf{u}$ and its masked version respectively. Masking refers to elemen
 multiplication with the saliency map, which is at the same resolution as the original image with 
 values in $[0,1]$. Let $N$ be the number of test images. Class $c$ is taken as the ground truth.\\
 
-\emph{\gls{ad}}  quantifies how much predictive power, measured as class probability, 
+\noindent \emph{\gls{ad}}  quantifies how much predictive power, measured as class probability, 
 is lost when we only mask the image; lower is better:
 \begin{equation}
 	\AD \defn \frac{1}{N} \sum_{i=1}^N \frac{[p^c_i - o^c_i]_+}{p^c_i} \cdot 100.
 \label{eq:ad}
 \end{equation}
 
-\emph{\gls{ai}}, also known as \emph{increase in confidence}, measures the 
+\noindent \emph{\gls{ai}}, also known as \emph{increase in confidence}, measures the 
 percentage of images where the masked image yiel ds a higher class probability than the original; 
 higher is better:
 \begin{equation}
@@ -82,10 +82,10 @@ This questions the purpose of $\AD$ and $\AI$. Addressing this, Poppi proposes \
 that combines \gls{ad} and two complementary measurements: \emph{Coherency} and \emph{Complexity}.
 In detail:\\
 
-\emph{Coherency} answers the requirement that the CAM-attribution of one image has to equate to the 
-corresponding attribution of the explanation map obtained by the combination of said attribution 
-map and the original input image. This is defined using the Pearson Correlation Coefficient between 
-both attributions following:
+\noindent \emph{Coherency} answers the requirement that the CAM-attribution of one image has to 
+equate to the corresponding attribution of the explanation map obtained by the combination of said 
+attribution map and the original input image. This is defined using the Pearson Correlation 
+Coefficient between both attributions following:
 
 \begin{equation}
 	\mbox{Coherency}(u) = \frac{\mbox{Cov}\left(\mbox{CAM}_c(\mathbf{u}\odot \mbox{CAM}_c(\mathbf{u})),
@@ -93,8 +93,9 @@ both attributions following:
 						   \odot \mbox{CAM}_c(\mathbf{u}))\sigma\mbox{CAM}_c(\mathbf{u})}
 \end{equation}
 
-\emph{Complexity} is addressed to the requirement of CAM attributions being as \emph{simple} or 
-less complex as possible. It is defined using the $L_1$ norm as a proxy of complexity:
+\noindent\emph{Complexity} is addressed to the requirement of CAM attributions being as 
+\emph{simple} or less complex as possible. It is defined using the $L_1$ norm as a proxy of 
+complexity:
 
 \begin{equation}
 	\mbox{Complexity}(\mathbf{u}) = ||\mbox{CAM}_c(\mathbf{u})||_1
@@ -111,8 +112,8 @@ these metrics taking their harmonic mean in the following manner:
 % -------------------------------------------------------------------------------------------------
 \subsubsection{Causal Analysis} 
 \label{sec:causal_metrics}
-Inspired by the work described in (\cite{fong2017interpretable}, 
-\cite{fong2019understanding}), instead adding perturbations on an image level in order to generate 
+Inspired by the work described in (\cite{fong2017interpretable}, \cite{fong2019understanding}), 
+instead adding perturbations on an image level in order to generate 
 and attribution map, \cite{petsiuk2018rise} proposes an evaluation scheme where images are modified 
 according to their saliency maps, and the subsequent change of predictive power is measured. This 
 methodology contemplates two styles of modifications: on one hand, the input image is blurred 
@@ -125,12 +126,12 @@ number of pixels removed per step, we calculate the predicted probability $p^c_n
 groundtruth class $c$ using the model $f$.  Similar to \gls{ad} and \gls{ai} \cite{petsiuk2018rise} 
 considers $s^c$ to maintain the same image resolution as $x$ and be normalized in values $[0,1]$.\\
 
-\emph{\gls{ins}} measures the increase of probability when introducing pixels from an input image 
-into a blurry version of itself, following the salient order described by the saliency map. Best 
-described in \autoref{algo:rel_ins}\\
+\noindent \emph{\gls{ins}} measures the increase of probability when introducing pixels from an 
+input image into a blurry version of itself, following the salient order described by the saliency 
+map. Best described in \autoref{algo:rel_ins}\\
 \input{tex_body/rel/tex/ins.tex}
-\emph{\gls{del}} measures the decrease of probability as pixels are zeroed out in an input image, 
-following the salient order described by the saliency map. Best 
+\noindent \emph{\gls{del}} measures the decrease of probability as pixels are zeroed out in an input 
+image, following the salient order described by the saliency map. Best 
 described in \autoref{algo:rel_del}\\
 \input{tex_body/rel/tex/del.tex}
 %--------------------------------------------------------------------------------------------------
@@ -143,11 +144,11 @@ One preliminar approach considering this, is found within the \emph{Broden} data
 individual channels from a convolutional layers are compared with semantic concepts previously 
 annotated within the dataset. 
 
-In addition to the evaluation procedure proposed in Broden, weakly supervised evaluation approaches 
-are taken into consideration for this task. 
+\noindent In addition to the evaluation procedure proposed in Broden, weakly supervised evaluation 
+approaches are taken into consideration for this task. 
 
 %--------------------------------------------------------------------------------------------------
-\paragraph{Notation} given the saliency map $S^c$ obtained from test image $\vx$ for ground truth 
+\paragraph{Notation} Given the saliency map $S^c$ obtained from test image $\vx$ for ground truth 
 class $c$. We denote by $S^c_{\vp}$ its value at pixel $\vp$. We binarize the saliency map by 
 thresholding at its average value and we take the bounding box of the largest connected component 
 of the resulting mask as the predicted bounding box $B_p$, represented as a set of pixels. We 
@@ -157,9 +158,9 @@ of pixels. We also compare the predicted class label $c_p$ with the ground truth
 metrics take values in $[0,1]$ and are expressed as percentages, except SM~\eq{sm}, which is 
 unbounded.\\
 
-\emph{Unit Interpretability} defined in Broden, this metric is different from those defined in 
-the coming weakly-supervised approaches; compares each individual feature map $A^k$ with the 
-localization mask $L_c$ of class $c$ for a given image $x$. To compute this comparison, 
+\noindent \emph{Unit Interpretability} Defined in Broden, this metric is different from those 
+defined in the coming weakly-supervised approaches; compares each individual feature map $A^k$ 
+with the localization mask $L_c$ of class $c$ for a given image $x$. To compute this comparison, 
 the activation map $A^k$ is upsampled into the original image resolution and then binarized 
 generating the binary mask $M^k$. This mask is used following:
 
@@ -168,23 +169,22 @@ generating the binary mask $M^k$. This mask is used following:
 					      {\sum \abs{M^k(\mathbf{u}) \cup L_c(x)}}
 \end{equation}
 
-\emph{\gls{om}}
-measures the maximum overlap of the predicted bounding box with any ground truth bounding box, 
-requiring that the predicted class label is correct:
+\noindent \emph{\gls{om}} measures the maximum overlap of the predicted bounding box with any 
+ground truth bounding box, requiring that the predicted class label is correct:
 \begin{equation}
 	\OM \defn 1 - \paren{\max_{B \in \cB} \iou(B, B_p)} \mathbbm{1}_{c_p = c},
 \label{eq:om}
 \end{equation}
-where $\iou$ is intersection over union.
+where $\iou$ is intersection over union.\\
 % is defined as $\iou(B, B_p) \defn \frac{B \cap B_p}{B \cup B_p}$.
 
-\emph{\gls{le}} is similar but ignores the predicted class label:
+\noindent \emph{\gls{le}} is similar but ignores the predicted class label:
 \begin{equation}
 	\LE \defn 1 - \max_{B \in \cB} \iou(B, B_p).
 \label{eq:le}
 \end{equation}
 
-\emph{Pixel-wise $F_1$ score (F1)} is defined as $F_1 = 2 \frac{P R}{P + R}$, where 
+\noindent \emph{Pixel-wise $F_1$ score (F1)} is defined as $F_1 = 2 \frac{P R}{P + R}$, where 
 \emph{precision} $P$ is the fraction of mass of the saliency map that is within the ground truth 
 union
 \begin{equation}
@@ -198,7 +198,7 @@ and \emph{recall} $R$ is the fraction of the ground truth union that is covered 
 	\label{eq:rec}
 \end{equation}
 
-\emph{\gls{ba}\autocite{choe2020evaluating}} Given threshold values $\eta$ and $\delta$, 
+\noindent \emph{\gls{ba}\autocite{choe2020evaluating}} Given threshold values $\eta$ and $\delta$, 
 we find the bounding box $B^\eta_p$ of the largest connected component of the binary mask 
 $\set{\vp: S_{\vp} > \eta}$ and require that it overlaps by 
 $\delta$ with at least one ground truth box:
@@ -208,8 +208,9 @@ $\delta$ with at least one ground truth box:
 \end{equation}
 After averaging over the test images, we take the maximum of this measure over a set of values 
 $\eta$ and then the average over a set of values $\delta$.\\
+
 %--------------------------------------------------------------------------------------------------
-\emph{\gls{sp}\autocite{zhang2018top}} We find the pixel 
+\noindent \emph{\gls{sp}\autocite{zhang2018top}} We find the pixel 
 $\vp^* \defn \arg\max_{\vp} S^c_{\vp}$ having the maximum saliency value and 
 require that it lands in any of the ground truth bounding boxes:
 \begin{equation}
@@ -217,11 +218,10 @@ require that it lands in any of the ground truth bounding boxes:
 \label{eq:spg}
 \end{equation}\\
 
-\emph{\gls{ep}\autocite{wang2020score}} is equivalent to precision~\eq{prec}.\\
+\noindent \emph{\gls{ep}\autocite{wang2020score}} is equivalent to precision~\eq{prec}.\\
 
-\emph{\gls{sm} \autocite{dabkowski2017real}} penalizes the size of the predicted bounding
- box $B_p$ relative to the image and the cross-entropy
- loss:
+\noindent \emph{\gls{sm} \autocite{dabkowski2017real}} penalizes the size of the predicted bounding 
+box $B_p$ relative to the image and the cross-entropy loss:
 \begin{equation}
 	\SM \defn \log \max\paren{ 0.05, \frac{\card{B_p}}{hw} } - \log p^c,
 \label{eq:sm}
