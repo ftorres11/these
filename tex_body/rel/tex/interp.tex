@@ -7,20 +7,20 @@ technologies seen as black boxes. A black-box model is defined as a model for wh
 interpretation is not straightforward for humans \autocite{petch2022opening}. In recent years 
 with the assimilation of deep learning into everyday tasks, and the implicit effect these models 
 are having on human lives; the novel research field of \emph{Interpretability} has been brought 
-forth to open up this black-box behaviour. Researchers have approached intepretability alongside 
+forth to open up this black-box behavior. Researchers have approached interpretability alongside 
 different directions. Starting with the work of \cite{li2018deep}, interpretability is suggested 
 to present two categories, \emph{Transparency} and \emph{Post-hoc Interpretability}.
 For the former, Lipton argues that it follows modifications of the model or the training process, 
 in order to explain the inner-workings of the model. Conversely, for the latter Lipton builds upon 
-the black-box behaviour of the model, providing explanations istead based on inputs and outputs; 
+the black-box behavior of the model, providing explanations instead based on inputs and outputs; 
 without adding any further modifications for the model or altering its training process.\\
 
 \noindent Considering these properties, we observe that as machine learning models grew in 
-complexity; their transparent properties vanished proportionaly to their size. It can be argued 
+complexity; their transparent properties vanished proportionally to their size. It can be argued 
 that traditional models offer themselves to  transparency due to their straightforward formulation 
 and inherent properties. Conversely, regarding deep models, we find that it is after their size and 
-complexity that their interpretable propierties get hindered. Common  \glspl{cnn} 
-rely convolution as their corner stone, coupled with non-linear operations such as 
+complexity that their interpretable properties get hindered. Common  \glspl{cnn} 
+rely on convolution as their corner stone, coupled with non-linear operations such as 
 ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
 This aggregation of convolutions on one hand enables these models to process large quantities of 
 data, and to a certain extent generalize; however in the other hand, it also results in an extensive 
@@ -34,42 +34,42 @@ following a \emph{Global} interpretation; whereas in situations where only the r
 specific prediction, a \emph{Local} interpretation is found. Guidotti also considers time,
 more specifically \emph{Time Limitation} as its availability is strictly correlated to the scenario 
 where the model is used. Finally, the \emph{Nature of User Expertise} covers the last dimension of 
-interpretability; where knowing the experience of an user in a given task is considered to be a 
+interpretability; where knowing the experience of a user in a given task is considered to be a 
 key aspect describing the interpretability of a model.\\
 
 \noindent In recent years, \cite{zhang2021survey} suggested that three different dimensions encompass this 
 study. The first dimension answers to the nature of an approach; where it can be either 
 \emph{Passive} or \emph{Active}. The first direction in this dimension correlates to Lipton's 
-\emph{Post-hoc interpretabity}, the latter follows the aforementioned \emph{Transparency} property.
+\emph{Post-hoc interpretability}, the latter follows the aforementioned \emph{Transparency} property.
 Zhang's second dimension is addressed towards the type of explanations, where the order of 
-explanatory power follows a hiearchy starting on its base level with examples, into attributions, 
+explanatory power follows a hierarchy starting on its base level with examples, into attributions, 
 leading into hidden semantics and finishing in rules. On one hand, the last dimension that Zhang 
 covers explanations in the input space, where a \emph{Local} explanation describes the network's 
 prediction following individual samples; while in the other hand, a \emph{Global} explanation 
 describes the network as a whole. This last dimension is similar to the first point described by 
-\cite{guidotti2018survey}. Most importantly, Zhang's dimensions are not used separatedly to 
-categorize an approach, instead according to the methodology propierties and the nature of the 
+\cite{guidotti2018survey}. Most importantly, Zhang's dimensions are not used separately to 
+categorize an approach, instead according to the methodology properties and the nature of the 
 explanation provided. This is further seen in the 3D space found in \autoref{fig:rel_zhangs}
 
 \input{fig/rel/tex/zhangsdim.tex}
  
 \noindent In this thesis we study interpretability according to Lipton's properties; nevertheless, as shown 
-in the following subsections, we aknowledge their strengths and weaknesses, while denoting some of 
+in the following subsections, we acknowledge their strengths and weaknesses, while denoting some of 
 the most prominent works in each dimension. In \autoref{rel:sub_transp} we discuss 
 \emph{transparency}, its properties according to Lipton and its difficulties describing deep models, 
 alongside a survey following Zhang's active dimension. Conversely, in \autoref{rel:sub_post}, we 
-study \emph{post-hoc interpretability} in a similar fashion to transparency.
+study \emph{post-hoc interpretability} similarly to transparency.
 
 \subsection{Transparency}
 \label{rel:sub_transp}
 Following Lipton's work, we further define the transparency property of models as the opposite of 
-opacity or black-box behaviour. Still, similar to the aforementioned works, transparency is 
+opacity or black-box behavior. Still, similar to the aforementioned works, transparency is 
 considered at the model level (\emph{simulatability}), individual components 
 (\emph{decomposability}) and the training algorithm (\emph{algorithmic transparency}). Delving into 
 detail, \emph{Simulatability} on a strict definition answers to the capability of a model to be 
 fully contemplated by an individual on its entirety at once. Currently, with the increase of model 
-complexity this understanding level is then redefined as the capcity of a model to be readily 
-presented to an user with visual or textual artifacts. This in turn can be demonstrated by 
+complexity this understanding level is then redefined as the capacity of a model to be readily 
+presented to a user with visual or textual artifacts. This in turn can be demonstrated by 
 \emph{post-hoc interpretations}.\\
 
 \noindent Regarding \emph{decomposability}, Lipton suggests that an interpretable model has to present 
@@ -81,21 +81,21 @@ can be fragile processing and calculation; for instance, image normalization can
 mismatch during inference.\\
 
 \noindent Finally, Lipton argues that \emph{algorithmic transparency} applies on the level of the 
-learning algorithm itself. In short, this applies to the er ror surface and assumption of the 
+learning algorithm itself. In short, this applies to the error surface and assumption of the 
 existence of an optimal and/or unique solution to the problem. Nevertheless this dimension is not 
 met for deep learning models as the training process is not completely understood.\\
 
 \noindent While Lipton's transparency properties appear to be applicable and theoretically sound, 
 transparency is not fully studied alongside them. As previously observed, designing an approach or 
-model covering these properties is a complicated task for deep models. However, with a bfief 
+model covering these properties is a complicated task for deep models. However, with a brief 
 modification of their definition, transparent properties can be further applied to deep image 
 recognition. \emph{Simulatability}, as mentioned earlier,  can be supported with \emph{post-hoc 
 interpretability} explanations. Conversely, deep learning models can be further 
 \emph{decomposed} into functional units; for instance, the ResNet architecture consists of
-residual blocks, where the structure of each block and its design has been studied thoroughfully. 
-Finally, concerning \emph{algorithmic transparency}, although deep learing models present high 
+residual blocks, where the structure of each block and its design has been studied thoroughfuly. 
+Finally, concerning \emph{algorithmic transparency}, although deep learning models present high 
 dimension error surfaces and a high amount of local minima; still, ensuring a deterministic 
-behaviour leads to replicability, in turn demonstrating part of the training process.\\
+behavior leads to replicability, in turn demonstrating part of the training process.\\
 
 \noindent Following the interpretable dimensions described by \autocite{zhang2021survey}, 
 transparency is suggested as an active change of the architecture of the network or the training 
@@ -105,7 +105,7 @@ rules, hidden semantics, attributions and explanations by example.\\
 
 \noindent \emph{Rule-based methods.} In this group, rules are used to provide an explanation. 
 To do this, Wu et al. proposed training a decision tree on top of a deep learning model, acting as 
-a regularization term and an aproximation of said deep model (\cite{wu2018beyond}, 
+a regularization term and an approximation of said deep model (\cite{wu2018beyond}, 
 \cite{wu2020regional}). This process involves two steps. First a binary tree is trained, mapping 
 inputs to the model prediction. The second part of this approach calculates the average path 
 length between root to leaf nodes on the decision tree, covering all data points. Ultimately, Zhang 
@@ -123,7 +123,7 @@ consideration to provide an explanation; the work of B\"ohle et al. (\cite{bohle
 \cite{bohle2024b}) introduced the idea of \emph{B-Cos networks} and alignment overall with the 
 \emph{Dynamic Alignment Unit}. In these works, alignment between weight-input alignment is 
 emphasized by the inclusion of the B-cos transform and dynamic alignment unit. Moreover, the 
-interpretations these methods provide insight over the entirety of the network and they are 
+interpretations these methods provide insight over the entirety of the network, and they are 
 possibly integrated into existing architectures.\\
 
 \noindent \emph{Prototype-based methods.} On this topic, Li et al. designs an architecture that 
@@ -139,7 +139,7 @@ on top of existing architectures, aligning learn a set of prototypes to specific
 or parts as an intermediate representation in the network, which can be aligned with categories.
 One difficulty these prototype parts face, is their heavy computation and difficulty to 
 train. As a response of this, ProtoPool \autocite{rymarczyk2022interpretable} is recently proposed, 
-allowing for prototype reutilization and differentiable assignment of prototypes to classes; 
+allowing for prototype reutillization and differentiable assignment of prototypes to classes; 
 speeding up the training process\\
 
 \noindent \emph{Attribution-based methods.} Similar to the regularization induced by the inclusion 
@@ -191,9 +191,9 @@ proposed for interpreting generative models. More recently, the work proposed by
 model, disentangling deep representations and providing an inverse transformation into accessible 
 semantic concepts which can be used to point at similar examples of a given input.\\
 
-\noindent Regarding \emph{local explanations}, Lipton aknowledges that describing the entirety of 
-the mapping by a \gls{cnn} is a difficult endeavour; and as such, it can be explained on a 
-\emph{local} manner. This local behaviour is widely consider across interpretability studies, as 
+\noindent Regarding \emph{local explanations}, Lipton acknowledges that describing the entirety of 
+the mapping by a \gls{cnn} is a difficult endeavor; and as such, it can be explained on a 
+\emph{local} manner. This local behavior is widely considered across interpretability studies, as 
 previously mentioned in \autoref{rel:sec_int} (\cite{guidotti2018survey}, \cite{zhang2021survey}). 
 Generally speaking, local explanations are often extracted via the computation of a \emph{saliency 
 map} highlighting the most important regions on an image describing a prediction. Studies describing 
@@ -216,13 +216,13 @@ constrain the computation \autocite{sundararajan2017axiomatic} and proposal of c
 relevance \autocite{bach2015pixel} to compute the importance pixel interaction leading to a 
 prediction \emph{(LRP)}.\\
 
-\noindent \emph{Learning-based methods.} Approaches in this family of methods exhibit a behaviour 
+\noindent \emph{Learning-based methods.} Approaches in this family of methods exhibit a behavior 
 intersecting  \emph{transparency} based approaches, where an additional network or branch is 
 learned atop an existing architecture to produce an explanation map for a given input. However, 
 the lack of modifications on the model for interpretation is the key factor differentiating these 
 approaches from \emph{active} interpretability methods. Specific examples of learning methods 
-comprise modifications inclusion of generative models to fill in information ocluded from  the 
-classifier \autocite{chang2018explaining}, masking salient points on the map to manipulatie scores 
+comprise modifications inclusion of generative models to fill in information occluded from  the 
+classifier \autocite{chang2018explaining}, masking salient points on the map to manipulate scores 
 on the classifier \autocite{dabkowski2017real}, inclusion of a \emph{masker} side network to 
 collect information on different levels of the network and produce a high resolution explanation 
 \autocite{phang2020investigating}, addition of a decoder to generate masks and a different 
@@ -248,7 +248,7 @@ which are often high-dimensional, present a considerable challenge. Conversely, 
 contained from the classifier layers of the model can be directly associated with classes. For 
 example, the product of the weights of the classifier and the last feature map before \gls{gap} 
 can generate a saliency map, known as \glsfirst{cam} \autocite{zhou2016learning}. These approaches 
-typically utilize feature information from deep layers in conjuction with a set of weights 
+typically utilize feature information from deep layers in conjunction with a set of weights 
 correlated with class information to compute explanations (\cite{selvaraju2017grad}, 
 \cite{chattopadhay2018grad}, \cite{wang2020score}, \cite{axiombased}, \cite{ablationcam}
 \cite{jiang2021layercam}).\\
@@ -262,7 +262,7 @@ vectors by focusing on the \Th{[CLS]} token; this in turn is called \emph{Raw At
 Conversely, since attention is computed at every layer of a transformer, the flow of information 
 can be traced across different layers across the network in an approach named \emph{Rollout 
 Attention} \autocite{abnar2020quantifying}. Inspired by \emph{rollout attention} and gradient 
-methods such as \emph{LRP} \autocite{bach2015pixel} and the indadequacy property of CAM methods on 
+methods such as \emph{LRP} \autocite{bach2015pixel} and the inadequacy property of CAM methods on 
 transformers, a novel computation of relevance across layers providing high quality attribution 
 maps is introduced, allowing at the same time for a quantitative study of the interpretable 
 properties of these methodologies \autocite{chefer2021transformer}.\\
@@ -276,8 +276,8 @@ explanations ought to be similarly easy to use, a property that CAM-based models
 %--------------------------------------------------------------------------------------------------
 \paragraph{CAM-based saliency maps}
 One property that \glspl{cnn} display is the presence of semantic information found within the 
-deepest layers prior to the classifier. In detail, it has been observed that these kind of models 
-operate in a similar manner to the visual cortex in the brain; basic textures and their orientation 
+deepest layers prior to the classifier. In detail, it has been observed that these models 
+operate similarly manner to the visual cortex in the brain; basic textures and their orientation 
 is processed in shallow layers, whereas deep layers associate this information into concepts 
 \autocite{hubel1959receptive}. This characteristic in turn is the main motivation behind making 
 use of CAM methods: by addressing interpretations on the layers prior to the classifier, we 
@@ -308,7 +308,7 @@ general formula: \\
 where $w^c_k$ are weights defining a linear combination over channels and $h$ is an activation 
 function, we present a visualization of this process in \autoref{fig:cam_schema}. It is through the 
 calculation of these weights or weighting coefficients that a plethora of saliency methods have 
-been proposed using CAM. Informally, this can be referred to as \emph{The Many Flavours of CAM}.
+been proposed using CAM. Informally, this can be referred to as \emph{The Many Flavors of CAM}.
 Moreover, given the flexibility in defining this coefficient, we outline milestone alternatives for 
 this calculation.\\
 
@@ -343,7 +343,7 @@ highlight more salient regions within the image.\\
 \noindent \emph{Grad-CAM++} \autocite{chattopadhay2018grad} continues the trend of refining the 
 generated saliency map via gradient modifications. In particular, the computation of the gradient 
 follows partial derivatives as a way to address shortcomings on the original Grad-CAM. Specifically, 
-Grad-CAM is not robust to multiple instances of the same clase within one image, and overall the 
+Grad-CAM is not robust to multiple instances of the same class within one image, and overall the 
 localization of the attribution usually fails to be located over the entirety of the object of 
 the class of interest. The computation of $w^c_k$ for Grad-CAM is defined in the following manner:
 \begin{equation}
@@ -406,7 +406,7 @@ without making use of gradients, masking methods can be further incorporated in 
 saliency maps. More specifically, this approach determines the weight of individual feature maps 
 via ablation perturbation. Going deeper, this approach evaluates the predictive power $y^c_k$ of an 
 individual channel $k$ in feature map $A^k$ when all other activations are zeroed out. In one way, 
-this could be een as similar to increase in confidence to produce the linear combination as in 
+this could be seen as similar to increase in confidence to produce the linear combination as in 
 \emph{Score-CAM}. Nevertheless, in the current approach, modifications are done on feature space 
 and the predictive power is compared with that of predictions using $A^k$ with all the feature maps 
 unaltered. Retaining activation $h = \relu$, the formulation of this weighting coefficient follows:

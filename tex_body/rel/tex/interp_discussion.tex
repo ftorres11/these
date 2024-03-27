@@ -1,32 +1,32 @@
 %--------------------------------------------------------------------------------------------------
 \subsection{Discussion}
 \label{sec:rel_interp_discussion}
-Following the rapid developement of image recognition models and the subsequent need to understand 
-their behaviour, interpretability has become a sought after task within the community. As a result, 
-several studies have been introduced over time, as demonstrated in the previous section.Yet, the 
+Following the rapid development of image recognition models and the subsequent need to understand 
+their behavior, interpretability has become a sought after task within the community. As a result, 
+several studies have been introduced over time, as demonstrated in the previous section. Yet, the 
 work proposed by Lipton is unique in questioning what interpretability truly entails. 
 Instead, most interpretability approaches are designed to address specific needs of current image 
 recognition models, ranging from simplifying a model, to describing its components, disentangling 
 embeddings on feature space and ultimately explaining predictions by responses on the input space. 
 We suggest that some recurring issues that interpretability presents is an outdated vision on some 
-properties and a lack of of concensus, either in definitions, and evaluation.\\
+properties and a lack of consensus, either in definitions, and evaluation.\\
 
-\noindent Starting with propositions, according to different researchers interpretability is 
+\noindent Starting with propositions, according to different researchers' interpretability is 
 described across various dimensions depending on the nature of the approach. In this thesis we 
 chose to follow the original propositions of Lipton, describing interpretability according to the 
-properties of \emph{transparency} and the ability to provide\emph{post-hoc interpretations.} We 
-aknowledge these properties as base descriptors for interpretability. However, we note that these 
+properties of \emph{transparency} and the ability to provide \emph{post-hoc interpretations.} We 
+acknowledge these properties as base descriptors for interpretability. However, we note that these 
 properties are ill-fitted for describing current image recognition models according 
 to their original definitions. In particular, transparency on its preliminary definition applies 
-mostly to traditional machine learning proposals. Nevertheless by aligning transparency with 
-the active dimension proposed by \cite{zhang2021survey}, the definition holds and subsequent 
+mostly to traditional machine learning proposals. Nevertheless, by aligning transparency with 
+the active dimension proposed by \cite{zhang2021survey}, the definition holds, and subsequent 
 studies adhere it.\\
 
-\noindent Regarding saliency we also note that this study is-ill formulated. When we obtain a 
+\noindent Regarding saliency, we also note that this study is-ill formulated. When we obtain a 
 saliency map, \emph{how do we define what is important in an image?}. On one hand, although computer  
 vision draws heavy inspiration from by human vision, the reasoning process is different between 
 human and machine. In particular, a human might identify salient parts to describe an object in 
-particular in a different fashion that a machine would. Conversely, when discussing an attribution, 
+particular, differently that a machine would. Conversely, when discussing an attribution, 
 \emph{who are we considering the explanation for?}. As we mentioned previously, saliency is not 
 well aligned for humans and machines, especially when machines derive their knowledge from context. 
 Consequently, when evaluating the interpretable properties of an attribution, we find that usually 
@@ -42,16 +42,16 @@ And yet, in this case we can also wonder about \emph{which class should we inqui
 groundtruth or predictions?}. In most applications researchers extract attributions and provide 
 explanations for groundtruth objects. However, in real-world applications we expect models to 
 predict incorrectly some instances in the task that they are given; these instances then require 
-explanations for the class being predicted. This is crucial given Lipton's desiderdata of model 
-interpretability. We usually care the most for the instances in which the model fails and we have 
+explanations for the class being predicted. This is crucial given Lipton's desidedata of model 
+interpretability. We usually care the most for the instances in which the model fails, and we have 
 to provide accountability for the effects these inferences provide.\\
 
-\noindent In addition of this selection of instances to provide explanations for, quantitative 
-evaluation suffers from another drawback: a lack of homogenenity in evaluation procedures. 
+\noindent In addition to this selection of instances to provide explanations for, quantitative 
+evaluation suffers from another drawback: a lack of homogeneity in evaluation procedures. 
 Complementary to the qualitative evaluation of attribution maps via visual inspection and human 
-criteria, quantitative evaluation ought to be more robust, replicable and homogeneus. Yet, we 
+criteria, quantitative evaluation ought to be more robust, replicable and homogeneous. Yet, we 
 observe variations in evaluation procedures across proposals, and while an effort to provide fair 
-comparisons, complete insight on the behaviour of the proposed methodologies is not attained. 
+comparisons, complete insight on the behavior of the proposed methodologies is not attained. 
 To exemplify, with the introduction of \emph{objective evaluation for object recognition} in Grad-
 CAM++ \autocite{chattopadhay2018grad}, the evaluation procedure only required generation of 
 visualizations for the entirety of the validation set of ImageNet and Pascal VOC 2012, whereas 
@@ -60,7 +60,7 @@ random images is chosen, thus negating replicability. We note that this is done 
 discussion of the high computational cost required to compote Score-CAM attributions, which is  
 not clearly discussed in its article. Complementary to this, 
 \cite{chattopadhay2018grad} provides analysis for VGG-16, ResNet-50 and AlexNet, while Score-CAM 
-presents results only for VGG.  This is not the only occurrence of this phenomenom, upon the 
+presents results only for VGG.  This is not the only occurrence of these phenomena, upon the 
 introduction of methodologies such as Integrated Score-CAM \autocite{naidu2020cam}, Ablation-CAM
 \autocite{ablationcam} and Layer-CAM \autocite{jiang2021layercam}, the evaluation procedures are 
 found not to be standardized between approaches.\\
@@ -72,7 +72,7 @@ the proposal of models. To begin, while introducing image recognition models in
 claiming to produce high performance image recognition architectures with built-in interpretability 
 properties. However, we note that these claims are sustained only with qualitative results in the 
 shape of attribution maps such as \gls{cam} or attention visualization. Taking into consideration 
-all of the points we have discussed so far in this section, we note that this exemplifies the 
+all the points we have discussed so far in this section, we note that this exemplifies the 
 challenges when discussing interpretability. On one hand, visually assessing the quality of 
 explanation maps implies the alignment with human reasoning towards describing what is important 
 within an image. Conversely, attribution maps are often shown mostly for groundtruth classes, not 
