@@ -42,7 +42,7 @@ intersecting the complementary dimensions of computer vision study.\\
 progress it has seen in the last decade. In particular, with Convolutional Neural Networks (CNNs); a 
 breakthrough on image recognition occurred. Efficient computation of this 
 operation enabled its usage on larger collections of data, allowing computer vision models to 
-improve their capabilities. Moreover, these models have benefitted from constant development, in 
+improve their capabilities. Furthermore, these models have benefitted from constant development, in 
 turn allowing to perform more complex tasks over time. On one hand, this has led to the creation 
 of technologies robust enough to build autonomous vehicles. In the other hand, complex tasks such  
 as medical diagnosis are receiving AI tools to facilitate their performance. More recently, a 
@@ -76,17 +76,31 @@ computer vision models, providing such interpretations for a model is challengin
 we observe that most AI models nowadays contain parameters often counted in millions if not 
 billions. Additionally, the computation of the sequence of operations requiring these parameters 
 to produce an output is also complex in the sense that a forward pass often requires $10^9$ 
-operations. On a more active manner, \emph{Transparency} can be attained by the introduction of 
-modifications to a model or its training procedure \autocite{zhang2021survey}. Several works 
-achieve this with the introduction of small decision trees to summarize the forward pass of a 
-model; as well as with the addition of regularization terms during training encouraging elements 
-of the model to represent semantic concepts.\\
+operations \autocite{openai_compute}. On a more active manner, \emph{Transparency} can be attained 
+by the introduction of modifications to a model or its training procedure 
+\autocite{zhang2021survey}. Several works achieve this with the introduction of small decision 
+trees to summarize the forward pass of a model; as well as with the addition of regularization terms 
+during training encouraging elements of the model to represent semantic concepts.\\
 
 %Moreover, achieving this kind of interpretability is 
 %done via the introduction of small modifications on top of the model or its training process. 
 
 
-\noindent Regarding post-hoc interpretability, 
+\noindent Regarding post-hoc interpretability, Lipton suggests to leverage upon the complex 
+structure of models and consequently provide explanations utilizing the already existing parameters 
+within the network. This approach in turn allows for a large variance in methodologies since 
+information can be extracted in a plethora of different manners in current CNNs and transformers. 
+Moreover, this variance of explanations can be observed in the nature of the explanation itself: 
+post-hoc interpretations are often presented via text as captions, and in images as in 
+saliency maps, to name a few. Nevertheless, it is important to highlight that since explanations 
+are computed to highlight relevant information describing the inference process of a model, they 
+might not be aligned to what a human would consider following the same questioning. For instance, 
+an individual might identify the whiskers and ears of a cat as its defining characteristic; but 
+a model can conversely highlight the snoot or eyes instead. On top of this, we note that post-hoc 
+interpretations can be obtained for any class a model considers; be it the correct one pertaining 
+to an object of interest or one completely unrelated. Still, on practice researchers tend to focus 
+on the first case mentioned, while we note that instances where a model fails to provide a correct 
+prediction should the ones where interest should be focused on.\\
 
 
 \paragraph{These objectives}
