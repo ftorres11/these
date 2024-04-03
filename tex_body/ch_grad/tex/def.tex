@@ -42,30 +42,43 @@ activations and therefore the quality of saliency maps obtained by CAM-based met
 similar to that of SmoothGrad \autocite{smilkov2017smoothgrad}, but without the need for several 
 forward passes at inference.
 
-In particular, given an input image $x$, we perform a forward pass through $f$ and compute the 
-logit vectors $y_i = f(x_i, \theta)$ and the classification loss $L_C(X, \theta, T)$~\eq{class}. 
-We then obtain the standard gradients $\delta x_i = \ipder{L_C}{x_i}$ and the guided gradients 
-$\delta_G x_i = \ipder{_G L_C}{x_i}$ with respect to the input images $x_i$ by two separate 
-backward passes. Since the whole process is differentiable (\wrt $\theta$) at training, we stop 
-the gradient computation of the latter, so that it only serves as a ``teacher''. We define 
+\noindent In particular, given an input image $x$, we perform a forward pass through $f$ and 
+compute the logit vectors $y_i = f(x_i, \theta)$ and the classification loss $L_C(X, \theta, T)$
+~\eq{class}. We then obtain the standard gradients $\delta x_i = \ipder{L_C}{x_i}$ and the guided 
+gradients $\delta_G x_i = \ipder{_G L_C}{x_i}$ with respect to the input images $x_i$ by two 
+separate backward passes. Since the whole process is differentiable (\wrt $\theta$) at training, 
+we stop the gradient computation of the latter, so that it only serves as a ``teacher''. We define 
 the \emph{regularization loss} 
 
 \begin{equation}
 	L_R(X, \theta, T) = \frac{1}{n} \sum_{i=1}^n E(\delta x_i, \delta_G x_i),
 \label{eq:reg}
 \end{equation}
-where $E$ is an error function between the two gradient images, considered below.
+where $E$ is an error function between the two gradient images, considered below.\\
 
-Finally, the total loss is defined as
+\noindent Finally, the total loss is defined as
 \begin{equation}
 	L(x, \theta, t) = L_C(x, \theta, t) + \lambda L_R(x, \theta, t),
 \label{eq:total}
 \end{equation}
+where $\lambda$ is a hyperparameter determining the regularization coefficient. 
+$\lambda$ should be large enough to smooth the gradient without decreasing the classification 
+accuracy or hurting the training process. 
+Updates of the network parameters $\theta$ are now based on the gradient $\ipder{L}{\theta}$ 
+\wrt the total loss, using any optimizer. At inference, one may use any interpretability method 
+to obtain a saliency map at any layer.
 
+\paragraph{Algorithm}
+Our method is summarized in Algorithm \ref{alg:grad} %, where \textsc{detach} stops gradient computation, 
+and illustrated in \ref{fig:grad_method}.It is interesting to note that the entire computational 
+graph depicted in \ref{fig:grad_method} involves one forward and two backward passes. This graph is 
+then differentiated again to compute $\ipder{L}{\theta}$, which involves one more forward and 
+backward pass, since the guided backpropagation branch is excluded. Thus, each training iteration 
+requires five passes through $f$ instead of two in a standard training.
 
 %------------------------------------------------------------------------------
 
-\begin{algorithm}[t]    
+\begin{algorithm}[H]    
 	\SetFuncSty{textsc}
 	\SetDataSty{emph}
 	\newcommand{\commentsty}[1]{{\color{DarkGreen}#1}}
@@ -84,8 +97,8 @@ Finally, the total loss is defined as
 	 	$\delta_G x_i \gets \ipder{_G L_C}{x_i}$ \Comment*[f]{guided grad} \\
         $\mbox{\Th{Detach}}(\delta_G x_i)$ \Comment*[f]{detach from graph} \\
 	  }
-   $L_R \gets \frac{1}{n} \sum_{i=1}^n E(\delta x_i, \delta_G x_i) $ \Comment*[f]{reg. loss \eq{reg}}
- $L \gets L_C + \lambda L_R$
+   $L_R \gets \frac{1}{n} \sum_{i=1}^n E(\delta x_i, \delta_G x_i) $ \Comment*[f]{reg. loss \eq{reg}}\\
+   $L \gets L_C + \lambda L_R$
  \Comment*[f]{total loss ~\eq{total}} \\
 
 \caption{Interpretable gradient loss}
@@ -93,26 +106,6 @@ Finally, the total loss is defined as
 \end{algorithm}
 
 %------------------------------------------------------------------------------
-
-where $\lambda$ is a hyperparameter determining the regularization coefficient. 
-$\lambda$ should be large enough to smooth the gradient without decreasing the classification 
-accuracy or hurting the training process. 
-Updates of the network parameters $\theta$ are now based on the gradient $\ipder{L}{\theta}$ 
-\wrt the total loss, using any optimizer. At inference, one may use any interpretability method 
-to obtain a saliency map at any layer.
-
-\paragraph{Algorithm}
-Our method is summarized in Algorithm \ref{alg:grad} %, where \textsc{detach} stops gradient computation, 
-and illustrated in \ref{fig:grad_method}.It is interesting to note that the entire computational 
-graph depicted in \ref{fig:grad_method} involves one forward and two backward passes. This graph is 
-then differentiated again to compute $\ipder{L}{\theta}$, which involves one more forward and 
-backward pass, since the guided backpropagation branch is excluded. Thus, each training iteration 
-requires five passes through $f$ instead of two in a standard training.
-
- %This amounts to $2.5\times$ computation overhead.
-
-%\green{is it 2.5 times in space too ???}
-
 \paragraph{Error function}
 
 Given two gradient images $\delta, \delta'$ consisting of $p$ pixels each, we consider the 

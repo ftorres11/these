@@ -15,6 +15,8 @@ information could be analyzed and processed computationally. The emergence of cl
 learning models, and their application in the 1980s, marked a shift towards more sophisticated 
 image recognition methodologies.\\
 
+%--------------------------------------------------------------------------------------------------
+\subsection{Traditional Image Recognition models}
 \noindent Traditional image recognition approaches based on traditional machine learning 
 algorithms are a two-step process. The first step involves the extraction of features from the 
 data, and the last step lies in the training of a classifier. Examples of this 
@@ -31,6 +33,7 @@ image is recognized by the frequency of which certain words are used to describe
 Finally, HOG follows a simpler approach, where image gradient information is organized in histograms 
 describing the orientation of image components. \\ 
 
+%--------------------------------------------------------------------------------------------------
 \noindent Once image descriptors are extracted, classifiers are trained using algorithms such as 
 \gls{svm} \autocite{cortes1995support}, Random Forests \autocite{ho1995random} and \gls{knn}
 (\cite{cover1967nearest}, \cite{fix1989discriminatory}). \glspl{svm} are classifiers that operate 
@@ -41,14 +44,12 @@ where data is transformed to another space where its separation more straightfor
 Complementary to SVMs, Random Forest Trees is a methodology that constructs a plethora of decision 
 trees, where each tree uses a random subset of the training data, and each node uses a random 
 subset of features to make a decision. This randomness ensures diversity among trees, providing a 
-degree of robustness towards overfitting.
+degree of robustness towards overfitting. On a much simpler note, \gls{knn} operates based on the 
+assumption of data being contained in $k$ different categories. The classification method involves 
+assigning one category to a data point that is the closest in feature space to a category centroid, 
+obtained through K-Means \autocite{macqueen1967some}.\\
 
-On a much simpler note, \gls{knn} operates based on the assumption of data being contained in 
-$k$ different categories. The classification method involves assigning one category to a data 
-point that is the closest in feature space to a category centroid, obtained through K-Means 
-\autocite{macqueen1967some}.\\
-
-%Ultimately it was with inspiration on studies on neuroscience \autocite{hubel1959receptive} that the 
+%--------------------------------------------------------------------------------------------------
 \noindent Although many of the early image recognition models were based on traditional machine 
 and statistic methods, neuroscience research still inspired scholars to propose alternative 
 approaches. Moreover, with studies on the visual cortex regarding receptive fields 
@@ -56,21 +57,32 @@ approaches. Moreover, with studies on the visual cortex regarding receptive fiel
 Neocognitron \autocite{fukushima1975cognitron} sparked the inception of  \gls{nn}, by introducing 
 kernel operations, hierarchical feature aggregation and non-linearities. These contributions stand 
 out as they are key components in most recent image recognition models.
-Still, the Neocognitron's hierarchical properties and aggregation didn't really achieve 
+Still, the Neocognitron hierarchical properties and aggregation did not really achieve 
 a great deal of momentum on early days; around this time, other image recognition models were being 
 used yielding better results, examples of this can be seen with the amount of traditional machine 
 learning based methods that dominated this task around that time. Nevertheless, getting close to the 
 dawn of the year 2000, Yann LeCun proposed LeNet to perform digit recognition 
 \autocite{lecun1998gradient} the first modern \gls{cnn}.\\
 
+%--------------------------------------------------------------------------------------------------
 \subsection{Convolutional Neural Networks}
 \label{rel:sub_cnn}
 Starting with LeNet, the convolution took prominence as the fundamental building block 
-of most current image recognition models. On itself, a convolutional layer operates by the 
-interaction of a kernel with a set of features. This interaction depends on 
-direct correlation with the kernel size, mediated by its width and height, denoting a receptive field,
-which is ultimately, mostly local. \\
+of most current image recognition models. In the domain of computer vision, the convolution is an 
+interaction between a feature map $f$, and a kernel $g$, as shown in  
+\autoref{fig:conv_local}. In particular, the convolutional kernel $g$ is mediated by its area 
+determined by width and height, influencing directly its receptive field. The 
+receptive field answers to the area within the input space covered by the convolutional kernel. 
+Furthermore, during convolution, the kernel slides over the feature map, computing the dot product 
+between the kernel $g$ over an area in the input map centered around each pixel. Consequently, in 
+deep layers of a \gls{cnn} this computation encompasses larger regions of the input image, 
+allowing the model to capture long range dependencies and enhance its capabilities. Additionally, 
+convolutions present similarities to SIFT, such as their ability to construct representations 
+invariant to image variations and utilize receptive fields for feature extraction.
 
+%--------------------------------------------------------------------------------------------------
+\input{fig/rel/tex/conv_desc.tex}
+%--------------------------------------------------------------------------------------------------
 \noindent On top of convolutions, LeNet led to the introduction of more components of \glspl{cnn}: 
 pooling operations and non-linearities. Pooling operations are used to reduce the spatial 
 resolution of feature maps, which in turn aids convolutions in capturing features from long 
@@ -82,37 +94,41 @@ operations also contribute with stability: they maintain values within feature m
 in ranges in which the network can operate with. %cite this?
 Still, the key contribution leading to the success of LeNet was not only the usage of 
 convolutions, pooling and non-linearities; but its training process, that guided by gradient descent 
-to optimize ultimately enabled \glspl{cnn} to outperform traditional computer vision methods for 
-document recognition. 
-
+to optimize, ultimately enabled \glspl{cnn} to outperform traditional computer vision methods for 
+document recognition. \\
+%--------------------------------------------------------------------------------------------------
 \input{fig/rel/tex/cnn_timeline.tex}
-
+%--------------------------------------------------------------------------------------------------
 \noindent With the advent of the 2010s and the initiation of the \gls{ilsvrc} \autocite{ILSVRC15} 
 a proper environment for further development of models was established. Unlike prior datasets, 
 ImageNet was composed of images that presented more complexity than earlier datasets. Instead 
 of catalogue like compositions; elements in this dataset closely resemble those found 
 in the wild, featuring multiple classes or instances of a class within a single image.\\
-Upon its release, several traditional approaches were trained and evaluated on this collection, 
-achieving a low performance. However, \glspl{cnn} regained prominence with the introduction of
-AlexNet \autocite{krizhevsky2012imagenet}. Inspired by LeNet, Krizhevsky designed a 
+
+%--------------------------------------------------------------------------------------------------
+\noindent Upon its release, several traditional approaches were trained and evaluated on this 
+collection, achieving a low performance. However, \glspl{cnn} regained prominence with the 
+introduction of AlexNet \autocite{krizhevsky2012imagenet}. Inspired by LeNet, Krizhevsky designed a 
 \gls{cnn} that incorporated additional convolutions and, more importantly, facilitated faster 
 computation through effective communication with the \gls{gpu}.
-
 AlexNet gained notoriety by emerging as the winner of the 2012 \gls{ilsvrc}, achieving a top-1 
-classification accuracy difference of nearly 10\% compared to previous year's winners 
+classification accuracy difference of nearly 10\% compared to previous year winners 
 (\cite{berg2010large}, \cite{sanchez2011high}). This substantial improvement in recognition 
 capabilities led to a paradigm shift in various machine learning tasks, laying the foundation 
 for the deep learning revolution.\\
 
+%--------------------------------------------------------------------------------------------------
 \noindent Following this success, several \glspl{cnn} were introduced in the decade of 2010, where 
 a considerable amount of models where introduced. Nevertheless, we can establish a timeline with the 
 milestone models that influenced the most this development, as seen in \autoref{fig:cnn_timeline}.
-In the year following AlexNet's publication, an updated form of mapping feature maps into 
+In the year following AlexNet publication, an updated form of mapping feature maps into 
 classification embeddings was proposed  in the shape of \gls{gap} \autocite{lin2013network}. 
-This pooling protocol improves classification as it enforces correspondences between feature maps 
-and categories; conversely it doesn't require any optimization whatsoever, negating effects of 
-overfitting.\\ 
+This pooling protocol generates a representation taking the average value of each feature map 
+channel, as shown in \autoref{fig:rel_gap}. Furthermore, \gap reduces dimensionality and regularizes 
+the model using global aggregation; in turn improving classification performance.\\ 
+\input{fig/rel/tex/gap_schema.tex}
 
+%--------------------------------------------------------------------------------------------------
 \noindent Similar to 2012 and 2013, 2015 saw the proposal of two milestone models: the Inception 
 architecture \autocite{szegedy2015going} and VGG models \autocite{simonyan2015deep}. On one hand, 
 the Inception architecture is designed to learn features in different scale. To achieve this, the 
@@ -124,8 +140,9 @@ network. Led by the desire to increase depth of \glspl{cnn}, VGG and Inception a
 models deeper; nevertheless this was not possible because of the vanishing gradient issue. As an 
 answer to this, the ResNet architecture was proposed \autocite{he2016deep}.\\
 
+%--------------------------------------------------------------------------------------------------
 \input{fig/rel/tex/resnet_overall.tex}
-
+%--------------------------------------------------------------------------------------------------
 %\input{fig/rel/tex/resnet_bbone.tex}
 \noindent The ResNet architecture is designed with the idea of residual connections as its 
 building block. On itself, a residual block generates outputs via the summation of its input and a 
@@ -136,6 +153,7 @@ of the most important \gls{cnn} based object detectors are designed using ResNet
 (\cite{ren2015faster}, \cite{lin2017focal}, \cite{he2017mask}). A thorough representation of this 
 architecture is presented in \autoref{fig:resnet}. \\
 
+%--------------------------------------------------------------------------------------------------
 \noindent Similarly to the residual connections introduced in ResNet, DenseNet 
 \autocite{huang2017densely} was proposed with the idea of connecting all layers operating within 
 matching feature-map sizes. In particular, this architecture enables the training of very deep 
@@ -146,29 +164,33 @@ design, introducing of modifications such as \gls{nlb}\autocite{wang2018non} or 
 Blocks  \autocite{hu2018squeeze} can be  rather challenging. In contrast, in architectures such as 
 ResNet, this procedure is rather simple.\\
 
+%--------------------------------------------------------------------------------------------------
 \noindent Moreover, it is arguable that convolutional block design can be improved if a model 
 learns on itself the best configuration possible for a specific task. This is idea is embodied by 
 the \gls{nasnet} \autocite{zoph2018learning} where the model learns a fundamental building block on a 
 small dataset, and it is then transferred into a larger one. Some of the biggest drawbacks for this 
 model however, are its computational load and the dependency on search space selection towards 
 optimization. One last milestone attempt at improved architecture design was proposed in 2019 with 
-EfficientNet \autocite{tan2019efficientnet}. In sharp contrast to its contemporaries' approaches at 
+EfficientNet \autocite{tan2019efficientnet}. In sharp contrast to its contemporaries approaches at 
 scaling depth, width and resolution; EfficientNet proposes a \emph{compound coefficient} to 
 perform this process.\\
 
-\noindent Alongside these models, several improvements have been introduced to aid the optimization 
-process. In particular, some of the earliest approaches were trained using \gls{sgd} 
-\autocite{bottou2010large}; while Adam \autocite{kingma2014adam} and Lamb \autocite{you2019large} 
-optimizers have taken prominence in later years. Additionally, data augmentation strategies have 
-evolved too; researchers have proposed methodologies to enhance data variability by the 
-incorporation of characteristics of different classes in a particular one within an image 
-(\cite{zhang2017mixup}, \cite{yun2019cutmix}). Still, some of the aforementioned architectures 
-were not proposed with such contributions, and as such it is possible to suggest that an unfair 
-comparison is performed, as well as an incomplete study on said model's capabilities. One such 
-answer to this issue was proposed for ResNet in 2021 \autocite{wightman2021resnet}. In 
-ResNet strikes back, this backbone was retrained under updated training regimes, achieving a 
-high classification performance, rivaling that of transformers.\\
-
+%--------------------------------------------------------------------------------------------------
+\noindent Still, some of the aforementioned architectures were not proposed with such 
+contributions, and as such it is possible to suggest that an unfair comparison is performed, 
+as well as an incomplete study on said model capabilities. One such answer to this issue was 
+proposed for ResNet in 2021 \autocite{wightman2021resnet}. In ResNet strikes back, this backbone 
+was retrained under updated training regimes, achieving a high classification performance, rivaling 
+that of transformers.\\
+%--------------------------------------------------------------------------------------------------
+%Alongside these models, several improvements have been introduced to aid the optimization 
+%process. In particular, some of the earliest approaches were trained using \gls{sgd} 
+%\autocite{bottou2010large}; while Adam \autocite{kingma2014adam} and Lamb \autocite{you2019large} 
+%optimizers have taken prominence in later years. Additionally, data augmentation strategies have 
+%evolved too; researchers have proposed methodologies to enhance data variability by the 
+%incorporation of characteristics of different classes in a particular one within an image 
+%(\cite{zhang2017mixup}, \cite{yun2019cutmix}). 
+%--------------------------------------------------------------------------------------------------
 \noindent Finally, with the advent of transformer based image recognition models in the early years of the 
 2020 decade, \glspl{cnn} started being outshone by these models; however, an architecture 
 incorporating the key principles of these models was presented, ConvNeXt \autocite{liu2022convnet}.
@@ -177,9 +199,7 @@ This family of models addressed some shortcomings of transformer models (mention
 architecture, enhancing its performance not only in image recognition, but also in segmentation and 
 detection. Still, having mentioned transformers, we dedicate the following subsection to their 
 description, their basic unit and some milestone models.
-
 %% ------------------------------------------------------------------------------------------------
-
 \subsection{Self-Attention Based Architectures}
 \label{rel:sub_att}
 One key point to remember is that Computer Vision is not isolated within Artificial 
@@ -191,40 +211,38 @@ initially proposed in 2017 with the article \emph{Attention is All You Need}
 NLP such as LSTMs and RNNs, particularly their struggles in capturing long range dependencies 
 and efficient training.\\
 
+%--------------------------------------------------------------------------------------------------
 \noindent Similarly to the impact AlexNet had on image recognition, transformers 
 revolutionized the landscape of NLP with their key component: \emph{Self-Attention}. This function 
-assigns weights to different input sequence, enabling focus on relevant information. 
+assigns weights to different input sequences, enabling focus on relevant information. 
 This is defined in the following manner:
-
 \begin{equation}
     \mbox{Attention}(Q, K, V) = \mbox{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V
     \label{eq:att}
 \end{equation}
-
 \noindent where $Q, K, V$ are embedding matrices that represent \emph{queries}, \emph{keys} and 
 \emph{values}, each with a dimension $d_k$. The softmax activation function is employed to 
 emphasize relevant information for each product between $Q$ and $V$. Conversely, the scaling 
 coefficient $\sqrt{d_k}$ uses the square root to prevent softmax from entering regions with small 
-gradients, particularly important as large values of $d_k$ push softmax into this outcome. 
-Conversely, for each token \emph{self-attention} is then defined as an average of all values 
-(rows of $V$), weighted by the attention (corresponding row of A).
-
+gradients, particularly important as large values of $d_k$ push sothis activation ftmax into this 
+outcome. Conversely, for each token \emph{self-attention} is then defined as an average of all 
+values (rows of $V$), weighted by the attention (corresponding row of A).
 \begin{equation}
 	\sa(X_\ell) \defn A V \in \real^{t_\ell \times d_\ell}.
 \label{eq:SA}
 \end{equation}
-
 This function can be further parallelized by broadcasting these embeddings into different 
 heads, where the dot products are ultimately easier to compute; this in turn is called \gls{mhsa}.
-
+%--------------------------------------------------------------------------------------------------
 An important observation is that self attention has no parameters whatsoever: this function is 
 utilized in blocks that ultimately form the encoder part of the transformer. One encoder block 
 comprises a residual operation where the input embedding is updated with the product of \gls{mhsa}, 
 normalized, and then this representation is further recombined with the residual operation atop of 
 a feed forward network. This is best explained in \autoref{fig:transf_block}.\\
 
+%--------------------------------------------------------------------------------------------------
 \input{fig/rel/tex/transf_block}
-
+%--------------------------------------------------------------------------------------------------
 \noindent Another pivotal characteristic setting transformers apart from previous approaches on NLP 
 and convolutions is its capability to process data in a global context. In sharp contrast to 
 convolutions discussed in \autoref{rel:sub_cnn}, the self-attention operation is not constrained by 
@@ -233,6 +251,7 @@ the number of embeddings that will represent the whole of data (\textit{i}.\text
 of different chunks a sentence is split into) and the aforementioned $d_k$, which represents the 
 dimensions to which the data is projected. \\
 
+%--------------------------------------------------------------------------------------------------
 \noindent Continuing on with transformers within the NLP domain, several additions 
 to this architecture have resulted in further improvements. One notable example is the inclusion of 
 the classification token ([\Th{CLS}]) as proposed in BERT \autocite{devlin2018bert}. The rationale 
@@ -243,6 +262,7 @@ self-attention function, this representation is expected to encapsulate the most
 information to describe the input data. As a consequence of this holistic representation of inputs, 
 the token is then used for classification purposes.\\
 
+%--------------------------------------------------------------------------------------------------
 \noindent The success of tranformers on \gls{nlp} tasks did not go unnoticed by the Computer Vision 
 community, and in late 2020, the first fully attention based architecture \gls{vit} was proposed.
 This architecture emerges as an adaptation of the transformer model for the realm of computer vision. 
@@ -250,8 +270,9 @@ The crucial contribution lies in treating the image as a sequence of patches, pr
 analogously to a sequence of tokens in a NLP application. \autoref{fig:rel_vit} provides an 
 overview of this approach.\\
 
+%--------------------------------------------------------------------------------------------------
 \input{fig/rel/tex/vit_struct.tex}
-
+%--------------------------------------------------------------------------------------------------
 \noindent In similar manner to prior breakthroughs like the effective convolution computation and the 
 emergence of transformers in \gls{nlp}, the introduction of \gls{vit} further revolutionized the 
 landscape on Computer Vision tasks. However, these methodologies exhibit specific characteristics 
@@ -264,10 +285,9 @@ convolutional counterparts. Interestingly, this is hypothesized to be primarily 
 scalability. In particular, it is observed that transformers are capable of removing inductive bias 
 which in turn is highly dominant in \glspl{cnn}; still, this makes these models prone to overfitting 
 in data collections sufficiently small where this bias still remains useful.\\
-
-
-In addition to ViT, several other transformer architectures have emerged, contributing to the 
-diversity and advancement of the field. One noteworthy example is PiT (Pooling in Transformer) 
+%--------------------------------------------------------------------------------------------------
+\noindent In addition to ViT, several other transformer architectures have emerged, contributing to 
+the diversity and advancement of the field. One noteworthy example is PiT (Pooling in Transformer) 
 \autocite{heo2021rethinking}, which re-introduces the concept pooling into transformers. To benefit 
 from the hierarchical structure that is found in \glspl{cnn}, this operation is included with 
 a modification for the pooling operation, where the image tokens are  pooled using depth-wise 
@@ -276,11 +296,12 @@ where this metric shows the spread and concentration of \emph{attention}; where 
 interaction is rather spread, and in PiT it is largely concentrated. Another significant 
 development is Swin Transformer \autocite{liu2021swin}, which conversely reimagines the 
 hierarchical structure of transformers. 
+
 Swin Transformer utilizes a shift-based windowing mechanism, allowing for efficient information 
 processing across different scales. This design promotes enhanced modeling capabilities and 
 facilitates the learning of intricate patterns in images.\\
-%Swin Transformer \autocite{liu2021swin}, PiT \autocite{heo2021rethinking}\\
 
+%--------------------------------------------------------------------------------------------------
 \noindent Indeed, since its proposal, \gls{vit} has dominated image recognition tasks. Still 
 contrary the behavior \glspl{cnn} present as excellent feature extractors, ViTs underperform in 
 areas such as image reconstruction and image reorganization. In particular, given the locality 
@@ -290,13 +311,12 @@ CNNs borrowing ideas from transformers as seen in \emph{ConvNeXt}; early stages 
 dedicated to image patch encodings are replaced with convolutional layers, inheriting these 
 characteristics for further downstream tasks. These models in turn are known as hybrid 
 architectures.
-
-
+%--------------------------------------------------------------------------------------------------
 \subsection{Hybrid Architectures}
 \label{rel:sub_hybrid}
 Following the locality properties of \glspl{cnn} and globality of \glspl{vit}; it is proved 
 that incorporating ideas from these architectures is feasible, generating a model that attends in 
-to both local information and scales well with training data. In particular, some of 
+to both local information and scales well with training data. In particular, some of the
 preliminary studies towards these combinations performed on ViT suggested modifications of the 
 architecture starting with the encoder. Starting with what is arguably the most basic \gls{cnn} 
 design, LeViT \autocite{graham2021levit} replaces the original patch encoding with feature 
@@ -304,8 +324,9 @@ extraction using ViT; as well as including a distillation head to lead the train
 These contributions ultimately helped LeViT to outperform ViT all the while not requiring large 
 scale image classification datasets to train as well as having a faster inference time.\\
 
+%--------------------------------------------------------------------------------------------------
 \noindent As a continuation of LeViT, PatchConvNet \autocite{touvron2021augmenting} was subsequently 
-proposed. Building upon LeViT's design, PatchConvNet further expands on the classifier by 
+proposed. Building upon the LeViT design, PatchConvNet further expands on the classifier by 
 replacing the original MLP head with \emph{Attention-Based Pooling}. Interestingly, this 
 pooling mechanism integrates a ([\Th{CLS}]) matrix; that in sharp comparison to the stand-alone 
 token, is able to capture class-specific information. PatchConvNet ultimately improves upon 
@@ -315,6 +336,7 @@ visualizing the aforementioned class-specific attention. Nevertheless, it is poi
 ablation studies that the key contribution behind this architecture is derived from the 
 convolutional stem, taken from LeViT.\\ 
 
+%--------------------------------------------------------------------------------------------------
 \noindent One key characteristic that \glspl{cnn} display is a certain degree of robustness 
 regarding the optimizer choice during the training stage. On the contrary, this phenomenon was 
 observed to be the opposite regarding \gls{vit}, the optimizer choice is crucial for these 
@@ -326,8 +348,9 @@ using a patchifier, versus using convolutions; where \emph{Optimizability}\footn
 process of deep models while varying their optimizers, data augmentation and performance drop 
 when scaling in size} is used to establish differences.\\
 
+%--------------------------------------------------------------------------------------------------
 \input{fig/rel/tex/conformer.tex}
-
+%--------------------------------------------------------------------------------------------------
 \noindent In addition of including convolution atop \glspl{vit}, researchers have sought to propose 
 ideas to combine the differences in processing between transformers and \glspl{cnn}. In an 
 approach similar to Siamese networks, it is possible to interchange information and update 

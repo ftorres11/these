@@ -1,5 +1,5 @@
 %--------------------------------------------------------------------------------------------------
-\section{Quantitative Results}
+\section{Quantitative Evaluation}
 \label{sec:ca_quant}
 
 Here we measure the effect of employing our \Ours approach to pool features \vs the baseline \gap 
@@ -12,17 +12,18 @@ reported in \autoref{tab:intrecon-all} for ImageNet and  \autoref{tab:pascal} fo
 methods and dataset, \Ours provides consistent improvements over \gap in terms of AD, AG, AI and I 
 metrics, while performing lower on D. \\
 
-Deletion has raised concerns in previous works (\autoref{ch:opticam}, \cite{chefer2021transformer}). 
-Indeed, it gradually replaces pixels by black, unlike insertion which starts from a blurred image. 
-This poses the problem of \emph{out-of-distribution} (OOD) data (\cite{gomez2022metrics},
-\cite{hase2021outofdistribution}, \cite{qiu2021resisting}), possibly introducing bias related to 
-the shape of black regions \autocite{rong2022consistent}. Moreover, non-spread saliency maps tend to 
-perform better (as seen on \autoref{ch:opticam}), which is likely the reason for lower performance. 
+\noindent Deletion has raised concerns in previous works (\autoref{ch:opticam}, 
+\cite{chefer2021transformer}). Indeed, it gradually replaces pixels by black, unlike insertion which 
+starts from a blurred image. This poses the problem of \emph{out-of-distribution} (OOD) data 
+(\cite{gomez2022metrics}, \cite{hase2021outofdistribution}, \cite{qiu2021resisting}), possibly 
+introducing bias related to the shape of black regions \autocite{rong2022consistent}. Moreover, 
+non-spread saliency maps tend to perform better (as seen on \autoref{ch:opticam}), which is likely 
+the reason for lower performance. 
 
 \input{tab/castream/tex/tab_joint_pascalcub.tex}
 
 \noindent Results on CUB in \autoref{tab:pascal} show that our \Ours consistently provides 
-improvements when the model is finetuned on a smaller fine-grained dataset.
+improvements when the model is finetuned on a smaller fine-grained dataset.\\
 
 \noindent Regarding Pascal VOC, the results for Score-CAM are similar to the ones on ImageNet and 
 CUB, with consistent improvements on all metrics but Deletion. 
@@ -30,10 +31,10 @@ However, Grad-CAM and Grad-CAM++ only provide improvements on Average Gain and A
 Average Drop, Insertion and Deletion are very similar.
 In fact, Pascal VOC is a multi-class dataset and  our \Ours is class agnostic. Thus, the 
 attention-based pooling is the same for different class for a given image, which reduces the 
-benefit of our \Ours.
+benefit of our \Ours.\\
 
-It is also interesting to observe the performance of Score-CAM, as it computes channel weights 
-$\alpha_k^c$ in~\eq{sal} without using gradients. 
+\noindent It is also interesting to observe the performance of Score-CAM, as it computes channel 
+weights $\alpha_k^c$ in~\eq{sal} without using gradients. 
 In gradient-based methods, channel weights are modified by \Ours due to modified backward gradient 
 flow to features through cross attention blocks rather than \gap.
 In Score-CAM however, channel weights are only modified in the forward class probabilities 
@@ -46,14 +47,13 @@ reported in \autoref{tab:intrecon-acc}.
 
 \input{tab/castream/tex/tab_interp_accmain.tex}
 
-By adding our \Ours to the network, classification remains on par with the baseline. Importantly, 
-the network including the classifier remains frozen and the features used for the global image 
-representation remain fixed, meaning that any change in accuracy is due to the attention-based 
-pooling mechanism. 
+\noindent By adding our \Ours to the network, classification remains on par with the baseline. 
+Importantly, the network including the classifier remains frozen and the features used for the 
+global image representation remain fixed, meaning that any change in accuracy is due to the 
+attention-based pooling mechanism.\\
 
-
-We further report the number of GFLOPs for one forward pass and the parameters count of both 
-methods.
+\noindent We further report the number of GFLOPs for one forward pass and the parameters count of 
+both methods.
 Our \Ours has little computation cost and the parameter overhead depends on the embedding dimension 
 because of projection $W_\ell$ in~\eq{qk-layer} and is small in general, except for ResNet-50. 
 Thus, with small overhead in resources, \Ours achieves superior explanations of the classifier 
@@ -86,6 +86,8 @@ having less parameters. We also note that most of the computation takes place in
 stages, where the channel dimension is the largest. To keep our design simple, we choose the 
 vanilla solution without projections~\eq{CA} by default.
 
+\input{tab/castream/tex/tab_ca_design.tex}
+
 \paragraph{\Ours placement}
 \label{ab:placement}
 
@@ -93,9 +95,7 @@ To validate the design of \Ours, we measure the effect of its depth on its perfo
 baseline \gap in terms of both classification accuracy / number of parameters and classification 
 metrics for interpretability. In particular, we place the stream in parallel to the network $f$, 
 starting at stage $\ell$ and running through stage $L$, the last stage of $f$, where $0 \le \ell 
-\le L$. Results are reported in \autoref{tab:intrecog-resnet}.
-
-\input{tab/castream/tex/tab_ca_design.tex}
+\le L$. Results are reported in \autoref{tab:intrecog-resnet}.\\
 
 \noindent From the interpretability metrics as well as accuracy, we observe that stream 
 configurations that allow for iterative interaction with the network features obtain the best 
@@ -107,8 +107,6 @@ performance is stable, we choose to start the stream in the first stage ($S_0-S_
 \input{tab/castream/tex/tab_ab_incremental.tex}
 
 \paragraph{Class-specific CLS}
-
-%\textcolor{green}{
 As discussed in \autoref{sec:ca_defn}, the formulation of single-query cross attention as a 
 CAM-based saliency map ~\eq{att} is class agnostic (single channel weights $\alpha_k$), whereas the 
 original CAM formulation ~\eq{sal} is class specific (channel weights $\alpha_k^c$ for given class 

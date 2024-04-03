@@ -1,13 +1,11 @@
 %--------------------------------------------------------------------------------------------------
-\section{Experiments}
+\section{Experimental Set-Up}
 \label{sec:castream_exp}
 We evaluate the interpretability and recognition capabilities of our approach. In particular, we 
 generate explanations following current state-of-the art post-hoc interpretability methods derived 
 from CAM \autocite{zhou2016learning}. We compare the properties of the backbone network $f$ with 
 and without our \Ours, where $f$ is pretrained and fixed.
 
-\subsection{Experimental setup}
-\label{subsec:castream_setup}
 \paragraph{Training}
 We train and evaluate our models on the ImageNet ILSVRC-2012 dataset \autocite{ILSVRC15}, 
 on the training and validation splits respectively. Thus, we experiment with ResNet-based 
@@ -38,10 +36,10 @@ We employ existing post-hoc interpretability methods to generate saliency maps w
 \Ours and compare interpretability metrics as well as classification accuracy. Regarding 
 interpretability methods, we use Grad-CAM \autocite{selvaraju2017grad}, 
 Grad-CAM++ \autocite{chattopadhay2018grad} and ScoreCAM \autocite{wang2020score}. We note that the 
-evaluation is performed on the entire validation set, unlike the previous approaches.
+evaluation is performed on the entire validation set, unlike the previous approaches.\\
 
-Following Opti-CAM (Chapter \ref{ch:opticam}), we use a number of classification metrics for 
-interpretability. In particular, we consider the changes in predictive power measured by 
+\noindent Following Opti-CAM (Chapter \ref{ch:opticam}), we use a number of classification metrics 
+for interpretability. In particular, we consider the changes in predictive power measured by 
 \emph{average drop} (AD) \autocite{chattopadhay2018grad} and \emph{average gain} (AG) 
 \autoref{sec:av_gain}, the proportion of better explanations measured by \emph{average increase} (AI) 
 \autocite{chattopadhay2018grad} and the impact of different extent of masking measured by 

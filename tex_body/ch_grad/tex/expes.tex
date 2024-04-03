@@ -3,8 +3,6 @@
 This section presents the experimental settings, our evaluation metrics and results.
 %Finally, we present qualitative and quantitative results and an ablation study.\\
 
-
-
 \subsection{Experimental Set-up}
 In the following sections, we evaluate recognition properties and interpretability capabilities of 
 our approach. Specifically, we generate explanations following popular attribution methods derived 
@@ -12,10 +10,10 @@ from CAM \autocite{zhou2016learning} from the \textbf{pytorch-grad-cam} library 
 Gildenblat\footnote{https://github.com/jacobgil/pytorch-grad-cam}.
 
 \paragraph{Dataset}
-We train and evaluate our models on CIFAR-100 \cite{krizhevsky2009learning}. This dataset contains 
-60.000 images of 100 categories, split in 50.000 for training and 10.000 for testing. Each image 
-has a resolution of $32\times32$ pixels. This dataset is chosen because of its ease of usage and 
-prototyping properties. 
+We train and evaluate our models on CIFAR-100 \autocite{krizhevsky2009learning}. This dataset 
+contains 60,000 images of 100 categories, split in 50,000 for training and 10,000 for testing. Each 
+image has a resolution of $32\times32$ pixels. This dataset is chosen because of its ease of usage 
+and prototyping properties. 
 
 \paragraph{Settings}
 To obtain competitive performance and ensure the replicability of our method, we follow the 

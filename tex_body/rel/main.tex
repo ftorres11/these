@@ -3,16 +3,16 @@
 \chaptertoc{}
 \section{Introduction}
 \noindent Understanding the processes behind visual recognition has been a prominent research 
-question throughout human history. From the preliminary questionings by greek  philosphers 
+question throughout human history. From the preliminary questionings by greek philosophers 
 (\cite{finger2001origins}) to physics based studies like those by Newton and Locke 
 (\cite{swenson2010optics}), and more recently with theories like \textit{Unconscious Inference} 
 (\cite{gullstrand1909hemholtz}) and \textit{Gestalt} (\cite{wagemans2012century}), many proposals 
-to understand and describe this process have been brought forth. Moreover, vision recogniton is not 
+to understand and describe this process have been brought forth. Moreover, vision recognition is not 
 only studied in fields like physics, medicine and psychology; 
-with the advent of computer science, computational approaches and theories started emerging 
+with advancements on computer science, computational approaches and theories started emerging 
 regarding this domain. One such study that proved seminal in this domain is that carried out by 
 David Marr (\cite{poggio1981marr}, \cite{marr2010vision}). Most notably, Marr addressed vision on 
-three levels: comptational, algorithmic and implementation. In particular, upon the computational 
+three levels: computational, algorithmic and implementation. In particular, upon the computational 
 level, Marr pondered around issues that the visual system answers and their explanation; this 
 ultimately led to the formulation of fundamental tasks within computer vision such as object 
 recognition and reconstruction.\\
@@ -27,19 +27,19 @@ understanding their functioning and providing explanations for their inner worki
 \noindent Image recognition models capabilities have improved over time with constant development, 
 closely aligned with the increase in computing power. This evolution has lead to steady 
 advancements in both performance and complexity. On its early approaches, image recognition models 
-relied on handcrafted feature extraction methods  in conjuction with traditional machine learning 
-algorithms. However, this reliance on these features ultimately limits these methodologies' 
+relied on handcrafted feature extraction methods  in conjunction with traditional machine learning 
+algorithms. However, this reliance on these features ultimately limits these methodologies 
 capabilities to capture intricate visual patterns.
 One particular approach that had a strong initial impact and high performance was \gls{hog} 
-\autocite{dalal2005histograms}. In this methodology, gradient information was used to train a 
-\gls{svm} to perform pedestrian recognition. While achieving high performance in the dataset it was 
-designed, \gls{hog} ultimatately failed in data collections where complexity was higher 
+\autocite{dalal2005histograms}. In this methodology, gradient information is used to train a 
+\gls{svm} to perform pedestrian recognition. While achieving high performance in the dataset it is 
+designed, \gls{hog} ultimately fails in data collections where complexity is higher 
 \autocite{5975165}.\\
 
 \noindent It is not only with the increase of computational power that computer vision has improved 
-over time. With the developement, popularization and spread of the internet; large collections of 
+over time. With the development, popularization and spread of the internet; large collections of 
 data are formed. These aggregations can be extremely specific for a given end, or quite general 
-representing the common interests of its users. Over time, these compilations have continued to 
+representing the common interests of its users. These compilations have continued to 
 grow both in volume and variety; still, several curated collections are introduced by researchers 
 to experiment and control the development of models such as MNIST (\cite{lecun1998gradient}), 
 BSDS (\cite{MartinFTM01}), Pascal VOC (\cite{pascal-voc-2012}) and most notably, 
@@ -49,50 +49,52 @@ ImageNet (\cite{ILSVRC15}) and MS-COCO (\cite{lin2014microsoft}).\\
 of deep learning, a paradigm shift in this field occurred. This transition led to the elimination 
 of the need for handcrafted feature extraction; instead, deep learning allowed \glspl{cnn} to act 
 as both feature extractor and classifiers on themselves. Moreover, based on the aggregation of 
-convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchichal 
+convolutions as their fundamental units, a \gls{cnn} is able to learn hierarchical 
 representations of data, extracting intricate features directly. 
 Consequently, this shift resulted in improvements in accuracy and performance in various image 
-recognition tasks. \\
+recognition tasks.\\
 
 \noindent However, it was observed that performance of \glspl{cnn} was achieving a plateau, and 
 the introduction of novel architectures stagnated over time. Additionally, these models encountered 
 challenges capturing long range dependencies, in turn  limiting their capacity to construct global 
 representations of data and affecting their generalization capabilities. Transformers however, have 
 shown remarkable improvements not only in the image domain but also in language related tasks, 
-revolutionizing these fields and paving the groundwork for future research and developments.\\
+revolutionizing these fields and paving the groundwork for future research and developments. Nevertheless,
+one particular CNN that has stood the test of time is ResNet \autocite{he2016deep}, a model that 
+incorporates residual connections between layers, allowing training in complex tasks datasets\\
 
 \noindent In \autoref{rel:sec_imrecon} we explore some of the most important approaches based 
 on machine learning designed towards image recognition. In particular, in \autoref{rel:sub_cnn}, we 
 introduce the basis of deep learning and \glspl{cnn}. Moving on, in \autoref{rel:sub_att} we make 
 mention of the Transformer architecture, its building block and how it has reshaped the landscape 
-of image recognition. Finally in \autoref{rel:sub_hybrid} we display approaches that make use of 
+of image recognition. Finally, in \autoref{rel:sub_hybrid} we display approaches that make use of 
 combinations of the last two forementioned approaches.\\
 
 
 \noindent With the adoption of deep image recognition into society; understanding the 
-innerworkings of these models has become a top priority. We shine light into some fields where 
+inner workings of these models has become a top priority. We shine light into some fields where 
 this is the case:
 \begin{itemize}
-    \item \textbf{Facial Recognition} Facial recognition is a fine grained classification task, 
+    \item \textbf{Facial Recognition} This  is a fine-grained classification task, 
     that can be mostly associated with identification and re-identification of individuals. 
     In this aspect, understanding model predictions is associated with accountability, ethical 
     considerations and safety.
     (\cite{selinger2020inconsentability}, \cite{andrejevic2020facial}).
     \item \textbf{Automated Medical Diagnosis} In medical imaging, the education 
     required to read and provide analysis, often requires experience based 
-    on personal expertise \autocite{nakashima2013visual}. Examples of automated diagnosis encompas 
+    on personal expertise \autocite{nakashima2013visual}. Examples of automated diagnosis encompass 
     melanoma detection, bone age assessment and most recently, COVID-19 diagnosis 
     (\cite{yu2016automated}, \cite{BoNet2019hand}, \cite{huang2021artificial}). The medical domain 
     is of special care as human lives are directly at stake, therefore understanding predictions is 
     highly desired.
     \item \textbf{Self-driving Vehicles} Over the past decade, advancements in this field have lead to 
-    discussions regarding the impact of the adoption of these kind of vehicles within smart cities  
-    (\cite{duarte2018impact}, \cite{millard2018pedestrians}). Nevertheless their 
-    navigation is not completely perfect and it is also possible to attack it, leading to possible 
+    discussions regarding the impact of the adoption of these sorts of  vehicles within smart cities  
+    (\cite{duarte2018impact}, \cite{millard2018pedestrians}). Nevertheless, their 
+    navigation is not completely perfect, and it is also possible to attack it, leading to possible 
     traffic accidents \autocite{dixit2016autonomous}; in this case, accountability is then again 
     taken into consideration.
 \end{itemize}
-
+ 
 \noindent We observe that interpretability needs in these fields and real world applications follows 
 Lipton's discussion on the \textit{Desiderata of Interpretability Research} 
 \autocite{mythos_interp}. In this aspect, we expect that the explanations that any given 
@@ -102,7 +104,17 @@ we expect these remarks be \emph{informative} and shine light on similar example
 model processes. Finally, we expect interpretable explanations to guarantee that the outputs 
 of a model are \emph{fair} and \emph{ethical}.
 
-With these properties in mind leading the \emph{desiredata of interpretability study}, we further 
+\noindent As a response to these requirements, the AI act was developed on Europe recently. In this 
+act, a set of rules was established such that individual and business safety rights are respected, 
+when it comes to AI \autocite{madiega2021artificial}. For instance, an incorrect  prediction in the 
+case of facial recognition, leads to individuals potentially being misjudged. Specifically, this act 
+defines these rules based on a hierarchy of risks posed to society; we present them in 
+\ref{fig:rel_AIact}. With the acceptance of these rules, it is intended to address and limit 
+risks created by AI applications.\\
+
+\input{fig/rel/tex/aiact.tex}
+
+With these considerations in mind leading the \emph{desiredata of interpretability study}, we further 
 investigate in this work some of the most important works on interpretability. In 
 \autoref{rel:sec_int} we explore preliminary ideas of this field. Delving deeper, in 
 \autoref{rel:sub_transp} we discuss efforts aimed at transparency of machine learning approaches. 

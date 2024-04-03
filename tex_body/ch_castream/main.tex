@@ -4,24 +4,25 @@
 \section{Introduction}
 \label{sec:castream_intro}
 %--------------------------------------------------------------------------------------------------
-\noindent Another way to approach interpretability can be pointed towards the current advances in recognition 
-in general. In particular, with the introduction of the transformer architecture (\cite{vaswani2017attention})
- a switch in the paradigmn occurred where the best performing architectures contain the self-attention 
-module as a building block. Moreover with the proposal of the Vision Transformer 
-(\cite{dosovitskiy2020image}) transformers were adopted into computer vision, this module gained 
-prominence as it allowed models to push the boundaries in existing benchmarks. This led to an 
-expansion with models such as Swin-T (\cite{liu2021swin}), LeViT \cite{graham2021levit}. Conversely
-hybrid architectures combining ideas from both \gls{cnn} and transformers can be observed 
-like Conformer (\cite{peng2021conformer}), Patchconvnet (\cite{touvron2021augmenting}),
-while on another hand a modernization of CNNs in the shape of ConvNeXt (\cite{liu2022convnet}) drew 
-inspiration from these models, whilst adressing their shortcomings in downstream tasks.\\
+\noindent Another way to approach interpretability can be pointed towards the current advances in 
+recognition in general. In particular, with the introduction of the transformer architecture 
+(\cite{vaswani2017attention}) a switch in the paradigm occurred where the best performing 
+architectures contain the self-attention module as a building block. Moreover, with the proposal of 
+the Vision Transformer (\cite{dosovitskiy2020image}) transformers were adopted into computer vision, 
+this module gained prominence as it allowed models to push the boundaries in existing benchmarks. 
+This led to an expansion with models such as Swin-T \autocite{liu2021swin}, LeViT 
+\cite{graham2021levit}. Conversely, hybrid architectures combining ideas from both \gls{cnn} and 
+transformers can be observed like Conformer (\cite{peng2021conformer}), Patchconvnet 
+(\cite{touvron2021augmenting}), while on another hand a modernization of CNNs in the shape of 
+ConvNeXt (\cite{liu2022convnet}) drew inspiration from these models, whilst addressing their 
+shortcomings in downstream tasks.\\
 
 \noindent Although these models have pushed visual recognition to new frontiers, their interpretable
  properties still require further exploration, as in one hand conventional interpretability 
 methodologies for CNNs do not translate properly into their domain, all the while the explanations 
 obtained from these methods (\cite{abnar2020quantifying}) do not appear to have a proper evaluation 
-protocol, resulting in research aimed at improved visualizations and their asssesment 
-(\cite{chefer2021transformer}).
+protocol, resulting in research aimed at improved visualizations and their assesment 
+(\cite{chefer2021transformer}).\\
 
 \noindent In this chapter we study the correlation between CAM and one such attention visualization 
 proposal that is the raw attention found in the classification (\cls) token (\cite{devlin2018bert}).
@@ -38,5 +39,6 @@ onto already trained models boosting  both their recognition and interpretable p
 \input{tex_body/ch_castream/tex/qual}
 \input{tex_body/ch_castream/tex/quant}
 \input{tex_body/ch_castream/tex/discussion}
+\input{tex_body/ch_castream/tex/conclusion}
 \newpage
 

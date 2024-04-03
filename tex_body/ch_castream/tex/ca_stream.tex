@@ -24,15 +24,15 @@ initialized as $F_{-1} = \vx$ and updated according to
 \end{equation}
 for $0 \le \ell \le L$. The last layer features $F_L$ are followed by \gap and $g: \real^{d_L} \to 
 \real^C$ is the classifier, mapping to the logit vector $\vy$. As in ~\eq{sal}, 
-$p_\ell$ is the number of patch tokens and $d_\ell$ the embedding dimension of stage $\ell$.
+$p_\ell$ is the number of patch tokens and $d_\ell$ the embedding dimension of stage $\ell$.\\
 
-In parallel, we initialize a classification token embedding as a learnable parameter $\vq_0 \in 
-\real^{d_0}$ and we build a sequence of updated embeddings $\vq_\ell \in \real^{d_\ell}$ along a 
-stream that interacts with $F_\ell$ at each stage $\ell$. Referring to the global representation 
-$\vq_\ell$ as \emph{query} or \cls and to the local image features $F_\ell$ as \emph{key} or patch 
-embeddings, the interaction consists of cross attention followed by a linear projection $W_\ell \in 
-\real^{d_{\ell+1} \times d_\ell}$ to account for changes of embedding dimension between the 
-corresponding stages of $f$:
+\noindent In parallel, we initialize a classification token embedding as a learnable parameter 
+$\vq_0 \in \real^{d_0}$ and we build a sequence of updated embeddings $\vq_\ell \in \real^{d_\ell}$ 
+along a stream that interacts with $F_\ell$ at each stage $\ell$. Referring to the global 
+representation $\vq_\ell$ as \emph{query} or \cls and to the local image features $F_\ell$ as 
+\emph{key} or patch embeddings, the interaction consists of cross attention followed by a linear 
+projection $W_\ell \in \real^{d_{\ell+1} \times d_\ell}$ to account for changes of embedding 
+dimension between the corresponding stages of $f$:
 
 \begin{equation}
 	\vq_{\ell+1} = W_\ell \cdot \ca_\ell(\vq_\ell, F_\ell),
@@ -41,9 +41,10 @@ corresponding stages of $f$:
 for $0 \le \ell \le L$, where $\ca_\ell$ is defined as in~\eq{CA}. 
 % Because of linearity, projection $W_\ell$ is the same as a value projection.
 
-Image features $F_0, \dots, F_L$ do not change by injecting our \Ours into network $f$. However, 
-the final global image representation and hence the prediction do change. In particular, at the 
-last stage $L$, $\vq_{L+1}$ is used as a global image representation for classification, 
+
+\noindent Image features $F_0, \dots, F_L$ do not change by injecting our \Ours into network $f$. 
+However, the final global image representation and hence the prediction do change. In particular, 
+at the last stage $L$, $\vq_{L+1}$ is used as a global image representation for classification, 
 replacing \gap over $F_L$. The final prediction is $g(\vq_{L+1}) \in \real^C$. Unlike \gap, the 
 weights of different image patches in the linear combination are non-uniform, enhancing the 
 contribution of relevant patches in the prediction.
@@ -57,9 +58,9 @@ Referring to~\eq{f-decomp}, $f_0, \dots, f_L$ and $g$ are fixed, while \gap is r
 weighted averaging, with the weights obtained by the \Ours.
 
 \paragraph{Inference}
-As it stands, \Ours is not an interpretability method, but rather a modification of the baseline 
-architecture, \ie, an attention-based pooling mechanism that replaces \gap to enhance the 
-contribution of relevant image regions in the prediction. We are interested in investigating the 
-interpretability properties of this modification. We therefore employ existing post-hoc, CAM-based 
-interpretability methods to generate saliency maps with both baseline \gap and \Ours. We then 
-compare interpretability metrics as well as classification accuracy.
+As it stands, \Ours is a modification of the baseline architecture, \ie, an attention-based pooling 
+mechanism that replaces \gap during inference, to enhance the contribution of relevant image regions 
+in the prediction. We are interested in investigating the interpretability properties of this 
+modification. We therefore employ existing post-hoc, CAM-based interpretability methods to generate 
+saliency maps with both baseline \gap and \Ours. Interpretability metrics are compared as well as 
+classification accuracy.

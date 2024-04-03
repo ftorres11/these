@@ -14,7 +14,7 @@ Let matrix $F_\ell \in \real^{p_\ell \times d_\ell}$ be a reshaping of feature t
 \label{eq:cross-attention}
 \end{equation}
 
-Here, $F_\ell \vq_\ell$ expresses the pairwise similarities between the global \cls feature 
+\noindent Here, $F_\ell \vq_\ell$ expresses the pairwise similarities between the global \cls feature 
 $\vq_\ell$ and the local patch features $F_\ell$. Now, by replacing $\vq_\ell$ by an arbitrary vector 
 $\mathbf{a}lpha \in \real^{d_\ell}$ and by writing the feature matrix as $F_\ell = (\vf_\ell^1 \dots 
 \vf_\ell^{d_\ell})$ where $\vf_\ell^k = \vect(F_\ell^k) \in \real^{p_\ell}$ for channel $k$, 
@@ -26,7 +26,7 @@ attention ~\eq{cross-attention} becomes
 \label{eq:connection}
 \end{equation}
 
-This takes the same form as~\eq{sal}, with feature maps $F_\ell^k$ being vectorized into 
+\noindent This takes the same form as~\eq{sal}, with feature maps $F_\ell^k$ being vectorized into 
 $\vf_\ell^k$ and the activation function is defined as $h_\ell(\vx) = \softmax(\vx / \sqrt{d_\ell})$. 
 Eq. ~\eq{connection} is visualized in \autoref{fig:connection}. We thus observe the following.
 
@@ -36,9 +36,9 @@ Eq. ~\eq{connection} is visualized in \autoref{fig:connection}. We thus observe 
 	weights are determined by the elements of the query.}
 \end{quote}
 
-As it stands, one difference between~\eq{sal} and~\eq{connection} is that~\eq{connection} is class 
-agnostic, although it could be extended by using one query (weight) vector per class. For simplicity, 
-we choose the class agnostic form in the following. %We also choose to have no query/key projections. 
+\noindent As it stands, one difference between~\eq{sal} and~\eq{connection} is that~\eq{connection} 
+is class agnostic, although it could be extended by using one query (weight) vector per class. For 
+simplicity, we choose the class agnostic form in the following. %We also choose to have no query/key projections. 
 %However, we do provide additional experiments with class specific representation as well as projections
 % in \autoref{sec:gen_ablation}. 
 %--------------------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ cross attention only between \cls and patch tokens~\eq{cross-attention}, equatio
 \label{eq:CA}
 \end{align}
 
-By writing the transpose of feature matrix as $F_\ell\tran = (\vphi_\ell^1 \dots 
+\noindent By writing the transpose of feature matrix as $F_\ell\tran = (\vphi_\ell^1 \dots 
 \vphi_\ell^{p_\ell})$ where $\vphi_\ell^i \in \real^{d_\ell}$ is the feature of patch $i$, 
 this is a weighted average of the local patch features $F_\ell\tran$ with attention vector 
 $\mathbf{a} = (a_1, \dots, a_{p_\ell})$ expressing the weights:
@@ -64,15 +64,16 @@ $\mathbf{a} = (a_1, \dots, a_{p_\ell})$ expressing the weights:
 	\ca_\ell(\vq_\ell, F_\ell) \defn F_\ell\tran \mathbf{a} = \sum_i a_i \vphi_\ell^i.
 \label{eq:CA-gap}
 \end{align}
-We can think of it as as feature \emph{reweighting} or \emph{soft masking} in the feature space, 
-followed by \gap.
+We can think of it as a feature \emph{reweighting} or \emph{soft masking} in the feature space, 
+followed by \gap.\\
 
-Now, considering that $\mathbf{a}$ is obtained exactly as CAM-based saliency maps~\eq{connection}, 
-this operation is similar to occlusion (masking)-based methods \autocite{petsiuk2018rise, 
-fong2017interpretable, fong2019understanding, schulz2020restricting, ribeiro2016should,
-wang2020score, zhang2023opti} and evaluation metrics \autocite{chattopadhay2018grad, 
-petsiuk2018rise}, where a CAM-based saliency map is commonly used to mask the input image. 
-We thus observe the following.
+\noindent Now, considering that $\mathbf{a}$ is obtained exactly as CAM-based saliency 
+maps~\eq{connection}, this operation is similar to occlusion (masking)-based methods 
+\autocite{petsiuk2018rise, fong2017interpretable, fong2019understanding, schulz2020restricting, 
+ribeiro2016should,wang2020score, zhang2023opti} and evaluation metrics \autocite{chattopadhay2018grad, 
+petsiuk2018rise}, where a CAM-based saliency map is commonly used to mask the input image. \\
+
+\noindent We thus observe the following:
 
 \begin{quote}
 	\emph{Attention-based pooling is a form of feature reweighting or soft masking in the feature 

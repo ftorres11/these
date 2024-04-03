@@ -5,29 +5,28 @@ Localization metrics are used to measure the precision of saliency maps relative
 bounding boxes of the foreground object of interest. These metrics originate from weakly supervised 
 localization (WSOL). However, the objectives of WSOL and explaining the decision of a DNN are not 
 necessarily aligned, since context may play an important role in the decision (\cite{shetty2019not}, 
-\cite{rao2022towards}).
+\cite{rao2022towards}).\\
 
-To investigate the relative importance of the object and its context, we measure classification 
-metrics when using the bounding box $B$ itself as a saliency map as well as its complement 
-$I \setminus B$, where $I$ is the image. We also evaluate the intersection $B \cap S$ of the 
-saliency map $S$ with the bounding box and with its complement ($S \setminus B$).
+\noindent To investigate the relative importance of the object and its context, we measure 
+classification metrics when using the bounding box $B$ itself as a saliency map as well as its 
+complement $I \setminus B$, where $I$ is the image. We also evaluate the intersection $B \cap S$ 
+of the saliency map $S$ with the bounding box and with its complement ($S \setminus B$).
 
-As shown in \autoref{tab:localization}, the ground truth region of the object is not the only one 
-responsible for the network decision. For example, the bounding box fails both when used as a 
-saliency map itself and when combined with any saliency map, by harming all classification metrics. 
-Even the complement is more effective than the bounding box itself, either alone or when combined. 
-These findings support the hypothesis that localization metrics based on the ground truth bounding 
-box are not necessarily appropriate for evaluating explanations of network decisions. 
-Classification metrics are clearly more appropriate in this sense.
+\noindent As shown in \autoref{tab:localization}, the ground truth region of the object is not the 
+only one responsible for the network decision. For example, the bounding box fails both when used 
+as a saliency map itself and when combined with any saliency map, by harming all classification 
+metrics. Even the complement is more effective than the bounding box itself, either alone or when 
+combined. These findings support the hypothesis that localization metrics based on the ground truth 
+bounding box are not necessarily appropriate for evaluating explanations of network decisions. 
+Classification metrics are clearly more appropriate in this sense.\\
 
-Nevertheless, we report localization metrics in the supplementary material. In summary, although 
-its saliency maps are more spread out, Opti-CAM outperforms other methods on a number of metrics.
-
+\noindent Nevertheless, we report localization metrics in the supplementary material. In summary, 
+although its saliency maps are more spread out, Opti-CAM outperforms other methods on a number of 
+metrics.
 %--------------------------------------------------------------------------------------------------
 \input{tab/opticam/tex/table_loc_cnn_imagenet.tex}
 %--------------------------------------------------------------------------------------------------
-
-\subsection{Weakly Supervised Approach}. 
+\subsection{Weakly Supervised Approach}
 \label{sec:oc_wsol}
 Several works measure the localization ability of saliency maps, using metrics from the \emph{weakly
 -supervised object localization} (WSOL) task. While we show that localization of the object and 

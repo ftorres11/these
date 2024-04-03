@@ -38,14 +38,14 @@ original image.
 \paragraph{Results}
 
 \autoref{tab:ablate} shows classification metrics for the different choices of Opti-CAM, as well as 
-comparison to other methods for reference, for the small subset of ImageNet validation set.
+comparison to other methods for reference, for the small subset of ImageNet validation set.\\
 % \redred{A similar ablation table with localization metrics is available in supplementary material.}
 
-We observe that the choice of normalization function has little effect overall and Sigmoid offers 
-lower performance. Note that the minimum value of saliency maps is often zero or close to zero: 
-Saliency maps are non-negative as convex combinations of non-negative feature maps~\eq{v-sal}. By 
-contrast, the choice of loss function has more impact on performance and we observe that \Fdef
-~\eq{obj} is superior on all cases.
+\noindent We observe that the choice of normalization function has little effect overall and Sigmoid 
+offers lower performance. Note that the minimum value of saliency maps is often zero or close to 
+zero: \emph{Saliency maps are non-negative as convex combinations of non-negative feature maps
+~\eq{v-sal}.} In contrast, the choice of loss function has more impact on performance, and we 
+observe that \Fdef~\eq{obj} is superior on all cases.
 
 \input{tab/opticam/tex/table_ablation_obj_norm.tex}
 %------------------------------------------------------------------------------

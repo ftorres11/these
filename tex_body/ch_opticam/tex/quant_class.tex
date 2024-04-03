@@ -2,27 +2,27 @@
 \label{sec:oc_quant}
 
 \subsection{Image classification}
-%--------------------------------------------------------------------------------------------------
-\input{tab/opticam/tex/table_cls_cnn_imagenet_new.tex}
-%--------------------------------------------------------------------------------------------------
+
 \paragraph{CNN}
 \autoref{tab:imagenet-cnn} shows ImageNet classification metrics using \Th{VGG16} and \Th{ResNet50}.
  Our Opti-CAM brings impressive performance in terms of average drop ($\AD$) and Average Increase 
  ($\AI$) metrics. That is, not only impressive improvement over baselines, but near-perfect: 
  near-zero $\AD$ and above 90\% $\AI$. Our new metric $\AG$ is lower, around 70\% 
- for Opti-CAM, but this is still several times higher than for all the other methods.
-
-Interestingly, Fake-CAM \autocite{poppi2021revisiting} is the winner in terms of $\AD$ and second 
-or third best in $\AI$ after Opti-CAM and Score-CAM, but fails completely $\AG$. This is expected 
-and makes Fake-CAM uninteresting as it should be: By only masking one pixel, the classification 
-score can hardly drop (0.8\% on ResNet50) and while it increases very often (on 46\% of images), 
-the gain is as little as the drop (0.7\%). This makes the pair ($\AD$, $\AG$) sufficient as primary
- metrics and $\AI$ can be thought of as secondary, if important at all.
+ for Opti-CAM, but this is still several times higher than for all the other methods.\\
+%--------------------------------------------------------------------------------------------------
+\input{tab/opticam/tex/table_cls_cnn_imagenet_new.tex}
+%--------------------------------------------------------------------------------------------------
+\noindent Interestingly, Fake-CAM \autocite{poppi2021revisiting} is the winner in terms of $\AD$ 
+and second or third best in $\AI$ after Opti-CAM and Score-CAM, but fails completely $\AG$. This is 
+expected and makes Fake-CAM uninteresting as it should be: By only masking one pixel, the 
+classification score can hardly drop (0.8\% on ResNet50) and while it increases very often (on 
+46\% of images), the gain is as little as the drop (0.7\%). This makes the pair ($\AD$, $\AG$) 
+sufficient as primary metrics and $\AI$ can be thought of as secondary, if important at all.
 
 %In the supplementary material we report \emph{insertion} (I) and \emph{deletion} (D) metrics along with failure cases of Opti-CAM. The latter indicate that our saliency maps are not incorrect as a whole, but capturing more parts of the object, more instances or more background context results in larger or several disconnected salient regions. This does not let the classifier focus on a single discriminative region when pixels are processed sequentially by increasing saliency. Rather, I/D favor smaller and more compact saliency maps.
 
 
-\autoref{tab:imagenet-cnn} also includes average execution time per image over the 1000-image 
+\noindent \autoref{tab:imagenet-cnn} also includes average execution time per image over the 1000-image 
 ImageNet subset for all methods. Opti-CAM is slower than gradient-based methods that require 
 only one pass through the network, but on par or faster than gradient-free methods. 
 Indeed, we use a maximum of 100 iterations with one forward/backward pass per iteration, 
@@ -30,12 +30,7 @@ while Score-CAM and Ablation-CAM perform as many forward passes as channels. Hen
 slower on ResNet50 than VGG16. Extremal Perturbation does not depend on the number of channels but 
 is very slow by performing a complex optimization in the image space.
 
-%--------------------------------------------------------------------------------------------------
-\input{tab/opticam/tex/table_cls_transformer_new.tex}
-%--------------------------------------------------------------------------------------------------
-
 \paragraph{Transformers}
-
 \autoref{tab:imagenet-trans} shows ImageNet classification metrics using ViT \iavr{and DeiT}. 
 Unlike CAM-based methods that rely on a class-specific linear combination of feature maps, 
 raw attention \autocite{dosovitskiy2020image} and rollout \autocite{abnar2020quantifying} use the 
@@ -43,30 +38,31 @@ attention map of the [CLS] token from the last attention block and from all bloc
 This attention map depends only on the particular image and not on the target class, hence it 
 is not really comparable. TIBAV \autocite{chefer2021transformer} uses both instance-specific and 
 class-specific information.
-
+%--------------------------------------------------------------------------------------------------
+\input{tab/opticam/tex/table_cls_transformer_new.tex}
+%--------------------------------------------------------------------------------------------------
 Opti-CAM outperforms all other methods dramatically, reaching near-zero $\AD$ and $\AI$ above 80 or 
 90\%. According to our new $\AG$ metric, Opti-CAM still works while all other methods fail, 
 but $\AG$ is much more conservative than $\AI$. On ViT-B for example, the classification score 
 increases for 90.1\% of the images by masking with Opti-CAM, but the gain is only 18.0\% on average.
 
 \paragraph{More metrics}
-In this section, we show additional metrics including AOPC \autocite{samek2016evaluating}, Max-Sensitivity
-\autocite{yeh2019fidelity} and ADCC \autocite{poppi2021revisiting}.
+In this section, we show additional metrics including AOPC \autocite{samek2016evaluating}, 
+Max-Sensitivity\autocite{yeh2019fidelity} and ADCC \autocite{poppi2021revisiting}.
 
 We use the code and suggested parameters of package 
-Quantus\footnote{\url{https://github.com/understandable-machine-intelligence-lab/Quantus}} to measure AOPC 
-and MS. In particular, patch size $14$ and number of evaluation regions $10$ for AOPC; lower bound $0.2$ 
-and number of samples $10$ for MS.
-For ADCC, we use the official 
-code\footnote{\url{https://github.com/aimagelab/ADCC}}.
-We evaluate these metrics on ImageNet validation set using ResNet50 and VGG16. The results are 
+Quantus\footnote{\url{https://github.com/understandable-machine-intelligence-lab/Quantus}} to 
+measure AOPC and MS. In particular, patch size $14$ and number of evaluation regions $10$ for AOPC; 
+lower bound $0.2$ and number of samples $10$ for MS.
+For ADCC, we use the official code\footnote{\url{https://github.com/aimagelab/ADCC}}.\\
+
+\noindent We evaluate these metrics on ImageNet validation set using ResNet50 and VGG16. The results are 
 reported in \autoref{tab:more-metrics-asked}. Since AOPC shares the same philosophy as I/D, it is 
 not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the best performance on MS.
-
-
+%--------------------------------------------------------------------------------------------------
 \begin{table}[t]
     \centering
-    \footnotesize
+    \scriptsize
     \setlength{\tabcolsep}{4pt}
     \begin{tabular}{lrrr rrr} \toprule
         \mr{2}{\Th{Method}} & \mc{3}{\Th{ResNet50}} & \mc{3}{\Th{VGG16}}  \\ \cmidrule{2-7}
@@ -85,7 +81,6 @@ not a surprise that Opti-CAM has poor performance on AOPC. Opti-CAM achieves the
     \caption{\emph{AOPC/MS/ADCC} scores on ImageNet validation set.}
     \label{tab:more-metrics-asked}
 \end{table}
-
 % -------------------------------------------------------------------------------------------------
 The experimental results are shown in \autoref{tab:imagenet_cnn_hihd} for CNNs and transformers. 
 ExPerturbation \autocite{fong2019understanding} is expected to perform best in insertion because its 
@@ -94,33 +89,10 @@ However, ExPerturbation \autocite{fong2019understanding}  only performs best on 
 TIBAV \autocite{chefer2021transformer}, which is designed for transformers, outperforms the other 
 methods on DeiT and ViT. According to the results of Insertion/Deletion, Opti-CAM has low 
 performance but there is no clear winner on either CNNs or transformers.
-
-To further understand the behavior of Opti-CAM, we investigate in \autoref{fig:hihd} examples where 
-Score-CAM succeeds (insertion score greater than $90$ and deletion score less than $10$) and 
-Opti-CAM fails (insertion score less than $70$ and deletion score greater than $15$). Compared with 
-Score-CAM, the saliency maps obtained by Opti-CAM are more spread out and highlight several parts 
-of the object and background context. In most of the cases, Opti-CAM fails I/D because it not only 
-finds the object but also attaches importance to the background.
-
-\input{fig/opticam/tex/failure_v_scorecam.tex}
-
-We argue that this is not a failure. As our localization experiment in \autoref{tab:localization} 
-indicates, the background is useful in discriminating a class. Often, the network recognizes the 
-background better than the object itself. For example, a gas pump is likely to be seen with a truck, 
-and a hare is often seen on grass. Several parts of the object are highlighted by Opti-CAM for the 
-worm fence, terrier dog, hare, and manhole cover. Finally, several instances of spaniel dog are found 
-by Opti-CAM.
-
-Insertion/Deletion include 224 steps of binarization, with a set of 224 pixels being 
-inserted/deleted at each step. If these pixels are all inserted over a single small area, the 
-effect on the classifier is more immediate than when sparsely inserting pixels over multiple areas. 
-The same observation holds for deletion. By contrast, Opti-CAM attempts to find regions that 
-contribute to the classification as a whole. There is no guarantee that those regions are effective 
-when used in isolation.
-
-\begin{table}[t]
+% -------------------------------------------------------------------------------------------------
+\begin{table}[H]
     \centering
-    \footnotesize
+    \scriptsize
     \setlength{\tabcolsep}{8pt}
     \renewcommand{\arraystretch}{0.8}
     \begin{tabular}{lrr rr rr rr} \toprule
@@ -146,3 +118,26 @@ when used in isolation.
     I/D: insertion/deletion \autocite{petsiuk2018rise} scores on ImageNet validation set; $\downarrow$ / $\uparrow$: lower / higher is better.}% Bold: best, excluding Fake-CAM.}
     \label{tab:imagenet_cnn_hihd}
 \end{table}
+% -------------------------------------------------------------------------------------------------
+\noindent Insertion/Deletion include 224 steps of binarization, with a set of 224 pixels being 
+inserted/deleted at each step. If these pixels are all inserted over a single small area, the 
+effect on the classifier is more immediate than when sparsely inserting pixels over multiple areas. 
+The same observation holds for deletion. By contrast, Opti-CAM attempts to find regions that 
+contribute to the classification as a whole. There is no guarantee that those regions are effective 
+when used in isolation.\\
+
+\noindent To further understand the behavior of Opti-CAM, we investigate in \autoref{fig:hihd} 
+examples where Score-CAM succeeds (insertion score greater than $90$ and deletion score less than 
+$10$) and Opti-CAM fails (insertion score less than $70$ and deletion score greater than $15$). 
+Compared with Score-CAM, the saliency maps obtained by Opti-CAM are more spread out and highlight 
+several parts of the object and background context. In most of the cases, Opti-CAM fails I/D because 
+it not only finds the object but also attaches importance to the background.
+% -------------------------------------------------------------------------------------------------
+\input{fig/opticam/tex/failure_v_scorecam.tex}
+% -------------------------------------------------------------------------------------------------
+\noindent We argue that this is not a failure. As we will see in our localization experiment in 
+\autoref{tab:localization} indicates, the background is useful in discriminating a class. Often, 
+the network recognizes the background better than the object itself. For example, a gas pump is 
+likely to be seen with a truck, and a hare is often seen on grass. Several parts of the object are 
+highlighted by Opti-CAM for the worm fence, terrier dog, hare, and manhole cover. Finally, several 
+instances of spaniel dog are found by Opti-CAM.\\

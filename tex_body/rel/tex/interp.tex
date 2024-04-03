@@ -44,7 +44,7 @@ study. The first dimension answers to the nature of an approach; where it can be
 Zhang's second dimension is addressed towards the type of explanations, where the order of 
 explanatory power follows a hierarchy starting on its base level with examples, into attributions, 
 leading into hidden semantics and finishing in rules. On one hand, the last dimension that Zhang 
-covers explanations in the input space, where a \emph{Local} explanation describes the network's 
+covers explanations in the input space, where a \emph{Local} explanation describes the network  
 prediction following individual samples; while in the other hand, a \emph{Global} explanation 
 describes the network as a whole. This last dimension is similar to the first point described by 
 \cite{guidotti2018survey}. Most importantly, Zhang's dimensions are not used separately to 
@@ -128,15 +128,14 @@ possibly integrated into existing architectures.\\
 
 \noindent \emph{Prototype-based methods.} On this topic, Li et al. designs an architecture that 
 incorporates an autoencoder and a standard classification network \autocite{li2018deep}. 
-In detail, the autoencoder reduces dimensionality of inputs, producing high quality features for 
+In detail, this model reduces dimensionality of inputs, producing high quality features for 
 classification. The encoded features are then used to produce a probability distribution over the 
 dataset classes. Interestingly, during the forward pass on the prototype network, these encoded 
 features are transformed into prototype vectors; ultimately used to train the classifier. Therefore, 
 the classification algorithm is distance-based on the low dimensional learned feature space. 
 Another approach showcasing prototype learning is that contained within \emph{This Looks Like That} 
 \autocite{chen2019looks}. In this approach, Chen proposes a prototype layer that learns prototypes 
-on top of existing architectures, aligning learn a set of prototypes to specific categories. 
-or parts as an intermediate representation in the network, which can be aligned with categories.
+on top of existing architectures, aligning learn a set of prototypes to specific categories.
 One difficulty these prototype parts face, is their heavy computation and difficulty to 
 train. As a response of this, ProtoPool \autocite{rymarczyk2022interpretable} is recently proposed, 
 allowing for prototype reutillization and differentiable assignment of prototypes to classes; 
@@ -219,7 +218,7 @@ prediction \emph{(LRP)}.\\
 \noindent \emph{Learning-based methods.} Approaches in this family of methods exhibit a behavior 
 intersecting  \emph{transparency} based approaches, where an additional network or branch is 
 learned atop an existing architecture to produce an explanation map for a given input. However, 
-the lack of modifications on the model for interpretation is the key factor differentiating these 
+the lack of modifications on the model for interpretation is the key factor differenting these 
 approaches from \emph{active} interpretability methods. Specific examples of learning methods 
 comprise modifications inclusion of generative models to fill in information occluded from  the 
 classifier \autocite{chang2018explaining}, masking salient points on the map to manipulate scores 
@@ -234,24 +233,12 @@ depth of the network \autocite{schulz2020restricting}.\\
 space, by purposefully masking certain regions on the image and measuring the subsequent loss in 
 predictive power, a saliency map can be produced. In particular, the masking process can provide 
 extremal perturbations by measuring the maximal effect upon the activation of neurons leading to 
-predictions (\cite{fong2017interpretable}, \cite{fong2019understanding}) masking in feature space 
+predictions (\cite{fong2017interpretable}, \cite{fong2019understanding}), masking in feature space 
 to provide saliency maps from intermediate stages \autocite{schulz2020restricting}, learning a 
 simple masking model around the prediction to provide saliency maps that are locally faithful to the 
 classifier \autocite{ribeiro2016should} and iteratively by random masking the input image, probing 
 the model and obtaining a saliency map from the linear combination between prediction weights and 
 the random mask that was used to generate them. \\
-
-\noindent \emph{\gls{cam}-based methods.} By taking into consideration feature map information 
-contained across different layers of a network, it is possible to gain insight into which image 
-regions are highlighted at different depths within the model. However, understanding feature maps, 
-which are often high-dimensional, present a considerable challenge. Conversely, information 
-contained from the classifier layers of the model can be directly associated with classes. For 
-example, the product of the weights of the classifier and the last feature map before \gls{gap} 
-can generate a saliency map, known as \glsfirst{cam} \autocite{zhou2016learning}. These approaches 
-typically utilize feature information from deep layers in conjunction with a set of weights 
-correlated with class information to compute explanations (\cite{selvaraju2017grad}, 
-\cite{chattopadhay2018grad}, \cite{wang2020score}, \cite{axiombased}, \cite{ablationcam}
-\cite{jiang2021layercam}).\\
 
 \noindent \emph{Attention-based techniques.} Given the innate properties of attention based 
 architectures, most interpretability methods are ill fitted towards explaining the inference 
@@ -266,6 +253,18 @@ methods such as \emph{LRP} \autocite{bach2015pixel} and the inadequacy property 
 transformers, a novel computation of relevance across layers providing high quality attribution 
 maps is introduced, allowing at the same time for a quantitative study of the interpretable 
 properties of these methodologies \autocite{chefer2021transformer}.\\
+
+\noindent \emph{\gls{cam}-based methods.} By taking into consideration feature map information 
+contained across different layers of a network, it is possible to gain insight into which image 
+regions are highlighted at different depths within the model. However, understanding feature maps, 
+which are often high-dimensional, present a considerable challenge. Conversely, information 
+contained from the classifier layers of the model can be directly associated with classes. For 
+example, the product of the weights of the classifier and the last feature map before \gls{gap} 
+can generate a saliency map, known as \glsfirst{cam} \autocite{zhou2016learning}. These approaches 
+typically utilize feature information from deep layers in conjunction with a set of weights 
+correlated with class information to compute explanations (\cite{selvaraju2017grad}, 
+\cite{chattopadhay2018grad}, \cite{wang2020score}, \cite{axiombased}, \cite{ablationcam}
+\cite{jiang2021layercam}).\\
 
 In this thesis we take particular interest in proposing and evaluating our interpretability 
 methodologies based on \gls{cam}. In particular, we find CAM to be an appealing approach because of 
@@ -286,7 +285,7 @@ present a representation of filter responses from texture to semantics in \autor
 
 \paragraph{Notation}
 \label{sec:oc_notation}
-Consider a classifier network $:fx \cX \to \real^C$ that maps an input image $\mathbf{u} \in \cX$ to a 
+Consider a classifier network $:f \cX \to \real^C$ that maps an input image $\mathbf{u} \in \cX$ to a 
 logit vector $\vy = f(\mathbf{u}) \in \real^C$, where $\cX$ is the image space and $C$ is the number 
 of classes. We denote by $y_c = f(\mathbf{u})_c$ the predicted logit and by $p_c = \softmax(\vy)_c 
 \defn e^{y_c} / \sum_j e^{y_j}$ the predicted probability for class $c$. For layer $\ell$ 
@@ -336,7 +335,7 @@ $h = \relu $ and the weighting coefficient is calculated in the following manner
 where $\gap$ is global average pooling.
 The motivation for $\relu$ is that we are only interested in features that have a positive effect 
 on the class of interest, \ie pixels whose intensity should be increased in order to increase $y_c$. 
-Lastly, this approach also considers the computation of backpropagation using gradient refinements 
+Lastly, this approach also considers the computation of back-propagation using gradient refinements 
 such as \emph{guided backpropagation} \autocite{guidedbackprop}, allowing for saliency maps to 
 highlight more salient regions within the image.\\
 
@@ -371,7 +370,7 @@ $\mathbf{u}_b$ with the input image $\mathbf{u}$, for all channels $k$:
 \end{equation}
 
 where $\odot$ is the Hadamard product. For this to work, the feature map $A^k_\ell$ is adapted 
-to $\mathbf{u}$ first$:\operatorname{up}$ denotes upsampling to the spatial resolution of 
+to $\mathbf{u}$ first$:\operatorname{up}$ denotes up-sampling to the spatial resolution of 
 $\mathbf{u}$ and:
 
 \begin{equation}
@@ -418,7 +417,7 @@ unaltered. Retaining activation $h = \relu$, the formulation of this weighting c
 point of a model following the generalities described previously, they do not take into 
 consideration the flow of information and relevant features along the depth of a model. 
 Nevertheless, with backpropagation gradient can be probed alongside the whole depth of a model; as 
-such, this approach computes a saliency map by averaging the upsampled attribution maps obtained at 
+such, this approach computes a saliency map by averaging the up-sampled attribution maps obtained at 
 different depths from the model, generating a representation accounting for this information.
 
 %--------------------------------------------------------------------------------------------------

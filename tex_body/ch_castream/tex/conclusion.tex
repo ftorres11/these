@@ -1,5 +1,23 @@
+%--------------------------------------------------------------------------------------------------
 \section{Conclusion}
+\label{sec:ca_conclusion}
+During this chapter we present a continuation to \gls{cam}-based saliency correlating it to 
+properties found in the architecture of transformers. In particular, we observe that attention-
+based pooling is similar to computing a version of class agnostic CAM. This representation is then 
+used to mask feature maps before \gap; similarly to how  it is done to input images to assess 
+interpretability relating to a class object. Moreover, we note that transformers present a built-in 
+interpretability mechanism similar to CAM; which allows us to design a mechanism adapted to 
+\glspl{cnn}. Masking in feature space is much more efficient than in the input space as it requires 
+only one forward pass, although of course it is not equivalent because of interactions within the 
+network.\\
 
-We believe we are the first to observe that attention-based pooling in transformers is the same as forming a class agnostic CAM-based saliency map and then using this map to mask the features before global average pooling, much like we mask inputs to confirm that the prediction is due to a certain object. This observation establishes that transformers have a built-in CAM-based interpretability mechanism and allows us to design a similar mechanism for convolutional networks. Masking in feature space is much more efficient than in the input space as it requires only one forward pass, although of course it is not equivalent because of interactions within the network.
+\noindent Although the Saliency Maps our approach generates are not too different to those obtained 
+using \gap. Despite this, our approach consistently provides improvements on interpretability 
+properties for several models; all the while maintaining recognition capabilities. Furthermore, we 
+assess that these improvements on prediction capabilities are a direct result of changes in the 
+predicted probability obtained from our updated representation. Consequently, we validate the 
+proposition of masking in the feature space. Still, further study is needed to improve the 
+differentiation of saliency maps themselves, in addition to make the class specific representation 
+more competitive and broaden the approach to more architectures, including transformers.
 
-Although the saliency maps obtained with our \Ours are not very different than those obtained with \gap, our approach improves a number of CAM-based interpretability methods on a number of convolutional networks according to most interpretability metrics, while preserving classification accuracy. By doing so, it also enhances the differences in performance between interpretability methods, facilitating their evaluation. Further study may be needed to improve the differentiation of saliency maps themselves, to possibly make a class specific representation more competitive and to apply the approach to more architectures, including transformers.
+%% WE NOTE IS USELESS

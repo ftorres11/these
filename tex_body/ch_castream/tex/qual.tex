@@ -1,22 +1,20 @@
 %--------------------------------------------------------------------------------------------------
-\section{Qualitative Results}
+\section{Qualitative Evaluation}
 \label{sec:ca_qual}
-\subsection{Qualitative evaluation}
-\label{subsec:vinspection}    
 We show saliency maps obtained by different interpretability methods using either \gap or \Ours, as 
 well as the class-agnostic raw attention coming from our \Ours, see \autoref{fig:compmethods}.\\
 \input{fig/castream/tex/cam_imagenet.tex}
 
-We observe that the raw attention focuses on objects of interest in the images. 
+\noindent We observe that the raw attention focuses on objects of interest in the images. 
 In general, saliency maps obtained with \Ours are similar but tend to cover larger regions of the 
 object or more instances compared with \gap.\\
 \input{fig/castream/tex/figure_outdataset.tex}  
 Indeed, the differences in saliency maps should not be large, as both methods share the same 
 features maps $F^k_\ell$ and only the weight coefficients $\alpha^c_k$ differ.
 Despite the small differences, the following quantitative results show that \Ours has a significant 
-impact on the interpretability metrics.
+impact on the interpretability metrics.\\
    
-In addition, \autoref{fig:enter-label} shows examples of images from the MIT 67 Scenes 
+\noindent In addition, \autoref{fig:enter-label} shows examples of images from the MIT 67 Scenes 
 dataset \autocite{quattoni2009recognizing} along with raw attention maps obtained by \Ours. These 
 images come from four classes that do not exist in ImageNet and the network sees them at inference for 
 the first time. Nevertheless, the attention maps focus on objects of interest in general.

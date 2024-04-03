@@ -2,8 +2,8 @@
 \addchap{Introduction}
 %\addcontentsline{toc}{chapter}{Introduction}
 Human curiosity has led to the desire of understanding the world we inhabit, prompting us to seek
-explanations for the phenomena we encounter. We derive this understanding from the information 
-we gather through sensory processing. Since most of the sensory information humans process pertains 
+explanations for the phenomena we encounter. We derive this from the information we gather through 
+sensory processing. Since most of the sensory information humans process pertains 
 to vision, it could be argued that we live within a visual world. Conversely, this human curiosity 
 has led to the development of technologies that have fundamentally altered the world: we have 
 drastically changed our surroundings by building and adapting them to our needs. Moreover, societal 
@@ -15,7 +15,7 @@ paving the world towards the modern era.\\
 computation, as it affects our lives directly and indirectly. This can be seen in our reliance on 
 devices such as computers and  cellphones. These products are the result of scientific breakthroughs 
 and innovation. Nevertheless, to do science we need to process information, for which we have 
-developed disciplines like mathematics and physics; which in turn can be aided with computation. 
+developed disciplines like mathematics and physics, which in turn can be aided with computation. 
 Conversely, innovation within the last century has propelled computation further with the emergence 
 of electronic computers. Aided by improvements in transistors and the rapid development of 
 microprocessors, computers have become faster, smaller and more accessible; allowing for their 
@@ -23,8 +23,17 @@ adoption within society. In recent years, this technology has undergone a revolu
 and popularization of \emph{Artificial Intelligence} (AI), a promising field with endless 
 possibilities for changing and improving human lives.\\
 
+\noindent Artificial Intelligence refers to a discipline in computer science, aimed at developing 
+systems capable of performing tasks, usually achieved with human intelligence. For example, AI 
+systems learn from data: they recognize patterns and make decisions based on the data itself. 
+Moreover, AI benefits from techniques such as Machine Learning, Deep Learning, Natural Language 
+Processing and Computer Vision. However, \emph{what do we mean when we say a system learns?} In 
+techniques such as machine learning, the goal is to develop models that given a certain collection 
+of data, answer a specific task. Consequently, these models learn by updating their parameters 
+based on the hidden structure of data and its statistics.\\
+
 \noindent One particular field where Artificial Intelligence displays promise is \emph{Computer 
-Vision}. Computer vision aims to replicate human capabilities with a machine. This endeavor 
+Vision}. Computer vision aims to replicate human vision capabilities with a machine. This endeavor 
 can be understood alongside three axes: \emph{Recognition}, \emph{Reorganization} and 
 \emph{Reconstruction} \autocite{malik2016three}; the three fundamental tasks of this discipline.
 Through recognition, we identify and assign semantic values to elements in our environment. 
@@ -38,18 +47,18 @@ the task of image recognition. On one hand, it is the dimension that is the easi
 On another hand, given its simplicity, it is used to prototype and produce methodologies 
 intersecting the complementary dimensions of computer vision study.\\
 
-\noindent Computer Vision is one major field where modern AI has impacted greatly, shown by the 
+\noindent Computer Vision is one major field that modern AI has impacted greatly, shown by the 
 progress it has seen in the last decade. In particular, with Convolutional Neural Networks (CNNs); a 
 breakthrough on image recognition occurred. Efficient computation of this 
 operation enabled its usage on larger collections of data, allowing computer vision models to 
 improve their capabilities. Furthermore, these models have benefitted from constant development, in 
 turn allowing to perform more complex tasks over time. On one hand, this has led to the creation 
 of technologies robust enough to build autonomous vehicles. In the other hand, complex tasks such  
-as medical diagnosis are receiving AI tools to facilitate their performance. More recently, a 
+as medical diagnosis are receiving AI tools to facilitate their performance. More recently, another 
 breakthrough has taken place with the introduction of the transformer architecture. 
 In particular, this architecture allows for a high degree of abstraction, successively avoiding 
 issues that convolutions face as inductive bias and difficulties  towards generalization. As a 
-result of this, transformer have overcome convolutions in terms of performance but complexity as 
+result of this, transformers have overcome convolutions in terms of performance but complexity as 
 well. Consequently, its no longer so much a question whether \textit{can a model achieve a given 
 task?}, but rather a question on \textit{how can this model perform this task?}. The main 
 issue regarding these questions lies within the size and complexity of deep models, where 
@@ -63,7 +72,7 @@ critical. In particular, since their complexity has increased alongside their pe
 interested in unfolding this property in order to answer questions regarding their outputs; 
 specially when failure cases can negatively affect a life. For instance, considering the medical 
 practice and the involvement of AI in automated diagnosis, a misdiagnosis of a pathology can 
-potentially derive in an incorrect treatment and loss of life. This is originally referred to as the 
+potentially derive in an incorrect treatment and loss of life. This is originally referred to, as the 
 \emph{Desiredata of Interpretability Research}, first proposed in \emph{The Mythos of Model 
 Interpretability} \autocite{mythos_interp}. Furthermore, in this work Lipton establishes the 
 different properties a model should present in order to be considered interpretable: Transparency 
@@ -84,7 +93,7 @@ during training encouraging elements of the model to represent semantic concepts
 
 %Moreover, achieving this kind of interpretability is 
 %done via the introduction of small modifications on top of the model or its training process. 
-
+%Simplify, concrete example or abstract way. SIMPLIFY.
 
 \noindent Regarding post-hoc interpretability, Lipton suggests to leverage upon the complex 
 structure of models and consequently provide explanations utilizing the already existing parameters 
@@ -96,14 +105,65 @@ saliency maps, to name a few. Nevertheless, it is important to highlight that si
 are computed to highlight relevant information describing the inference process of a model, they 
 might not be aligned to what a human would consider following the same questioning. For instance, 
 an individual might identify the whiskers and ears of a cat as its defining characteristic; but 
-a model can conversely highlight the snoot or eyes instead. On top of this, we note that post-hoc 
+a model can conversely highlight the snoot or eyes instead. On top of this, post-hoc 
 interpretations can be obtained for any class a model considers; be it the correct one pertaining 
 to an object of interest or one completely unrelated. Still, on practice researchers tend to focus 
-on the first case mentioned, while we note that instances where a model fails to provide a correct 
+on the first case mentioned, while instances where a model fails to provide a correct 
 prediction should the ones where interest should be focused on.\\
 
 
-\paragraph{These objectives}
+\paragraph{Thesis objectives} This PhD thesis aims at studying image recognition models and 
+building upon them to propose novel model interpretability approaches. In particular, we aim at 
+improving both recognition and interpretability capabilities of model predictions. While existing 
+approaches may present these properties, some limitations still remain: a high 
+computational cost, a lack of consensus regarding evaluation procedures, and a disconnect between 
+human interpretability and model interpretability.\\
+
+\noindent Regarding the aforementioned computational cost, we can approximate this issue following 
+Lipton's interpretable properties. On one hand, \emph{transparency} approaches often require 
+training of additions to the network or of the network itself. We observe that this computational 
+cost comes from these alterations: in order to explain the model, its performance should 
+be maintained or not worsened. As a result of this, the model parameters are taken into 
+consideration during this phase, although they are not modified. Moreover, an optimized training 
+procedure can be introduced to achieve this; as well as the modifications themselves can be simple 
+but meaningful. In the other hand, complexity on \emph{post-hoc interpretability} approaches 
+presents some variance. In particular, since they are built on the already existing parameters 
+and computational graph of a model; their combination building up to an approach produces this 
+variability. Moreover, we highlight that simple approaches often require direct computations within 
+the model: a forward pass and a backward pass. Nevertheless, more complex approaches often involve 
+several forward passes in order to generate a representation. In this aspect, we argue that these 
+complex methodologies could be further simplified or made sparse in order to reduce their cost.\\
+
+%% Break into two paragraphs GENERAL REVISION.
+\noindent On the topic of \emph{consensus of evaluation}, it has been observed that with the 
+release of novel interpretability approaches, comparisons are not consistent between articles. For 
+instance, we observe inconsistencies in the measurements of Grad-CAM++ 
+\autocite{chattopadhay2018grad} when compared to its values reported on the article of Score-CAM 
+\autocite{wang2020score}. However, this is not the only case as this is repeated alongside multiple 
+studies (\cite{lee2021lfi},\cite{wang2020ss}, \cite{naidu2020cam}). Because of this, a direct 
+comparison across several methodologies does not exist. Therefore, there is no clarity 
+regarding the true performance of approaches. To address this, a benchmark using a standardized 
+evaluation procedure should be performed to clear these shortcomings.\\
+
+\noindent Furthermore, explainable methods do not suffer only from lack of consensus of 
+standardization. In particular different families of approaches evaluate different objectives. On 
+one hand, some post-hoc interpretability methods measure the effects of prediction probability, 
+by considering the product of a saliency map with an input image. On the other hand, 
+other methodologies assess interpretability by measuring the accuracy of the explanations they 
+provide instead. In this aspect, we argue that a standardized procedure should present have 
+clearly defined objectives: measure the impact of explanations in prediction probability, and 
+assess their recognition properties.\\
+
+\noindent Finally, on \emph{alignment between human and model interpretations}, we observe that 
+based on the learning procedures both actors perceive, interpretations differ. On one hand, human 
+learning is not standard; associations of concepts may differ according to societal factors, as well 
+as biochemical ones: important factors describing a prediction differ between individuals. In the 
+other hand, although semantic concepts can be similarly highlighted by different models; these 
+attributions share similarities in how they  are addressed to what the model deems important. 
+Taking into consideration this remark, we argue that human-centric interpretability approaches 
+should be made explicitly different to model-centric ones. On top of this, model 
+interpretability claims should be sustained with quantitative evaluation procedures.
+
 \paragraph{Dissertation Outline}
 %\addcontentsline{toc}{section}{Dissertation Outline}
 \noindent This dissertation is aimed towards the development of interpretable image recognition 
@@ -120,88 +180,28 @@ model confidence. On Sections \ref{sec:oc_qual} and \ref{sec:oc_quant} we evalua
 these contributions towards interpretability assessment. Opti-CAM overall presents an approach that 
 highlights saliency relating to the classifier, thus the saliency map generated performs the best 
 in terms of interpretability metrics although is not highly aligned to human interpretations. 
-On top of this, our novel metric \emph{Average Gain} acts as a complement to current approaches, \\
+On top of this, our novel metric \emph{Average Gain} complements current interpretability evaluation 
+metrics, quantifying benefits in prediction confidence using saliency maps. We follow this 
+procedure to further evaluate our proposals.\\
 
 
 \noindent Chapter \ref{ch:castream} introduces the Cross Attention Stream, an approach that boosts 
 existing architectures interpretable properties. We set up the modulus of this approach in 
 Section \ref{sec:ca_defn} alongside its deployment on Section \ref{sec:ca_design}. 
 In Sections \ref{sec:ca_qual} and \ref{sec:ca_quant} we demonstrate the benefits of using this
-proposal.\\
+proposal. In particular, our CA stream is a transparency approach that is evaluated through 
+post-hoc interpretability evaluation methods. Moreover, our approach learns an abstract 
+representation of the predicted class by the model; enhancing prediction probability, and improving 
+interpretability properties.\\
 
 \noindent Chapter \ref{ch:grad} characterizes a gradient denoising approach with a gradient denoising 
 methodology as an approach to enhance the training procedure of current models while improving 
 interpretability properties. In Section \ref{sec:grad_defn}, we define the gradient denoising 
 protocol alongside the regularization proposals to do so.
 Sections \ref{sec:grad_qual} and \ref{sec:grad_quant} illustrate the effects of this paradigm
-in the trained models and its effects on interpretability.\\
+in the trained models and its effects on interpretability. This approach provides a preliminary 
+study on the introduction of a regularization term during model training to improve upon both 
+recognition and interpretability properties. Furthermore, this approach is mostly exploratory and 
+still requires further developments to be consequently employed in larger collections of data.\\
     
 \noindent Finally, we draw conclusions on our work and detail future research perspectives.
-%Human curiosity has led to the desire for understanding the world that we inhabit, producing 
-%explanations for the phenomena we experience. We derive this understanding from the information 
-%that we gather via the processing of sensory information. Nevertheless, sensory information is 
-%handled differently according to its nature; chemical responses are usually linked to the 
-%sense of taste and smell, while on another hand physical changes in the environment in proximity 
-%are measured via touch, hearing and sight. In particular, visual stimuli is of particular 
-%importance given its abundance and its capacity to provide insight into events from a plethora 
-%of sources: visually we reliably navigate our environments in our daily life, as well as 
-%visually researchers are trying to track the origin of the universe via observations of distant 
-%galaxies in the night sky. As a result of this reliance on visual information it can be stated 
-%that we live in a visual world.\\
-
-%\noindent Visual information can not only be processed by humans but used to record events. On 
-%one hand, most of the understanding of the natural world's history and phenomena is obtained 
-%by the processing of natural records: for instance, the history of the earth's formation and 
-%evolution can be read from the fossil registry found in ancient rocks. In addition to this, 
-%most of human evolution is stored in a visual manner, by studying ancient remains researchers 
-%have tracked the first human beings to come from Africa, conversely; the expansion of humanity 
-%around the globe is also tracked relying on queues left by our ancestors.
-%Amongst the sensory information that the brain processes, visual stimuli accounts 
-%for 90\% of data analyzed (\cite{potter2014detecting}), while consuming a great amount of energy 
-%in human metabolism (\cite{phelps1981metabolic}). It is argued that a big influence on the 
-%brain evolution was as a result of improving the capacity to process this kind of data and the 
-%ensuing  pattern recognition (\cite{mattson2014superior}). 
-%In current time, these shapes and forms have evolved too: it is no longer common for a human
-%the need to scan the environment for faces that could reveal a potential predator; for a change, 
-%the patterns that we now seek to unravel also contain products of our own imagination: digits and 
-%characters, geometrical shapes.\\
-
-%\noindent The evolution of these patterns did not occur as an isolated process: 
-%over time, humans have developed and created new technologies, leading to an interchange of 
-%information not found in the natural world. Throughout human history, humans have 
-%advanced on the construction of objects and concepts based on data and emerging needs left behind 
-%by previous generations. As time progressed, this took humans to new boundaries: covering more 
-%distance in shorter time spans, recording and preserving memories for thousands of years, enabling 
-%the capacity to safely navigate at night, harvest the power of the atom and most impressively, 
-%putting a man on the moon.\\
-%Moreover, human development is seen to be intertwined with the technologies introduced 
-%at different parts in history. In particular pivotal moments in human history are highlighted by 
-%changes in the standard of living: on the agricultural revolution, humankind adopted a sedentary 
-%lifestyle and started forming fixed communities; conversely during the industrial revolution, 
-%standardization and urbanization led to yet another lifestyle change and a population increase 
-%never seen before. In recent times, with the advent of computation another revolution is currently 
-%underway, the Artificial Intelligence revolution.\\
-
-%\noindent Building on last century's advancements, computation is a rather recent field although 
-%one with endless potential and a thriving research community. Led by the curiosity to understand 
-%the world we inhabit, vision is also approached in the computational level; in this Computer Vision 
-%field, researchers aim at replicating human capabilities with a machine. In particular, these 
-%capabilities can be observed alongside foundational tasks: recognition, grouping and reconstuction
-%\autocite{malik2016three}. Following this proposal, we take particular interest in the task of 
-%image recognition, the process in which we produce models to align image information with 
-%semantic concepts.\\
-%Computer science has enjoyed from constant development over time; on one hand, hardware 
-%capabilities and performance has enjoyed an steady increase \autocite{schaller1997moore}, allowing 
-%machines to perform more complex tasks. Furthermore, since information is being constantly recorded 
-%and categorized, these models have been severely dependent on the quality of quantity of data 
-%available to achieve their objectives. One pivotal moment towards the improvement of Computer 
-%Vision models occured with the introduction of the internet. With this technology, data has become 
-%decentralized and information is readily available.\\
-
-%\noindent Taking into consideration the aforementioned  increase on  both compute power and data 
-%availability, image recognition models have been steadily adopted and assimiliated within society; 
-%nowadays its no longer so much a question \textit{whether can a model achieve a given task}, but 
-%rather a question on \textit{how can this given model perform this task}. The main issue regarding 
-%these questions lies within the size and complexity of deep models, where providing interpretable 
-%explanations has lead to the surge of a novel field of research (\cite{li2018deep}, 
-%\cite{guidotti2018survey}, \cite{bodria2021benchmarking}), interpretability and explainable AI.

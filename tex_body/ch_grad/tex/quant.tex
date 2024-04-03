@@ -4,15 +4,14 @@
 We evaluate the effect of training a given model using our proposed approach with 
 \textit{Faithfulness} and \textit{Causality}. Results are reported in Table \ref{tab:C100_quant}.
 \input{tab/gradient/tex/tab_grad_main.tex}
-As we see, our method offers a consistent improvement in terms of interpretability metrics. 
-Specifically, we obtain improvements on both networks and systematically on five out of six metrics. 
-The improvements are higher for AD, AG, and AI. Insertion gets a smaller but consistent improvement 
-and Deletion is almost always worst with our method, but with a very small difference.
+\noindent We observe that our method offers a consistent improvement in terms of interpretability 
+metrics. Specifically, we obtain improvements on both networks and systematically on five out of 
+six metrics. The improvements are higher for AD, AG, and AI. Insertion gets a smaller but consistent 
+improvement and Deletion is almost always worse with our method, but with a very small difference.
 This decrease in performance of Deletion may be due to some limitations of the metrics as reported 
-in Chapter \ref{ch:opticam}
-
-It is intereting to note that improvements on Score-CAM means that our training not only improves 
-gradient for interpretability, but also builds better activation maps.
+in Chapter \ref{ch:opticam}.
+It is interesting to note that improvements on Score-CAM means that our training not only improves 
+gradient for interpretability, but also builds better activation maps.\\
 
 \subsection{Ablation Experiments}
 We conduct ablation experiments using ResNet18. In these experiments we analyze the different 
@@ -24,18 +23,19 @@ To validate our selection of regularization function, we train several models fo
 training regime while varying the error function. To evaluate these approaches, we focus solely on 
 Grad-CAM attributions. Results are reported in Table \ref{tab:Regs}\\
 \input{tab/gradient/tex/tab_ab_regs.tex}
-Following these results, we observe a consistent improvement on most metrics for all regularizer 
-options. We note that the accuracy remains stable within half a percent of the original model.
-However, we note that most options struggle regarding deletion. 
-Cosine Similarity however manages to provide improvements in most metrics, while maintaining 
-deletion performance.
-\paragraph{Regularization coefficient}
-Finally we study the behavior of the regularization coefficient $\lambda$ in \ref{eq:total}. We 
-train multiple models with \textit{Cosine Similarity} and a range of values for $\lambda$, see Table 
-\ref{tab:variation}.
+\noindent Following these results, we observe a consistent improvement on most metrics for all 
+regularizer options. We note that the accuracy remains stable within half a percent of the original 
+model. However, we note that most options struggle regarding deletion. Cosine Similarity however 
+manages to provide improvements in most metrics, while maintaining deletion performance.
 
-We observe that our method is not very sensible to the regularization coefficient and that the 
-value of $7.5e^{-3}$ offers better performances and is thus selected as the default value for 
-$\lambda$.
+\paragraph{Regularization coefficient}
+Finally, we study the behavior of the regularization coefficient $\lambda$ in \ref{eq:total}. We 
+train multiple models with \textit{Cosine Similarity} and a range of values for $\lambda$, see Table 
+\ref{tab:variation}.\\
 
 \input{tab/gradient/tex/tab_ab_lambda.tex}
+
+\noindent We observe that our method is not very sensible to the regularization coefficient and 
+that the value of $7.5e^{-3}$ offers better performances and is thus selected as the default value 
+for $\lambda$.
+
