@@ -3,14 +3,14 @@
 **Introduction**
 - [x] Your very first paragraph places your work in a very large context! It's nice ;) Are you sure most of the information humans process comes from vision?
 - [x] "Computer vision aims to replicate human capabilities with a machine." -> specify visual capabilities
-- [ ]End of first paragraph page 18: add few references and a word to say these works and more are described with more details in chapter 1
-- [ ]The last 5 lines of 2nd paragraph page 18 are not clear.. reformulate?
+- [ ] End of first paragraph page 18: add few references and a word to say these works and more are described with more details in chapter 1
+- [ ] The last 5 lines of 2nd paragraph page 18 are not clear.. reformulate?
 - [x] p18-19 "These objectives"
-- [x]These objectives -> Thesis objectives?
-- [x]modes -> models
-- [x]"existing approaches may these properties » ??
-- [ ]The first paragraph highlights existing limitations and issues which is good. The rest is I think too verbose and does not well introduce your objectives. You should be more concise, don’t hesitate to use bold font to make clear your objectives..
-- [x]Page 19 mostly discuss on particular XAI issues that make your thesis motivation. Try to highlight them a bit more and connect it with your dissertation outline. I think as motivation you should also mention RGPD and AI Act that push towards more XAI and restrict some applications of CV/AI..
+- [x] These objectives -> Thesis objectives?
+- [x] modes -> models
+- [x] "existing approaches may these properties » ??
+- [ ] The first paragraph highlights existing limitations and issues which is good. The rest is I think too verbose and does not well introduce your objectives. You should be more concise, don’t hesitate to use bold font to make clear your objectives..
+- [x] Page 19 mostly discuss on particular XAI issues that make your thesis motivation. Try to highlight them a bit more and connect it with your dissertation outline. I think as motivation you should also mention RGPD and AI Act that push towards more XAI and restrict some applications of CV/AI..
 p20 Ok
 
 **Background**
@@ -24,7 +24,7 @@ p20 Ok
 - [x] p25-26 could be extended with more details
 - [x] add convolution formulas and elaborate on its connection with previous HOG and SIFT..
 - [x] add pooling purpose and formulas (and its gradients?) (done fig instead)
-- [ ]add AlexNet figure! As well as ReLu as a key ingredient they also relied on Dropout that helped a lot for better convergence and generalization.
+- [ ] add AlexNet figure! As well as ReLu as a key ingredient they also relied on Dropout that helped a lot for better convergence and generalization.
 - [ ] p26-28 lack of structure.. Need more figures and formulas. Discuss more skip connections and its gradients effect
 - [ ] you could mention the links between ODEs and ResNet which is interesting to understand why it works well http://proceedings.mlr.press/v119/dong20c/dong20c.pdf
 - [x] p28 the paragraph on optimization improvement from SGD to Adam is not directly related to CNNs (and out of the scope of your work)
