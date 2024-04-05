@@ -23,7 +23,7 @@ complexity that their interpretable properties get hindered. Common  \glspl{cnn}
 rely on convolution as their corner stone, coupled with non-linear operations such as 
 ReLU (\cite{fukushima1975cognitron}), Sigmoid, and Softmax (\cite{hopfield1985neural}) among others.
 This aggregation of convolutions on one hand enables these models to process large quantities of 
-data, and to a certain extent generalize; however in the other hand, it also results in an extensive 
+data, and to a certain extent generalize; on the other hand, it also results in an extensive 
 parameter count, often reaching of millions, and most recently, even billions (\cite{openai_compute}). 
 The computational load required for inference, typically measured in \gls{gflops} further compounds 
 complexity. We expand on this in following sections.\\
@@ -37,28 +37,28 @@ where the model is used. Finally, the \emph{Nature of User Expertise} covers the
 interpretability; where knowing the experience of a user in a given task is considered to be a 
 key aspect describing the interpretability of a model.\\
 
-\noindent In recent years, \cite{zhang2021survey} suggested that three different dimensions encompass this 
-study. The first dimension answers to the nature of an approach; where it can be either 
-\emph{Passive} or \emph{Active}. The first direction in this dimension correlates to Lipton's 
-\emph{Post-hoc interpretability}, the latter follows the aforementioned \emph{Transparency} property.
-Zhang's second dimension is addressed towards the type of explanations, where the order of 
-explanatory power follows a hierarchy starting on its base level with examples, into attributions, 
-leading into hidden semantics and finishing in rules. On one hand, the last dimension that Zhang 
-covers explanations in the input space, where a \emph{Local} explanation describes the network  
-prediction following individual samples; while in the other hand, a \emph{Global} explanation 
-describes the network as a whole. This last dimension is similar to the first point described by 
-\cite{guidotti2018survey}. Most importantly, Zhang's dimensions are not used separately to 
-categorize an approach, instead according to the methodology properties and the nature of the 
-explanation provided. This is further seen in the 3D space found in \autoref{fig:rel_zhangs}
+\noindent In recent years, \cite{zhang2021survey} suggested that three different dimensions 
+encompass this study. The first dimension answers to the nature of an approach; where it can be 
+either \emph{Passive} or \emph{Active}. The first direction in this dimension correlates to 
+Lipton's \emph{Post-hoc interpretability}, the latter follows the aforementioned 
+\emph{Transparency} property. Zhang's second dimension is addressed towards the type of 
+explanations, where the order of explanatory power follows a hierarchy starting on its base level 
+with examples, into attributions, leading into hidden semantics and finishing in rules. On one hand, 
+the last dimension that Zhang covers explanations in the input space, where a \emph{Local} 
+explanation describes the network  prediction following individual samples. On the other hand, a 
+\emph{Global} explanation describes the network as a whole. This last dimension is similar to the 
+first point described by \cite{guidotti2018survey}. Most importantly, Zhang's dimensions are not 
+used separately to categorize an approach, instead according to the methodology properties and the 
+nature of the explanation provided.
 
-\input{fig/rel/tex/zhangsdim.tex}
- 
+\input{tab/rel/tex/interp_approaches.tex} 
 \noindent In this thesis we study interpretability according to Lipton's properties; nevertheless, as shown 
 in the following subsections, we acknowledge their strengths and weaknesses, while denoting some of 
 the most prominent works in each dimension. In \autoref{rel:sub_transp} we discuss 
 \emph{transparency}, its properties according to Lipton and its difficulties describing deep models, 
 alongside a survey following Zhang's active dimension. Conversely, in \autoref{rel:sub_post}, we 
-study \emph{post-hoc interpretability} similarly to transparency.
+study \emph{post-hoc interpretability} similarly to transparency. We present a brief summary of 
+these methods in \autoref{tab:interp_overall}.
 
 \subsection{Transparency}
 \label{rel:sub_transp}
@@ -82,7 +82,7 @@ mismatch during inference.\\
 
 \noindent Finally, Lipton argues that \emph{algorithmic transparency} applies on the level of the 
 learning algorithm itself. In short, this applies to the error surface and assumption of the 
-existence of an optimal and/or unique solution to the problem. Nevertheless this dimension is not 
+existence of an optimal and/or unique solution to the problem. Nevertheless, this dimension is not 
 met for deep learning models as the training process is not completely understood.\\
 
 \noindent While Lipton's transparency properties appear to be applicable and theoretically sound, 
@@ -92,12 +92,12 @@ modification of their definition, transparent properties can be further applied 
 recognition. \emph{Simulatability}, as mentioned earlier,  can be supported with \emph{post-hoc 
 interpretability} explanations. Conversely, deep learning models can be further 
 \emph{decomposed} into functional units; for instance, the ResNet architecture consists of
-residual blocks, where the structure of each block and its design has been studied thoroughfuly. 
+residual blocks, where the structure of each block and its design has been studied thoroughly. 
 Finally, concerning \emph{algorithmic transparency}, although deep learning models present high 
 dimension error surfaces and a high amount of local minima; still, ensuring a deterministic 
 behavior leads to replicability, in turn demonstrating part of the training process.\\
 
-\noindent Following the interpretable dimensions described by \autocite{zhang2021survey}, 
+\noindent According to the interpretable dimensions described by \autocite{zhang2021survey}, 
 transparency is suggested as an active change of the architecture of the network or the training 
 process in order to provide explanations. Furthermore, according to the type of explanations 
 provided by an interpretable approach, transparency methods can be explained according to logic 
@@ -107,15 +107,15 @@ rules, hidden semantics, attributions and explanations by example.\\
 To do this, Wu et al. proposed training a decision tree on top of a deep learning model, acting as 
 a regularization term and an approximation of said deep model (\cite{wu2018beyond}, 
 \cite{wu2020regional}). This process involves two steps. First a binary tree is trained, mapping 
-inputs to the model prediction. The second part of this approach calculates the average path 
-length between root to leaf nodes on the decision tree, covering all data points. Ultimately, Zhang 
+inputs to the model prediction. Then the average path length between root to leaf nodes on the 
+decision tree is calculated, covering all data points. Ultimately, Zhang 
 argues that this regularization improves interpretability by forcing a model to be described by a 
 decision tree.\\
 
 \noindent \emph{Hidden semantics-based methods.} This family of methods focuses on the filters 
 and properties found alongside in different depths of the model. These approaches are based in 
 observations of filter response to inputs at different depths, and the semantic information 
-contained by them(\cite{bau2017network}, \cite{zhou2018interpreting}). 
+contained by them \autocite{zhou2018interpreting}. 
 One particular approach studying this is that of \autocite{zhang2018interpretable}, introducing a 
 loss term that encourages deep filters to represent a single concept. More recently, as an answer to 
 semantics only being extracted from deep layers, and the information flow not being taken into 
@@ -157,7 +157,7 @@ minimizes the Kullback Leibler divergence between the output of original and mas
 \label{rel:sub_post}
 According to Lipton, post-hoc interpretability provides information directly from learned models. 
 Complementary to this, Zhang points out that \emph{passive} interpretability methods extract 
-logical rules or understandable patterns from models. As noted in \autoref{fig:rel_zhangs}, a 
+logical rules or understandable patterns from models. As noted in \autoref{tab:interp_overall}, a 
 discrepancy in the ratio of \emph{active-passive} methods exist, where the \emph{passive} 
 dimension presents more studies. Furthermore, according to the nature of 
 explanation Lipton groups methods into \emph{textual explanations}, \emph{visualizations}, 
@@ -175,7 +175,7 @@ closes this discussion addressing that this kind of interpretations are open to 
 \emph{explanations from visualization}, \emph{explanations by example} and \emph{local explanations}. 
 The goal of explanations from visualization is to determine qualitatively what the model has 
 learned. One instance of this is found on the work by \cite{mahendran2015understanding}, where an 
-image is forwarded through a discriminative \gls{cnn} generating a representation. The authors then 
+image is forwarded through a discriminative CNN generating a representation. The authors then 
 demonstrate that the original image can be recovered from deep-level representations by performing 
 gradient descent on randomly initialized pixels.\\
 
@@ -191,7 +191,7 @@ model, disentangling deep representations and providing an inverse transformatio
 semantic concepts which can be used to point at similar examples of a given input.\\
 
 \noindent Regarding \emph{local explanations}, Lipton acknowledges that describing the entirety of 
-the mapping by a \gls{cnn} is a difficult endeavor; and as such, it can be explained on a 
+the mapping by a CNN is a difficult endeavor; and as such, it can be explained on a 
 \emph{local} manner. This local behavior is widely considered across interpretability studies, as 
 previously mentioned in \autoref{rel:sec_int} (\cite{guidotti2018survey}, \cite{zhang2021survey}). 
 Generally speaking, local explanations are often extracted via the computation of a \emph{saliency 
@@ -208,17 +208,17 @@ prediction. This response is visualized in input space, where strong gradient in
 expected in regions of the image containing information relevant to the corresponding prediction 
 (\cite{baehrens2010explain}, \cite{simonyan2013deep}). However, gradient information often contains 
 noise, making it challenging to interpret these modifications in a straightforward fashion 
-\cite{adebayo2018local}. Consequently, modifications to backpropagation calculation have 
+\autocite{adebayo2018local}. Consequently, modifications to backpropagation calculation have 
 been proposed, including considering only positive values \autocite{guidedbackprop}, adding noise 
 on the input space for denoising \autocite{smilkov2017smoothgrad}, introducing rules and axioms to 
 constrain the computation \autocite{sundararajan2017axiomatic} and proposal of concepts like 
 relevance \autocite{bach2015pixel} to compute the importance pixel interaction leading to a 
-prediction \emph{(LRP)}.\\
+prediction.\\
 
 \noindent \emph{Learning-based methods.} Approaches in this family of methods exhibit a behavior 
 intersecting  \emph{transparency} based approaches, where an additional network or branch is 
 learned atop an existing architecture to produce an explanation map for a given input. However, 
-the lack of modifications on the model for interpretation is the key factor differenting these 
+the lack of modifications on the model for interpretation is the key factor differentiating these 
 approaches from \emph{active} interpretability methods. Specific examples of learning methods 
 comprise modifications inclusion of generative models to fill in information occluded from  the 
 classifier \autocite{chang2018explaining}, masking salient points on the map to manipulate scores 
@@ -233,12 +233,11 @@ depth of the network \autocite{schulz2020restricting}.\\
 space, by purposefully masking certain regions on the image and measuring the subsequent loss in 
 predictive power, a saliency map can be produced. In particular, the masking process can provide 
 extremal perturbations by measuring the maximal effect upon the activation of neurons leading to 
-predictions (\cite{fong2017interpretable}, \cite{fong2019understanding}), masking in feature space 
-to provide saliency maps from intermediate stages \autocite{schulz2020restricting}, learning a 
+predictions (\cite{fong2017interpretable}, \cite{fong2019understanding}), learning a 
 simple masking model around the prediction to provide saliency maps that are locally faithful to the 
-classifier \autocite{ribeiro2016should} and iteratively by random masking the input image, probing 
-the model and obtaining a saliency map from the linear combination between prediction weights and 
-the random mask that was used to generate them. \\
+classifier (\cite{ribeiro2016should}, \cite{petsiuk2018rise}) and iteratively by random masking the 
+input image, probing the model and obtaining a saliency map from the linear combination between 
+prediction weights and the random mask that was used to generate them. \\
 
 \noindent \emph{Attention-based techniques.} Given the innate properties of attention based 
 architectures, most interpretability methods are ill fitted towards explaining the inference 
@@ -254,12 +253,12 @@ transformers, a novel computation of relevance across layers providing high qual
 maps is introduced, allowing at the same time for a quantitative study of the interpretable 
 properties of these methodologies \autocite{chefer2021transformer}.\\
 
-\noindent \emph{\gls{cam}-based methods.} By taking into consideration feature map information 
+\noindent \emph{CAM-based methods.} By taking into consideration feature map information 
 contained across different layers of a network, it is possible to gain insight into which image 
 regions are highlighted at different depths within the model. However, understanding feature maps, 
 which are often high-dimensional, present a considerable challenge. Conversely, information 
 contained from the classifier layers of the model can be directly associated with classes. For 
-example, the product of the weights of the classifier and the last feature map before \gls{gap} 
+example, the product of the weights of the classifier and the last feature map before \gap 
 can generate a saliency map, known as \glsfirst{cam} \autocite{zhou2016learning}. These approaches 
 typically utilize feature information from deep layers in conjunction with a set of weights 
 correlated with class information to compute explanations (\cite{selvaraju2017grad}, 
@@ -267,21 +266,24 @@ correlated with class information to compute explanations (\cite{selvaraju2017gr
 \cite{jiang2021layercam}).\\
 
 In this thesis we take particular interest in proposing and evaluating our interpretability 
-methodologies based on \gls{cam}. In particular, we find CAM to be an appealing approach because of 
+methodologies based on CAM. In particular, we find CAM to be an appealing approach because of 
 its ease of use and adaptation to interpret existing models. Moreover, it can be argued that while 
 it is possible find and use a plethora of the most popular models towards recognition; providing 
 explanations ought to be similarly easy to use, a property that CAM-based models share.\\
 
 %--------------------------------------------------------------------------------------------------
 \paragraph{CAM-based saliency maps}
-One property that \glspl{cnn} display is the presence of semantic information found within the 
+One property that CNNs display is the presence of semantic information found within the 
 deepest layers prior to the classifier. In detail, it has been observed that these models 
 operate similarly manner to the visual cortex in the brain; basic textures and their orientation 
 is processed in shallow layers, whereas deep layers associate this information into concepts 
-\autocite{hubel1959receptive}. This characteristic in turn is the main motivation behind making 
-use of CAM methods: by addressing interpretations on the layers prior to the classifier, we 
-reconstruct the features deemed salient according to the flow of information within a model. We 
-present a representation of filter responses from texture to semantics in \autoref{fig:cnn_depth}.
+\autocite{hubel1959receptive}. Regarding CNNs, on one hand filter responses and low level 
+information is captured by shallow layers on the model; on the other hand, semantic aggregation 
+takes place within the deep layers of the model \autocite{lee2009convolutional}. This characteristic 
+in turn is the main motivation behind making use of CAM methods: by addressing interpretations on 
+the layers prior to the classifier, we reconstruct the features deemed salient according to the 
+flow of information within a model. We present a representation of filter responses from texture 
+to semantics in \autoref{fig:cnn_depth}.
 
 \paragraph{Notation}
 \label{sec:oc_notation}
@@ -303,7 +305,6 @@ general formula: \\
 	S^c_\ell(\mathbf{u}) \defn h \left( \sum_k w^c_k A^k_\ell \right),
 \label{eq:sal}
 \end{equation}
-
 where $w^c_k$ are weights defining a linear combination over channels and $h$ is an activation 
 function, we present a visualization of this process in \autoref{fig:cam_schema}. It is through the 
 calculation of these weights or weighting coefficients that a plethora of saliency methods have 
@@ -377,18 +378,17 @@ $\mathbf{u}$ and:
 	n(A) \defn \frac{A - \min A}{\max A - \min A}
 \label{eq:norm}
 \end{equation}
-
 is a normalization of matrix $A$ into $[0,1]$. While Score-CAM does not need gradients, it requires 
 as many forward passes through the network as the number of channels in the chosen layer, which is 
 computationally expensive. Score-CAM is better understood in a visual manner as in 
 \autoref{fig:rel_sccam}\\
-
 \input{fig/rel/tex/scorecam_schema.tex}
+
 \noindent \emph{Axiom-CAM} \autocite{axiombased} Departing from the usage of the increase in 
 confidence and gradient information, this approach incorporates logical principles to guide the 
 calculation of the saliency map. In particular, two axioms are introduced \emph{sensitivity} and 
 \emph{conservation}. On one hand \emph{sensitivity} considers that the importance of each feature 
-map has to be equivalent to the score change caused by its removal. In the other hand, \emph{conservation} 
+map has to be equivalent to the score change caused by its removal. On the other hand, \emph{conservation} 
 points that changes in the saliency map come from a redistribution of the class score. In other 
 words, sensitivity considers the loss of predictive power by the removal of high importance 
 feature maps; \emph{conservation} instead ensures that class scores are mainly dominated by feature 
@@ -413,7 +413,7 @@ unaltered. Retaining activation $h = \relu$, the formulation of this weighting c
 	w^c_k \defn \frac{y^c-y^c_k}{y^c}
 \end{equation}
 
-\noindent \emph{Layer-CAM} \autocite{jiang2021layercam} although \gls{cam} can be extracted at any 
+\noindent \emph{Layer-CAM} \autocite{jiang2021layercam} although CAM can be extracted at any 
 point of a model following the generalities described previously, they do not take into 
 consideration the flow of information and relevant features along the depth of a model. 
 Nevertheless, with backpropagation gradient can be probed alongside the whole depth of a model; as 

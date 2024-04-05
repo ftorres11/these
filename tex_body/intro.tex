@@ -28,7 +28,7 @@ systems capable of performing tasks, usually achieved with human intelligence. F
 systems learn from data: they recognize patterns and make decisions based on the data itself. 
 Moreover, AI benefits from techniques such as Machine Learning, Deep Learning, Natural Language 
 Processing and Computer Vision. However, \emph{what do we mean when we say a system learns?} In 
-techniques such as machine learning, the goal is to develop models that given a certain collection 
+techniques such as Machine Learning, the goal is to develop models that given a certain collection 
 of data, answer a specific task. Consequently, these models learn by updating their parameters 
 based on the hidden structure of data and its statistics.\\
 
@@ -48,16 +48,16 @@ On another hand, given its simplicity, it is used to prototype and produce metho
 intersecting the complementary dimensions of computer vision study.\\
 
 \noindent Computer Vision is one major field that modern AI has impacted greatly, shown by the 
-progress it has seen in the last decade. In particular, with Convolutional Neural Networks (CNNs); a 
+progress it has seen in the last decade. In particular, with Convolutional Neural Networks (CNNs), a 
 breakthrough on image recognition occurred. Efficient computation of this 
 operation enabled its usage on larger collections of data, allowing computer vision models to 
 improve their capabilities. Furthermore, these models have benefitted from constant development, in 
 turn allowing to perform more complex tasks over time. On one hand, this has led to the creation 
-of technologies robust enough to build autonomous vehicles. In the other hand, complex tasks such  
-as medical diagnosis are receiving AI tools to facilitate their performance. More recently, another 
+of technologies robust enough to build autonomous vehicles. On the other hand, complex tasks such  
+as medical diagnosis are receiving AI tools to facilitate them. More recently, another 
 breakthrough has taken place with the introduction of the transformer architecture. 
 In particular, this architecture allows for a high degree of abstraction, successively avoiding 
-issues that convolutions face as inductive bias and difficulties  towards generalization. As a 
+issues that convolutions face, such as inductive bias and difficulties towards generalization. As a 
 result of this, transformers have overcome convolutions in terms of performance but complexity as 
 well. Consequently, its no longer so much a question whether \textit{can a model achieve a given 
 task?}, but rather a question on \textit{how can this model perform this task?}. The main 
@@ -89,7 +89,8 @@ operations \autocite{openai_compute}. On a more active manner, \emph{Transparenc
 by the introduction of modifications to a model or its training procedure 
 \autocite{zhang2021survey}. Several works achieve this with the introduction of small decision 
 trees to summarize the forward pass of a model; as well as with the addition of regularization terms 
-during training encouraging elements of the model to represent semantic concepts.\\
+during training encouraging elements of the model to represent semantic concepts 
+(\cite{bau2017network}, \cite{wu2018beyond}). We expand upon this on \autoref{rel:sub_transp}\\
 
 %Moreover, achieving this kind of interpretability is 
 %done via the introduction of small modifications on top of the model or its training process. 
@@ -100,15 +101,16 @@ structure of models and consequently provide explanations utilizing the already 
 within the network. This approach in turn allows for a large variance in methodologies since 
 information can be extracted in a plethora of different manners in current CNNs and transformers. 
 Moreover, this variance of explanations can be observed in the nature of the explanation itself: 
-post-hoc interpretations are often presented via text as captions, and in images as in 
-saliency maps, to name a few. Nevertheless, it is important to highlight that since explanations 
-are computed to highlight relevant information describing the inference process of a model, they 
-might not be aligned to what a human would consider following the same questioning. For instance, 
-an individual might identify the whiskers and ears of a cat as its defining characteristic; but 
-a model can conversely highlight the snoot or eyes instead. On top of this, post-hoc 
-interpretations can be obtained for any class a model considers; be it the correct one pertaining 
-to an object of interest or one completely unrelated. Still, on practice researchers tend to focus 
-on the first case mentioned, while instances where a model fails to provide a correct 
+post-hoc interpretations are often presented via text as captions, and in images often using 
+saliency maps, to name a few (\cite{bach2015pixel}, \cite{ribeiro2016should} 
+\cite{zhou2016learning}). On \autoref{rel:sub_post} we explore these methods in more detail. 
+Nevertheless, since explanations are computed to highlight relevant information describing the 
+inference process of a model, they are not aligned to what a human would consider following the 
+same questioning. For instance, an individual might identify the whiskers and ears of a cat as its 
+defining characteristic; but a model can conversely highlight the snoot or eyes instead. On top of 
+this, post-hoc interpretations can be obtained for any class a model consider: be it the correct 
+one pertaining to an object of interest or one completely unrelated. Still, on practice researchers 
+tend to focus on the first case mentioned, while instances where a model fails to provide a correct 
 prediction should the ones where interest should be focused on.\\
 
 
@@ -126,13 +128,17 @@ cost comes from these alterations: in order to explain the model, its performanc
 be maintained or not worsened. As a result of this, the model parameters are taken into 
 consideration during this phase, although they are not modified. Moreover, an optimized training 
 procedure can be introduced to achieve this; as well as the modifications themselves can be simple 
-but meaningful. In the other hand, complexity on \emph{post-hoc interpretability} approaches 
+but meaningful. On the other hand, complexity on \emph{post-hoc interpretability} approaches 
 presents some variance. In particular, since they are built on the already existing parameters 
 and computational graph of a model; their combination building up to an approach produces this 
 variability. Moreover, we highlight that simple approaches often require direct computations within 
 the model: a forward pass and a backward pass. Nevertheless, more complex approaches often involve 
 several forward passes in order to generate a representation. In this aspect, we argue that these 
-complex methodologies could be further simplified or made sparse in order to reduce their cost.\\
+complex methodologies could be further simplified or made sparse in order to reduce their cost. 
+To answer this requirement, in Chapter \ref{ch:grad} and Chapter \ref{ch:castream} we propose 
+methodologies requiring one training procedure per dataset, and presenting lightweight inferences. 
+Additionally, on Chapter \ref{ch:opticam}, we propose a saliency map method that although a bit 
+more expensive than traditional approaches, displays state-of-the-art interpretability properties.\\
 
 %% Break into two paragraphs GENERAL REVISION.
 \noindent On the topic of \emph{consensus of evaluation}, it has been observed that with the 
@@ -143,7 +149,9 @@ instance, we observe inconsistencies in the measurements of Grad-CAM++
 studies (\cite{lee2021lfi},\cite{wang2020ss}, \cite{naidu2020cam}). Because of this, a direct 
 comparison across several methodologies does not exist. Therefore, there is no clarity 
 regarding the true performance of approaches. To address this, a benchmark using a standardized 
-evaluation procedure should be performed to clear these shortcomings.\\
+evaluation procedure should be performed to clear these shortcomings. In this thesis we conduct 
+standardized experimentation, experiments with equal evaluation objectives follow the same 
+procedure as observed in Chapter \ref{ch:opticam} and Chapter \ref{ch:castream}\\
 
 \noindent Furthermore, explainable methods do not suffer only from lack of consensus of 
 standardization. In particular different families of approaches evaluate different objectives. On 
@@ -152,17 +160,22 @@ by considering the product of a saliency map with an input image. On the other h
 other methodologies assess interpretability by measuring the accuracy of the explanations they 
 provide instead. In this aspect, we argue that a standardized procedure should present have 
 clearly defined objectives: measure the impact of explanations in prediction probability, and 
-assess their recognition properties.\\
+assess their recognition properties. We address this challenge setting our experimentation 
+objectives clear: in Chapter \ref{ch:opticam} we evaluate recognition and localization properties 
+of Opti-CAM, in Chapter \ref{ch:castream} our Cross Attention Stream is subjected interpretable to 
+object recognition evaluation, as in Chapter \ref{ch:grad} as well.\\
 
 \noindent Finally, on \emph{alignment between human and model interpretations}, we observe that 
 based on the learning procedures both actors perceive, interpretations differ. On one hand, human 
 learning is not standard; associations of concepts may differ according to societal factors, as well 
-as biochemical ones: important factors describing a prediction differ between individuals. In the 
+as biochemical ones: important factors describing a prediction differ between individuals. On the 
 other hand, although semantic concepts can be similarly highlighted by different models; these 
 attributions share similarities in how they  are addressed to what the model deems important. 
 Taking into consideration this remark, we argue that human-centric interpretability approaches 
-should be made explicitly different to model-centric ones. On top of this, model 
-interpretability claims should be sustained with quantitative evaluation procedures.
+should be made explicitly different to model-centric ones. On top of this, model interpretability 
+claims should be sustained with quantitative evaluation procedures. In this work, we present 
+interpretability proposals aligned to model interpretability, and we validate each of our claims 
+using quantitative methods.
 
 \paragraph{Dissertation Outline}
 %\addcontentsline{toc}{section}{Dissertation Outline}
@@ -198,7 +211,7 @@ interpretability properties.\\
 methodology as an approach to enhance the training procedure of current models while improving 
 interpretability properties. In Section \ref{sec:grad_defn}, we define the gradient denoising 
 protocol alongside the regularization proposals to do so.
-Sections \ref{sec:grad_qual} and \ref{sec:grad_quant} illustrate the effects of this paradigm
+Section \ref{sec:grad_expes} illustrates the effects of this paradigm
 in the trained models and its effects on interpretability. This approach provides a preliminary 
 study on the introduction of a regularization term during model training to improve upon both 
 recognition and interpretability properties. Furthermore, this approach is mostly exploratory and 

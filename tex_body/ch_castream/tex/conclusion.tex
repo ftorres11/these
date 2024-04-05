@@ -2,19 +2,19 @@
 \section{Conclusion}
 \label{sec:ca_conclusion}
 During this chapter we present a continuation to \gls{cam}-based saliency correlating it to 
-properties found in the architecture of transformers. In particular, we observe that attention-
-based pooling is similar to computing a version of class agnostic CAM. This representation is then 
+properties found in the architecture of transformers. In particular, attention-based pooling is 
+similar to computing a version of class agnostic CAM. This representation is then 
 used to mask feature maps before \gap; similarly to how  it is done to input images to assess 
-interpretability relating to a class object. Moreover, we note that transformers present a built-in 
-interpretability mechanism similar to CAM; which allows us to design a mechanism adapted to 
+interpretability relating to a class object. Moreover, transformers present a built-in 
+interpretability mechanism similar to CAM, allowing us to design a mechanism adapted to 
 \glspl{cnn}. Masking in feature space is much more efficient than in the input space as it requires 
 only one forward pass, although of course it is not equivalent because of interactions within the 
 network.\\
 
 \noindent Although the Saliency Maps our approach generates are not too different to those obtained 
 using \gap. Despite this, our approach consistently provides improvements on interpretability 
-properties for several models; all the while maintaining recognition capabilities. Furthermore, we 
-assess that these improvements on prediction capabilities are a direct result of changes in the 
+properties for several models, all the while maintaining recognition capabilities. Furthermore, we 
+assess that these improvements on prediction are a direct result of changes in the 
 predicted probability obtained from our updated representation. Consequently, we validate the 
 proposition of masking in the feature space. Still, further study is needed to improve the 
 differentiation of saliency maps themselves, in addition to make the class specific representation 

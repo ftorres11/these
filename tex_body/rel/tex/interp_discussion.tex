@@ -11,7 +11,7 @@ embeddings on feature space and ultimately explaining predictions by responses o
 We suggest that some recurring issues that interpretability presents is an outdated vision on some 
 properties and a lack of consensus, either in definitions, and evaluation.\\
 
-\noindent Starting with propositions, according to different researchers' interpretability is 
+\noindent Starting with propositions, according to different researchers interpretability is 
 described across various dimensions depending on the nature of the approach. In this thesis we 
 chose to follow the original propositions of Lipton, describing interpretability according to the 
 properties of \emph{transparency} and the ability to provide \emph{post-hoc interpretations.} We 
@@ -44,7 +44,7 @@ explanations for groundtruth objects. However, in real-world applications we exp
 predict incorrectly some instances in the task that they are given; these instances then require 
 explanations for the class being predicted. This is crucial given Lipton's desidedata of model 
 interpretability. We usually care the most for the instances in which the model fails, and we have 
-to provide accountability for the effects these inferences provide.\\
+to provide accountability for the effects these inferences provide. \\
 
 \noindent In addition to this selection of instances to provide explanations for, quantitative 
 evaluation suffers from another drawback: a lack of homogeneity in evaluation procedures. 
@@ -80,6 +80,14 @@ predictions, leaving in turn open the question of what is relevant for these ins
 qualitative measurements are not meaningful to claim the performance of an attribution compared 
 with another, in particular given the misalignment between human and machine recognition processes.
 
+\noindent In this dissertation we investigate machine-centered interpretability. In particular, 
+we want to understand the inference process of a model and the key factors producing a prediction. 
+Additionally, we align ourselves with the standard practice of evaluating explanations for 
+instances of correct prediction. Consequently, we acknowledge that failure cases require further 
+investigation from our part. Regarding the evaluation of our methodologies, we conduct standardized 
+experimentation in our approaches, unless stated otherwise. Finally, we validate our claims of 
+improvements of interpretability properties with our evaluation protocols. We conduct extensive 
+evaluation for each of our proposals.\\
 %To begin with, 
 %adhering to the lack of clarity on the definition of interpretability, we consequently find works 
 %claiming to provide interpretability in their approaches but no quantitative results to support 

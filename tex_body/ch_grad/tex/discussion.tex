@@ -1,43 +1,40 @@
 %--------------------------------------------------------------------------------------------------
 \section{Discussion}
 \label{sec:grad_discussion}
-\paragraph{Guided Backpropagation and Smoothgrad} To begin with, we note that guided 
-backpropagation is not the sole updated representation of gradient we can generate for a specific 
-model. However, it is important to highlight the requirements for efficiency. On one hand, guided 
-backpropagation only requires two passes through the network: one forward pass and one backward 
-pass. On the other hand, computation of smoothgrad requires several passes throw the network. By 
-default, this approach involves five forward-backward passes; this would mean a noticeable 
-increase of training time.
+\paragraph{Guided Backpropagation and Smoothgrad} Guided backpropagation is not the sole gradient 
+explanation we can generate for a specific model. However, it is important to highlight efficiency 
+requirements. On one hand, guided backpropagation only requires two passes through the network: 
+one forward pass and one backward pass. On the other hand, smoothgrad requires several passes 
+throgh the network. By default, this approach involves five forward-backward passes; this would 
+mean a noticeable increase of training time.
 
 %% Make clear to differentiate from P1. Make clear that it is for the whole thing
-\paragraph{Passes through the network} Computational complexity and optimized 
+\paragraph{Training efficiency} Computational complexity and optimized 
 training are the main challenges regarding the scaling of our approach. In particular, 
-in \autoref{sec:grad_defn}, we mention that \emph{each training iteration requires five passes 
+in \autoref{sec:grad_expes}, we mention that \emph{each training iteration requires five passes 
 through $f$ instead of two in a standard training}. We compute the first forward-backward pass 
 to generate the guided gradient in the input space. The second forward-backward pass generates the 
-standard gradient. Finally, to generate the gradient required to update the weights, we do a final 
-backward pass taking into consideration cross entropy and the regularization.\\
+standard gradient. Finally, we do a final backward pass taking into consideration cross entropy 
+and the regularization.\\
 
 %% Make Clear
 \noindent Still, \emph{why can't it be done with fewer passes?} In theory, 
-guided backpropagation is calculated by changing the activation functions; for instance ReLU. 
+guided backpropagation is calculated modifying the behavior of activation functions, such as ReLU. 
 In practice, activation functions work as class objects within pytorch. Introducing 
-modifications into these objects inherently increases their complexity. For example, a modification 
+changes into these objects inherently increases their complexity. For example, a modification 
 to ReLU to account for \emph{Guided ReLU} could be achieved with the introduction of an \emph{if-else} 
-case. Assuming this would work, the amount of these activations in the model would lead to 
-bottlenecks in running time evaluating the condition controlling the gradient behavior. 
+case: one condition for standard ReLU and one for Guided ReLU. In this scenario, the amount of 
+activations in the model would lead to bottlenecks in running time evaluating because of the 
+condition controlling the gradient behavior.\\
 
-\paragraph{Saliency Map Visualization} We validate our claims of interpretability by 
-conducting evaluation using saliency maps. However, upon visualization we note a high degree of 
-sparsity covering the input images. In this aspect we observe that following the hierarchical nature 
-of \glspl{cnn} and the reduction of feature map size leads to deep representations of reduced 
+\paragraph{Saliency Map Visualization} Upon saliency map visualization we observe a high degree of 
+sparsity covering the input images. After the hierarchical nature 
+of \glspl{cnn} and the ensuing reduction of feature map sizes, deep representations present small  
 spatial dimensions. Furthermore, since CIFAR-100 contains images with $32\times32$ spatial 
-resolution, intermediary activations are chosen to avoid generating attributions, using a 
+resolution, intermediary activations are chosen to avoid generating attributions using a 
 $1\times1$ patch.
 
-\paragraph{Gradient  Visualization} While we display a comparison between gradients 
-computed for models trained with and without our training protocol, a further assessment is not 
-considered. In particular, we observe that pure gradient-based interpretability approaches do not 
-incur in quantitative measurements to validate interpretability claims. Conversely, we hypothesize 
-that since other attribution proposals rely on this information, denoising this leads to 
-explainable improvements. This is ultimately confirmed with our evaluation procedure.
+\paragraph{Pure gradient evaluation} Pure gradient-based interpretability approaches do not 
+display quantitative measurements to validate interpretability claims. Conversely, we hypothesize 
+that since other attribution proposals rely on this information, denoising gradients leads to 
+explainability improvements. This is ultimately confirmed with our evaluation procedure.
