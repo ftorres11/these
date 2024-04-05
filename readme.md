@@ -35,6 +35,6 @@ p20 Ok
 - [x] p46 a table to summarize reviewed interpretability methods would be great 
 - [x] P46-51 on evaluation is ok but dense. You should also add figures to illustrate.. I guess possible for INS and DEL. The blue for references is strange.. 
 - [-] p50 "Interpretable object localization" could end up with a discussion on the differences of human-centric interpretability vs model-centric interpretability as in introduction 
-- [-] p51-54 the discussion must also position your work from existing methods you have reviewed. Here you should add links to the next chapters that address some issues you are discussing in this section.
+- [x] p51-54 the discussion must also position your work from existing methods you have reviewed. Here you should add links to the next chapters that address some issues you are discussing in this section.
 
 
