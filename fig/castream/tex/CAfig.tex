@@ -34,6 +34,6 @@
         \draw[->] (project) -- node {} (Qplus1);
         % \draw[->] (norm) -- node {} (Qplus1);
     \end{tikzpicture}
-    \caption{A Cross Attention Block. We denote matrix multiplication as "$\otimes$". The softmax operation is performed on each row). For a given layer $\ell$ we update our [CLS] token $Q_\ell$; by computing its scaled cross attention with the feature maps $F_\ell$, that are then projected to the channel dimension in the following stage, using a dense layer parametrized by $w_\ell$.}
+    \caption{\textbf{Cross Attention Block}. We denote matrix multiplication as "$\otimes$". The softmax operation is performed on each row). For a given layer $\ell$ we update our [CLS] token $Q_\ell$; by computing its scaled cross attention with the feature maps $F_\ell$, that are then projected to the channel dimension in the following stage, using a dense layer parametrized by $w_\ell$.}
     \label{fig:fig_crossatt}
 \end{figure}

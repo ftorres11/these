@@ -15,7 +15,7 @@ in order to explain the inner-workings of the model. Conversely, for the latter 
 the black-box behavior of the model, providing explanations instead based on inputs and outputs; 
 without adding any further modifications for the model or altering its training process.\\
 
-\noindent Considering these properties, we observe that as machine learning models grew in 
+\noindent Considering these properties, as machine learning models grew in 
 complexity; their transparent properties vanished proportionally to their size. It can be argued 
 that traditional models offer themselves to  transparency due to their straightforward formulation 
 and inherent properties. Conversely, regarding deep models, we find that it is after their size and 
@@ -86,10 +86,10 @@ existence of an optimal and/or unique solution to the problem. Nevertheless, thi
 met for deep learning models as the training process is not completely understood.\\
 
 \noindent While Lipton's transparency properties appear to be applicable and theoretically sound, 
-transparency is not fully studied alongside them. As previously observed, designing an approach or 
+transparency is not fully studied alongside them. Furthermore, designing an approach or 
 model covering these properties is a complicated task for deep models. However, with a brief 
 modification of their definition, transparent properties can be further applied to deep image 
-recognition. \emph{Simulatability}, as mentioned earlier,  can be supported with \emph{post-hoc 
+recognition. \emph{Simulatability}, can be supported with \emph{post-hoc 
 interpretability} explanations. Conversely, deep learning models can be further 
 \emph{decomposed} into functional units; for instance, the ResNet architecture consists of
 residual blocks, where the structure of each block and its design has been studied thoroughly. 
@@ -171,7 +171,7 @@ are now transformer-based and their interpretability is not comprehensively stud
 closes this discussion addressing that this kind of interpretations are open to scrutiny 
 \autocite{chang2009reading}.\\
 
-\noindent To provide interpretations on a visual manner according to Lipton, we observe 
+\noindent To provide interpretations on a visual manner according to Lipton, we find 
 \emph{explanations from visualization}, \emph{explanations by example} and \emph{local explanations}. 
 The goal of explanations from visualization is to determine qualitatively what the model has 
 learned. One instance of this is found on the work by \cite{mahendran2015understanding}, where an 
@@ -183,7 +183,7 @@ gradient descent on randomly initialized pixels.\\
 by example}. These explanations are derived from explaining decisions for a model using examples 
 deemed the most similar. In detail, once a model is trained it is possible to extract information 
 from learned representations; these in turn can be used to explain a new sample by its proximity 
-in this representation space to similar observations. On deep image recognition models, we observe 
+in this representation space to similar observations. On deep image recognition models, we point to 
 the works of (\cite{kim2014bayesian}, \cite{doshi2015graph}), where case-based approaches are 
 proposed for interpreting generative models. More recently, the work proposed by 
 \cite{rombach2020making}, where an Invertible Neural Network is connected at different stages of a 
@@ -274,7 +274,7 @@ explanations ought to be similarly easy to use, a property that CAM-based models
 %--------------------------------------------------------------------------------------------------
 \paragraph{CAM-based saliency maps}
 One property that CNNs display is the presence of semantic information found within the 
-deepest layers prior to the classifier. In detail, it has been observed that these models 
+deepest layers prior to the classifier. In detail, these models 
 operate similarly manner to the visual cortex in the brain; basic textures and their orientation 
 is processed in shallow layers, whereas deep layers associate this information into concepts 
 \autocite{hubel1959receptive}. Regarding CNNs, on one hand filter responses and low level 

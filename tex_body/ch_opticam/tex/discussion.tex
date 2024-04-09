@@ -1,3 +1,45 @@
 %--------------------------------------------------------------------------------------------------
 \section{Discussion}
 \label{sec:discuss_opticam}
+\noindent Opti-CAM is constructed following the definition of \emph{CAM-based} saliency maps. In 
+particular, according to \autoref{eq:sal}, we optimize the variable $w^c_k$ to construct a 
+saliency map $S^c_\ell(\mathbf{u})$, maximizing the predicted probability of the explanation 
+obtained by performing element-wise multiplication with an input image. \\
+
+\paragraph{Classifier-Centric Explanations} As a consequence of optimizing prediction probability 
+of explanation maps, our approach highlights the salient regions in the image. In CNNs, salient 
+information is spread across the input image and not often centered within the object of interest; 
+these models learn biases within data, and use context to construct a prediction. Furthermore, 
+studies have demonstrated instances in fine-grained image classification, where the model learns 
+the background of images instead of the object of interest \autocite{petryk2022guiding}. 
+Classifier-centric explanations can demonstrate situations where this is the case. Moreover, 
+classifier-centric explanations are desired as they do not leave space for human interpretations 
+about the inference process of a model, in turn removing one factor of bias towards interpretation.\\
+
+\paragraph{Localization Properties} A direct consequence of generating \emph{classifier-centric 
+explanations}, is a trade-off in localization properties. Compared to current 
+attribution methods, Opti-CAM fails in this regard. Preliminary studies suggesting the evaluation 
+of saliency maps based on these properties, can be traced back to the work by (\cite{shetty2019not}, 
+\cite{zhou2018interpreting}, \cite{rao2022towards}). This behavior however is not completely 
+undesired. Instead, it highlights that context is important towards prediction of a model; and as 
+such localization is an ill-fitted requirement to assess interpretability.\\
+
+\paragraph{Computational Complexity} Opti-CAM generates an optimized saliency map for every image. 
+However, in comparison to current high-performing \emph{CAM} attributions, the trade-off of 
+complexity and performance favors our approach. In detail, methodologies such as \emph{Ablation-CAM} and 
+\emph{Score-CAM} require as many forward passes as the number of channels in the target layer of 
+interest. In contrast, our approach requires as much as a hundred optimization steps. 
+Additionally, these optimization steps are not as complex as a complete forward pass through the 
+network: our optimization objective requires forwarding the product of the optimization variable,
+with the feature maps from our target layer until the classifier. As a result, Opti-CAM requires
+less memory resources; as well as being faster in running time.\\
+
+\paragraph{Average Gain} Current classification/recognition metrics are not robust and complete,
+to differentiate interpretability properties of different approaches. On one hand, this is 
+demonstrated in the work of \autocite{poppi2021revisiting}. On the other hand, Average-Gain 
+is designed to address this remark. In particular, Average Gain acts as the complement of 
+\emph{Average Drop}: we can measure the positive impact that an explanation poses using Average 
+Gain. Conversely, \emph{Increase in Confidence} is a metric that on itself does not answer to 
+anything in particular: on a real world application we should not care in how many instances the 
+explanation map is better than an input image; we ought to focus on the effect an explanation 
+has over the classifier.\\

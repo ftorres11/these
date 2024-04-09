@@ -1,5 +1,5 @@
 %--------------------------------------------------------------------------------------------------
-\section{Object localization}
+\paragraph{Object localization}
 \label{sec:oc_loc}
 Localization metrics are used to measure the precision of saliency maps relative to groundtruth 
 bounding boxes of the foreground object of interest. These metrics originate from weakly supervised 
@@ -10,7 +10,7 @@ necessarily aligned, since context may play an important role in the decision (\
 \noindent To investigate the relative importance of the object and its context, we measure 
 classification metrics when using the bounding box $B$ itself as a saliency map as well as its 
 complement $I \setminus B$, where $I$ is the image. We also evaluate the intersection $B \cap S$ 
-of the saliency map $S$ with the bounding box and with its complement ($S \setminus B$).
+of the saliency map $S$ with the bounding box and with its complement ($S \setminus B$).\\
 
 \noindent As shown in \autoref{tab:localization}, the ground truth region of the object is not the 
 only one responsible for the network decision. For example, the bounding box fails both when used 
@@ -20,9 +20,9 @@ combined. These findings support the hypothesis that localization metrics based 
 bounding box are not necessarily appropriate for evaluating explanations of network decisions. 
 Classification metrics are clearly more appropriate in this sense.\\
 
-\noindent Nevertheless, we report localization metrics in the supplementary material. In summary, 
-although its saliency maps are more spread out, Opti-CAM outperforms other methods on a number of 
-metrics.
+%\noindent Nevertheless, we report localization metrics in the supplementary material. In summary, 
+%although its saliency maps are more spread out, Opti-CAM outperforms other methods on a number of 
+%metrics.
 %--------------------------------------------------------------------------------------------------
 \input{tab/opticam/tex/table_loc_cnn_imagenet.tex}
 %--------------------------------------------------------------------------------------------------
@@ -37,8 +37,21 @@ score}, \emph{box accuracy} (BoxAcc) \autocite{choe2020evaluating}, standard poi
 \emph{saliency metric} (SM) \autocite{dabkowski2017real} on the ILSVRC2014\footnote{\url{
 https://www.image-net.org/challenges/LSVRC/2014/index\#}} dataset. 
 The goal of these metrics is to compare the saliency maps with bounding boxes around the object 
-of interest. 
+of interest. \\
+
+\noindent We evaluate the localization ability of saliency maps obtained by our Opti-CAM and we 
+compare with other attribution methods quantitatively. \autoref{tab:imagenet-loc} and 
+\autoref{tab:ablate-loc-sup-deit} report localization metrics on ImageNet. We observe different 
+behavior in different metrics. In particular, Opti-CAM on ResNet and VGG performs best on OM and 
+LE but poorly on the remaining metrics. On transformers, Opti-CAM performs best on OM, LE, F1, and 
+SM.\\
 
 %--------------------------------------------------------------------------------------------------
 \input{tab/opticam/tex/table_loc_ext_cnn_imagenet.tex}
+\input{tab/opticam/tex/table_deit.tex}
 %--------------------------------------------------------------------------------------------------
+
+\noindent Metrics, where Opti-CAM does not perform well, are mostly the ones that penalize saliency 
+maps that are more spread out. For example, SP and EP penalize saliency outside the ground truth 
+bounding box of an object. This is not necessarily a weakness of Opti-CAM, because rather than 
+weakly supervised object localization, the objective here is to explain how the classifier works.
