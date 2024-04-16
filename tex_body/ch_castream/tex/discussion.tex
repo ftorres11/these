@@ -1,3 +1,38 @@
 %--------------------------------------------------------------------------------------------------
 \section{Discussion}
 \label{sec:ca_discussion}
+\paragraph{Class Agnostic Pooling} On \autoref{sec:ca_defn} the groundwork relating to Cross 
+Attention was established. In particular, the [\Th{CLS}] token is able to capture class specific 
+information, or the information relating to the learned class. In our approach, we opt to utilize 
+the class agnostic representation, we specifically want the information leading to 
+top-1 predictions. Nevertheless, the implementation and usage of the class-specific [\Th{CLS}] 
+token is still interesting, it allows for the visualization of multiple instances of different 
+classes in one image, without any extensive computational requirements such as forward-backward 
+passes, and learning.
+
+\paragraph{Computational Complexity} Additionally, our approach is designed to be efficient in terms of 
+computational cost. Its inclusion does not result in a significant increase in parameter count 
+for most models, excluding ResNet-50. This results from an increase in \emph{Block Expansion} 
+values. This parameter acts as a multiplier controlling the size of filter depth across different 
+stages of this architecture. In detail, when we switch from ResNet-18 to ResNet 50; this value 
+increases from 1 in the former, to 4 in the latter. Our approach introduces cross attention layers 
+on stages where a change in feature map depth occurs; therefore a sharp increase of Block Expansion 
+value leads directly to an increase of Cross-Attention Stream size. We acknowledge that in deeper
+ ResNet variants this overhead is similar to that encountered in ConvNeXt architectures.
+
+\paragraph{Saliency Maps Visualization} Our approach is not designed as a novel attribution method, 
+instead our [\cls] representation improves predictive power. In particular, when we generate 
+attributions, the computation procedure is mostly the same between \gap and [\cls], with the 
+biggest difference coming from the pooling method used. Since we obtain fairly similar recognition 
+values, we argue that these two representations are quite similar, thus attributions ought to be 
+similar too. 
+
+\paragraph{Differences on Interpretability Metrics} In contrast to the lack of significant 
+differences on visualization, we observe that our approach performs better than \gap 
+on interpretability evaluation. On one hand, since we use a training recipe special for ResNet, we 
+obtain a better accuracy reading with our approach. Since interpretability metrics are related to 
+the recognition capabilities of the classifier, this improvement on explainability is expected. On 
+the other hand, our approach achieves worse accuracy results in ConvNeXt than baseline. However, 
+its interpretability metrics are better. Relating to the prior observation, we argue that if 
+accuracy is low, then prediction probability must be higher: the classifier must be more confident. 
+This is sufficiently demonstrated with the differences of average drop and average gain for all models.

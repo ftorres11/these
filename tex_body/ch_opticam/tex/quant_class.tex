@@ -5,8 +5,8 @@
 
 \paragraph{CNN}
 \autoref{tab:imagenet-cnn} shows ImageNet classification metrics using \Th{VGG16} and \Th{ResNet50}.
- Our Opti-CAM brings impressive performance in terms of average drop ($\AD$) and Average Increase 
- ($\AI$) metrics. That is, not only impressive improvement over baselines, but near-perfect: 
+ Our Opti-CAM brings impressive performance in terms of \glsfirst{ad} and Average Increase 
+ \gls{ai} metrics. That is, not only impressive improvement over baselines, but near-perfect: 
  near-zero $\AD$ and above 90\% $\AI$. Our new metric $\AG$ is lower, around 70\% 
  for Opti-CAM, but this is still several times higher than for all the other methods.\\
 %--------------------------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ optimization objective is very similar to this evaluation metric, using blurring
 However, ExPerturbation \autocite{fong2019understanding}  only performs best on ResNet50. 
 TIBAV \autocite{chefer2021transformer}, which is designed for transformers, outperforms the other 
 methods on DeiT and ViT. According to the results of Insertion/Deletion, Opti-CAM has low 
-performance but there is no clear winner on either CNNs or transformers.
+performance, but there is no clear winner on either CNNs or transformers.
 % -------------------------------------------------------------------------------------------------
 \begin{table}[H]
     \centering
@@ -114,8 +114,8 @@ performance but there is no clear winner on either CNNs or transformers.
     \bottomrule
     \end{tabular}
     % \vspace{6pt}
-    \caption{
-    I/D: insertion/deletion \autocite{petsiuk2018rise} scores on ImageNet validation set; $\downarrow$ / $\uparrow$: lower / higher is better.}% Bold: best, excluding Fake-CAM.}
+    \caption{\textbf{I/D: insertion/deletion} \autocite{petsiuk2018rise} scores on ImageNet validation set; 
+    $\downarrow$ / $\uparrow$: lower / higher is better.}% Bold: best, excluding Fake-CAM.}
     \label{tab:imagenet_cnn_hihd}
 \end{table}
 % -------------------------------------------------------------------------------------------------
