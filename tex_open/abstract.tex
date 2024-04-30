@@ -1,33 +1,55 @@
 %--------------------------------------------------------------------------------------------------
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-Computer Vision applications using Deep Learning technologies have undergone a remarkable 
-revolution in the past decade, enabling them to conduct complex tasks over time. In particular, one 
-Computer Vision task that has greatly benefitted from these advances is image recognition. 
-Progress in this field has paved the way for further developments in complementary fields of 
-Computer Vision, models developed for image recognition are modified to conduct image segmentation 
-and reconstruction.\\
-
-\noindent The Deep Learning revolution has occurred in two stages: first with the reemergence and 
-popularization of convolutional neural networks, and in second place with the 
-introduction of attention based architectures. On one hand, on their early days convolutional 
-neural networks were hard to train, given their complexity and data volume requirements. 
-%Still, early proposals showed promise, such as LeNet with the automatic recognition of handwritten 
-%digits in the US postal service in the early 1990s. 
-However, in the early years of the 2010s decade these issues were solved with the widespread of 
-large scale visual recognition datasets, as well as with the effective use of \glspl{gpu} for 
-computation. On the other hand, close to the end of this decade a new style of model emerged: 
-the Transformer architecture. This architecture creates an abstract representation of classes 
-that interacts with every element of an encoding, generating a representation that learns a 
-class representation. Additionally, Transformers can process larger volumes of data, 
-allowing them to be robust to bias and generalize better.\\
-
-\noindent Convolutional Neural Networks and Transformers have completely changed the landscape of 
-deep learning and image recognition, and as such, they have permeated deep into society with the 
-automatization of many daily tasks. Thus, it is no longer a question of \emph{can a model perform 
+Computer Vision applications using Artificial Intelligence technologies have undergone a remarkable 
+evolution in the past decade. Current developments in Computer Vision are a direct result of a 
+better utilization of hardware, enabling the construction of models capable of performing more 
+complex tasks over time. On image recognition in particular, convolutional neural networks and 
+transformers are now able to identify images and their elements, as well as assign semantic value 
+to them, even in challenging conditions. These models have completely changed the landscape of deep 
+learning and image recognition, permeating deep into society with the automatization of many daily 
+tasks. Thus, it is no longer a question of \emph{can a model perform 
 this task?}, but more a question of \emph{how does this model perform this task?}. To address these 
 questions a new research field has emerged: interpretability and explainable AI.\\
+\\
+%Moreover, progress in this field has paved the way for further developments in complementary fields 
+%of Computer Vision: models developed for image recognition are modified to conduct image 
+%segmentation and reconstruction.\\
+
+%\noindent The Deep Learning revolution occurred in two stages: first with the reemergence and 
+%popularization of convolutional neural networks, and in second place with the 
+%introduction of attention based architectures. On one hand, convolutional neural networks were 
+%initially hard to train given their complexity and data volume requirements. 
+%Still, early proposals showed promise, such as LeNet with the automatic recognition of handwritten 
+%digits in the US postal service in the early 1990s. 
+%However, in the early years of the last decade these issues were solved with the widespread of 
+%large scale visual recognition datasets, as well as with the effective use of Graphics Processing 
+%Units for computation. On the other hand, close to the end of this time period a new style of model 
+%emerged: the Transformer architecture. This architecture creates an abstract representation of 
+%lasses that interacts with every element of an encoding, generating a representation that learns a 
+%class representation. Additionally, Transformers can process larger volumes of data, 
+%allowing them to be robust to bias and generalize better.\\
+
+%\noindent Convolutional Neural Networks and Transformers 
+\noindent In this thesis, our goal is to understand and further develop interpretability models for 
+state-of-the-art image recognition models. We introduce and briefly explain some of the most 
+relevant high performance image recognition models for both Convolutional Neural Networks 
+and Transformers. Then, current interpretability approaches designed to provide 
+explanations, as well as their evaluation protocols. We make observations upon 
+these methods and evaluation protocols, highlighting difficulties upon them and suggesting ideas 
+to address their limitations.\\
+
+\noindent In particular, a novel attribution method is proposed, ensuring that the highlighted 
+regions in an image maximize a given class probability. From this method we observe that the 
+most important information correlating to a class prediction, is not only found in the object of 
+interest. Instead, context conveys salient information too: it is usually spread all over the image. 
+Additionally, an addition to existing architectures is introduced, this method enhances predictive 
+confidence, boosting interpretability properties of high performing image recognition models. Lastly, we 
+propose a learning paradigm, that denoises gradients on the image space, enhancing 
+interpretability properties. This final proposition demonstrates improvements on interpretability 
+metrics for small datasets and models, while displaying promise for its scaling on to larger 
+datasets and architectures.\\
 
 \vspace{0.5cm}
-Keywords: deep learning, image processing, attributions, interpretability
+Keywords: Deep Learning, image recognition, interpretability, explainability.
 

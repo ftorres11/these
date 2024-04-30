@@ -1,4 +1,66 @@
-\chapter*{Conclusion}
-\addcontentsline{toc}{chapter}{Conclusion}
+%--------------------------------------------------------------------------------------------------
+\addchap{Conclusion}
+%\addcontentsline{toc}{chapter}{Conclusion}
 \label{concs}
+Across this thesis we studied explainable deep learning proposals, to understand current image 
+recognition models. Explainable Artificial Intelligence and Interpretability are blooming fields 
+within the research on machine learning. In particular, current high performing models are 
+being steadily assimilated within society and their prominence in human life is increasing; thus, 
+it has become important understanding the processes prompting a prediction in one such model. 
+Furthermore, these fields are being studied following a plethora of axis of research. Still, the 
+work presented by Lipton \autocite{mythos_interp} and Zhang \autocite{zhang2021survey} lay the 
+foundation for our work.\\
+
+\paragraph{Background}
+\noindent In Chapter \ref{ch:rel}, we introduce and describe the evolution of image recognition 
+models, starting from those relying on traditional machine learning algorithms, to current high 
+performance architectures based attention computation. In relation to this modelling evolution, we 
+demonstrate how the improvement of image recognition models consequently benefits the development 
+of related Computer Vision fundamental tasks. Thus, further development of image recognition models 
+is acknowledged as a major task in Computer Vision, enhancing adjacent tasks within the discipline.\\
+
+\noindent Complementary to the introduction of these models, we highlight the 
+necessity of providing explanations to current image recognition models. We mention the proposition  
+of the European AI act for regulation of Artificial Intelligence technologies, as well as in the 
+\emph{Mythos of Model Interpretability} by Lipton. In particular, following Lipton's work we 
+revise the properties proposed therein, as well as illustrate how they can be adapted to explain 
+current state-of-the-art models. Furthermore, we demonstrate our interest on \gls{cam} methods 
+to produce explanations. A thorough description of their computation and different proposals is 
+established to lay the foundation for the following studies.\\
+
+\noindent Finally, to complement interpretability studies, the background establishes
+evaluation procedures for explainability methods. Regarding these evaluation procedures, we group 
+them according to the reasoning of the measurement provided, as well as highlight the positive 
+and negative points of each procedure. Notably, \emph{Interpretable Object Recognition} and 
+\emph{Causal Analysis} are observed to best assess interpertability properties of a model. On one 
+hand, it is observed that \emph{Interpretable Object Localization} implies that model 
+interpretations should be aligned to human interpretations. On the other hand, pure human 
+measurements are completely aligned with what individuals deem salient on images, which is often 
+biased and not often replicable on most experimental settings. Pure classifier centric evaluation 
+ultimately addresses these shortcomings, removing implicit bias produced by human reasoning, 
+although not from supervision.\\
+
+\paragraph{Opti-CAM}
+\noindent Chapter \ref{ch:opticam} presents our first contribution: \emph{Opti-CAM}, a post-hoc 
+interpretability method, constructed following the principles of \emph{CAM} and evaluation 
+procedures. Specifically, Opti-CAM produces a saliency map that maximizes predictive probability 
+of images masked by it. Additionally, issues regarding quantitative evaluation are displayed, 
+most importantly the incompleteness of Interpretability Object Recognition. To address these 
+shortcomings, we propose \emph{Average Gain}, a complementary metric to Average Drop, measuring 
+the predictive gains obtained while considering explanation maps as input images.\\
+
+\noindent On one hand, we observe that true to its design, Opti-CAM outperforms contemporary 
+CAM attribution methods in most quantitative measurements. In particular, this methodology 
+performs the best in Interpretable Image Recognition and Causal Analysis, but fails in Object 
+Localization. We make sense of these observations aided with visualizations. In contrast to 
+current CAM methods, Opti-CAM generates a saliency map that is spread across the input image. 
+From this we infer that context matters describing an explanation. Consequently, since context is 
+necessary to explain a prediction, the requirement of saliency maps being localized is 
+counterintuitive and does not hold.\\
+
+\noindent Lastly, regarding Average Gain our experimental results demonstrate its complementary 
+behavior to Interpretable Image Recognition Evaluation.  In particular, this metric efficiently 
+demonstrates how Fake-CAM fails as an attribution method: although it attains almost perfect 
+Average Drop; its Average Gain measurement fails entirely, effectively complementing the 
+shortcomings instated by this CAM method.
 %\lipsum[1-2]

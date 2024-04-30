@@ -20,8 +20,8 @@ image recognition methodologies.\\
 \noindent Traditional image recognition approaches based on traditional machine learning 
 algorithms are a two-step process. The first step involves the extraction of features from the 
 data, and the last step lies in the training of a classifier. Examples of this 
-can be found in methodologies such as \gls{sift} \autocite{lowe1999object}, \gls{bow} 
-\autocite{csurka2004visual}, and \gls{hog}. 
+can be found in methodologies such as the Scale Invariant Feature Transform (SIFT) 
+\autocite{lowe1999object}, Bag of Words (BOW) \autocite{csurka2004visual}, and \gls{hog}. 
 SIFT, stands out as a powerful keypoint detector that incorporates image alignment. 
 More importantly, its robustness towards scale and rotation led to widespread adoption in real 
 world applications \autocite{cruz2012scale}.
@@ -171,7 +171,7 @@ matching feature-map sizes. We illustrate this on \autoref{fig:dense_schema}. In
 architecture enables the training of very deep models, as these connections facilitate feature reuse 
 and identity mappings, thus negating the effect of vanishing gradients. However, one issue of 
 DenseNet is its lack of  modularity and ease of use. Due to a great number of 
-neurons being interconnected by design, introducing of modifications such as \gls{nlb} 
+neurons being interconnected by design, introducing of modifications such as Non Local Blocks  
 \autocite{wang2018non} or Squeeze Excitation Blocks  \autocite{hu2018squeeze} is challenging. In 
 contrast, in architectures such as ResNet this procedure is simple.\\
 
