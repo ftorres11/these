@@ -5,35 +5,35 @@
 Across this thesis we studied explainable deep learning proposals, to understand current image 
 recognition models. Explainable Artificial Intelligence and Interpretability are blooming fields 
 within the research on machine learning. In particular, current high performing models are 
-being steadily assimilated within society and their prominence in human life is increasing; thus, 
+being steadily assimilated within society and their prominence in human life is increasing. Thus, 
 it has become important understanding the processes prompting a prediction in one such model. 
 Furthermore, these fields are being studied following a plethora of axis of research. Still, the 
 work presented by Lipton \autocite{mythos_interp} and Zhang \autocite{zhang2021survey} lay the 
 foundation for our work.\\
 
 \paragraph{Background}
-\noindent In Chapter \ref{ch:rel}, we introduce and describe the evolution of image recognition 
-models, starting from those relying on traditional machine learning algorithms, to current high 
+\noindent In Chapter \ref{ch:rel}, we introduced and described the evolution of image recognition 
+models. We started with models based on traditional machine learning algorithms, to current high 
 performance architectures based attention computation. In relation to this modelling evolution, we 
-demonstrate how the improvement of image recognition models consequently benefits the development 
+demonstrated how the improvement of image recognition models consequently benefits the development 
 of related Computer Vision fundamental tasks. Thus, further development of image recognition models 
 is acknowledged as a major task in Computer Vision, enhancing adjacent tasks within the discipline.\\
 
-\noindent Complementary to the introduction of these models, we highlight the 
-necessity of providing explanations to current image recognition models. We mention the proposition  
+\noindent Complementary to the introduction of these models, we highlighted the 
+necessity of providing explanations to current image recognition models. We mentioned the proposition  
 of the European AI act for regulation of Artificial Intelligence technologies, as well as in the 
-\emph{Mythos of Model Interpretability} by Lipton. In particular, following Lipton's work we 
-revise the properties proposed therein, as well as illustrate how they can be adapted to explain 
-current state-of-the-art models. Furthermore, we demonstrate our interest on \gls{cam} methods 
+Mythos of Model Interpretability by Lipton. In particular, following Lipton's work we 
+revised the properties proposed therein, as well as illustrated how they can be adapted to explain 
+current state-of-the-art models. Furthermore, we demonstrated our interest on \gls{cam} methods 
 to produce explanations. A thorough description of their computation and different proposals is 
 established to lay the foundation for the following studies.\\
 
-\noindent Finally, to complement interpretability studies, the background establishes
-evaluation procedures for explainability methods. Regarding these evaluation procedures, we group 
-them according to the reasoning of the measurement provided, as well as highlight the positive 
-and negative points of each procedure. Notably, \emph{Interpretable Object Recognition} and 
-\emph{Causal Analysis} are observed to best assess interpertability properties of a model. On one 
-hand, it is observed that \emph{Interpretable Object Localization} implies that model 
+\noindent Finally, to complement interpretability studies, the background established
+evaluation procedures for explainability methods. Regarding these evaluation procedures, we grouped 
+them according to the reasoning of the measurement provided, as well as highlighted the positive 
+and negative points of each procedure. Notably, Interpretable Object Recognition and 
+Causal Analysis are observed to best assess interpertability properties of a model. On one 
+hand, it is observed that Interpretable Object Localization implies that model 
 interpretations should be aligned to human interpretations. On the other hand, pure human 
 measurements are completely aligned with what individuals deem salient on images, which is often 
 biased and not often replicable on most experimental settings. Pure classifier centric evaluation 
@@ -41,26 +41,55 @@ ultimately addresses these shortcomings, removing implicit bias produced by huma
 although not from supervision.\\
 
 \paragraph{Opti-CAM}
-\noindent Chapter \ref{ch:opticam} presents our first contribution: \emph{Opti-CAM}, a post-hoc 
-interpretability method, constructed following the principles of \emph{CAM} and evaluation 
+\noindent Chapter \ref{ch:opticam} presented our first contribution: Opti-CAM, a post-hoc 
+interpretability method, constructed following the principles of CAM and evaluation 
 procedures. Specifically, Opti-CAM produces a saliency map that maximizes predictive probability 
 of images masked by it. Additionally, issues regarding quantitative evaluation are displayed, 
 most importantly the incompleteness of Interpretability Object Recognition. To address these 
-shortcomings, we propose \emph{Average Gain}, a complementary metric to Average Drop, measuring 
+shortcomings, we proposed Average Gain, a complementary metric to Average Drop, measuring 
 the predictive gains obtained while considering explanation maps as input images.\\
 
-\noindent On one hand, we observe that true to its design, Opti-CAM outperforms contemporary 
+
+\noindent On one hand, we observed that true to its design, Opti-CAM outperforms contemporary 
 CAM attribution methods in most quantitative measurements. In particular, this methodology 
 performs the best in Interpretable Image Recognition and Causal Analysis, but fails in Object 
-Localization. We make sense of these observations aided with visualizations. In contrast to 
+Localization. We made sense of these observations aided with visualizations. In contrast to 
 current CAM methods, Opti-CAM generates a saliency map that is spread across the input image. 
 From this we infer that context matters describing an explanation. Consequently, since context is 
 necessary to explain a prediction, the requirement of saliency maps being localized is 
 counterintuitive and does not hold.\\
 
-\noindent Lastly, regarding Average Gain our experimental results demonstrate its complementary 
+\noindent Lastly, regarding Average Gain our experimental results demonstrated its complementary 
 behavior to Interpretable Image Recognition Evaluation.  In particular, this metric efficiently 
 demonstrates how Fake-CAM fails as an attribution method: although it attains almost perfect 
 Average Drop; its Average Gain measurement fails entirely, effectively complementing the 
-shortcomings instated by this CAM method.
-%\lipsum[1-2]
+shortcomings instated by this CAM method.\\
+
+\paragraph{Cross-Attention Stream}
+\noindent Chapter \ref{ch:castream} presented our second contribution, the Cross-Attention Stream. 
+This addition inspired by pure attention architectures, computes an abstract representation of 
+classes, via interaction of a class token and feature maps across different depths of a model. 
+Additionally, this approach was validated in common image recognition models studied on 
+interpretability such as ResNet, as well as in a family of models not often studied in this fashion: 
+ConvNeXt.\\
+
+\noindent In this contribution we set the stage for quantitative interpretability measurements for 
+transparency based approaches. We trained the stream similarly to prior transparency approaches, 
+and we evaluated its properties using \gls{cam}, a post-hoc method. Moreover, we observed that our 
+saliency maps do not differ much from the baseline ones. However, this result was expected as this 
+approach does not modify existing parameters within the network, nor changes the computation of 
+attributions. Instead, our representation conveys information differently to the classifier, 
+enhancing predicted probability of groundtruth classes. \\
+
+\paragraph{Gradient Denoising}
+\noindent Lastly, Chapter \ref{ch:grad} introduced a learning paradigm for interpretable gradients. 
+In this approach, the guided backpropagated gradient of the network, observed in the input space is 
+used to regularize the network during training, enhancing interpretability properties. Continuing 
+with the evaluation of transparency methods seen on Chapter \ref{ch:castream}, we evaluate these 
+properties using CAM methods.\\
+
+\noindent Notably, the learning paradigm was showcased in a constrained setting: small datasets and 
+low parameter networks. This setting is a consequence of the computational cost this approach 
+requires. However, the results obtained in this manner are promising, therefore addressing the 
+prior complexity would allow for scaling on to large scale image datasets and more complex models. 
+This ultimately is one direction this idea can be expanded on in the future. 

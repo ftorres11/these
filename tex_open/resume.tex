@@ -18,24 +18,35 @@ recherche a émergé : l'interprétabilité et l'intelligence artificielle expli
 d'interprétabilité pour les modèles de reconnaissance d'images de pointe. Nous présentons et 
 expliquons brièvement certains des modèles de reconnaissance d'images les plus performants et 
 pertinents pour les Réseaux de Neurones Convolutifs et les Transformers. Ensuite, nous examinons 
-les approches actuelles en matière d' interpr\'etabilit\'e conçues pour fournir des explications, ainsi 
-que leurs protocoles d' évaluation. Nous faisons des observations sur ces méthodes et protocoles 
-d'évaluation, mettant en évidence les difficultés rencontrées et suggérant des idées pour surmonter 
-leurs limitations.\\
+les approches actuelles en matière d' interpr\'etabilit\'e conçues pour fournir des explications, 
+ainsi que leurs protocoles d' évaluation. Nous faisons des observations sur ces méthodes et 
+protocoles d'évaluation, mettant en évidence les difficultés rencontrées et suggérant des idées 
+pour surmonter leurs limitations.\\
 
-\noindent En particulier, une nouvelle méthode d'attribution est proposée, garantissant que les 
-régions mises en évidence dans une image maximisent une probabilité de classe donnée. À partir de 
-cette méthode, nous observons que les informations les plus importantes corrélées à une prédiction 
-de classe ne se trouvent pas seulement dans l'objet d'intérêt. Au contraire, le contexte transmet 
-également des informations saillantes : elles sont généralement réparties dans toute l'image. De 
-plus, une addition aux architectures existantes est introduite, cette méthode améliore la confiance 
-prédictive, renforçant ainsi les propriétés d'interprétabilité des modèles de reconnaissance 
-d'images performants. Enfin, nous proposons un paradigme d'apprentissage qui débruite les gradients 
-dans l'espace d'image, améliorant ainsi les propriétés d'interprétabilité. Cette proposition finale 
-démontre des améliorations 
-sur les métriques d'interprétabilité pour de petits ensembles de données et modèles, tout en 
-montrant des promesses pour son passage à l'échelle sur de plus grands ensembles de données et 
-architectures.\\
+\noindent Notre première contribution, Opti-CAM, s'appuie sur le raisonnement des Cartes d' 
+Activation de Classe. En particulier, cette proposition optimise le coefficient de pondération 
+requis pour calculer une carte de saillance, générant une représentation qui maximise la 
+probabilité spécifique à la classe. Cette carte de saillance offre les meilleurs résultats selon 
+les mesures d'interprétabilité, et met en évidence que le contexte est pertinent pour décrire une 
+prédiction. De plus, une nouvelle métrique pour compléter l'évaluation de l'interprétabilité est 
+dévoilée, remédiant aux lacunes de cette procédure.\\
+
+\noindent Notre deuxième contribution, Cross Attention Stream, est un ajout aux modèles actuels de 
+reconnaissance d'images, améliorant les mesures d'interprétabilité. Inspiré par des modèles 
+novateurs performants tels que les Transformers, nous construisons un flux qui calcule l'interaction 
+d'une représentation de classe abstraite avec les caractéristiques profondes des réseaux neuronaux 
+convolutionnels. Cette représentation est finalement utilisée pour effectuer la classification. 
+Notre flux affiche des améliorations lors de l'évaluation quantitative, tout en préservant les 
+performances de reconnaissance à travers différents modèles.\\
+
+\noindent Enfin, notre dernière contribution présente un nouveau paradigme d'entraînement pour les 
+réseaux neuronaux profonds. De plus, ce paradigme débruite les informations de gradient des modèles 
+profonds dans l'espace d'entrée. La représentation de rétropropagation guidée de l'image d'entrée 
+est utilisée pour régulariser les modèles lors de leur phase d'entraînement. En conséquence, nos 
+modèles entraînés affichent des améliorations pour l'évaluation interprétable. Nous appliquons 
+notre paradigme à de petites architectures dans un cadre contraint, ouvrant la voie au 
+développement futur dans des ensembles de données à grande échelle, ainsi qu'avec des modèles plus 
+complexes.\\
 
 \vspace{0.5cm}
 %Keywords: deep learning, image processing, attributions, interpretability

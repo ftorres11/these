@@ -31,24 +31,51 @@ questions a new research field has emerged: interpretability and explainable AI.
 %allowing them to be robust to bias and generalize better.\\
 
 %\noindent Convolutional Neural Networks and Transformers 
+
+%--------------------------------------------------------------------------------------------------
 \noindent In this thesis, our goal is to understand and further develop interpretability models for 
 state-of-the-art image recognition models. We introduce and briefly explain some of the most 
 relevant high performance image recognition models for both Convolutional Neural Networks 
 and Transformers. Then, current interpretability approaches designed to provide 
 explanations, as well as their evaluation protocols. We make observations upon 
 these methods and evaluation protocols, highlighting difficulties upon them and suggesting ideas 
-to address their limitations.\\
+to address their limitations. In the following chapters we present our contributions.\\
 
-\noindent In particular, a novel attribution method is proposed, ensuring that the highlighted 
-regions in an image maximize a given class probability. From this method we observe that the 
-most important information correlating to a class prediction, is not only found in the object of 
-interest. Instead, context conveys salient information too: it is usually spread all over the image. 
-Additionally, an addition to existing architectures is introduced, this method enhances predictive 
-confidence, boosting interpretability properties of high performing image recognition models. Lastly, we 
-propose a learning paradigm, that denoises gradients on the image space, enhancing 
-interpretability properties. This final proposition demonstrates improvements on interpretability 
-metrics for small datasets and models, while displaying promise for its scaling on to larger 
-datasets and architectures.\\
+%--------------------------------------------------------------------------------------------------
+\noindent Our first contribution, Opti-CAM builds upon the reasoning of Class Activation Mappings. 
+In particular, this proposal optimizes the weighting coefficient required to compute a saliency 
+map, generating a representation that maximizes class specific probability.  This saliency map 
+performs the best across interpretability metrics on multiple datasets.  Plus, it highlights that 
+context is relevant towards describing a prediction. Additionally, a novel metric to complement 
+interpretability evaluation is unveiled, addressing shortcomings in this procedure.\\
+
+%--------------------------------------------------------------------------------------------------
+\noindent Our second contribution, Cross Attention Stream is an addition to current image 
+recognition models, enhancing interpretability measurements. Inspired novel high performing models 
+such as Transformers, we construct a stream that computes the interaction of an abstract class 
+representation, with deep features of convolutional neural networks. This representation is 
+ultimately used to perform classification. Our Stream displays improvements on quantitative 
+evaluation, as well as preserves recognition performance across different models.\\
+
+%--------------------------------------------------------------------------------------------------
+\noindent Lastly, our final contribution presents a novel training paradigm for deep neural 
+networks. Moreover, this paradigm denoises the gradient information of deep models in the 
+input space. The guided backpropagation representation of the input image is used to regularize 
+models during their training phase. As a result, our trained models display improvements for 
+interpretable evaluation. We apply our paradigm to small architectures in a constrained 
+setting, paving the way for future development in large scale datasets, as well as with more 
+complex models.\\
+
+%\noindent In particular, a novel attribution method is proposed, ensuring that the highlighted 
+%regions in an image maximize a given class probability. From this method we observe that the 
+%most important information correlating to a class prediction, is not only found in the object of 
+%interest. Instead, context conveys salient information too: it is usually spread all over the image. 
+%Additionally, an addition to existing architectures is introduced, this method enhances predictive 
+%confidence, boosting interpretability properties of high performing image recognition models. Lastly, we 
+%propose a learning paradigm, that denoises gradients on the image space, enhancing 
+%interpretability properties. This final proposition demonstrates improvements on interpretability 
+%metrics for small datasets and models, while displaying promise for its scaling on to larger 
+%datasets and architectures.\\
 
 \vspace{0.5cm}
 Keywords: Deep Learning, image recognition, interpretability, explainability.
