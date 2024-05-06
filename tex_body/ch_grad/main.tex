@@ -7,23 +7,24 @@
 \noindent A recurring issue faced by both neural networks and transformers is their inherent
 lack of interpretability. These models are primarily optimized for high performance in their 
 designated tasks. Yet, reflecting upon the information that can be drawn out of a 
-model without too much an effort; we observe that the gradient of any given model although noisy,
-contains relevant information regarding the behavior after a given input, after all because of this,
-several interpretability methods are designed around it.\\
+model without too much  effort; we observe that the gradient of deep models displays the response 
+of its parameters, to a given input. Many current interpretability methods are constructed based 
+on this observation.\\
 
 \noindent However,  the effective utilization of gradients in interpretability methods remains a 
 pressing question. \textit{How can we leverage gradient better?}, previous interpretability 
 approaches have relied on the stand alone gradient information such as Guided Backpropagation 
 (\cite{guidedbackprop}) and Smoothgrad (\cite{smilkov2017smoothgrad}). On  another hand as 
-seen in previous chapters some CAM variants are designed around it, like Grad-CAM 
+seen in previous chapters some CAM variants are based on gradient, like Grad-CAM 
 (\cite{selvaraju2017grad}), Grad-CAM++ (\cite{chattopadhay2018grad}) and Axiom-CAM (\cite{axiombased}).
 Nevertheless, it is worth reflecting that gradient plays a more prominent role during 
 the training phase of a model, particularly as a cornerstone in this process, we can not help but
-reflect upon \textit{how can we leverage upon the gradient for interpretability during training?}.\\
+reflect upon \textit{how can we leverage upon the gradient to improve interpretability during 
+training?}.\\
 
 \noindent In this chapter, we propose a modification to the training process of deep models by 
-introducing of a regularization term to the error function. This term is aimed at constraining 
-the gradient by aligning it with guided backpropagation in the input space.
+introducing of a regularization term to the error function. This term constrains
+the gradient, aligning it with guided backpropagation in the input space.
 
 
 \input{tex_body/ch_grad/tex/def}

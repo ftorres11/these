@@ -8,8 +8,8 @@
 recognition in general. In particular, with the introduction of the transformer architecture 
 (\cite{vaswani2017attention}) a switch in the paradigm occurred where the best performing 
 architectures contain the self-attention module as a building block. Moreover, with the proposal of 
-the Vision Transformer (\cite{dosovitskiy2020image}) transformers were adopted into computer vision, 
-this module gained prominence as it allowed models to push the boundaries in existing benchmarks. 
+the Vision Transformer (\cite{dosovitskiy2020image}) transformers were adopted into computer vision. 
+This module gained prominence as it allowed models to push the boundaries in existing benchmarks. 
 This led to an expansion with models such as Swin-T \autocite{liu2021swin}, LeViT 
 \cite{graham2021levit}. Conversely, hybrid architectures combining ideas from both \gls{cnn} and 
 transformers can be observed like Conformer (\cite{peng2021conformer}), Patchconvnet 
@@ -18,7 +18,7 @@ ConvNeXt (\cite{liu2022convnet}) drew inspiration from these models, whilst addr
 shortcomings in downstream tasks.\\
 
 \noindent Although these models have pushed visual recognition to new frontiers, their interpretable
- properties still require further exploration, as in one hand conventional interpretability 
+ properties still require further exploration. Conventional interpretability 
 methodologies for CNNs do not translate properly into their domain, all the while the explanations 
 obtained from these methods (\cite{abnar2020quantifying}) do not appear to have a proper evaluation 
 protocol, resulting in research aimed at improved visualizations and their assesment 
@@ -31,7 +31,8 @@ we can generate cross attention between this token and the feature maps found at
 of a CNN; this being expressed in via linear combination of feature maps with this token, ultimately 
 resembling a class agnostic CAM. As an extension of this, we propose the inclusion of a 
 cross-attention module used to train this token as a replacement of GAP (\cite{lin2013network}), 
-onto already trained models boosting  both their recognition and interpretable properties.
+onto already trained models boosting  both their interpretable properties, while maintaining 
+recognition performance.
 
 \input{tex_body/ch_castream/tex/ca_defn}
 \input{tex_body/ch_castream/tex/ca_stream}
