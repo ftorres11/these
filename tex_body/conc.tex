@@ -11,7 +11,52 @@ Furthermore, these fields are being studied following a plethora of axis of rese
 work presented by Lipton \autocite{mythos_interp} and Zhang \autocite{zhang2021survey} lay the 
 foundation for our work.\\
 
+We structure these conclusions of our work in the following manner. First on \autoref{sec:conc_gen} 
+we comment on the thesis objectives and the manner they were addressed across each chapter. On 
+\autoref{sec:conc_futur} we address future work regarding this topic.\\
+
+\section{General remarks}
+\label{sec:conc_gen}
+%In this section, we describe each chapter's contributions and general observations. To begin 
+%with, \autoref{sub:conc_obj} elaborates on the overall objectives and the work conducted in this 
+%thesis. In more detail, \autoref{sub:conc_back} raises conclusions regarding the background, 
+%advancements in current image recognition techniques, and the need for interpretability. Then, 
+%\autoref{sub:conc_opti} discusses interpretability evaluation issues and how we address them with 
+%our proposal. Later, on \autoref{sub:conc_ca} the conclusion follows the Cross Attention Stream 
+%proposal to improve explanations. Lastly, \autoref{sub:conc_grad} summarizes the outcome of 
+%the gradient denoising chapter.
+
+\paragraph{Thesis Objectives}
+\label{sub:conc_obj}
+This thesis was conducted to study image recognition models, building novel explainability 
+approaches to further understand them. In detail, our major objective was to improve both 
+recognition and interpretability properties. To that end, we identified three areas of  
+work: high computational cost, lack of consensus between evaluation procedures, and a mismatch 
+between human and model interpretability.\\
+
+\noindent To begin with, regarding the improvement of image recognition, this work 
+introduced two different approaches that address this requirement. In particular, Chapter 
+\ref{ch:castream} showcased how the addition of cross attention can enhance 
+recognition characteristics. Furthermore, Chapter \ref{ch:grad} presented a novel training paradigm 
+can potentially yield better recognition predictions. Complementary to this, 
+interpretability measurements are improved consistently across this thesis. In particular, 
+Chapter \ref{ch:opticam} presented \emph{Opti-CAM}, a methodology that consistently improves 
+upon these capabilities, evidenced across different datasets and evaluation modes.\\
+
+\noindent In line with the specific objectives, our thesis follows a standardized evaluation 
+procedure. Across each chapter, we compare our baselines with our approaches under the exact 
+same settings. Conversely, we observed that methods conduct experimentation unnecessarily complex. 
+It is concluded that such cases are designed to cover the shortcomings on an approach.\\
+
+\noindent Lastly, the differences between human and model interpretations were discussed in 
+detail in Chapter \ref{ch:opticam}. Specifically, we observed that context matters in the 
+formulation of saliency maps: the most important regions describing a category are spread across 
+the image. This is highlighted with the failure on interpretable object localization, and the 
+success on interpretable object recognition achieved by Opti-CAM: human centric explanations 
+expect the most salient areas to be found mostly over the object of interest. \\
+
 \paragraph{Background}
+\label{sub:conc_back}
 \noindent In Chapter \ref{ch:rel}, we introduced and described the evolution of image recognition 
 models. We started with models based on traditional machine learning algorithms, to current high 
 performance architectures based on attention computation. In relation to this modelling evolution, we 
@@ -41,23 +86,23 @@ ultimately addresses these shortcomings, removing implicit bias produced by huma
 although not from supervision.\\
 
 \paragraph{Opti-CAM}
+\label{sub:conc_opti}
 \noindent Chapter \ref{ch:opticam} presented our first contribution: Opti-CAM, a post-hoc 
 interpretability method, constructed following the principles of CAM and evaluation 
 procedures. Specifically, Opti-CAM produces a saliency map that maximizes predictive probability 
 of images masked by it. Additionally, issues regarding quantitative evaluation are displayed, 
-most importantly the incompleteness of Interpretable Object Recognition. To address these 
+most importantly the incompleteness of \textbf{Interpretable Object Recognition}. To address these 
 shortcomings, we proposed Average Gain, a complementary metric to Average Drop, measuring 
 the predictive gains obtained while considering explanation maps as input images.\\
 
-
 \noindent On one hand, we observed that true to its design, Opti-CAM outperforms contemporary 
 CAM attribution methods in most quantitative measurements. In particular, this methodology 
-performs the best in Interpretable Image Recognition and Causal Analysis, but fails in Object 
-Localization. We made sense of these observations aided with visualizations. In contrast to 
-current CAM methods, Opti-CAM generates a saliency map that is spread across the input image. 
-From this we infer that context matters describing an explanation. Consequently, since context is 
-necessary to explain a prediction, the requirement of saliency maps being localized is 
-counter intuitive and does not hold.\\
+performs the best in \textbf{Interpretable Image Recognition} and \textbf{Causal Analysis}, but 
+fails in \textbf{Object Localization}. We made sense of these observations aided with 
+visualizations. In contrast to current CAM methods, Opti-CAM generates a saliency map that is 
+spread across the input image. From this we infer that context matters describing an explanation. 
+Consequently, since context is necessary to explain a prediction, the requirement of saliency maps 
+being localized is counter-intuitive and does not hold.\\
 
 \noindent Lastly, regarding Average Gain our experimental results demonstrated its complementary 
 behavior to Interpretable Image Recognition Evaluation.  In particular, this metric efficiently 
@@ -66,6 +111,7 @@ Average Drop; its Average Gain measurement fails entirely, effectively complemen
 shortcomings instated by this CAM method.\\
 
 \paragraph{Cross-Attention Stream}
+\label{sub:conc_ca}
 \noindent Chapter \ref{ch:castream} presented our second contribution, the Cross-Attention Stream. 
 This addition inspired by pure attention architectures, computes an abstract representation of 
 classes, via interaction of a class token and feature maps across different depths of a model. 
@@ -73,7 +119,7 @@ Additionally, this approach was validated in common image recognition models stu
 interpretability such as ResNet, as well as in a family of models not often studied in this fashion: 
 ConvNeXt.\\
 
-\noindent In this contribution we set the stage for quantitative interpretability measurements for 
+\noindent In this chapter, we set the stage for quantitative interpretability measurements for 
 transparency based approaches. We trained the stream similarly to prior transparency approaches, 
 and we evaluated its properties using \gls{cam}, a post-hoc method. Moreover, we observed that our 
 saliency maps do not differ much from the baseline ones. However, this result was expected as this 
@@ -82,6 +128,7 @@ attributions. Instead, our representation conveys information differently to the
 enhancing predicted probability of groundtruth classes. \\
 
 \paragraph{Gradient Denoising}
+\label{sub:conc_grad}
 \noindent Lastly, Chapter \ref{ch:grad} introduced a learning paradigm for interpretable gradients. 
 In this approach, the guided backpropagated gradient of the network, observed in the input space is 
 used to regularize the network gradient during training, enhancing interpretability properties. 
@@ -93,3 +140,33 @@ low parameter networks. This setting is a consequence of the computational cost 
 requires. However, the results obtained in this manner are promising, therefore addressing the 
 prior complexity would allow for scaling on to large scale image datasets and more complex models. 
 This ultimately is one direction this idea can be expanded on in the future. 
+
+\section{Future Work}
+\label{sec:conc_futur}
+The development of image recognition models is one task within computer vision and deep learning 
+that benefits from constant development. Notably, current developments are being continually 
+updated and optimized, it is expected  that novel architectures will emerge in the near future. 
+This is evident with the emergence of \glspl{cnn} and most recently, transformers. When new 
+architectures are introduced, it will be crucial to test and adjust methodologies to evaluate 
+their potential impact on future developments. \\
+
+\noindent As discussed during this thesis, image recognition models are actively being assimilated 
+within society. This integration has rightfully received attention from regulatory bodies: image 
+recognition models are still seen as black-boxes, even within the computer vision community. 
+Consequently, explainable artificial intelligence is one field requiring constant work:
+image recognition is under continuous development.\\
+
+\noindent In detail, in the decade following their introduction, several studies have been 
+conducted studying the properties and functioning of CNNs. In contrast, understanding the properties 
+of the transformer architecture as well as providing explanations for its functioning, is an open 
+field. Indeed, transformers are almost a decade more recent than CNNs, but their impact and 
+performance cannot be understated, as such one direction of study in this decade. Nevertheless, 
+this is not to say that CNN centered studies should be avoided at all.\\
+
+\noindent Lastly, standardization of interpretability study and evaluation is another area 
+with potential for future work. A thorough differentiation between model 
+interpretability and human interpretability studies should be established. A preliminary study 
+regarding this topic is conducted in this thesis, still a widespread adoption within the 
+community is mostly desired. To achieve this, a more thorough survey describing these comparisons, 
+as well as the failure of current interpretability evaluation methods is one manner to address 
+these requirements.\\

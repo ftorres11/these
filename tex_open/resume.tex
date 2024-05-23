@@ -7,12 +7,13 @@ vision par ordinateur sont le résultat direct d'une meilleure utilisation du ma
 la construction de modèles capables d'effectuer des tâches plus complexes au fil du temps. En ce 
 qui concerne la reconnaissance d'images en particulier, les réseaux neuronaux convolutionnels et 
 les transformateurs sont désormais capables d'identifier les images et leurs éléments, ainsi que 
-d'attribuer une valeur sémantique à ces derniers, même dans des conditions difficiles. Ces modèles 
-ont complètement changé le paysage de l'apprentissage profond et de la reconnaissance d'images, en 
-pénétrant profondément dans la société avec l'automatisation de nombreuses tâches quotidiennes. 
-Ainsi, il ne s'agit plus de savoir si un modèle peut effectuer cette tâche, mais plutôt de savoir 
-comment ce modèle effectue cette tâche. Pour répondre à ces questions, un nouveau domaine de 
-recherche a émergé : l'interprétabilité et l'intelligence artificielle explicative.\\
+d'attribuer une valeur sémantique à ces derniers, même dans des conditions difficiles.\\
+
+\noindent Avec la diffusion des technologies de l' apprentissage profond au sein de la société, 
+une nouvelle exigence a émergé pour ces méthodologies. Puisqu 'elles interagissent désormais et 
+affectent directement les vies humaines, il est impératif de comprendre leur fonctionnement et de 
+fournir des explications. Pour répondre à ces questions, un nouveau domaine de recherche a vu le 
+jour: l 'interprétabilité et l 'IA explicable.\\
 
 \noindent Dans cette thèse, notre objectif est de comprendre et de développer des modèles 
 d'interprétabilité pour les modèles de reconnaissance d'images de pointe. Nous présentons et 
@@ -23,7 +24,7 @@ ainsi que leurs protocoles d' évaluation. Nous faisons des observations sur ces
 protocoles d'évaluation, mettant en évidence les difficultés rencontrées et suggérant des idées 
 pour surmonter leurs limitations.\\
 
-\noindent Notre première contribution, Opti-CAM, s'appuie sur le raisonnement des Cartes d' 
+\paragraph{Opti-CAM} Notre première contribution, s' appuie sur le raisonnement des Cartes d' 
 Activation de Classe. En particulier, cette proposition optimise le coefficient de pondération 
 requis pour calculer une carte de saillance, générant une représentation qui maximise la 
 probabilité spécifique à la classe. Cette carte de saillance offre les meilleurs résultats selon 
@@ -31,7 +32,7 @@ les mesures d'interprétabilité, et met en évidence que le contexte est pertin
 prédiction. De plus, une nouvelle métrique pour compléter l'évaluation de l'interprétabilité est 
 dévoilée, remédiant aux lacunes de cette procédure.\\
 
-\noindent Notre deuxième contribution, Cross Attention Stream, est un ajout aux modèles actuels de 
+\paragraph{Cross Attention Stream} Notre deuxième contribution, est un ajout aux modèles actuels de 
 reconnaissance d'images, améliorant les mesures d'interprétabilité. Inspiré par des modèles 
 novateurs performants tels que les Transformers, nous construisons un flux qui calcule l'interaction 
 d'une représentation de classe abstraite avec les caractéristiques profondes des réseaux neuronaux 
@@ -39,14 +40,14 @@ convolutionnels. Cette représentation est finalement utilisée pour effectuer l
 Notre flux affiche des améliorations lors de l'évaluation quantitative, tout en préservant les 
 performances de reconnaissance à travers différents modèles.\\
 
-\noindent Enfin, notre dernière contribution présente un nouveau paradigme d'entraînement pour les 
-réseaux neuronaux profonds. De plus, ce paradigme débruite les informations de gradient des modèles 
-profonds dans l'espace d'entrée. La représentation de rétropropagation guidée de l'image d'entrée 
-est utilisée pour régulariser les modèles lors de leur phase d'entraînement. En conséquence, nos 
-modèles entraînés affichent des améliorations pour l'évaluation interprétable. Nous appliquons 
-notre paradigme à de petites architectures dans un cadre contraint, ouvrant la voie au 
-développement futur dans des ensembles de données à grande échelle, ainsi qu'avec des modèles plus 
-complexes.\\
+\paragraph{Gradient Denoise} Enfin, notre dernière contribution présente un nouveau paradigme d' 
+entraînement pour les réseaux neuronaux profonds. De plus, ce paradigme débruite les informations 
+de gradient des modèles profonds dans l'espace d'entrée. La représentation de rétropropagation 
+guidée de l'image d'entrée est utilisée pour régulariser les modèles lors de leur phase d' 
+entraînement. En conséquence, nos modèles entraînés affichent des améliorations pour l' 
+évaluation interprétable. Nous appliquons notre paradigme à de petites architectures dans un cadre 
+contraint, ouvrant la voie au développement futur dans des ensembles de données à grande échelle, 
+ainsi qu'avec des modèles plus complexes.\\
 
 \vspace{0.5cm}
 %Keywords: deep learning, image processing, attributions, interpretability
