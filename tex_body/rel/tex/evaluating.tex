@@ -14,8 +14,8 @@ Interpretability}, where he points:
 \end{quote}
 On one hand, this definition is not completely up-to-date for deep image recognition 
 models. In particular, given the difficulties of the original definition of transparency covering 
-deep models, especially with the introduction of active interpretability approaches introduced 
-previously. A direct display of transparency is not straightforward, particularly given that some 
+deep models, especially with the introduction of active interpretability approaches. A direct 
+display of transparency is not straightforward, particularly given that some 
 of these proposals involve modifying the behaviour of models or lack inherent interpretability. 
 Conversely, post-hoc interpretations are frequently found in the input space. As a result, 
 the impact of these modifications is traditionally evaluated through human centric assessments of 
@@ -24,7 +24,7 @@ in the predictive power of the input masked by the saliency map (\emph{interpret
 recognition}), randomly perturbing the input guided by saliency information described by the 
 attribution map (\emph{causal analysis}), and considering these attributions in a weakly supervised 
 object localization manner (\emph{interpretable object localization}). We present a brief summary 
-of these metrics in \autoref{tab:interp_mets}
+of these metrics in \autoref{tab:interp_mets}:
 \input{tab/rel/tex/interp_metrics.tex}
 
 %--------------------------------------------------------------------------------------------------
@@ -130,11 +130,11 @@ considers $s^c$ to maintain the same image resolution as $x$ and be normalized i
 
 \noindent \emph{Insertion} measures the increase of probability when introducing pixels from an 
 input image into a blurry version of itself, following the salient order described by the saliency 
-map. Best described in \autoref{algo:rel_ins}\\
+map. Best described in \autoref{algo:rel_ins}:\\
 \input{tex_body/rel/tex/ins.tex}
 \noindent \emph{Deletion} measures the decrease of probability as pixels are zeroed out in an input 
 image, following the salient order described by the saliency map. Best 
-described in \autoref{algo:rel_del}\\
+described in \autoref{algo:rel_del}:\\
 \input{tex_body/rel/tex/del.tex}
 %--------------------------------------------------------------------------------------------------
 \subsubsection{Interpretable object localization}
@@ -188,13 +188,13 @@ where $\iou$ is intersection over union.\\
 
 \noindent \emph{Pixel-wise $F_1$ score (F1)} is defined as $F_1 = 2 \frac{P R}{P + R}$, where 
 \emph{precision} $P$ is the fraction of mass of the saliency map that is within the ground truth 
-union
+union:
 \begin{equation}
 	P \defn \frac{\sum_{\vp \in U} S^c_{\vp}}{\sum_{\vp} S^c_{\vp}}
 \label{eq:prec}
 \end{equation}
 
-and \emph{recall} $R$ is the fraction of the ground truth union that is covered by the saliency map
+and \emph{recall} $R$ is the fraction of the ground truth union that is covered by the saliency map:
 \begin{equation}
 	R \defn \frac{\sum_{\vp \in U} S^c_{\vp}}{\card{U}}.
 	\label{eq:rec}

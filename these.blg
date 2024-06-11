@@ -1,0 +1,20 @@
+[0] Config.pm:302> INFO - This is Biber 2.9
+[0] Config.pm:305> INFO - Logfile is 'these.blg'
+[36] biber:313> INFO - === Tue Jun 11, 2024, 11:49:48
+[68] Biber.pm:371> INFO - Reading 'these.bcf'
+[145] Biber.pm:857> INFO - Found 151 citekeys in bib section 0
+[158] Biber.pm:3981> INFO - Processing section 0
+[166] Biber.pm:4154> INFO - Looking for bibtex format file 'biblio.bib' for section 0
+[173] bibtex.pm:1468> INFO - LaTeX decoding ...
+[341] bibtex.pm:1294> INFO - Found BibTeX data source 'biblio.bib'
+[2033] Utils.pm:169> WARN - month field 'October' in entry 'psomas2023simpool' is not an integer - this will probably not sort properly.
+[2041] Utils.pm:169> WARN - BibTeX subsystem: /tmp/ibTmSdF9z_/biblio.bib_7711.utf8, line 37, warning: 23 characters of junk seen at toplevel
+[2041] Utils.pm:169> WARN - BibTeX subsystem: /tmp/ibTmSdF9z_/biblio.bib_7711.utf8, line 260, warning: 15 characters of junk seen at toplevel
+[2041] Utils.pm:169> WARN - BibTeX subsystem: /tmp/ibTmSdF9z_/biblio.bib_7711.utf8, line 1633, warning: 6 characters of junk seen at toplevel
+[2701] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2701] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2701] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[2701] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[2915] bbl.pm:617> INFO - Writing 'these.bbl' with encoding 'UTF-8'
+[3087] bbl.pm:720> INFO - Output to these.bbl
+[3088] Biber.pm:110> INFO - WARNINGS: 4
