@@ -4,9 +4,9 @@
 \label{concs}
 Across this thesis we studied explainable deep learning proposals, to understand image 
 recognition models. Explainable Artificial Intelligence and Interpretability are blooming fields 
-within the research on machine learning. In particular, current high performing models are 
+within the research community. In particular, current high performing models are 
 being steadily assimilated within society and their prominence in human life is increasing. Thus, 
-it has become important understanding the processes prompting a prediction in such models. 
+it is important to understand the processes prompting a prediction in such models. 
 Furthermore, these fields are being studied following a plethora of axis of research. Still, the 
 work presented by Lipton \autocite{mythos_interp} and Zhang \autocite{zhang2021survey} lay the 
 foundation for our work.\\
@@ -37,16 +37,18 @@ between human and model interpretability.\\
 \noindent To begin with, regarding the improvement of image recognition, this work 
 introduced two different approaches that address this requirement. In particular, Chapter 
 \ref{ch:castream} showcased how the addition of cross attention can enhance 
-recognition characteristics. Furthermore, Chapter \ref{ch:grad} presented a novel training paradigm 
-can potentially yield better recognition predictions. Complementary to this, 
+recognition characteristics. Furthermore, Chapter \ref{ch:grad} presented a novel training 
+paradigm that can potentially yield better recognition predictions. Complementary to this, 
 interpretability measurements are improved consistently across this thesis. In particular, 
 Chapter \ref{ch:opticam} presented \emph{Opti-CAM}, a methodology that consistently improves 
-upon these capabilities, evidenced across different datasets and evaluation modes.\\
+upon these capabilities, evidenced across different datasets and evaluation modes: 
+recognition and localization.\\
 
 \noindent In line with the specific objectives, our thesis follows a standardized evaluation 
-procedure. Across each chapter, we compare our baselines with our approaches under the exact 
-same settings. Conversely, we observed that methods conduct experimentation unnecessarily complex. 
-It is concluded that such cases are designed to cover the shortcomings on an approach.\\
+procedure. Across each chapter, we compare baselines with our approaches under the exact 
+same settings. Conversely, we observed limitations in the details of the evaluation of 
+xAI methodologies. We hope that our contributions will encourage the community towards a 
+set of good practices in this domain.\\
 
 \noindent Lastly, the differences between human and model interpretations were discussed in 
 detail in Chapter \ref{ch:opticam}. Specifically, we observed that context matters in the 
@@ -66,15 +68,15 @@ is acknowledged as a major task in Computer Vision, enhancing adjacent tasks wit
 
 \noindent Complementary to the introduction of these models, we highlighted the 
 necessity of providing explanations to current image recognition models. We mentioned the proposition  
-of the European AI act for regulation of Artificial Intelligence technologies, as well as in the 
+of the European AI act to regulate Artificial Intelligence technologies, as well as in the 
 Mythos of Model Interpretability by Lipton. In particular, following Lipton's work we 
 revised the properties proposed therein, as well as illustrated how they can be adapted to explain 
 current state-of-the-art models. Furthermore, we demonstrated our interest on \gls{cam} methods 
 to produce explanations. A thorough description of their computation and different proposals is 
 established to lay the foundation for the following studies.\\
 
-\noindent Finally, to complement interpretability studies the background we introduced, established
-evaluation procedures for explainability methods. Regarding these evaluation procedures, we grouped 
+\noindent Finally, we also introduced evaluation methods to assess the effect of the attribution 
+methods mentioned. Regarding these evaluation procedures, we grouped 
 them according to the reasoning of the measurement provided, as well as highlighted the positive 
 and negative points of each procedure. Notably, Interpretable Object Recognition and 
 Causal Analysis are observed to best assess interpertability properties of a model. On one 
@@ -102,13 +104,15 @@ fails in \textbf{Object Localization}. We made sense of these observations aided
 visualizations. In contrast to current CAM methods, Opti-CAM generates a saliency map that is 
 spread across the input image. From this we infer that context matters describing an explanation. 
 Consequently, since context is necessary to explain a prediction, the requirement of saliency maps 
-being localized is counter-intuitive and does not hold.\\
+covering the object of interest, is counter-intuitive and does not hold.\\
 
 \noindent Lastly, regarding Average Gain our experimental results demonstrated its complementary 
 behavior to Interpretable Image Recognition Evaluation.  In particular, this metric efficiently 
 demonstrates how Fake-CAM fails as an attribution method: although it attains almost perfect 
 Average Drop; its Average Gain measurement fails entirely, effectively complementing the 
-shortcomings instated by this CAM method.\\
+shortcomings instated by this CAM method. Still, a complete benchmark comparing most attribution 
+methods, as well as explanations for predicted labels, would provide a reality check on the 
+evaluation of interpretability\\
 
 \paragraph{Cross-Attention Stream}
 \label{sub:conc_ca}
@@ -135,21 +139,31 @@ used to regularize the network gradient during training, enhancing interpretabil
 Continuing with the evaluation of transparency methods seen on Chapter \ref{ch:castream}, we 
 evaluate these properties using CAM methods.\\
 
+\noindent From the family of pure gradient based attribution methods, guided 
+backpropagation required less computation to function. In stark contrast with approaches such as 
+smooth gradients and integrated gradients, guided backpropagation maintains the requirement of 
+one forward pass and one backward through the model to generate an output.\\
+
+\noindent Lastly, we observed that pure guided backpropagation training is not plausible. During 
+the prototyping phase of this chapter, we experimented using this setting, and we found that 
+the training was unstable leading to gradients pushing towards infinity. We hypothesize that 
+gradient information produced by responses to negative gradients, regularizes neural network 
+training.\\
+
 \section{Future Work}
 \label{sec:conc_futur}
-The development of image recognition models is one task within computer vision and deep learning 
-that benefits from constant development. Notably, current developments are being continually 
-updated and optimized, it is expected  that novel architectures will emerge in the near future. 
-This is evident with the emergence of \glspl{cnn} and most recently, transformers. When new 
-architectures are introduced, it will be crucial to test and adjust methodologies to evaluate 
-their potential impact on future developments. \\
+We set the foundation for our future work in three axes. First, a discussion on the future for 
+interpretable image recognition. Then, we iterate over how our proposals can be 
+improved upon in the future. Finally, exploratory directions beyond the scope of this thesis.\\
 
-\noindent In the decade following their introduction, several studies have been 
-conducted studying the properties and functioning of CNNs. In contrast, understanding the properties 
-of the transformer architecture as well as providing explanations for its functioning, is an open 
-field. Indeed, transformers are almost a decade more recent than CNNs, but their impact and 
-performance cannot be understated, as such one direction of study in this decade. Nevertheless, 
-this is not to say that CNN centered studies should be avoided at all.\\
+\paragraph{Interpretable Image Recognition}
+The development of image recognition models within computer vision and deep learning benefits 
+from ongoing advancements. With the recent emergence of CNNs and transformers, new architectures 
+are expected to continue appearing. Evaluating the impact of these models through testing and 
+proposing methodologies is essential for future progress. While CNNs have been extensively 
+studied over the past decade, the properties and functioning of transformers remain an open field. 
+Despite transformers being newer, their impact and performance are significant, necessitating 
+further study. However, research on CNNs should also continue.\\
 
 \noindent Additionally, standardization of interpretability study and evaluation is another area 
 with potential for future work. A thorough differentiation between model 
@@ -159,14 +173,14 @@ community is mostly desired. To achieve this, a more thorough survey describing 
 as well as the failure of current interpretability evaluation methods is one manner to address 
 these requirements.\\
 
-\noindent Regarding Opti-CAM, we observe two possibilities for future work. On one hand, CAM-based 
+\paragraph{On the chapters of this thesis}
+\noindent Regarding Opti-CAM, we observe one possibility for future work. CAM-based 
 attributions struggle to explain transformer-based architectures. These saliency maps are often 
 sparse and do not provide sufficient clarity when compared to raw attention. A different 
 attribution method could provide improved representations, possibly calculated using the class 
-token. On the other hand, we observed a lack of clarity in quantitative evaluation, which we 
-addressed with Average Gain. Still, a complete benchmark comparing most attribution methods, 
-as well as explanations for predicted labels, would provide a reality check on the evaluation 
-of interpretability\\
+token. Accounting for the fixation of saliency maps on transformers as demonstrated on 
+Simpool \autocite{psomas2023simpool} and Registers \autocite{darcet2024vision} would 
+allow for updates of this approach or a novel attribution method.\\
 
 \noindent On the topic of Cross-Attention, future work aims at optimizing the architecture and 
 broadening its scope to different models. In particular, the parameter count can be reduced by 
@@ -175,4 +189,29 @@ Additionally, expanding beyond the usage of ResNet and ConvNeXt, and presenting 
 training paradigm for this approach, would enable its application to more architectures, enhancing 
 its coverage of image recognition tasks.\\
 
-\noindent Lastly, the gradient denoising paradigm was showcased in a constrained setting: small datasets and low-parameter networks. This limitation is due to the high computational cost of the approach. However, the promising results suggest that addressing this complexity could allow for scaling to large-scale image datasets and more complex models.\\
+\noindent Lastly, the gradient denoising paradigm was showcased in a constrained setting: small 
+datasets and low-parameter networks. This limitation is due to the high computational cost of the 
+approach. However, the promising results suggest that addressing this complexity could allow for 
+scaling to large-scale image datasets and more complex models.\\
+
+\paragraph{Beyond the scope of this thesis}
+Currently, computer vision is one open field, thriving with possibilities for further research 
+and industry developments. In particular, during the development of this thesis several 
+technologies were unveiled, addressing different areas of study for artificial intelligence. 
+For instance, \gls{nlp} is currently a prominent field where technologies like Large Language 
+Models have taken the spotlight. However, such kind of developments require heavy computational 
+infrastructure, limiting their development to bigger research groups. Optimizing such methodologies, 
+as well as producing competitive, yet more simplified alternatives is one path where research 
+could be focused as well.\\
+
+\noindent In contrast to developing large models and mainstream tasks, future work could focus on 
+updating particular applications. Concepts from general image recognition and interpretability are 
+applied to fields such as medical diagnosis and industry, requiring highly specific models. 
+Adapting and modifying state-of-the-art models for these fine-grained applications is a key 
+direction for future developments.\\
+
+\noindent Lastly, on a personal level, future work comprises on setting the stage for continuing a 
+scientific career. To achieve this, I aim to continue with a post-doctoral position on topics 
+aligned with my interests: image recognition, explainable AI and foundational models. Moreover, 
+given my focus on academia, pursuing a research engineer position is a direction  that would 
+also allow to advance for my career.

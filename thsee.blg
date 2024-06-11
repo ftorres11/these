@@ -1,5 +1,0 @@
-[0] Config.pm:302> INFO - This is Biber 2.9
-[0] Config.pm:305> INFO - Logfile is 'thsee.blg'
-[27] biber:313> INFO - === Tue Dec 12, 2023, 01:43:40
-[156] Utils.pm:185> ERROR - Cannot find control file 'thsee.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
-[157] Biber.pm:114> INFO - ERRORS: 1
